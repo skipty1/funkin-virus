@@ -34,7 +34,7 @@ class MedalSprite extends FlxSprite
 
 		animation.play(ass);
 
-		setGraphicSize(Std.int(width * 6));
+		setGraphicSize(Std.int(width * 2));
 		antialiasing = false;
 		alpha = 0;
 		updateHitbox();
