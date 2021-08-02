@@ -219,7 +219,7 @@ class MusicBeatState extends FlxUIState
 		dontSpam = true;
 		var medal:Achievements = new Achievements(ass);
 		var medalBg:FlxSprite = new FlxSprite(800, FlxG.height * 0.9).loadGraphic(Paths.image('8bit/UNLOCK', 'shared'));
-		medalBg.scale.set(5,5);
+		medalBg.scale.set(2,2);
 		medalBg.antialiasing = false;
 		medalBg.y += 200;
 		medal.y += 200;
@@ -245,6 +245,7 @@ class MusicBeatState extends FlxUIState
 		txt.screenCenter();
 		txt.y = FlxG.height - 56;
 		txt.alpha = 0;
+		add(txt);
 		switch (ass){
 			case 'Sus':
 				txt.text = "SUS!\nPress F 69 times.\n";
