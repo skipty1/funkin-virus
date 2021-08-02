@@ -138,20 +138,24 @@ class MainMenuState extends MusicBeatState
 			case 'bit' | 'bf-pixel':
 				bg.color = 0xFF00BAFF;
 			case 'gf-box' | 'gf-pixel':
-				bg.color = 0xFFFF0086;
+				bg.color = 0xFFD60084;
 		}
 		//offset
 		switch(randomChar.curCharacter){
 			case 'virus-mad':
-				randomChar.y += 100;
-				randomChar.x -= 300;
+				randomChar.y += 300;
+				randomChar.x -= 100;
 			case 'virus':
-				randomChar.y += 100;
+				randomChar.y += 300;
 				randomChar.x -= 100;
 			case 'bit':
-				randomChar.y += 100;
+				randomChar.y -= 100;
 			case 'bf':
-				
+				randomChar.y -= 300;
+			case 'gf-pixel':
+				randomChar.y -= 350;
+			case 'gf-box':
+				randomChar.y -= 200;
 		}
 
 		firstStart = false;
