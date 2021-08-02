@@ -95,7 +95,8 @@ class Character extends FlxSprite
 
 				playAnim('danceRight');
 
-				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				if (!isMenu)
+					setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 				updateHitbox();
 				antialiasing = false;
 			case 'gf-box':
@@ -109,7 +110,8 @@ class Character extends FlxSprite
 
 				playAnim('danceRight');
 
-				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				if (!isMenu)
+					setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 				updateHitbox();
 				antialiasing = false;
 
@@ -362,7 +364,8 @@ class Character extends FlxSprite
 				addOffset('singUP');
 				playAnim('idle');
 
-				setGraphicSize(Std.int(width * 6));
+				if (!isMenu)
+					setGraphicSize(Std.int(width * 6));
 				updateHitbox();
 
 				antialiasing = false;
@@ -391,7 +394,8 @@ class Character extends FlxSprite
 				addOffset('singUPmiss');
 				playAnim('idle');
 
-				setGraphicSize(Std.int(width * 6));
+				if (!isMenu)
+					setGraphicSize(Std.int(width * 6));
 				updateHitbox();
 
 				antialiasing = false;
@@ -412,7 +416,8 @@ class Character extends FlxSprite
 				addOffset('singUP');
 				playAnim('idle');
 
-				setGraphicSize(Std.int(width * 6));
+				if (!isMenu)
+					setGraphicSize(Std.int(width * 6));
 				updateHitbox();
 
 				antialiasing = false;
