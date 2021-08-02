@@ -242,9 +242,11 @@ class MusicBeatState extends FlxUIState
 	}
 	public function textPop(ass:String){
 		var txt:FlxText = new FlxText(0, 0, 0, "", 24);
-		txt.screenCenter();
-		txt.y = FlxG.height - 56;
+		txt.screenCenter(X);
+		txt.alignment = CENTER;
+		txt.y = FlxG.height - 125;
 		txt.alpha = 0;
+		txt.cameras = [cameraStuff];
 		add(txt);
 		switch (ass){
 			case 'Sus':
