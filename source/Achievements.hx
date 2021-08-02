@@ -24,7 +24,7 @@ class Achievements extends FlxSprite{
 		//animations
 		frames = Paths.getSparrowAtlas('8bit/them','shared');
 
-		scale.set(2,2);
+		scale.set(3,3);
 		animation.addByPrefix('GGWP','GGWP',24,false);
 		animation.addByPrefix('Gamer','GAMER',24,false);
 		animation.addByPrefix('Blue Spy','BLUSPY',24,false);
