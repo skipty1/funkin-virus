@@ -128,8 +128,10 @@ class MainMenuState extends MusicBeatState
 			else
 				menuItem.y = 60 + (i * 160);
 		}
-		randomChar = new Character(900,100,FlxG.random.getObject(randomString));
+		randomChar = new Character(900,100,FlxG.random.getObject(randomString),true);
+		randomChar.scale.set(4,4);
 		add(randomChar);
+		//color
 		switch (randomChar.curCharacter){
 			case 'virus' | 'virus-mad':
 				bg.color = 0xFF01CD00;
@@ -137,6 +139,17 @@ class MainMenuState extends MusicBeatState
 				bg.color = 0xFF00D3FF;
 			case 'gf-box' | 'gf-pixel':
 				bg.color = 0xFFFF0086;
+		}
+		//offset
+		switch(randomChar.curCharacter){
+			case 'virus-mad':
+				randomChar.y -= 100;
+				randomChar.x -= 300;
+			case 'virus':
+				randomChar.y -= 100;
+				randomChar.x -= 100;
+			case 'bit':
+				randomChar.y += 100;
 		}
 
 		firstStart = false;
