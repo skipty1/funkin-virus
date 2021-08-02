@@ -151,11 +151,11 @@ class MainMenuState extends MusicBeatState
 			case 'bit':
 				randomChar.y -= 100;
 			case 'bf':
-				randomChar.y -= 300;
+				randomChar.y += 300;
 			case 'gf-pixel':
-				randomChar.y -= 350;
+				randomChar.y += 350;
 			case 'gf-box':
-				randomChar.y -= 200;
+				randomChar.y += 200;
 		}
 
 		firstStart = false;
