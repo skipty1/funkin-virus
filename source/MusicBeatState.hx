@@ -219,7 +219,7 @@ class MusicBeatState extends FlxUIState
 		dontSpam = true;
 		var medal:Achievements = new Achievements(ass);
 		var medalBg:FlxSprite = new FlxSprite(800, FlxG.height * 0.9).loadGraphic(Paths.image('8bit/UNLOCK', 'shared'));
-		medalBg.scale.set(2,2);
+		medalBg.scale.set(3,3);
 		medalBg.antialiasing = false;
 		medalBg.y += 200;
 		medal.y += 200;
