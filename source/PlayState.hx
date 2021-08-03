@@ -1221,9 +1221,10 @@ class PlayState extends MusicBeatState
 		{
 			startCountdown();
 		}
-
+		#if desktop
 		if (!loadRep)
 			rep = new Replay("na");
+		#end
 
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, releaseInput);
@@ -3237,9 +3238,10 @@ class PlayState extends MusicBeatState
 
 		if (isStoryMode)
 			campaignMisses = misses;
-
+		#if desktop
 		if (!loadRep)
 			rep.SaveReplay(saveNotes, saveJudge, replayAna);
+		#end
 		else
 		{
 			PlayStateChangeables.botPlay = false;
@@ -3834,11 +3836,12 @@ class PlayState extends MusicBeatState
 							noteMiss(shit, null);
 				}
 			}
-
+			#if desktop
 			if (!loadRep)
 				for (i in anas)
 					if (i != null)
-						replayAna.anaArray.push(i); // put em all there
+						replayAna.anaArray.push(i); // put em all there.
+			#end
 		}
 		notes.forEachAlive(function(daNote:Note)
 		{
@@ -4012,6 +4015,7 @@ class PlayState extends MusicBeatState
 
 			if (daNote != null)
 			{
+				#if desktop
 				if (!loadRep)
 				{
 					saveNotes.push([
@@ -4022,7 +4026,9 @@ class PlayState extends MusicBeatState
 					]);
 					saveJudge.push("miss");
 				}
+				#end
 			}
+			#if desktop
 			else if (!loadRep)
 			{
 				saveNotes.push([
@@ -4033,6 +4039,8 @@ class PlayState extends MusicBeatState
 				]);
 				saveJudge.push("miss");
 			}
+			#end
+			
 
 			if (accuracyMod == 1)
 				totalNotesHit -= 1;
@@ -4157,7 +4165,7 @@ class PlayState extends MusicBeatState
 			if (luaModchart != null)
 				luaModchart.executeState('playerOneSing', [note.noteData, Conductor.songPosition]);
 			#end
-
+			#if desktop
 			if (!loadRep && note.mustPress)
 			{
 				var array = [note.strumTime, note.sustainLength, note.noteData, noteDiff];
@@ -4166,6 +4174,7 @@ class PlayState extends MusicBeatState
 				saveNotes.push(array);
 				saveJudge.push(note.rating);
 			}
+			#end
 
 			playerStrums.forEach(function(spr:FlxSprite)
 			{
