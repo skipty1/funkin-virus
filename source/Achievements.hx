@@ -1,5 +1,8 @@
 package;
 
+import haxe.Constraints.Function;
+import flixel.FlxCamera;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxG;
@@ -14,47 +17,123 @@ using StringTools;
 
 //fhisjdx
 
-class Achievements extends FlxSprite{
+class Achievements extends FlxSpriteGroup{
 	//vars here
-	
+	var icon:FlxSprite;
+
+	var bg:FlxSprite;
 
 	//functions here
-	public function new(?ASS:String){
+	private function new(?ASS:String){
+		visible = false;
 		super();
-		//animations
-		frames = Paths.getSparrowAtlas('8bit/them','shared');
+		
+		bg = new FlxSprite().loadGraphic(Paths.image('8bit/UNLOCK', 'shared'));
+		bg.scale.set(3,3);
+		bg.updateHitbox();
+		bg.antialiasing = false;
+		add(bg);
 
-		scale.set(3,3);
-		animation.addByPrefix('GGWP','GGWP',24,false);
-		animation.addByPrefix('Gamer','GAMER',24,false);
-		animation.addByPrefix('Blue Spy','BLUSPY',24,false);
-		animation.addByPrefix('TOUHOU Bit','touhou bit',24,false);
-		animation.addByPrefix('Pro Player','pro player',24,false);
-		animation.addByPrefix('ECHO','ECHO',24,false);
-		animation.addByPrefix('Good Ending','good ending',24,false);
-		animation.addByPrefix('Bad Ending','bad ending',24,false);
-		animation.addByPrefix('Firewall','firewall',24,false);
-		animation.addByPrefix('Bumbass','DUNABD',24,false);
-		animation.addByPrefix('FC Final','CDBZ',24,false);
-		animation.addByPrefix('Spike','spike',24,false);//spike :)
-		animation.addByPrefix('One Coin','Only one coin',24,false);
-		animation.addByPrefix('FC Four','TWTMF',24,false);
-		animation.addByPrefix('New World','new world',24,false);
-		animation.addByPrefix('FC Three','wild west',24,false);
-		animation.addByPrefix('Sus','sus',24,false);
-		animation.addByPrefix('Big Sus','BIG SUS',24,false);
-		animation.addByPrefix('Perfect','The perfect player',24,false);
-		antialiasing = false;
-		setPosition(800,FlxG.height * 0.9);
-		if (ASS == null){
+
+		icon = new FlxSprite();
+		//animations
+		icon.frames = Paths.getSparrowAtlas('8bit/them','shared');
+
+		icon.scale.set(3,3);
+		icon.updateHitbox();
+		icon.animation.addByPrefix('GGWP','GGWP',24,false);
+		icon.animation.addByPrefix('Gamer','GAMER',24,false);
+		icon.animation.addByPrefix('Blue Spy','BLUSPY',24,false);
+		icon.animation.addByPrefix('TOUHOU Bit','touhou bit',24,false);
+		icon.animation.addByPrefix('Pro Player','pro player',24,false);
+		icon.animation.addByPrefix('ECHO','ECHO',24,false);
+		icon.animation.addByPrefix('Good Ending','good ending',24,false);
+		icon.animation.addByPrefix('Bad Ending','bad ending',24,false);
+		icon.animation.addByPrefix('Firewall','firewall',24,false);
+		icon.animation.addByPrefix('Bumbass','DUNABD',24,false);
+		icon.animation.addByPrefix('FC Final','CDBZ',24,false);
+		icon.animation.addByPrefix('Spike','spike',24,false);//spike :)
+		icon.animation.addByPrefix('One Coin','Only one coin',24,false);
+		icon.animation.addByPrefix('FC Four','TWTMF',24,false);
+		icon.animation.addByPrefix('New World','new world',24,false);
+		icon.animation.addByPrefix('FC Three','wild west',24,false);
+		icon.animation.addByPrefix('Sus','sus',24,false);
+		icon.animation.addByPrefix('Big Sus','BIG SUS',24,false);
+		icon.animation.addByPrefix('Perfect','The perfect player',24,false);
+		
+		icon.antialiasing = false;
+		icon.setPosition(0, 0);
+		add(icon);
+		
+		if (ASS == null)
+		{
 			trace('ass is null, aftermath of lmao too hard :(');
-			animation.play('Sus');
+			icon.animation.play('Sus');
 		}
-		else{
-			animation.play(ASS);
+		else
+		{
+			icon.animation.play(ASS);
 			trace('ASS is there, dont lmao too hard now. that surgery costed a lot');
 		}
 		
+	}
+
+	public function play(duration:Float = 0.5, ?onEnd:Function)
+	{
+		//trace('playing "$name" achievement');
+
+		x = FlxG.width - width - (width / 3);
+
+		var y_start:Float = -height;
+		var y_end:Float = 15;
+
+		height = y_start;
+
+		// hide
+		var end = (_) ->
+		{
+			new FlxTimer().start(4, (_) ->
+			{
+				FlxTween.num(y_end, y_start, duration, {onComplete: function(_) visible = false && onEnd()}, (value) ->
+				{
+					y = value;
+				});
+			}, 4000);
+		}
+
+		// show
+		FlxTween.num(y_start, y_end, duration, {onComplete: end, ease: FlxEase.bounceOut}, (value) ->
+		{
+			y = value;
+		});
+
+		visible = true;
+	}
+
+	//static var queue:Array<Achievements>;
+
+	public static function popup(name:String, duration:Float = 0.5):Achievements
+	{
+		var a:Achievements = new Achievements(name);
+
+		/*
+		var camcontrol = new FlxCamera();
+		FlxG.cameras.add(camcontrol);
+		camcontrol.bgColor.alpha = 0;
+		a.cameras = [camcontrol];
+		*/
+
+		FlxG.state.add(a);
+
+		a.play(duration, _ ->
+		{
+			FlxG.state.remove(a);
+			a.destroy();
+			a = null;
+			//camcontrol.destroy();
+		});
+
+		return a;
 	}
 }
 
