@@ -204,7 +204,12 @@ class MusicBeatState extends FlxUIState
 				dontSpam = false;
 			});
 		}
-		
+		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.DOWN && !dontSpam && upTwo){
+			upTwo = false;
+		}
+		if (FlxG.keys.justPressed.DOWN && !dontSpam && upTwo){
+			
+		}
 
 	}
 
