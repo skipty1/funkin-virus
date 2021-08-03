@@ -65,6 +65,7 @@ class MusicBeatState extends FlxUIState
 		cameraStuff = new FlxCamera();
 		cameraStuff.bgColor.alpha = 0;
 		FlxG.cameras.add(cameraStuff);
+
 		TimingStruct.clearTimings();
 		(cast (Lib.current.getChildAt(0), Main)).setFPSCap(FlxG.save.data.fpsCap);
 
@@ -216,36 +217,20 @@ class MusicBeatState extends FlxUIState
 	}
 
 	public function medalPop(ass:String){
-		dontSpam = true;
-		var medal:Achievements = new Achievements(ass);
-		var medalBg:FlxSprite = new FlxSprite(800, FlxG.height * 0.9).loadGraphic(Paths.image('8bit/UNLOCK', 'shared'));
-		medalBg.scale.set(3,3);
-		medalBg.antialiasing = false;
-		medalBg.y += 200;
-		medal.y += 200;
-		medal.cameras = [cameraStuff];
-		medalBg.cameras = [cameraStuff];
-		add(medalBg);
-		add(medal);
-		FlxTween.linearMotion(medal, 800, FlxG.height * 0.9 + 200, 800, FlxG.height * 0.9, 2, true);
-		FlxTween.linearMotion(medalBg, 800, FlxG.height * 0.9 + 200, 800, FlxG.height * 0.9, 2, true);
+		//dontSpam = false;
+		Achievements.popup(ass)
+		.cameras = [cameraStuff];
+		
 		textPop(ass);
-		new FlxTimer().start(4, function(tmr:FlxTimer){
-			FlxTween.linearMotion(medal, 800, FlxG.height * 0.9, 800, FlxG.height * 0.9 + 200, 2, true);
-			FlxTween.linearMotion(medalBg, 800, FlxG.height * 0.9, 800, FlxG.height * 0.9 + 200, 2, true);
-			new FlxTimer().start(2, function(tmr:FlxTimer){
-				remove(medal);
-				remove(medalBg);
-				dontSpam = false;
-			});
-		});
 	}
+
 	public function textPop(ass:String){
-		var txt:FlxText = new FlxText(0, 0, 0, "", 24);
-		txt.screenCenter(X);
+		var txt:FlxText = new FlxText(0, 0, 0, "", 48);
+		txt.color = FlxColor.fromRGB(133, 256, 133);
 		txt.alignment = CENTER;
 		txt.y = FlxG.height - 125;
 		txt.alpha = 0;
+		txt.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 3);
 		txt.cameras = [cameraStuff];
 		add(txt);
 		switch (ass){
@@ -255,6 +240,7 @@ class MusicBeatState extends FlxUIState
 			default:
 				txt.text = "how\n";
 		}
+		txt.screenCenter(X);
 		new FlxTimer().start(0.1, function(tmr:FlxTimer){
 			txt.alpha += 0.1;
 			if (txt.alpha < 0.9)
