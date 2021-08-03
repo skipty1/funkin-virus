@@ -29,6 +29,9 @@ class MusicBeatState extends FlxUIState
 	public var cameraStuff:FlxCamera;
 	public var fpressed:Int = 0;
 	public var dontSpam:Bool = false;
+	public var endedSongs:Int = 0;
+	public var storyCompleted:Bool = false;
+	public var songEnded:Bool = false;
 
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
@@ -162,13 +165,22 @@ class MusicBeatState extends FlxUIState
 		switch (fpressed){
 			case 69:
 				fpressed == 70;
-				if (!dontSpam)
+				if (!dontSpam && !FlxG.save.data.Sus)
 					medalPop('Sus');
 			case 420:
 				fpressed == 421;
-				if (!dontSpam)
+				if (!dontSpam && !FlxG.save.data.BigSus)
 					medalPop('Big Sus');
 		}
+		
+		if (endedSongs == 1 && !dontSpam && !FlxG.save.data.GGWP)
+			medalPop('GGWP');
+		
+		if (storyCompleted && !dontSpam && !FlxG.save.data.Gamer)
+			medalPop('Gamer');
+		
+		if (PlayState.SONG.song.toLowerCase() == 'Disco' && PlayState.misses == 0 && songEnded && !FlxG.save.data.BluSpy)
+			medalPop('Blue Spy');
 
 	}
 
@@ -237,6 +249,18 @@ class MusicBeatState extends FlxUIState
 			case 'Sus':
 				txt.text = "SUS!\nPress F 69 times.\n";
 				FlxG.save.data.Sus = true;
+			case 'Big Sus':
+				txt.text = "BIG SUS!\nPress F 420 times.\n";
+				FlxG.save.data.BigSus = true;
+			case 'GGWP':
+				txt.text = "GOOD GAME WELL PLAY! (GGWP)\nComplete one song.\n";
+				FlxG.save.data.GGWP = true;
+			case 'Gamer':
+				txt.text = "Gamer!\nComplete story mode.\n";
+				FlxG.save.data.Gamer = true;
+			case 'Blue Spy':
+				txt.text = "BluSpy!\nFC Chapter 1.\n";
+				FlxG.save.data.BluSpy = true;
 			default:
 				txt.text = "how\n";
 		}
