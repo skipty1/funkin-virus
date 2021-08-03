@@ -134,6 +134,12 @@ class KadeEngineData
 		if (FlxG.save.data.lessUpdate == null)
 			FlxG.save.data.lessUpdate = false;
 
+		if (FlxG.save.data.noteSplash == null)
+			FlxG.save.data.noteSplash = true;
+
+		if (FlxG.save.data.smoothIcon == null)
+			FlxG.save.data.smoothIcon = true;
+
 		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
 		
 		KeyBinds.gamepad = gamepad != null;
