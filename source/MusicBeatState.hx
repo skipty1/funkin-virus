@@ -32,6 +32,8 @@ class MusicBeatState extends FlxUIState
 	public var endedSongs:Int = 0;
 	public var storyCompleted:Bool = false;
 	public var songEnded:Bool = false;
+	public var upOne:Bool = false;
+	public var upTwo:Bool = false;
 
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
@@ -179,8 +181,30 @@ class MusicBeatState extends FlxUIState
 		if (storyCompleted && !dontSpam && !FlxG.save.data.Gamer)
 			medalPop('Gamer');
 		
-		if (PlayState.SONG.song.toLowerCase() == 'Disco' && PlayState.misses == 0 && songEnded && !FlxG.save.data.BluSpy)
+		if (PlayState.SONG.song.toLowerCase() == 'Disco' && PlayState.misses == 0 && songEnded && !FlxG.save.data.BluSpy && !dontSpam)
 			medalPop('Blue Spy');
+		
+		if (PlayState.misses > 100 && songEnded && !FlxG.save.data.TOUHOU && !dontSpam)
+			medalPop('TOUHOU Bit');
+		
+		if (FlxG.keys.justPressed.UP && !dontSpam){
+			upOne = true;
+			dontSpam = true;
+			new FlxTimer().start(0.5, function(tmr:FlxTimer){
+				dontSpam = false;
+			});
+		}
+		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.UP && !dontSpam){
+			upOne = false;
+		}
+		if (upOne && FlxG.keys.justPressed.UP && !dontSpam){
+			upTwo = true;
+			dontSpam = true;
+			new FlxTimer().start(0.5, function(tmr:FlxTimer){
+				dontSpam = false;
+			});
+		}
+		
 
 	}
 
@@ -237,6 +261,7 @@ class MusicBeatState extends FlxUIState
 	}
 
 	public function textPop(ass:String){
+		dontSpam = true;
 		var txt:FlxText = new FlxText(0, 0, 0, "", 48);
 		txt.color = FlxColor.fromRGB(133, 256, 133);
 		txt.alignment = CENTER;
@@ -272,6 +297,7 @@ class MusicBeatState extends FlxUIState
 		});
 		new FlxTimer().start(6, function(tmr:FlxTimer){
 			remove(txt);
+			dontSpam = false;
 		});
 	}
 }
