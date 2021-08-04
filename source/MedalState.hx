@@ -152,7 +152,7 @@ class MedalState extends MusicBeatState
 					case false | null:
 						notice.text = '???';
 					case true:
-						notice.text = 'Pro Player!\nnEnter the magical cheat code passed down from the ancestors.\n';
+						notice.text = 'Pro Player!\nEnter the magical cheat code passed down from the ancestors.\n';
 				}
 			case 'TOUHOU Bit':
 				switch (FlxG.save.data.TOUHOU){
