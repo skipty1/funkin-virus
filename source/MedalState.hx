@@ -73,6 +73,24 @@ class MedalState extends MusicBeatState
 			//FlxG.save.data
 
 			switch (menuItems[i]){
+				case 'The Perfect Player':
+					med.changeShit(FlxG.save.data.Perfect);
+				case 'Wild West':
+					med.changeShit(FlxG.save.data.WildWest);
+				case 'New World':
+					med.changeShit(FlxG.save.data.NewWorld);
+				case 'TWTMF':
+					med.changeShit(FlxG.save.data.TWTMF);
+				case 'One Coin':
+					med.changeShit(FlxG.save.data.Coin);
+				case 'Spike':
+					med.changeShit(FlxG.save.data.Spike);
+				case 'CDBZ':
+					med.changeShit(FlxG.save.data.CDBZ);
+				case 'DUNABD':
+					med.changeShit(FlxG.save.data.DUNABD);
+				case 'Firewall':
+					med.changeShit(FlxG.save.data.Firewall);
 				case 'Bad Ending':
 					med.changeShit(FlxG.save.data.BadEnding);
 				case 'Good Ending':
@@ -129,6 +147,41 @@ class MedalState extends MusicBeatState
 		var daSelected:String = menuItems[curSelected];
 
 		switch (daSelected){
+			case 'Pro Player':
+				switch (FlxG.save.data.ProPlayer){
+					case false | null:
+						notice.text = '???';
+					case true:
+						notice.text = 'Pro Player!\nnEnter the magical cheat code passed down from the ancestors.\n';
+				}
+			case 'TOUHOU Bit':
+				switch (FlxG.save.data.TOUHOU){
+					case false | null:
+						notice.text = '???';
+					case true:
+						notice.text = 'TOUHOU Bit!\nMiss more than 100 times and win.\n';
+				}
+			case 'Blue Spy':
+				switch (FlxG.save.data.BluSpy){
+					case false | null:
+						notice.text = '???';
+					case true:
+						notice.text = 'Blue Spy!\nFC Chapter one.\n';
+				}
+			case 'Gamer':
+				switch (FlxG.save.data.Gamer){
+					case false | null:
+						notice.text = '???';
+					case true:
+						notice.text = 'Gamer!\nComplete story mode.\n';
+				}
+			case 'GGWP':
+				switch (FlxG.save.data.GGWP){
+					case false | null:
+						notice.text = '???';
+					case true:
+						notice.text = 'GOOD GAME WELL PLAY!\nComplete one song.\n';
+				}
 			case 'Sus':
 				switch (FlxG.save.data.Sus){
 					case false | null:
