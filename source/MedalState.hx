@@ -25,8 +25,25 @@ class MedalState extends MusicBeatState
 	override public function create() 
 	{
 		#if (android || ios || desktop)
-		menuItems = ['Sus',
-			'Big Sus'
+		menuItems = ['GGWP',
+			'Gamer',
+			'Blue Spy',
+			'TOUHOU Bit',
+			'Pro Player',
+			'ECHO',
+			'Good Ending',
+			'Bad Ending',
+			'Firewall',
+			'DUNABD',
+			'CDBZ',
+			'Spike',
+			'One Coin',
+			'TWTMF',
+			'New World',
+			'Wild West',
+			'Sus',
+			'Big Sus',
+			'The Perfect Player'
 		];
 		#end
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic('assets/images/menuDesat.png');
@@ -56,6 +73,22 @@ class MedalState extends MusicBeatState
 			//FlxG.save.data
 
 			switch (menuItems[i]){
+				case 'Bad Ending':
+					med.changeShit(FlxG.save.data.BadEnding);
+				case 'Good Ending':
+					med.changeShit(FlxG.save.data.GoodEnding);
+				case 'ECHO':
+					med.changeShit(FlxG.save.data.ECHO);
+				case 'Pro Player':
+					med.changeShit(FlxG.save.data.ProPlayer);
+				case 'TOUHOU Bit':
+					med.changeShit(FlxG.save.data.TOUHOU);
+				case 'Blue Spy':
+					med.changeShit(FlxG.save.data.BluSpy);
+				case 'Gamer':
+					med.changeShit(FlxG.save.data.Gamer);
+				case 'GGWP':
+					med.changeShit(FlxG.save.data.GGWP);
 				case 'Sus':
 					med.changeShit(FlxG.save.data.Sus);
 				case 'Big Sus':
