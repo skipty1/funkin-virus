@@ -204,10 +204,10 @@ class MusicBeatState extends FlxUIState
 				dontSpam = false;
 			});
 		}
-		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.UP && !dontSpam){
+		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.UP && !dontSpam && !upOne){
 			upOne = false;
 		}
-		if (upOne && FlxG.keys.justPressed.UP && !dontSpam){
+		if (upOne && FlxG.keys.justPressed.UP && !dontSpam && upOne && !upTwo){
 			upTwo = true;
 			dontSpam = true;
 			new FlxTimer().start(0.5, function(tmr:FlxTimer){
@@ -215,6 +215,7 @@ class MusicBeatState extends FlxUIState
 			});
 		}
 		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.DOWN && !dontSpam && upTwo){
+			upOne = false;
 			upTwo = false;
 		}
 		if (FlxG.keys.justPressed.DOWN && !dontSpam && upTwo && !downOne){
@@ -361,8 +362,8 @@ class MusicBeatState extends FlxUIState
 			upTwo = false;
 			upOne = false;
 		}
-		if (FlxG.keys.justPressed.A && twoB && !dontSpam){
-			medalPop('');
+		if (FlxG.keys.justPressed.A && twoB && !dontSpam && !FlxG.save.data.ProPlayer){
+			medalPop('Pro Player');
 			twoB = false;
 			oneA = false;
 			oneB = false;
@@ -456,6 +457,9 @@ class MusicBeatState extends FlxUIState
 			case 'Blue Spy':
 				txt.text = "BluSpy!\nFC Chapter 1.\n";
 				FlxG.save.data.BluSpy = true;
+			case 'Pro Player':
+				txt.text = "Pro Player!\nEnter the magical cheat code passed down from the ancestors.\n";
+				FlxG.save.data.ProPlayer = true;
 			default:
 				txt.text = "how\n";
 		}
