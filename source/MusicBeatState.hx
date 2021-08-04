@@ -34,6 +34,16 @@ class MusicBeatState extends FlxUIState
 	public var songEnded:Bool = false;
 	public var upOne:Bool = false;
 	public var upTwo:Bool = false;
+	public var downOne:Bool = false;
+	public var downTwo:Bool = false;
+	public var rightOne:Bool = false;
+	public var leftOne:Bool = false;
+	public var rightTwo:Bool = false;
+	public var leftTwo:Bool = false;
+	public var oneB:Bool = false;
+	public var oneA:Bool = false;
+	public var twoB:Bool = false;
+	public var twoA:Bool = false;
 
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
@@ -187,7 +197,7 @@ class MusicBeatState extends FlxUIState
 		if (PlayState.misses > 100 && songEnded && !FlxG.save.data.TOUHOU && !dontSpam)
 			medalPop('TOUHOU Bit');
 		
-		if (FlxG.keys.justPressed.UP && !dontSpam){
+		if (FlxG.keys.justPressed.UP && !dontSpam && !upOne){
 			upOne = true;
 			dontSpam = true;
 			new FlxTimer().start(0.5, function(tmr:FlxTimer){
@@ -207,8 +217,163 @@ class MusicBeatState extends FlxUIState
 		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.DOWN && !dontSpam && upTwo){
 			upTwo = false;
 		}
-		if (FlxG.keys.justPressed.DOWN && !dontSpam && upTwo){
-			
+		if (FlxG.keys.justPressed.DOWN && !dontSpam && upTwo && !downOne){
+			downOne = true;
+			dontSpam = true;
+			new FlxTimer().start(0.5, function(tmr:FlxTimer){
+				dontSpam = false;
+			});
+		}
+		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.DOWN && !dontSpam && downOne){
+			downOne = false;
+			upTwo = false;
+			upOne = false;
+		}
+		if (FlxG.keys.justPressed.DOWN && !dontSpam && downOne && !downTwo){
+			downTwo = true;
+			dontSpam = true;
+			new FlxTimer().start(0.5, function(tmr:FlxTimer){
+				dontSpam = false;
+			});
+		}
+		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.LEFT && downTwo && !downSpam){
+			downTwo = false;
+			downOne = false;
+			upTwo = false;
+			upOne = false;
+		}
+		if (FlxG.keys.justPressed.LEFT && downTwo && !dontSpam && !leftOne){
+			leftOne = true;
+			dontSpam = true;
+			new FlxTimer().start(0.5, function(tmr:FlxTimer){
+				dontSpam = false;
+			});
+		}
+		if (!FlxG.keys.justPressed.RIGHT && leftOne && FlxG.keys.justPressed.ANY && !dontSpam){
+			leftOne = false;
+			downTwo = false;
+			downOne = false;
+			upTwo = false;
+			upOne = false;
+		}
+		if (FlxG.keys.justPressed.RIGHT && leftOne && !dontSpam && !rightOne){
+			rightOne = true;
+			dontSpam = true;
+			new FlxTimer().start(0.5, function(tmr:FlxTimer){
+				dontSpam = false;
+			});
+		}
+		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.LEFT && !dontSpam && rightOne){
+			rightOne = false;
+			leftOne = false;
+			downTwo = false;
+			downOne = false;
+			upTwo = false;
+			upOne = false;
+		}
+		if (FlxG.keys.justPressed.LEFT && !dontSpam && rightOne && !leftTwo){
+			leftTwo = true;
+			dontSpam = true;
+			new FlxTimer().start(0.5, function(tmr:FlxTimer){
+				dontSpam = false;
+			});
+		}
+		if (FlxG.keys.justPressed.ANY && !dontSpam && leftTwo && !FlxG.keys.justPressed.RIGHT){
+			leftTwo = false;
+			rightOne = false;
+			leftOne = false;
+			downTwo = false;
+			downOne = false;
+			upTwo = false;
+			upOne = false;
+		}
+		if (FlxG.keys.justPressed.RIGHT && leftTwo && !dontSpam && !rightTwo){
+			rightTwo = true;
+			dontSpam = true;
+			new FlxTimer().start(0.5, function(tmr:FlxTimer){
+				dontSpam = false;
+			});
+		}
+		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.B && !dontSpam && rightTwo){
+			rightTwo = false;
+			leftTwo = false;
+			rightOne = false;
+			leftOne = false;
+			downTwo = false;
+			downOne = false;
+			upTwo = false;
+			upOne = false;
+		}
+		if (FlxG.keys.justPressed.B && !dontSpam && rightTwo && !oneB){
+			oneB = true;
+			dontSpam = true;
+			new FlxTimer().start(0.5, function(tmr:FlxTimer){
+				dontSpam = false;
+			});
+		}
+		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.A && !dontSpam && oneB){
+			oneB = false;
+			rightTwo = false;
+			leftTwo = false;
+			rightOne = false;
+			leftOne = false;
+			downTwo = false;
+			downOne = false;
+			upTwo = false;
+			upOne = false;
+		}
+		if (FlxG.keys.justPressed.A && !oneA && oneB && !dontSpam){
+			oneA = true;
+			dontSpam = true;
+			new FlxTimer().start(0.5, function(tmr:FlxTimer){
+				dontSpam = false;
+			});
+		}
+		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.B && oneA && !dontSpam){
+			oneA = false;
+			oneB = false;
+			rightTwo = false;
+			leftTwo = false;
+			rightOne = false;
+			leftOne = false;
+			downTwo = false;
+			downOne = false;
+			upTwo = false;
+			upOne = false;
+		}
+		if (FlxG.keys.justPressed.B && !twoB && oneA && !dontSpam){
+			twoB = true;
+			dontSpam = true;
+			new FlxTimer().start(0.5, function(tmr:FlxTimer){
+				dontSpam = false;
+			});
+		}
+		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.A && twoB && !dontSpam){
+			twoB = false;
+			oneA = false;
+			oneB = false;
+			rightTwo = false;
+			leftTwo = false;
+			rightOne = false;
+			leftOne = false;
+			downTwo = false;
+			downOne = false;
+			upTwo = false;
+			upOne = false;
+		}
+		if (FlxG.keys.justPressed.A && twoB && !dontSpam){
+			medalPop('');
+			twoB = false;
+			oneA = false;
+			oneB = false;
+			rightTwo = false;
+			leftTwo = false;
+			rightOne = false;
+			leftOne = false;
+			downTwo = false;
+			downOne = false;
+			upTwo = false;
+			upOne = false;
 		}
 
 	}
