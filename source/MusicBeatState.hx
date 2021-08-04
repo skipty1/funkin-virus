@@ -197,6 +197,7 @@ class MusicBeatState extends FlxUIState
 		if (PlayState.misses > 100 && songEnded && !FlxG.save.data.TOUHOU && !dontSpam)
 			medalPop('TOUHOU Bit');
 		
+		//CRAP FOR SECRET CODEEE
 		if (FlxG.keys.justPressed.UP && !dontSpam && !upOne){
 			upOne = true;
 			dontSpam = true;
@@ -330,6 +331,7 @@ class MusicBeatState extends FlxUIState
 				dontSpam = false;
 			});
 		}
+		
 		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.B && oneA && !dontSpam){
 			oneA = false;
 			oneB = false;
@@ -376,6 +378,11 @@ class MusicBeatState extends FlxUIState
 			upTwo = false;
 			upOne = false;
 		}
+
+		if (!FlxG.save.data.ECHO && !dontSpam && songEnded && PlayState.SONG.toLowerCase() == 'alterbyte')
+			medalPop('ECHO');
+
+			
 
 	}
 
