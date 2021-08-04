@@ -50,16 +50,16 @@ class Achievements extends FlxSpriteGroup{
 		icon.animation.addByPrefix('Good Ending','good ending',24,false);
 		icon.animation.addByPrefix('Bad Ending','bad ending',24,false);
 		icon.animation.addByPrefix('Firewall','firewall',24,false);
-		icon.animation.addByPrefix('Bumbass','DUNABD',24,false);
-		icon.animation.addByPrefix('FC Final','CDBZ',24,false);
+		icon.animation.addByPrefix('DUNABD','DUNABD',24,false);
+		icon.animation.addByPrefix('CDBZ','CDBZ',24,false);
 		icon.animation.addByPrefix('Spike','spike',24,false);//spike :)
 		icon.animation.addByPrefix('One Coin','Only one coin',24,false);
-		icon.animation.addByPrefix('FC Four','TWTMF',24,false);
+		icon.animation.addByPrefix('TWTMF','TWTMF',24,false);
 		icon.animation.addByPrefix('New World','new world',24,false);
-		icon.animation.addByPrefix('FC Three','wild west',24,false);
+		icon.animation.addByPrefix('Wild West','wild west',24,false);
 		icon.animation.addByPrefix('Sus','sus',24,false);
 		icon.animation.addByPrefix('Big Sus','BIG SUS',24,false);
-		icon.animation.addByPrefix('Perfect','The perfect player',24,false);
+		icon.animation.addByPrefix('The Perfect Player','The perfect player',24,false);
 		
 		icon.antialiasing = false;
 		icon.setPosition(0, 0);
@@ -152,13 +152,13 @@ class MedalSaves{
 			FlxG.save.data.GoodEnding = false;
 			FlxG.save.data.BadEnding = false;
 			FlxG.save.data.Firewall = false;
-			FlxG.save.data.Bumbass = false;
-			FlxG.save.data.FCFinal = false;
+			FlxG.save.data.DUNABD = false;
+			FlxG.save.data.CDBZ = false;
 			FlxG.save.data.Spike = false;
 			FlxG.save.data.Coin = false;
-			FlxG.save.data.FCFour = false;
+			FlxG.save.data.TWTMF = false;
 			FlxG.save.data.NewWorld = false;
-			FlxG.save.data.FCThree = false;
+			FlxG.save.data.WildWest = false;
 			FlxG.save.data.Sus = false;
 			FlxG.save.data.BigSus = false;
 			FlxG.save.data.Perfect = false;
