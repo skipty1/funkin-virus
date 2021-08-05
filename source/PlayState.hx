@@ -3282,7 +3282,7 @@ class PlayState extends MusicBeatState
 					{
 						FlxG.sound.playMusic(Paths.music('freakyMenu'));
 						Conductor.changeBPM(102);
-						FlxG.switchState(new StoryMenuState());
+						FlxG.switchState(new FreeplayState());
 					}
 
 					#if windows
