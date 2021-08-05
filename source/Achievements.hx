@@ -138,7 +138,7 @@ class Achievements extends FlxSpriteGroup{
 }
 
 class MedalSaves{
-	//public var Savecrap:Array<Bool> = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]//20 bools.
+	//public var Savecrap:Array<Bool> = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];//20 bools.
 	//nvm idfk.
 	public static function initMedal()
 	{
