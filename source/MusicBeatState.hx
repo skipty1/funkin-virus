@@ -391,14 +391,14 @@ class MusicBeatState extends FlxUIState
 		if (!FlxG.save.data.Firewall && !dontSpam && songEnded && PlayState.misses == 0 && PlayState.SONG.song.toLowerCase() == 'intoxicate')
 			medalPop('Firewall');
 
-		if (!FlxG.save.data.DUNABD && !dontSpam && deaths == 5 && PlayState.isEasy)
+		if (!FlxG.save.data.DUNABD && !dontSpam && deaths >= 5 && PlayState.isEasy)
 			medalPop('DUNABD');
 
 		if (!FlxG.save.data.CDBZ && !dontSpam && PlayState.misses == 0 && songEnded)
 			medalPop('CDBZ');
 
-		
-			
+		if (!FlxG.save.data.Coin && !dontSpam && deaths == 0 && storyCompleted)
+			medalPop('One Coin');
 
 	}
 
@@ -504,6 +504,9 @@ class MusicBeatState extends FlxUIState
 			case 'Spike':
 				txt.text = "Spike!\nFind the hidden spike.\n";
 				FlxG.save.data.Spike = true;
+			case 'One Coin':
+				txt.text = "Only One Coin!\nComplete storymode with no deaths.\n";
+				FlxG.save.data.Coin = true;
 			default:
 				txt.text = "how\n";
 		}
