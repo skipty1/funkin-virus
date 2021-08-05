@@ -52,6 +52,7 @@ class MainMenuState extends MusicBeatState
 	var randomChar:Character;
 	var randomString:Array<String> = ['virus','virus-mad','bf-pixel','gf-pixel','gf-box','bit'];
 	var randomAnim:Array<String> = ['singLEFT','singRIGHT','singUP','singDOWN'];
+	var randomBg:Array<String> ™ ['8bit','red_eye','v8bit'];
 
 	override function create()
 	{
@@ -67,35 +68,27 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-		var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('menuBG'));
+		var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('8bit/' + FlxG.random.getObject(randomBg),'shared'));
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0.10;
-		bg.color = 0xFF09E300;
-		bg.setGraphicSize(Std.int(bg.width * 1.1));
+		bg.setGraphicSize(Std.int(bg.width * 2));
 		bg.updateHitbox();
 		bg.screenCenter();
-		if(FlxG.save.data.antialiasing)
-			{
-				bg.antialiasing = true;
-			}
+		bg.antialiasing = true;
 		add(bg);
+		var madvirus:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('8bit/' + FlxG.random.getObject(randomBg),'shared'));
+		madvirus.scrollFactor.x = 0;
+		madvirus.scrollFactor.y = 0.10;
+		madvirus.setGraphicSize(Std.int(madvirus.width * 2));
+		madvirus.updateHitbox();
+		madvirus.screenCenter();
+		madvirus.antialiasing = false;
+
+		add(madvirus);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
 
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
-		magenta.scrollFactor.x = 0;
-		magenta.scrollFactor.y = 0.10;
-		magenta.setGraphicSize(Std.int(magenta.width * 1.1));
-		magenta.updateHitbox();
-		magenta.screenCenter();
-		magenta.visible = false;
-		if(FlxG.save.data.antialiasing)
-			{
-				magenta.antialiasing = true;
-			}
-		magenta.color = 0xFF00ACFF;
-		add(magenta);
 		// magenta.scrollFactor.set();
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
@@ -131,15 +124,6 @@ class MainMenuState extends MusicBeatState
 		randomChar = new Character(true,900,100,FlxG.random.getObject(randomString));
 		randomChar.scale.set(4,4);
 		add(randomChar);
-		//color
-		switch (randomChar.curCharacter){
-			case 'virus' | 'virus-mad':
-				bg.color = 0xFF01CD00;
-			case 'bit' | 'bf-pixel':
-				bg.color = 0xFF00BAFF;
-			case 'gf-box' | 'gf-pixel':
-				bg.color = 0xFFD60084;
-		}
 		//offset
 		switch(randomChar.curCharacter){
 			case 'virus-mad':
