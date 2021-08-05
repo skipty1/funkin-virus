@@ -147,6 +147,18 @@ class MedalState extends MusicBeatState
 		var daSelected:String = menuItems[curSelected];
 
 		switch (daSelected){
+			case 'Firewall':
+				switch (FlxG.save.data.Firewall){
+					case false | null:
+						notice.text = '???';
+					case true:
+						notice.text = 'Firewall!\nFC The 2nd chapter.\n';
+			case 'ECHO':
+				switch (FlxG.save.data.ECHO){
+					case false | null:
+						notice.text = '???';
+					case true:
+						notice.text = 'ECHO!\nDiscover and defeat DarkBit.\n';
 			case 'Pro Player':
 				switch (FlxG.save.data.ProPlayer){
 					case false | null:
