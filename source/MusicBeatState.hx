@@ -45,6 +45,11 @@ class MusicBeatState extends FlxUIState
 	public var twoB:Bool = false;
 	public var twoA:Bool = false;
 	public var deaths:Int = 0;
+	public var finishedOne:Bool = false;
+	public var finishedTwo:Bool = false;
+	public var finishedThree:Bool = false;
+	public var finishedFour:Bool = false;
+	public var finishedFive:Bool = false;
 
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
@@ -389,7 +394,10 @@ class MusicBeatState extends FlxUIState
 		if (!FlxG.save.data.DUNABD && !dontSpam && deaths == 5 && PlayState.isEasy)
 			medalPop('DUNABD');
 
-			
+		if (!FlxG.save.data.CDBZ && !dontSpam && PlayState.misses == 0 && songEnded)
+			medalPop('CDBZ');
+
+		
 			
 
 	}
@@ -484,6 +492,18 @@ class MusicBeatState extends FlxUIState
 			case 'DUNABD':
 				txt.text = "DUNABD! (Do you need a backup dumbfudge?)\nDie 5 times in easy\n":
 				FlxG.save.data.DUNABD = true;
+			case 'CDBZ':
+				txt.text = "CDBZ! (Cant divide by zero)\nFC The final chapter\n";
+				FlxG.save.data.CDBZ = true;
+			case 'Good Ending':
+				txt.text = "Good Ending!\nGet the good ending.\n";
+				FlxG.save.data.GoodEnding = true;
+			case 'Bad Ending':
+				txt.text = "Bad Ending!\nGet the bad ending.\n";
+				FlxG.save.data.BadEnding = true;
+			case 'Spike':
+				txt.text = "Spike!\nFind the hidden spike.\n";
+				FlxG.save.data.Spike = true;
 			default:
 				txt.text = "how\n";
 		}
