@@ -98,6 +98,7 @@ class PlayState extends MusicBeatState
 	var flor1:FlxSprite;
 	var flor2:FlxSprite;
 	var flor3:FlxSprite;
+	public var isEasy:Bool;
 
 	public var flot:FlxSprite;
 	private var SplashNote:NoteSplash;
@@ -397,6 +398,8 @@ class PlayState extends MusicBeatState
 		#if windows
 		// Making difficulty text for Discord Rich Presence.
 		storyDifficultyText = CoolUtil.difficultyFromInt(storyDifficulty);
+		if (storyDifficulty == 0)
+			isEasy = true;
 
 		iconRPC = SONG.player2;
 
@@ -2822,6 +2825,7 @@ class PlayState extends MusicBeatState
 
 				vocals.stop();
 				FlxG.sound.music.stop();
+				deaths += 1;
 
 				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
