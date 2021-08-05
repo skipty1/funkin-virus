@@ -29,7 +29,7 @@ class MusicBeatState extends FlxUIState
 	public var cameraStuff:FlxCamera;
 	public var fpressed:Int = 0;
 	public var dontSpam:Bool = false;
-	public var endedSongs:Int = 0;
+	public static var endedSongs:Int = 0;
 	public var storyCompleted:Bool = false;
 	public var songEnded:Bool = false;
 	public var upOne:Bool = false;
@@ -44,12 +44,12 @@ class MusicBeatState extends FlxUIState
 	public var oneA:Bool = false;
 	public var twoB:Bool = false;
 	public var twoA:Bool = false;
-	public var deaths:Int = 0;
-	public var finishedOne:Bool = false;
-	public var finishedTwo:Bool = false;
-	public var finishedThree:Bool = false;
-	public var finishedFour:Bool = false;
-	public var finishedFive:Bool = false;
+	public static var deaths:Int = 0;
+	public static var finishedOne:Bool = false;
+	public static var finishedTwo:Bool = false;
+	public static var finishedThree:Bool = false;
+	public static var finishedFour:Bool = false;
+	public static var finishedFive:Bool = false;
 
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
@@ -400,6 +400,9 @@ class MusicBeatState extends FlxUIState
 		if (!FlxG.save.data.Coin && !dontSpam && deaths == 0 && storyCompleted)
 			medalPop('One Coin');
 
+		if (!FlxG.save.data.TWTMF && !dontSpam && PlayState.misses == 0 && songEnded && PlayState.SONG.song.toLowerCase() == '4th song')
+			medalPop('TWTMF');
+
 	}
 
 	private function updateBeat():Void
@@ -507,6 +510,9 @@ class MusicBeatState extends FlxUIState
 			case 'One Coin':
 				txt.text = "Only One Coin!\nComplete storymode with no deaths.\n";
 				FlxG.save.data.Coin = true;
+			case 'TWTMF':
+				txt.text = "TWTMF! (The way to make friends.)\nFC The fourth chapter.\n";
+				FlxG.save.data.TWTMF = true;
 			default:
 				txt.text = "how\n";
 		}
