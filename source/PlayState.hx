@@ -3231,6 +3231,7 @@ class PlayState extends MusicBeatState
 		});
 		#end
 		songEnded = true;
+		endedSongs += 1;
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, releaseInput);
 		if (useVideo)
