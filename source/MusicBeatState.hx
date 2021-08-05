@@ -44,6 +44,7 @@ class MusicBeatState extends FlxUIState
 	public var oneA:Bool = false;
 	public var twoB:Bool = false;
 	public var twoA:Bool = false;
+	public var deaths:Int = 0;
 
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
@@ -379,9 +380,16 @@ class MusicBeatState extends FlxUIState
 			upOne = false;
 		}
 
-		if (!FlxG.save.data.ECHO && !dontSpam && songEnded && PlayState.SONG.toLowerCase() == 'alterbyte')
+		if (!FlxG.save.data.ECHO && !dontSpam && songEnded && PlayState.SONG.song.toLowerCase() == 'alterbyte')
 			medalPop('ECHO');
 
+		if (!FlxG.save.data.Firewall && !dontSpam && songEnded && PlayState.misses == 0 && PlayState.SONG.song.toLowerCase() == 'intoxicate')
+			medalPop('Firewall');
+
+		if (!FlxG.save.data.DUNABD && !dontSpam && deaths == 5 && PlayState.isEasy)
+			medalPop('DUNABD');
+
+			
 			
 
 	}
@@ -467,6 +475,15 @@ class MusicBeatState extends FlxUIState
 			case 'Pro Player':
 				txt.text = "Pro Player!\nEnter the magical cheat code passed down from the ancestors.\n";
 				FlxG.save.data.ProPlayer = true;
+			case 'ECHO':
+				txt.text = "ECHO!\nDiscover and defeat DarkBit.\n";
+				FlxG.save.data.ECHO = true;
+			case 'Firewall':
+				txt.text = "Firewall!\nFC The 2nd chapter.\n";
+				FlxG.save.data.Firewall = true;
+			case 'DUNABD':
+				txt.text = "DUNABD! (Do you need a backup dumbfudge?)\nDie 5 times in easy\n":
+				FlxG.save.data.DUNABD = true;
 			default:
 				txt.text = "how\n";
 		}
