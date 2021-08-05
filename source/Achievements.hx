@@ -168,3 +168,4 @@ class MedalSaves{
 			FlxG.save.data.NewWorld = false;
 	}
 }
+//special thanks to lucky (creator of funkin android) for helpin me on this! -Zack
