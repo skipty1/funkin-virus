@@ -147,6 +147,12 @@ class MedalState extends MusicBeatState
 		var daSelected:String = menuItems[curSelected];
 
 		switch (daSelected){
+			case 'DUNABD':
+				switch (FlxG.save.data.DUNABD){
+					case false | null:
+						notice.text = '???';
+					case true:
+						notice.text = 'DUNABD! (Do you need a backup, dumbfudge?)\nDie 5 times in easy mode.\n';
 			case 'Firewall':
 				switch (FlxG.save.data.Firewall){
 					case false | null:
