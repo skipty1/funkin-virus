@@ -147,6 +147,13 @@ class MedalState extends MusicBeatState
 		var daSelected:String = menuItems[curSelected];
 
 		switch (daSelected){
+			case 'One Coin':
+				switch (FlxG.save.data.Coin){
+					case false | null:
+						notice.text = '???';
+					case true:
+						notice.text = 'Only One Coin!\nComplete story mode with no deaths.\n';
+				}
 			case 'Spike':
 				switch (FlxG.save.data.Spike){
 					case false | null:
