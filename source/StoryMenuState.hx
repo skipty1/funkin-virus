@@ -27,8 +27,8 @@ class StoryMenuState extends MusicBeatState
 	static function weekData():Array<Dynamic>
 	{
 		return [
-			['Tutorial'],
-			['Bopeebo', 'Fresh', 'Dad Battle'],
+			['Disco', 'Intoxicate', 'Alterbyte'],
+			['Disco', 'Intoxicate', 'Alterbyte'],//copy paste just incase.
 			['Spookeez', 'South', "Monster"],
 			['Pico', 'Philly Nice', "Blammed"],
 			['Satin Panties', "High", "Milf"],
