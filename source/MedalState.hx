@@ -153,18 +153,21 @@ class MedalState extends MusicBeatState
 						notice.text = '???';
 					case true:
 						notice.text = 'DUNABD! (Do you need a backup, dumbfudge?)\nDie 5 times in easy mode.\n';
+				}
 			case 'Firewall':
 				switch (FlxG.save.data.Firewall){
 					case false | null:
 						notice.text = '???';
 					case true:
 						notice.text = 'Firewall!\nFC The 2nd chapter.\n';
+				}
 			case 'ECHO':
 				switch (FlxG.save.data.ECHO){
 					case false | null:
 						notice.text = '???';
 					case true:
 						notice.text = 'ECHO!\nDiscover and defeat DarkBit.\n';
+				}
 			case 'Pro Player':
 				switch (FlxG.save.data.ProPlayer){
 					case false | null:
