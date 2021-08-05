@@ -228,6 +228,8 @@ class PauseSubState extends MusicBeatSubstate
 					}
 					FlxG.resetState();
 				case "Exit to menu":
+					MusicBeatState.deaths = 0;
+					MusicBeatState.endedSongs = 0;
 					PlayState.startTime = 0;
 					if (PlayState.instance.useVideo)
 					{
