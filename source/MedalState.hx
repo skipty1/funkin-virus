@@ -147,6 +147,34 @@ class MedalState extends MusicBeatState
 		var daSelected:String = menuItems[curSelected];
 
 		switch (daSelected){
+			case 'Spike':
+				switch (FlxG.save.data.Spike){
+					case false | null:
+						notice.text = 'Spike.\n';
+					case true:
+						notice.text = 'Spike!\nFind the hidden spike.\n';
+				}
+			case 'CDBZ':
+				switch (FlxG.save.data.CDBZ){
+					case false | null:
+						notice.text = '???';
+					case true:
+						notice.text = "CDBZ! (Can't divide by zero.)\nFC The final chapter.\n";
+				}
+			case 'Bad Ending':
+				switch (FlxG.save.data.BadEnding){
+					case false | null:
+						notice.text = '???';
+					case true:
+						notice.text = 'Bad Ending!\nGet the bad ending.\n';
+				}
+			case 'Good Ending':
+				switch (FlxG.save.data.GoodEnding){
+					case false | null:
+						notice.text = '???';
+					case true:
+						notice.text = 'Good Ending!\nGet the good ending.\n';
+				}
 			case 'DUNABD':
 				switch (FlxG.save.data.DUNABD){
 					case false | null:
