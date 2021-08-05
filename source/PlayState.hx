@@ -322,7 +322,7 @@ class PlayState extends MusicBeatState
 
 		FlxG.mouse.visible = false;
 		instance = this;
-		
+		songEnded = false;
 		downscroll = FlxG.save.data.downscroll;
 		frames = FlxG.save.data.frames;
 		scrollSpeed = FlxG.save.data.scrollSpeed;
@@ -3230,6 +3230,7 @@ class PlayState extends MusicBeatState
 			}
 		});
 		#end
+		songEnded = true;
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, releaseInput);
 		if (useVideo)
@@ -3297,8 +3298,6 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
-			if (isStoryMode)
-			{
 				campaignScore += Math.round(songScore);
 
 				storyPlaylist.remove(storyPlaylist[0]);
@@ -3337,7 +3336,6 @@ class PlayState extends MusicBeatState
 
 					if (SONG.validScore)
 					{
-						NGio.unlockMedal(60961);
 						Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
 					}
 
@@ -3380,27 +3378,6 @@ class PlayState extends MusicBeatState
 
 					LoadingState.loadAndSwitchState(new PlayState());
 				}
-			}
-			else
-			{
-				trace('WENT BACK TO FREEPLAY??');
-
-				paused = true;
-
-				FlxG.sound.music.stop();
-				vocals.stop();
-
-				if (scoreScreen) 
-				{
-					openSubState(new ResultsScreen());
-					new FlxTimer().start(1, function(tmr:FlxTimer)
-						{
-							inResults = true;
-						});
-				}
-				else
-					FlxG.switchState(new FreeplayState());
-			}
 		}
 	}
 
