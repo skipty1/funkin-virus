@@ -415,14 +415,7 @@ class PlayState extends MusicBeatState
 		}
 
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
-		if (isStoryMode)
-		{
-			detailsText = "Story Mode: Week " + storyWeek;
-		}
-		else
-		{
-			detailsText = "Freeplay";
-		}
+		detailsText = "Story Mode: Week " + storyWeek;
 
 		// String for when the game is paused
 		detailsPausedText = "Paused - " + detailsText;
@@ -852,11 +845,8 @@ class PlayState extends MusicBeatState
 			case 'gf':
 				dad.setPosition(gf.x, gf.y);
 				gf.visible = false;
-				if (isStoryMode)
-				{
-					camPos.x += 600;
-					tweenCamIn();
-				}
+				camPos.x += 600;
+				tweenCamIn();
 
 			case "spooky":
 				dad.y += 200;
@@ -1177,38 +1167,8 @@ class PlayState extends MusicBeatState
 
 		trace('starting');
 
-		if (isStoryMode)
-		{
-			switch (StringTools.replace(curSong, " ", "-").toLowerCase())
+		switch (StringTools.replace(curSong, " ", "-").toLowerCase())
 			{
-				case "winter-horrorland":
-					var blackScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
-					add(blackScreen);
-					blackScreen.scrollFactor.set();
-					camHUD.visible = false;
-
-					new FlxTimer().start(0.1, function(tmr:FlxTimer)
-					{
-						remove(blackScreen);
-						FlxG.sound.play(Paths.sound('Lights_Turn_On'));
-						camFollow.y = -2050;
-						camFollow.x += 200;
-						FlxG.camera.focusOn(camFollow.getPosition());
-						FlxG.camera.zoom = 1.5;
-
-						new FlxTimer().start(0.8, function(tmr:FlxTimer)
-						{
-							camHUD.visible = true;
-							remove(blackScreen);
-							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
-								ease: FlxEase.quadInOut,
-								onComplete: function(twn:FlxTween)
-								{
-									startCountdown();
-								}
-							});
-						});
-					});
 				case 'senpai':
 					schoolIntro(doof);
 				case 'roses':
@@ -1219,11 +1179,6 @@ class PlayState extends MusicBeatState
 				default:
 					startCountdown();
 			}
-		}
-		else
-		{
-			startCountdown();
-		}
 		#if desktop
 		if (!loadRep)
 			rep = new Replay("na");
