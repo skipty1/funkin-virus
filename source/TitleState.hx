@@ -48,6 +48,7 @@ class TitleState extends MusicBeatState
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
+	var scSpr:FlxSprite;
 
 	var curWacky:Array<String> = [];
 
@@ -175,10 +176,6 @@ class TitleState extends MusicBeatState
 			{
 				logo.antialiasing = true;
 			}
-		// add(logo);
-
-		// FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
-		// FlxTween.tween(logo, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
 
 		credGroup = new FlxGroup();
 		add(credGroup);
@@ -197,13 +194,18 @@ class TitleState extends MusicBeatState
 		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
 		add(ngSpr);
 		ngSpr.visible = false;
-		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
+		ngSpr.setGraphicSize(Std.int(ngSpr.width * 2));
 		ngSpr.updateHitbox();
-		ngSpr.screenCenter(X);
-		if(FlxG.save.data.antialiasing)
-			{
-				ngSpr.antialiasing = true;
-			}
+		ngSpr.x -= 100;
+		ngSpr.antialiasing = false;
+		scSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
+		add(scSpr);
+		scSpr.visible = false;
+		scSpr.setGraphicSize(Std.int(scSpr.width * 2));
+		scSpr.updateHitbox();
+		scSpr.x += 100;
+		scSpr.antialiasing = false;
+
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
@@ -224,14 +226,6 @@ class TitleState extends MusicBeatState
 			transIn = FlxTransitionableState.defaultTransIn;
 			transOut = FlxTransitionableState.defaultTransOut;
 
-			// HAD TO MODIFY SOME BACKEND SHIT
-			// IF THIS PR IS HERE IF ITS ACCEPTED UR GOOD TO GO
-			// https://github.com/HaxeFlixel/flixel-addons/pull/348
-
-			// var music:FlxSound = new FlxSound();
-			// music.loadStream(Paths.music('freakyMenu'));
-			// FlxG.sound.list.add(music);
-			// music.play();
 			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
@@ -320,7 +314,7 @@ class TitleState extends MusicBeatState
 						trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
 						OutdatedSubState.needVer = returnedData[0];
 						OutdatedSubState.currChanges = returnedData[1];
-						FlxG.switchState(new OutdatedSubState());
+						FlxG.switchState(new MainMenuState());
 					}
 					else
 					{
@@ -398,37 +392,32 @@ class TitleState extends MusicBeatState
 			case 0:
 				deleteCoolText();
 			case 1:
-				createCoolText(['rusron', 'aquacrunch', 'john', 'tqualizer','yanpo','zacksgamerz','ash237']);
+				createCoolText(['rusron - aquacrunch', 'john - tqualizer', 'zacksgamerz - ash237', 'dylanbrew - yanpo']);
 			case 3:
 				addMoreText('presents');
 			case 4:
 				deleteCoolText();
 			case 5:
-				if (Main.watermarks)
-					createCoolText(['Kade Engine', 'by']);
-				else
-					createCoolText(['gift for the', 'awesome game']);
+				createCoolText(['In association with', 'Newgrounds and Supercell']);
 			case 7:
-				if (Main.watermarks)
-					addMoreText('KadeDeveloper');
-				else
-				{
-					addMoreText('Brawlstars');
-					ngSpr.visible = true;
-				}
+				addMoreText('For Brawlstars!');
+				ngSpr.visible = true;
+				scSpr.visible = true;
 			case 8:
 				deleteCoolText();
 				ngSpr.visible = false;
+				scSpr.visible = false;
 			case 9:
 				createCoolText([curWacky[0]]);
 			case 11:
 				addMoreText(curWacky[1]);
 			case 12:
 				deleteCoolText();
-			case 13:
 				addMoreText('FNF');
+			case 13:
+				addMoreText('MAD');
 			case 14:
-				addMoreText('MAD VIRUS');
+				addMoreText('VIRUS');
 			case 15:
 				addMoreText('ATTACK');
 
