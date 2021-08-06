@@ -131,7 +131,7 @@ class TitleState extends MusicBeatState
 		add(bg);
 
 		logoBl = new FlxSprite(-150, -100);
-		logoBl.frames = Paths.getSparrowAtlas('LOGO','shared');
+		logoBl.frames = Paths.getSparrowAtlas('8bit/LOGO','shared');
 
 		if(FlxG.save.data.antialiasing)
 			{
