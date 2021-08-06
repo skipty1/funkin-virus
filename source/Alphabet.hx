@@ -278,16 +278,11 @@ class AlphaCharacter extends FlxSprite
 	{
 		super(x, y);
 		
-		//var alias:Bool = FlxG.save.data.antialiasing;
 		var tex = Paths.getSparrowAtlas('8bit/ABC','shared');
 		frames = tex;
 		setGraphicSize(Std.int(width * 4));
 		updateHitbox();
 		antialiasing = false;
-		/*if(alias)
-			{
-				antialiasing = true;
-			}*/
 	}
 
 	public function createBold(letter:String)
