@@ -476,7 +476,7 @@ class MusicBeatState extends FlxUIState
 				txt.text = "Firewall!\nFC The 2nd chapter.\n";
 				FlxG.save.data.Firewall = true;
 			case 'DUNABD':
-				txt.text = "DUNABD! (Do you need a backup dumbfudge?)\nDie 5 times in easy\n":
+				txt.text = "DUNABD! (Do you need a backup dumbfudge?)\nDie 5 times in easy\n";
 				FlxG.save.data.DUNABD = true;
 			case 'CDBZ':
 				txt.text = "CDBZ! (Cant divide by zero)\nFC The final chapter\n";
