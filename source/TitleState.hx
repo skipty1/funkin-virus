@@ -130,13 +130,9 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		if (Main.watermarks) {
-			logoBl = new FlxSprite(-150, 1500);
-			logoBl.frames = Paths.getSparrowAtlas('KadeEngineLogoBumpin');
-		} else {
-			logoBl = new FlxSprite(-150, -100);
-			logoBl.frames = Paths.getSparrowAtlas('LOGO','shared');
-		}
+		logoBl = new FlxSprite(-150, -100);
+		logoBl.frames = Paths.getSparrowAtlas('LOGO','shared');
+
 		if(FlxG.save.data.antialiasing)
 			{
 				logoBl.antialiasing = true;
@@ -196,15 +192,17 @@ class TitleState extends MusicBeatState
 		ngSpr.visible = false;
 		ngSpr.scale.set(2,2);
 		ngSpr.updateHitbox();
-		ngSpr.x -= 100;
+		ngSpr.x += 350;
 		ngSpr.antialiasing = false;
 		scSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('8bit/supercellSpr','shared'));
 		add(scSpr);
 		scSpr.visible = false;
 		scSpr.scale.set(2,2);
 		scSpr.updateHitbox();
-		scSpr.x += 100;
+		scSpr.x += 700;
 		scSpr.antialiasing = false;
+		ngSpr.screenCenter(Y);
+		scSpr.screenCenter(Y);
 
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
