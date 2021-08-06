@@ -322,7 +322,7 @@ class PlayState extends MusicBeatState
 
 		FlxG.mouse.visible = false;
 		instance = this;
-		songEnded = false;
+		MusicBeatState.songEnded = false;
 		downscroll = FlxG.save.data.downscroll;
 		frames = FlxG.save.data.frames;
 		scrollSpeed = FlxG.save.data.scrollSpeed;
@@ -2323,19 +2323,19 @@ class PlayState extends MusicBeatState
 		else
 			super.update(elapsed);
 
-		if (PlayState.SONG.song.toLowerCase() == 'Disco' && PlayState.misses == 0 && songEnded && !FlxG.save.data.BluSpy && !dontSpam)
+		if (PlayState.SONG.song.toLowerCase() == 'Disco' && PlayState.misses == 0 && MusicBeatState.songEnded && !FlxG.save.data.BluSpy && !MusicBeatState.dontSpam)
 			medalPop('Blue Spy');
 
-		if (PlayState.misses > 100 && songEnded && !FlxG.save.data.TOUHOU && !dontSpam)
+		if (PlayState.misses > 100 && MusicBeatState.songEnded && !FlxG.save.data.TOUHOU && !MusicBeatState.dontSpam)
 			medalPop('TOUHOU Bit');
 
-		if (!FlxG.save.data.ECHO && !dontSpam && songEnded && PlayState.SONG.song.toLowerCase() == 'alterbyte')
+		if (!FlxG.save.data.ECHO && !MusicBeatState.dontSpam && MusicBeatState.songEnded && PlayState.SONG.song.toLowerCase() == 'alterbyte')
 			medalPop('ECHO');
 
-		if (!FlxG.save.data.Firewall && !dontSpam && songEnded && PlayState.misses == 0 && PlayState.SONG.song.toLowerCase() == 'intoxicate')
+		if (!FlxG.save.data.Firewall && !MusicBeatState.dontSpam && MusicBeatState.songEnded && PlayState.misses == 0 && PlayState.SONG.song.toLowerCase() == 'intoxicate')
 			medalPop('Firewall');
 
-		if (!FlxG.save.data.TWTMF && !dontSpam && PlayState.misses == 0 && songEnded && PlayState.SONG.song.toLowerCase() == '4th song')
+		if (!FlxG.save.data.TWTMF && !MusicBeatState.dontSpam && PlayState.misses == 0 && MusicBeatState.songEnded && PlayState.SONG.song.toLowerCase() == '4th song')
 			medalPop('TWTMF');
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore, songScoreDef, nps, maxNPS, accuracy);
@@ -3218,7 +3218,7 @@ class PlayState extends MusicBeatState
 			}
 		});
 		#end
-		songEnded = true;
+		MusicBeatState.songEnded = true;
 		endedSongs += 1;
 		if (endedSongs == 5)
 			storyCompleted = true;
