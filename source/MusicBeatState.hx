@@ -192,12 +192,6 @@ class MusicBeatState extends FlxUIState
 		if (storyCompleted && !dontSpam && !FlxG.save.data.Gamer)
 			medalPop('Gamer');
 		
-		if (PlayState.SONG.song.toLowerCase() == 'Disco' && PlayState.misses == 0 && songEnded && !FlxG.save.data.BluSpy && !dontSpam)
-			medalPop('Blue Spy');
-		
-		if (PlayState.misses > 100 && songEnded && !FlxG.save.data.TOUHOU && !dontSpam)
-			medalPop('TOUHOU Bit');
-
 		if (!FlxG.save.data.ProPlayer){
 		//CRAP FOR SECRET CODEEE
 			if (FlxG.keys.justPressed.UP && !dontSpam && !upOne){
@@ -382,12 +376,6 @@ class MusicBeatState extends FlxUIState
 			}
 		}
 
-		if (!FlxG.save.data.ECHO && !dontSpam && songEnded && PlayState.SONG.song.toLowerCase() == 'alterbyte')
-			medalPop('ECHO');
-
-		if (!FlxG.save.data.Firewall && !dontSpam && songEnded && PlayState.misses == 0 && PlayState.SONG.song.toLowerCase() == 'intoxicate')
-			medalPop('Firewall');
-
 		if (!FlxG.save.data.DUNABD && !dontSpam && deaths >= 5 && PlayState.isEasy)
 			medalPop('DUNABD');
 
@@ -396,9 +384,6 @@ class MusicBeatState extends FlxUIState
 
 		if (!FlxG.save.data.Coin && !dontSpam && deaths == 0 && storyCompleted)
 			medalPop('One Coin');
-
-		if (!FlxG.save.data.TWTMF && !dontSpam && PlayState.misses == 0 && songEnded && PlayState.SONG.song.toLowerCase() == '4th song')
-			medalPop('TWTMF');
 
 	}
 
