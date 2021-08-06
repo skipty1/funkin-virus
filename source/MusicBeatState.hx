@@ -45,11 +45,6 @@ class MusicBeatState extends FlxUIState
 	public var twoB:Bool = false;
 	public var twoA:Bool = false;
 	public static var deaths:Int = 0;
-	public static var finishedOne:Bool = false;
-	public static var finishedTwo:Bool = false;
-	public static var finishedThree:Bool = false;
-	public static var finishedFour:Bool = false;
-	public static var finishedFive:Bool = false;
 
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
@@ -202,91 +197,92 @@ class MusicBeatState extends FlxUIState
 		
 		if (PlayState.misses > 100 && songEnded && !FlxG.save.data.TOUHOU && !dontSpam)
 			medalPop('TOUHOU Bit');
-		
+
+		if (!FlxG.save.data.ProPlayer){
 		//CRAP FOR SECRET CODEEE
-		if (FlxG.keys.justPressed.UP && !dontSpam && !upOne){
+			if (FlxG.keys.justPressed.UP && !dontSpam && !upOne){
 			upOne = true;
 			dontSpam = true;
-			new FlxTimer().start(0.5, function(tmr:FlxTimer){
-				dontSpam = false;
-			});
-		}
-		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.UP && !dontSpam && !upOne){
-			upOne = false;
-		}
+				new FlxTimer().start(0.5, function(tmr:FlxTimer){
+					dontSpam = false;
+				});
+			}
+			if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.UP && !dontSpam && !upOne)
+				upOne = false;
+
 		if (upOne && FlxG.keys.justPressed.UP && !dontSpam && upOne && !upTwo){
 			upTwo = true;
 			dontSpam = true;
-			new FlxTimer().start(0.5, function(tmr:FlxTimer){
-				dontSpam = false;
-			});
-		}
-		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.DOWN && !dontSpam && upTwo){
+				new FlxTimer().start(0.5, function(tmr:FlxTimer){
+					dontSpam = false;
+				});
+			}
+			if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.DOWN && !dontSpam && upTwo){
 			upOne = false;
 			upTwo = false;
-		}
-		if (FlxG.keys.justPressed.DOWN && !dontSpam && upTwo && !downOne){
+			}
+			if (FlxG.keys.justPressed.DOWN && !dontSpam && upTwo && !downOne){
 			downOne = true;
 			dontSpam = true;
-			new FlxTimer().start(0.5, function(tmr:FlxTimer){
-				dontSpam = false;
-			});
-		}
-		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.DOWN && !dontSpam && downOne){
+				new FlxTimer().start(0.5, function(tmr:FlxTimer){
+					dontSpam = false;
+				});
+			}
+			if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.DOWN && !dontSpam && downOne){
 			downOne = false;
 			upTwo = false;
 			upOne = false;
-		}
-		if (FlxG.keys.justPressed.DOWN && !dontSpam && downOne && !downTwo){
+			}
+			if (FlxG.keys.justPressed.DOWN && !dontSpam && downOne && !downTwo){
 			downTwo = true;
 			dontSpam = true;
-			new FlxTimer().start(0.5, function(tmr:FlxTimer){
-				dontSpam = false;
-			});
-		}
-		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.LEFT && downTwo && !downSpam){
+				new FlxTimer().start(0.5, function(tmr:FlxTimer){
+					dontSpam = false;
+				});
+			}
+			if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.LEFT && downTwo && !downSpam){
 			downTwo = false;
 			downOne = false;
 			upTwo = false;
 			upOne = false;
-		}
-		if (FlxG.keys.justPressed.LEFT && downTwo && !dontSpam && !leftOne){
+			}
+			if (FlxG.keys.justPressed.LEFT && downTwo && !dontSpam && !leftOne){
 			leftOne = true;
 			dontSpam = true;
-			new FlxTimer().start(0.5, function(tmr:FlxTimer){
-				dontSpam = false;
-			});
-		}
-		if (!FlxG.keys.justPressed.RIGHT && leftOne && FlxG.keys.justPressed.ANY && !dontSpam){
+				new FlxTimer().start(0.5, function(tmr:FlxTimer){
+					dontSpam = false;
+				});
+			}
+			if (!FlxG.keys.justPressed.RIGHT && leftOne && FlxG.keys.justPressed.ANY && !dontSpam){
 			leftOne = false;
 			downTwo = false;
 			downOne = false;
 			upTwo = false;
 			upOne = false;
-		}
+			}
 		if (FlxG.keys.justPressed.RIGHT && leftOne && !dontSpam && !rightOne){
 			rightOne = true;
 			dontSpam = true;
-			new FlxTimer().start(0.5, function(tmr:FlxTimer){
-				dontSpam = false;
-			});
-		}
-		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.LEFT && !dontSpam && rightOne){
+				new FlxTimer().start(0.5, function(tmr:FlxTimer){
+					dontSpam = false;
+				});
+			}
+			if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.LEFT && !dontSpam && rightOne){
 			rightOne = false;
 			leftOne = false;
 			downTwo = false;
 			downOne = false;
 			upTwo = false;
 			upOne = false;
-		}
-		if (FlxG.keys.justPressed.LEFT && !dontSpam && rightOne && !leftTwo){
+			}
+			if (FlxG.keys.justPressed.LEFT && !dontSpam && rightOne && !leftTwo){
 			leftTwo = true;
 			dontSpam = true;
-			new FlxTimer().start(0.5, function(tmr:FlxTimer){
-				dontSpam = false;
-			});
-		}
-		if (FlxG.keys.justPressed.ANY && !dontSpam && leftTwo && !FlxG.keys.justPressed.RIGHT){
+				new FlxTimer().start(0.5, function(tmr:FlxTimer){
+					dontSpam = false;
+				});
+			}
+			if (FlxG.keys.justPressed.ANY && !dontSpam && leftTwo && !FlxG.keys.justPressed.RIGHT){
 			leftTwo = false;
 			rightOne = false;
 			leftOne = false;
@@ -294,15 +290,15 @@ class MusicBeatState extends FlxUIState
 			downOne = false;
 			upTwo = false;
 			upOne = false;
-		}
-		if (FlxG.keys.justPressed.RIGHT && leftTwo && !dontSpam && !rightTwo){
+			}
+			if (FlxG.keys.justPressed.RIGHT && leftTwo && !dontSpam && !rightTwo){
 			rightTwo = true;
 			dontSpam = true;
-			new FlxTimer().start(0.5, function(tmr:FlxTimer){
-				dontSpam = false;
-			});
-		}
-		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.B && !dontSpam && rightTwo){
+				new FlxTimer().start(0.5, function(tmr:FlxTimer){
+					dontSpam = false;
+				});
+			}
+			if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.B && !dontSpam && rightTwo){
 			rightTwo = false;
 			leftTwo = false;
 			rightOne = false;
@@ -311,15 +307,15 @@ class MusicBeatState extends FlxUIState
 			downOne = false;
 			upTwo = false;
 			upOne = false;
-		}
-		if (FlxG.keys.justPressed.B && !dontSpam && rightTwo && !oneB){
+			}
+			if (FlxG.keys.justPressed.B && !dontSpam && rightTwo && !oneB){
 			oneB = true;
 			dontSpam = true;
-			new FlxTimer().start(0.5, function(tmr:FlxTimer){
-				dontSpam = false;
-			});
-		}
-		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.A && !dontSpam && oneB){
+				new FlxTimer().start(0.5, function(tmr:FlxTimer){
+					dontSpam = false;
+				});
+			}
+			if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.A && !dontSpam && oneB){
 			oneB = false;
 			rightTwo = false;
 			leftTwo = false;
@@ -329,16 +325,16 @@ class MusicBeatState extends FlxUIState
 			downOne = false;
 			upTwo = false;
 			upOne = false;
-		}
+			}
 		if (FlxG.keys.justPressed.A && !oneA && oneB && !dontSpam){
 			oneA = true;
 			dontSpam = true;
-			new FlxTimer().start(0.5, function(tmr:FlxTimer){
-				dontSpam = false;
-			});
-		}
+				new FlxTimer().start(0.5, function(tmr:FlxTimer){
+					dontSpam = false;
+				});
+			}
 		
-		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.B && oneA && !dontSpam){
+			if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.B && oneA && !dontSpam){
 			oneA = false;
 			oneB = false;
 			rightTwo = false;
@@ -349,15 +345,15 @@ class MusicBeatState extends FlxUIState
 			downOne = false;
 			upTwo = false;
 			upOne = false;
-		}
-		if (FlxG.keys.justPressed.B && !twoB && oneA && !dontSpam){
+			}
+			if (FlxG.keys.justPressed.B && !twoB && oneA && !dontSpam){
 			twoB = true;
 			dontSpam = true;
-			new FlxTimer().start(0.5, function(tmr:FlxTimer){
+				new FlxTimer().start(0.5, function(tmr:FlxTimer){
 				dontSpam = false;
-			});
-		}
-		if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.A && twoB && !dontSpam){
+				});
+			}
+			if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.A && twoB && !dontSpam){
 			twoB = false;
 			oneA = false;
 			oneB = false;
@@ -369,8 +365,8 @@ class MusicBeatState extends FlxUIState
 			downOne = false;
 			upTwo = false;
 			upOne = false;
-		}
-		if (FlxG.keys.justPressed.A && twoB && !dontSpam && !FlxG.save.data.ProPlayer){
+			}
+			if (FlxG.keys.justPressed.A && twoB && !dontSpam && !FlxG.save.data.ProPlayer){
 			medalPop('Pro Player');
 			twoB = false;
 			oneA = false;
@@ -383,6 +379,7 @@ class MusicBeatState extends FlxUIState
 			downOne = false;
 			upTwo = false;
 			upOne = false;
+			}
 		}
 
 		if (!FlxG.save.data.ECHO && !dontSpam && songEnded && PlayState.SONG.song.toLowerCase() == 'alterbyte')
