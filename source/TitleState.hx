@@ -392,7 +392,7 @@ class TitleState extends MusicBeatState
 			case 0:
 				deleteCoolText();
 			case 1:
-				createCoolText(['rusron - aquacrunch', 'john - tqualizer', 'zacksgamerz - ash237', 'dylanbrew - yanpo']);
+				createCoolText(['rusron   aquacrunch', 'john   tqualizer', 'zacksgamerz   ash237', 'dylanbrew   yanpo']);
 			case 3:
 				addMoreText('presents');
 			case 4:
