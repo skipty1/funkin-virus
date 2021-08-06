@@ -74,7 +74,7 @@ class MainMenuState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = true;
 		add(bg);
-		var madvirus:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('8bit/' + FlxG.random.getObject(randomBg),'shared'));
+		var madvirus:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('8bit/MVAT','shared'));
 		madvirus.scrollFactor.x = 0;
 		madvirus.scrollFactor.y = 0.10;
 		madvirus.setGraphicSize(Std.int(madvirus.width * 2));
