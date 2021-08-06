@@ -131,12 +131,11 @@ class TitleState extends MusicBeatState
 		add(bg);
 
 		logoBl = new FlxSprite(-150, -100);
+		logoBl.x += 200;
+		logoBl.y += 400;
+		logoBl.scale.set(2,2);
 		logoBl.frames = Paths.getSparrowAtlas('8bit/LOGO','shared');
-
-		if(FlxG.save.data.antialiasing)
-			{
-				logoBl.antialiasing = true;
-			}
+		logoBl.antialiasing = false;
 		logoBl.animation.addByPrefix('bump', 'LOGO', 24, false);
 		logoBl.updateHitbox();
 		// logoBl.screenCenter();
