@@ -2323,6 +2323,21 @@ class PlayState extends MusicBeatState
 		else
 			super.update(elapsed);
 
+		if (PlayState.SONG.song.toLowerCase() == 'Disco' && PlayState.misses == 0 && songEnded && !FlxG.save.data.BluSpy && !dontSpam)
+			medalPop('Blue Spy');
+
+		if (PlayState.misses > 100 && songEnded && !FlxG.save.data.TOUHOU && !dontSpam)
+			medalPop('TOUHOU Bit');
+
+		if (!FlxG.save.data.ECHO && !dontSpam && songEnded && PlayState.SONG.song.toLowerCase() == 'alterbyte')
+			medalPop('ECHO');
+
+		if (!FlxG.save.data.Firewall && !dontSpam && songEnded && PlayState.misses == 0 && PlayState.SONG.song.toLowerCase() == 'intoxicate')
+			medalPop('Firewall');
+
+		if (!FlxG.save.data.TWTMF && !dontSpam && PlayState.misses == 0 && songEnded && PlayState.SONG.song.toLowerCase() == '4th song')
+			medalPop('TWTMF');
+
 		scoreTxt.text = Ratings.CalculateRanking(songScore, songScoreDef, nps, maxNPS, accuracy);
 
 		var lengthInPx = scoreTxt.textField.length * scoreTxt.frameHeight; // bad way but does more or less a better job
