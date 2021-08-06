@@ -98,7 +98,7 @@ class PlayState extends MusicBeatState
 	var flor1:FlxSprite;
 	var flor2:FlxSprite;
 	var flor3:FlxSprite;
-	public var isEasy:Bool;
+	public static var isEasy:Bool = false;
 
 	public var flot:FlxSprite;
 	private var SplashNote:NoteSplash;
