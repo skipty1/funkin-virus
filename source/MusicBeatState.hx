@@ -28,10 +28,10 @@ class MusicBeatState extends FlxUIState
 
 	public var cameraStuff:FlxCamera;
 	public var fpressed:Int = 0;
-	public var dontSpam:Bool = false;
+	public static var dontSpam:Bool = false;
 	public static var endedSongs:Int = 0;
-	public var storyCompleted:Bool = false;
-	public var songEnded:Bool = false;
+	public static var storyCompleted:Bool = false;
+	public static var songEnded:Bool = false;
 	public var upOne:Bool = false;
 	public var upTwo:Bool = false;
 	public var downOne:Bool = false;
