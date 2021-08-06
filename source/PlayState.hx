@@ -2813,7 +2813,7 @@ class PlayState extends MusicBeatState
 
 				vocals.stop();
 				FlxG.sound.music.stop();
-				deaths += 1;
+				MusicBeatState.deaths += 1;
 
 				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
@@ -3219,8 +3219,8 @@ class PlayState extends MusicBeatState
 		});
 		#end
 		MusicBeatState.songEnded = true;
-		endedSongs += 1;
-		if (endedSongs == 5)
+		MusicBeatState.endedSongs += 1;
+		if (MusicBeatState.endedSongs == 5)
 			storyCompleted = true;
 
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
