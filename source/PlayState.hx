@@ -415,7 +415,14 @@ class PlayState extends MusicBeatState
 		}
 
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
-		detailsText = "Story Mode: Week " + storyWeek;
+		if (isStoryMode)
+		{
+			detailsText = "Story Mode: Week " + storyWeek;
+		}
+		else
+		{
+			detailsText = "Freeplay";
+		}
 
 		// String for when the game is paused
 		detailsPausedText = "Paused - " + detailsText;
@@ -846,7 +853,11 @@ class PlayState extends MusicBeatState
 				dad.setPosition(gf.x, gf.y);
 				gf.visible = false;
 				camPos.x += 600;
-				tweenCamIn();
+				if (isStoryMode)
+				{
+					camPos.x += 600;
+					tweenCamIn();
+				}
 
 			case "spooky":
 				dad.y += 200;
@@ -1167,7 +1178,9 @@ class PlayState extends MusicBeatState
 
 		trace('starting');
 
-		switch (StringTools.replace(curSong, " ", "-").toLowerCase())
+		if (isStoryMode)
+		{
+			switch (StringTools.replace(curSong, " ", "-").toLowerCase())
 			{
 				case 'senpai':
 					schoolIntro(doof);
@@ -1179,6 +1192,11 @@ class PlayState extends MusicBeatState
 				default:
 					startCountdown();
 			}
+		}
+		else
+		{
+			startCountdown();
+		}
 		#if desktop
 		if (!loadRep)
 			rep = new Replay("na");
@@ -3257,6 +3275,8 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
+			if (isStoryMode)
+			{
 				campaignScore += Math.round(songScore);
 
 				storyPlaylist.remove(storyPlaylist[0]);
@@ -3282,7 +3302,7 @@ class PlayState extends MusicBeatState
 					{
 						FlxG.sound.playMusic(Paths.music('freakyMenu'));
 						Conductor.changeBPM(102);
-						FlxG.switchState(new FreeplayState());
+						FlxG.switchState(new StoryMenuState());
 					}
 
 					#if windows
@@ -3295,6 +3315,7 @@ class PlayState extends MusicBeatState
 
 					if (SONG.validScore)
 					{
+						NGio.unlockMedal(60961);
 						Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
 					}
 
@@ -3337,6 +3358,27 @@ class PlayState extends MusicBeatState
 
 					LoadingState.loadAndSwitchState(new PlayState());
 				}
+			}
+			else
+			{
+				trace('WENT BACK TO FREEPLAY??');
+
+				paused = true;
+
+				FlxG.sound.music.stop();
+				vocals.stop();
+
+				if (scoreScreen) 
+				{
+					openSubState(new ResultsScreen());
+					new FlxTimer().start(1, function(tmr:FlxTimer)
+						{
+							inResults = true;
+						});
+				}
+				else
+					FlxG.switchState(new FreeplayState());
+			}
 		}
 	}
 
