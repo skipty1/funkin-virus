@@ -27,6 +27,8 @@ class OptionsState extends MusicBeatState
 		menuItems = ['downscroll',
 			'ghost tap',
 			'less update',
+			'smooth iconbop',
+			'note splash',
 			#if desktop
 			'reset button'
 			#end
@@ -69,6 +71,10 @@ class OptionsState extends MusicBeatState
 					ch.change(FlxG.save.data.resetButton);
 				case 'less update':
 					ch.change(FlxG.save.data.lessUpdate);
+				case 'smooth iconbop':
+					ch.change(FlxG.save.data.smoothIcon);
+				case 'note splash':
+					ch.change(FlxG.save.data.noteSplash);
 			}
 
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
@@ -106,6 +112,10 @@ class OptionsState extends MusicBeatState
 		var daSelected:String = menuItems[curSelected];
 
 		switch (daSelected){
+			case 'note splash':
+				notice.text = "Toggle note splashes.\nSwitch pages using RIGHT\n";
+			case 'smooth iconbop':
+				notice.text = "Toggle smooth bopping.\nSwitch pages using RIGHT\n";
 			case 'dfjk':
 				notice.text = 'Change your keybinds to D F J K.\nSwitch pages using RIGHT\n';
 			case 'downscroll':
