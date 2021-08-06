@@ -49,9 +49,7 @@ class MainMenuState extends MusicBeatState
 	var camFollow:FlxObject;
 	public static var finishedFunnyMove:Bool = false;
 	public var triggered:Bool = false;
-	var randomChar:Character;
-	var randomString:Array<String> = ['virus','virus-mad','bf-pixel','gf-pixel','gf-box','bit'];
-	var randomAnim:Array<String> = ['singLEFT','singRIGHT','singUP','singDOWN'];
+
 	var randomBg:Array<String> ™ ['8bit','red_eye','v8bit'];
 
 	override function create()
@@ -120,26 +118,6 @@ class MainMenuState extends MusicBeatState
 					}});
 			else
 				menuItem.y = 60 + (i * 160);
-		}
-		randomChar = new Character(true,900,100,FlxG.random.getObject(randomString));
-		randomChar.scale.set(4,4);
-		add(randomChar);
-		//offset
-		switch(randomChar.curCharacter){
-			case 'virus-mad':
-				randomChar.y += 300;
-				randomChar.x -= 100;
-			case 'virus':
-				randomChar.y += 300;
-				randomChar.x -= 100;
-			case 'bit':
-				randomChar.y -= 100;
-			case 'bf':
-				randomChar.y += 300;
-			case 'gf-pixel':
-				randomChar.y += 350;
-			case 'gf-box':
-				randomChar.y += 200;
 		}
 
 		firstStart = false;
@@ -221,8 +199,6 @@ class MainMenuState extends MusicBeatState
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 					
-					if (FlxG.save.data.flashing)
-						FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 
 					menuItems.forEach(function(spr:FlxSprite)
 					{
@@ -263,10 +239,6 @@ class MainMenuState extends MusicBeatState
 		else
 			super.update(elapsed);
 
-		/*menuItems.forEach(function(spr:FlxSprite)
-		{
-			spr.screenCenter(X);
-		});*/
 	}
 	
 	function goToState()
@@ -311,18 +283,5 @@ class MainMenuState extends MusicBeatState
 
 			spr.updateHitbox();
 		});
-	}
-	override function beatHit(){
-		if (curBeat % 2 == 0){
-			switch (randomChar.curCharacter){
-				case 'gf-pixel' | 'gf-box':
-					randomChar.dance();
-				default:
-					if (!randomChar.animation.curAnim.name.startsWith("sing"))
-						randomChar.playAnim('idle',2);
-			}
-		if (curBeat % 4 == 0 && (randomChar.curCharacter != 'gf-pixel' || randomChar.curCharacter != 'gf-box'))
-			randomChar.playAnim(FlxG.random.getObject(randomAnim));
-		}
 	}
 }
