@@ -191,17 +191,17 @@ class TitleState extends MusicBeatState
 
 		credTextShit.visible = false;
 
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
+		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('8bit/newgroundsSpr','shared'));
 		add(ngSpr);
 		ngSpr.visible = false;
-		ngSpr.setGraphicSize(Std.int(ngSpr.width * 2));
+		ngSpr.scale.set(2,2);
 		ngSpr.updateHitbox();
 		ngSpr.x -= 100;
 		ngSpr.antialiasing = false;
-		scSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
+		scSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('8bit/supercellSpr','shared'));
 		add(scSpr);
 		scSpr.visible = false;
-		scSpr.setGraphicSize(Std.int(scSpr.width * 2));
+		scSpr.scale.set(2,2);
 		scSpr.updateHitbox();
 		scSpr.x += 100;
 		scSpr.antialiasing = false;
