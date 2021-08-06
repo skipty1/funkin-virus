@@ -50,7 +50,7 @@ class MainMenuState extends MusicBeatState
 	public static var finishedFunnyMove:Bool = false;
 	public var triggered:Bool = false;
 
-	var randomBg:Array<String> ™ ['8bit','red_eye','v8bit'];
+	var randomBg:Array<String> = ['8bit','red_eye','v8bit'];
 
 	override function create()
 	{
