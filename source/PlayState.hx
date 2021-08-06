@@ -2741,17 +2741,17 @@ class PlayState extends MusicBeatState
 					case 'darkroom' | 'void':
 						switch (boyfriend.animation.curAnim.name){
 							case 'singRIGHT':
-								camFollow.x = boyfriend.getMidpoint().x - 455;
+								camFollow.x = boyfriend.getMidpoint().x - 450;
 								camFollow.y = boyfriend.getMidpoint().y - 370;
 							case 'singLEFT':
-								camFollow.x = boyfriend.getMidpoint().x - 475;
+								camFollow.x = boyfriend.getMidpoint().x - 480;
 								camFollow.y = boyfriend.getMidpoint().y - 370;
 							case 'singDOWN':
 								camFollow.x = boyfriend.getMidpoint().x - 460;
-								camFollow.y = boyfriend.getMidpoint().y - 365;
+								camFollow.y = boyfriend.getMidpoint().y - 360;
 							case 'singUP':
 								camFollow.x = boyfriend.getMidpoint().x - 460;
-								camFollow.y = boyfriend.getMidpoint().y - 385;
+								camFollow.y = boyfriend.getMidpoint().y - 390;
 							default:
 								camFollow.x = boyfriend.getMidpoint().x - 460;
 								camFollow.y = boyfriend.getMidpoint().y - 370;
