@@ -276,10 +276,8 @@ class MainMenuState extends MusicBeatState
 			spr.animation.play('idle');
 
 			if (spr.ID == curSelected && finishedFunnyMove)
-			{
 				spr.animation.play('selected');
-				//camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y);
-			}
+
 
 			spr.updateHitbox();
 		});
