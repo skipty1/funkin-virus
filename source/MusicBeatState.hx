@@ -456,6 +456,7 @@ class MusicBeatState extends FlxUIState
 
 	public function textPop(ass:String){
 		dontSpam = true;
+		FlxG.sound.play(Paths.sound('unlock' + FlxG.random.int(1,2),'shared'));
 		var txt:FlxText = new FlxText(0, 0, 0, "", 48);
 		txt.color = FlxColor.fromRGB(133, 256, 133);
 		txt.alignment = CENTER;
