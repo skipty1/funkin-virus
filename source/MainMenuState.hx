@@ -210,7 +210,7 @@ class MainMenuState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				selectedSomethin = true;
 				FlxG.mouse.visible = false;
-				FlxG.switchState(new StoryMenuState());
+				FlxG.switchState(new TitleState());
 			}
 
 			if (FlxG.mouse.overlaps(stupidItems.Freeplay) && FlxG.mouse.justPressed && FlxG.save.data.storyBeated){
