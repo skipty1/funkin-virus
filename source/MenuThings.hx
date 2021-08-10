@@ -1,5 +1,8 @@
 package;
 
+import haxe.Constraints.Function;
+import flixel.FlxCamera;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxG;
