@@ -136,8 +136,20 @@ class MenuThings extends FlxSpriteGroup{
 		Story.animation.play('unselected');
 		add(Story);
 	}
-	override function update(elapsed:Float){
-		super.update(elapsed);
-		
+	public function playAnimation(ID:Int,Anim:String){
+		switch (ID){
+			case 0:
+				Story.animation.play(Anim);
+			case 1:
+				Install.animation.play(Anim);
+			case 2:
+				Freeplay.animation.play(Anim);
+			case 3:
+				Music.animation.play(Anim);
+			case 4:
+				Achievement.animation.play(Anim);
+			default:
+				trace('No valid animation');
+		}
 	}
 }
