@@ -1,5 +1,6 @@
 package;
 
+import MenuThings;
 import flixel.input.gamepad.FlxGamepad;
 import Controls.KeyboardScheme;
 import flixel.FlxG;
@@ -38,6 +39,7 @@ class MainMenuState extends MusicBeatState
 
 	var newGaming:FlxText;
 	var newGaming2:FlxText;
+	var ASS:String = "";
 	public static var firstStart:Bool = true;
 
 	public static var nightly:String = "";
@@ -52,6 +54,7 @@ class MainMenuState extends MusicBeatState
 
 	var randomBg:Array<String> = ['8bit','red_eye','v8bit','SAND'];
 	var spike:FlxSprite;
+	var stupidItems:MenuThings;
 
 	override function create()
 	{
@@ -64,7 +67,7 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
-		var ASS:String = FlxG.random.getObject(randomBg);
+		ASS = FlxG.random.getObject(randomBg);
 
 		persistentUpdate = persistentDraw = true;
 
@@ -86,6 +89,8 @@ class MainMenuState extends MusicBeatState
 			spike.antialiasing = false;
 			add(spike);
 		}
+		stupidItems = new MenuThings(0,0);
+		add(stupidItems);
 		var madvirus:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('8bit/MVAT','shared'));
 		madvirus.scrollFactor.x = 0;
 		madvirus.scrollFactor.y = 0.10;
@@ -100,9 +105,6 @@ class MainMenuState extends MusicBeatState
 		add(camFollow);
 
 		// magenta.scrollFactor.set();
-
-		menuItems = new FlxTypedGroup<FlxSprite>();
-		add(menuItems);
 
 		var tex = Paths.getSparrowAtlas('FNF_main_menu_assets');
 
@@ -141,6 +143,16 @@ class MainMenuState extends MusicBeatState
 
 		if (!selectedSomethin)
 		{
+			if (FlxG.mouse.overlaps(spike) && FlxG.mouse.justPressed && ASS == 'SAND')
+				medalPop('Spike');
+
+			if (FlxG.mouse.overlaps(stupidItems.Achievement))
+				stupidItems.playAnimation(4, 'selected');
+			else
+				stupidItems.playAnimation(4, 'unselected');
+
+			if (FlxG.mouse.overlaps(stupidItems.Music))
+
 			var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
 
 			if (gamepad != null)
