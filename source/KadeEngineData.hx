@@ -140,6 +140,15 @@ class KadeEngineData
 		if (FlxG.save.data.smoothIcon == null)
 			FlxG.save.data.smoothIcon = true;
 
+		if (FlxG.save.data.BestTrophy == null)
+			FlxG.save.data.BestTrophy = false;
+		if (FlxG.save.data.IronTrophy == null)
+			FlxG.save.data.IronTrophy = false;
+		if (FlxG.save.data.GoldTrophy == null)
+			FlxG.save.data.GoldTrophy = false;
+		if (FlxG.save.data.RainbowTrophy == null)
+			FlxG.save.data.RainbowTrophy = false;
+
 		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
 		
 		KeyBinds.gamepad = gamepad != null;
