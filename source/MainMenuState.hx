@@ -228,36 +228,4 @@ class MainMenuState extends MusicBeatState
 			super.update(elapsed);
 
 	}
-	
-	function goToState()
-	{
-		var daChoice:String = optionShit[curSelected];
-
-		switch (daChoice)
-		{
-			case 'story mode':
-				FlxG.switchState(new StoryMenuState());
-				trace("Story Menu Selected");
-			case 'freeplay':
-				FlxG.switchState(new FreeplayState());
-
-				trace("Freeplay Menu Selected");
-
-			case 'options':
-				FlxG.switchState(new OptionsMenu());
-		}
-	}
-
-	function changeItem(huh:Int = 0)
-	{
-		if (finishedFunnyMove)
-		{
-			curSelected += huh;
-
-			if (curSelected >= menuItems.length)
-				curSelected = 0;
-			if (curSelected < 0)
-				curSelected = menuItems.length - 1;
-		}
-	}
 }
