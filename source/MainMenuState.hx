@@ -31,7 +31,7 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['freeplay', 'donate', 'options'];
+	//var optionShit:Array<String> = ['freeplay', 'donate', 'options'];
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
@@ -50,7 +50,8 @@ class MainMenuState extends MusicBeatState
 	public static var finishedFunnyMove:Bool = false;
 	public var triggered:Bool = false;
 
-	var randomBg:Array<String> = ['8bit','red_eye','v8bit'];
+	var randomBg:Array<String> = ['8bit','red_eye','v8bit','SAND'];
+	var spike:FlxSprite;
 
 	override function create()
 	{
@@ -63,17 +64,28 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
+		var ASS:String = FlxG.random.getObject(randomBg);
 
 		persistentUpdate = persistentDraw = true;
 
-		var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('8bit/' + FlxG.random.getObject(randomBg),'shared'));
+		var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('8bit/' + ASS,'shared'));
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0.10;
 		bg.setGraphicSize(Std.int(bg.width * 2));
 		bg.updateHitbox();
 		bg.screenCenter();
-		bg.antialiasing = true;
+		bg.antialiasing = false;
 		add(bg);
+		if (ASS == 'SAND'){
+			var sentry:FlxSprite = new FlxSprite(-100,600).loadGraphic(Paths.image('8bit/MINI_SENTRY'));
+			sentry.scale.set(2,2);
+			sentry.antialiasing = false;
+			add(sentry);
+			spike = new FlxSprite(-100,600).loadGraphic(Paths.image('8bit/SPIKE'));
+			spike.scale.set(2,2);
+			spike.antialiasing = false;
+			add(spike);
+		}
 		var madvirus:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('8bit/MVAT','shared'));
 		madvirus.scrollFactor.x = 0;
 		madvirus.scrollFactor.y = 0.10;
@@ -93,32 +105,6 @@ class MainMenuState extends MusicBeatState
 		add(menuItems);
 
 		var tex = Paths.getSparrowAtlas('FNF_main_menu_assets');
-
-		for (i in 0...optionShit.length)
-		{
-			var menuItem:FlxSprite = new FlxSprite(0, FlxG.height * 1.6);
-			menuItem.frames = tex;
-			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
-			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
-			menuItem.animation.play('idle');
-			menuItem.ID = i;
-			//menuItem.screenCenter(X);
-			menuItem.x = 100;
-			menuItems.add(menuItem);
-			menuItem.scrollFactor.set();
-			if(FlxG.save.data.antialiasing)
-				{
-					menuItem.antialiasing = true;
-				}
-			if (firstStart)
-				FlxTween.tween(menuItem,{y: 60 + (i * 160)},1 + (i * 0.25) ,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
-					{ 
-						finishedFunnyMove = true; 
-						changeItem();
-					}});
-			else
-				menuItem.y = 60 + (i * 160);
-		}
 
 		firstStart = false;
 
@@ -190,47 +176,8 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
-				if (optionShit[curSelected] == 'donate')
-				{
-					fancyOpenURL("https://ninja-muffin24.itch.io/funkin");
-				}
-				else
-				{
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
-					
-
-					menuItems.forEach(function(spr:FlxSprite)
-					{
-						if (curSelected != spr.ID)
-						{
-							FlxTween.tween(spr, {alpha: 0}, 1.3, {
-								ease: FlxEase.quadOut,
-								onComplete: function(twn:FlxTween)
-								{
-									spr.kill();
-								}
-							});
-						}
-						else
-						{
-							if (FlxG.save.data.flashing)
-							{
-								FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
-								{
-									goToState();
-								});
-							}
-							else
-							{
-								new FlxTimer().start(1, function(tmr:FlxTimer)
-								{
-									goToState();
-								});
-							}
-						}
-					});
-				}
 			}
 		}
 
@@ -271,15 +218,5 @@ class MainMenuState extends MusicBeatState
 			if (curSelected < 0)
 				curSelected = menuItems.length - 1;
 		}
-		menuItems.forEach(function(spr:FlxSprite)
-		{
-			spr.animation.play('idle');
-
-			if (spr.ID == curSelected && finishedFunnyMove)
-				spr.animation.play('selected');
-
-
-			spr.updateHitbox();
-		});
 	}
 }
