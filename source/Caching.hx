@@ -51,7 +51,7 @@ class Caching extends MusicBeatState
 	override function create()
 	{
 
-		FlxG.save.bind('funkin', 'ninjamuffin99');
+		FlxG.save.bind('funkin', 'virus99');
 
 		PlayerSettings.init();
 
@@ -181,7 +181,7 @@ class Caching extends MusicBeatState
 
 		trace(Assets.cache.hasBitmapData('GF_assets'));
 
-		FlxG.switchState(new TitleState());
+		FlxG.switchState(new MainMenuState());
 	}
 
 }
