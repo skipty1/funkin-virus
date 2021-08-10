@@ -66,6 +66,78 @@ class MenuThings extends FlxSpriteGroup{
 		else
 			Bestplayer.color = FlxColor.fromHSL(Bestplayer.color.hue, Bestplayer.color.saturation, 0.7, 1);
 
+
+		Freeplay = new FlxSprite(Xshit,Yshit);
+		Freeplay.frames = path;
+		Freeplay.animation.addByPrefix('selected','freepaly',24,false);
+		Freeplay.animation.addByPrefix('unselected','unfreeplay',24,false);
+		Freeplay.animation.addByPrefix('clicked','tapfreeplay0',24,false);
+		Freeplay.scale.set(2,2);
+		Freeplay.antialiasing = false;
+		Freeplay.animation.play('unselected');
+		add(Freeplay);
+		if (FlxG.save.data.storyBeated)
+			Freeplay.color = FlxColor.fromHSL(Freeplay.color.hue, Freeplay.color.saturation, 1, 1);
+		else
+			Freeplay.color = FlxColor.fromHSL(Freeplay.color.hue, Freeplay.color.saturation, 0.7, 1);
+
+		Gold = new FlxSprite(Xshit,Yshit);
+		Gold.frames = path;
+		Gold.animation.addByPrefix('mmmhi','gold0',24,false);
+		Gold.scale.set(2,2);
+		Gold.antialiasing = false;
+		Gold.animation.play('mmmhi');
+		add(Gold);
+		if (FlxG.save.data.GoldTrophy)
+			Gold.color = FlxColor.fromHSL(Gold.color.hue, Gold.color.saturation, 1, 1);
+		else
+			Gold.color = FlxColor.fromHSL(Gold.color.hue, Gold.color.saturation, 0.7, 1);
+
+		Install = new FlxSprite(Xshit,Yshit);
+		Install.frames = path;
+		Install.animation.addByPrefix('selected','install0',24,false);
+		Install.animation.addByPrefix('unselected','uninstall0',24,false);
+		Install.scale.set(2,2);
+		Install.antialiasing = false;
+		Install.animation.play('unselected');
+		add(Install);
+
+		Iron = new FlxSprite(Xshit,Yshit);
+		Iron.frames = path;
+		Iron.animation.addByPrefix('mmmhi','iron0',24,false);
+		Iron.scale.set(2,2);
+		Iron.antialiasing = false;
+		Iron.animation.play('unselected');
+		add(Iron);
+		if (FlxG.save.data.IronTrophy)
+			Iron.color = FlxColor.fromHSL(Iron.color.hue, Iron.color.saturation, 1, 1);
+		else
+			Iron.color = FlxColor.fromHSL(Iron.color.hue, Iron.color.saturation, 0.7, 1);
+
+		Rainbow = new FlxSprite(Xshit,Yshit);
+		Rainbow.frames = path;
+		Rainbow.animation.addByPrefix('mmmhi','rainbow0',24,false);
+		Rainbow.scale.set(2,2);
+		Rainbow.antialiasing = false;
+		Rainbow.animation.play('unselected');
+		add(Rainbow);
+		if (FlxG.save.data.RainbowTrophy)
+			Rainbow.color = FlxColor.fromHSL(Rainbow.color.hue, Rainbow.color.saturation, 1, 1);
+		else
+			Rainbow.color = FlxColor.fromHSL(Rainbow.color.hue, Rainbow.color.saturation, 0.7, 1);
+
+		Story = new FlxSprite(Xshit,Yshit);
+		Story.frames = path;
+		Story.animation.addByPrefix('selected','story0',24,false);
+		Story.animation.addByPrefix('unselected','unstory0',24,false);
+		Story.animation.addByPrefix('clicked','tapstory0',24,false);
+		Story.scale.set(2,2);
+		Story.antialiasing = false;
+		Story.animation.play('unselected');
+		add(Story);
+	}
+	override function update(elapsed:Float){
+		super.update(elapsed);
 		
 	}
 }
