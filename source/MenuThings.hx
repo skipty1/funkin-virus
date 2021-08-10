@@ -61,7 +61,7 @@ class MenuThings extends FlxSpriteGroup{
 		Bestplayer.antialiasing = false;
 		Bestplayer.animation.play('mmmhi');
 		add(Bestplayer);
-		if (FlxG.save.data.ProPlayer)
+		if (FlxG.save.data.BestTrophy)
 			Bestplayer.color = FlxColor.fromHSL(Bestplayer.color.hue, Bestplayer.color.saturation, 1, 1);
 		else
 			Bestplayer.color = FlxColor.fromHSL(Bestplayer.color.hue, Bestplayer.color.saturation, 0.7, 1);
