@@ -145,13 +145,76 @@ class MainMenuState extends MusicBeatState
 		{
 			if (FlxG.mouse.overlaps(spike) && FlxG.mouse.justPressed && ASS == 'SAND')
 				medalPop('Spike');
-
-			if (FlxG.mouse.overlaps(stupidItems.Achievement))
+//animation system for overlaps
+			if (FlxG.mouse.overlaps(stupidItems.Achievement)){
 				stupidItems.playAnimation(4, 'selected');
-			else
+			}else{
 				stupidItems.playAnimation(4, 'unselected');
+			}
 
-			if (FlxG.mouse.overlaps(stupidItems.Music))
+			if (FlxG.mouse.overlaps(stupidItems.Music)){
+				stupidItems.playAnimation(3, 'selected');
+			}else{
+				stupidItems.playAnimation(3, 'unselected');
+			}
+
+			if (FlxG.mouse.overlaps(stupidItems.Freeplay)){
+				stupidItems.playAnimation(2, 'selected');
+			}else{
+				stupidItems.playAnimation(2, 'unselected');
+			}
+
+			if (FlxG.mouse.overlaps(stupidItems.Install)){
+				stupidItems.playAnimation(1, 'selected');
+			}else{
+				stupidItems.playAnimation(1, 'unselected');
+			}
+
+			if (FlxG.mouse.overlaps(stupidItems.Story)){
+				stupidItems.playAnimation(0, 'selected');
+			}else{
+				stupidItems.playAnimation(0, 'unselected');
+			}
+//select system
+			if (FlxG.mouse.overlaps(stupidItems.Story) && FlxG.mouse.justPressed){
+				stupidItems.play(0, 'clicked');
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				selectedSomethin = true;
+				FlxG.mouse.visible = false;
+				FlxG.switchState(new StoryMenuState());
+			}
+
+			if (FlxG.mouse.overlaps(stupidItems.Freeplay) && FlxG.mouse.justPressed && FlxG.save.data.storyBeated){
+				stupidItems.play(2, 'clicked');
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				selectedSomethin = true;
+				FlxG.mouse.visible = false;
+				FlxG.switchState(new FreeplayState());
+			}
+
+			if (FlxG.mouse.overlaps(stupidItems.Install) && FlxG.mouse.justPressed){
+				//stupidItems.play(0, 'clicked');
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				selectedSomethin = true;
+				FlxG.mouse.visible = false;
+				FlxG.switchState(new OptionsMenu());
+			}
+
+			if (FlxG.mouse.overlaps(stupidItems.Music) && FlxG.mouse.justPressed){
+				//stupidItems.play(0, 'clicked');
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				//selectedSomethin = true;
+				//FlxG.mouse.visible = false;
+				//FlxG.switchState(new OptionsMenu());
+			}
+
+			if (FlxG.mouse.overlaps(stupidItems.Achievement) && FlxG.mouse.justPressed){
+				//stupidItems.play(0, 'clicked');
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				selectedSomethin = true;
+				FlxG.mouse.visible = false;
+				FlxG.switchState(new MedalState());
+			}
 
 			var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
 
