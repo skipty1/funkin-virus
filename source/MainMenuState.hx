@@ -18,7 +18,9 @@ import flixel.util.FlxTimer;
 import io.newgrounds.NG;
 #end
 import lime.app.Application;
-
+#if cpp
+import sys.thread.Thread;
+#end
 #if windows
 import Discord.DiscordClient;
 #end
@@ -152,7 +154,7 @@ class MainMenuState extends MusicBeatState
 		else
 			controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
 
-		changeItem();
+		FlxG.camera.fade(FlxColor.BLACK,0.7,true);
 		#if (android || ios)
 		addVirtualPad(UP_DOWN, A_B);
 		#end
