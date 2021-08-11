@@ -155,9 +155,7 @@ class MainMenuState extends MusicBeatState
 			controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
 
 		FlxG.camera.fade(FlxColor.BLACK,0.7,true);
-		#if (android || ios)
-		addVirtualPad(UP_DOWN, A_B);
-		#end
+
 		super.create();
 	}
 
