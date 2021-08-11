@@ -236,9 +236,9 @@ class MainMenuState extends MusicBeatState
 			if (FlxG.mouse.overlaps(stupidItems.Music) && FlxG.mouse.justPressed){
 				//stupidItems.play(0, 'clicked');
 				FlxG.sound.play(Paths.sound('confirmMenu'));
-				//selectedSomethin = true;
-				//FlxG.mouse.visible = false;
-				//FlxG.switchState(new OptionsMenu());
+				selectedSomethin = true;
+				FlxG.mouse.visible = false;
+				FlxG.switchState(new TapeMenu());
 			}
 
 			if (FlxG.mouse.overlaps(stupidItems.Achievement) && FlxG.mouse.justPressed){
