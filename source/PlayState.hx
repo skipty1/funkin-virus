@@ -3218,10 +3218,12 @@ class PlayState extends MusicBeatState
 			}
 		});
 		#end
-		MusicBeatState.songEnded = true;
-		MusicBeatState.endedSongs += 1;
-		if (MusicBeatState.endedSongs == 5)
-			storyCompleted = true;
+		if (FlxG.save.data.storyBeated){
+			MusicBeatState.songEnded = true;
+			MusicBeatState.endedSongs += 1;
+			if (MusicBeatState.endedSongs == 5)
+				storyCompleted = true;
+		}
 
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, releaseInput);
