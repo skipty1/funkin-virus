@@ -115,6 +115,22 @@ class Character extends FlxSprite
 				updateHitbox();
 				antialiasing = false;
 
+			case 'gf-pic':
+				tex = Paths.getSparrowAtlas('gfpic','shared',true);
+				frames = tex;
+				animation.addByIndices('singUP', 'gfpic', [2], "", 24, false);
+				animation.addByIndices('danceLeft', 'gfpic', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight', 'gfpic', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+
+				loadOffsetFile('gf-pixel');
+
+				playAnim('danceRight');
+
+				if (!isMenu)
+					setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+				antialiasing = false;
+
 			case 'dad':
 				// DAD ANIMATION LOADING CODE
 				tex = Paths.getSparrowAtlas('DADDY_DEAREST','shared',true);
@@ -579,7 +595,7 @@ class Character extends FlxSprite
 		{
 			switch (curCharacter)
 			{
-				case 'gf' | 'gf-christmas' | 'gf-car' | 'gf-pixel' | 'gf-box':
+				case 'gf' | 'gf-christmas' | 'gf-car' | 'gf-pixel' | 'gf-box' | 'gf-pic':
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;
