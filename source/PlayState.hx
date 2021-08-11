@@ -98,6 +98,7 @@ class PlayState extends MusicBeatState
 	var flor1:FlxSprite;
 	var flor2:FlxSprite;
 	var flor3:FlxSprite;
+	var zack:FlxSprite;
 	public static var isEasy:Bool = false;
 
 	public var flot:FlxSprite;
@@ -760,6 +761,26 @@ class PlayState extends MusicBeatState
 						add(flor3);
 						defaultCamZoom = 0.3;
 						}
+						if (SONG.song.toLowerCase() == 'saloon'){
+							var posX = 500;
+							var posY = 380;
+							var bg:FlxSprite = new FlxSprite(posX,posY).loadGraphic(Paths.image('8bit/barbg'));
+							bg.scale.set(6,6);
+							bg.antialiasing = false;
+							bg.scrollFactor.set(0.9,0.9);
+							add(bg);
+							var flufash:FlxSprite = new FlxSprite(posX,posY).loadGraphic(Paths.image('8bit/ash'));
+							flufash.scale.set(6,6);
+							flufash.antialiasing = false;
+							flufash.scrollFactor.set(0.9,0.9);
+							add(flufash);
+							zack = new FlxSprite(posX,posY).loadGraphic(Paths.image('8bit/cap'));
+							zack.scale.set(6,6);
+							zack.antialiasing = false;
+							zack.scrollFactor.set(0.8,0.8);
+							curStage = 'bar';
+							defaultCamZoom = 0.7;
+						}
 						if (!cool){
 							defaultCamZoom = 0.9;
 							curStage = 'stage';
@@ -968,6 +989,8 @@ class PlayState extends MusicBeatState
 			add(boyfriend);
 			if (curStage == 'darkroom')
 				add(things);
+			if (curStage == 'bar')
+				add(zack);
 		}
 
 		if (loadRep)
