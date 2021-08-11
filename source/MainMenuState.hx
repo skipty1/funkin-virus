@@ -169,10 +169,16 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
+		if (FlxG.keys.justPressed.X)
+			trace('x' + FlxG.mouse.x);
+		if (FlxG.keys.justPressed.Y)
+			trace('y' + FlxG.mouse.y);
+		if (FlxG.keys.justPressed.F)
+			trace('x:' + FlxG.mouse.x + ' y:' + FlxG.mouse.y);
 
 		if (!selectedSomethin)
 		{
-			if (FlxG.mouse.overlaps(spike) && FlxG.mouse.justPressed && ASS == 'SAND')
+			if (FlxG.mouse.overlaps(spike) && FlxG.mouse.justPressed && ASS == 'SAND' && !FlxG.save.data.Spike)
 				medalPop('Spike');
 //animation system for overlaps
 			if (FlxG.mouse.overlaps(stupidItems.Achievement)){
