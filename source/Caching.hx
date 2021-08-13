@@ -27,7 +27,6 @@ import flixel.math.FlxRect;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import flixel.text.FlxText;
-import Achievements.MedalSaves;
 
 using StringTools;
 
@@ -51,7 +50,7 @@ class Caching extends MusicBeatState
 	override function create()
 	{
 
-		FlxG.save.bind('funkin', 'virus99');
+		FlxG.save.bind('funkin', 'ninjamuffin99');
 
 		PlayerSettings.init();
 
@@ -141,7 +140,7 @@ class Caching extends MusicBeatState
 
 	var calledDone = false;
 
-	override function update(elapsed:Float) 
+	override function update(elapsed) 
 	{
 		if (FlxG.save.data.lessUpdate)
 			super.update(elapsed/2);
@@ -181,7 +180,7 @@ class Caching extends MusicBeatState
 
 		trace(Assets.cache.hasBitmapData('GF_assets'));
 
-		FlxG.switchState(new MainMenuState());
+		FlxG.switchState(new TitleState());
 	}
 
 }

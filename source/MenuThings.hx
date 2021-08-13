@@ -153,3 +153,88 @@ class MenuThings extends FlxSpriteGroup{
 		}
 	}
 }
+
+class TapeStuff extends FlxSpriteGroup{
+	//varrrsss
+	public var path:String = "";
+	public var leftkey:FlxSprite;
+	public var menu:FlxSprite;
+	public var playkey:FlxSprite;
+	public var rightkey:FlxSprite;
+	public var sp:FlxSprite;
+
+	//functionsss
+	public function new(x:Float,y:Float){
+
+		super(x,y);
+
+		path = Paths.getSparrowAtlas('8bit/tap_them','shared');
+
+		leftkey = new FlxSprite(x,y);
+		leftkey.frames = path;
+		leftkey.scale.set(2,2);
+		leftkey.animation.addByPrefix("selected","left0",24,false);
+		leftkey.animation.addByPrefix("unselected","unleft0",24,false);
+		leftkey.animation.addByPrefix("clicked","tapleft0",24,false);
+		leftkey.animation.play("unselected");
+		leftkey.antialiasing = false;
+		add(leftkey);
+
+		menu = new FlxSprite(x,y);
+		menu.frames = path;
+		menu.scale.set(2,2);
+		menu.animation.addByPrefix("selected","menu0",24,false);
+		menu.animation.addByPrefix("unselected","unmenu0",24,false);
+		menu.animation.addByPrefix("clicked","tapmenu0",24,false);
+		menu.animation.play("unselected");
+		menu.antialiasing = false;
+		add(menu);
+
+		playkey = new FlxSprite(x,y);
+		playkey.frames = path;
+		playkey.scale.set(2,2);
+		playkey.animation.addByPrefix("selected","paly0",24,false);
+		playkey.animation.addByPrefix("unselected","unplay0",24,false);
+		playkey.animation.addByPrefix("clicked","tapplay0",24,false);
+		playkey.animation.play("unselected");
+		playkey.antialiasing = false;
+		add(playkey);
+
+		rightkey = new FlxSprite(x,y);
+		rightkey.frames = path;
+		rightkey.scale.set(2,2);
+		rightkey.animation.addByPrefix("selected","right0",24,false);
+		rightkey.animation.addByPrefix("unselected","unright0",24,false);
+		rightkey.animation.addByPrefix("clicked","tapright0",24,false);
+		rightkey.animation.play("selected");
+		rightkey.antialiasing = false;
+		add(rightkey);
+
+		sp = new FlxSprite(x,y);
+		sp.frames = path;
+		sp.scale.set(2,2);
+		sp.animation.addByPrefix("selected","sp0",24,false);
+		sp.animation.addByPrefix("unselected","unsp0",24,false);
+		sp.animation.addByPrefix("clicked","tapsp0",24,false);
+		sp.animation.play("unselected");
+		sp.antialiasing = false;
+		add(sp);
+	}
+
+	public function playAnim(ID:Int,Anim:String){
+		switch (ID){
+			case 0:
+				leftkey.animation.play(Anim);
+			case 1:
+				menu.animation.play(Anim);
+			case 2:
+				playkey.animation.play(Anim);
+			case 3:
+				rightkey.animation.play(Anim);
+			case 4:
+				sp.animation.play(Anim);
+			default:
+				trace('Invalid Id');
+		}
+	}
+}

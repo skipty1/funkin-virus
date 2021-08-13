@@ -95,7 +95,7 @@ class DFJKOption extends Option
 		return "Key Bindings";
 	}
 }
-class MobileControls extends Option
+class mobileControls extends Option
 {
 	public function new(desc:String)
 	{
