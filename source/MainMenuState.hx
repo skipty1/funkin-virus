@@ -50,7 +50,7 @@ class MainMenuState extends MusicBeatState
 	public static var gameVer:String = "0.2.7.1";
 
 	var magenta:FlxSprite;
-	var camFollow:FlxObject;
+
 	public static var finishedFunnyMove:Bool = false;
 	public var triggered:Bool = false;
 
@@ -130,16 +130,11 @@ class MainMenuState extends MusicBeatState
 
 		add(madvirus);
 
-		camFollow = new FlxObject(0, 0, 1, 1);
-		add(camFollow);
-
 		// magenta.scrollFactor.set();
 
 		var tex = Paths.getSparrowAtlas('FNF_main_menu_assets');
 
 		firstStart = false;
-
-		FlxG.camera.follow(camFollow, null, 0.60 * (60 / FlxG.save.data.fpsCap));
 
 		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer +  (Main.watermarks ? " FUNKIN VIRUS - " + kadeEngineVer + " Kade Engine" : "FUNKIN VIRUS - PRIVATE DEMO"), 12);
 		versionShit.scrollFactor.set();
