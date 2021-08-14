@@ -36,6 +36,11 @@ class TapeState extends MusicBeatState{
 	public var Instructions:FlxText;
 	public var songID:String = "disco";
 	public var isPaused:Bool = false;
+	public var leftkey:FlxSprite;
+	public var menu:FlxSprite;
+	public var playkey:FlxSprite;
+	public var rightkey:FlxSprite;
+	public var sp:FlxSprite;
 
 	override function create(){
 		if (FlxG.sound.music.playing)
@@ -65,8 +70,55 @@ class TapeState extends MusicBeatState{
 		add(Playing);
 		Playing.visible = false;
 
-		TapeThings = new TapeStuff(0,0);
-		add(TapeThings);
+		leftkey = new FlxSprite(0,0);
+		leftkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
+		leftkey.scale.set(2,2);
+		leftkey.animation.addByPrefix("selected","left0",24,false);
+		leftkey.animation.addByPrefix("unselected","unleft0",24,false);
+		leftkey.animation.addByPrefix("clicked","tapleft0",24,false);
+		leftkey.animation.play("unselected");
+		leftkey.antialiasing = false;
+		add(leftkey);
+
+		menu = new FlxSprite(0,0);
+		menu.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
+		menu.scale.set(2,2);
+		menu.animation.addByPrefix("selected","menu0",24,false);
+		menu.animation.addByPrefix("unselected","unmenu0",24,false);
+		menu.animation.addByPrefix("clicked","tapmenu0",24,false);
+		menu.animation.play("unselected");
+		menu.antialiasing = false;
+		add(menu);
+
+		playkey = new FlxSprite(0,0);
+		playkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
+		playkey.scale.set(2,2);
+		playkey.animation.addByPrefix("selected","paly0",24,false);
+		playkey.animation.addByPrefix("unselected","unplay0",24,false);
+		playkey.animation.addByPrefix("clicked","tapplay0",24,false);
+		playkey.animation.play("unselected");
+		playkey.antialiasing = false;
+		add(playkey);
+
+		rightkey = new FlxSprite(0,0);
+		rightkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
+		rightkey.scale.set(2,2);
+		rightkey.animation.addByPrefix("selected","right0",24,false);
+		rightkey.animation.addByPrefix("unselected","unright0",24,false);
+		rightkey.animation.addByPrefix("clicked","tapright0",24,false);
+		rightkey.animation.play("selected");
+		rightkey.antialiasing = false;
+		add(rightkey);
+
+		sp = new FlxSprite(0,0);
+		sp.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
+		sp.scale.set(2,2);
+		sp.animation.addByPrefix("selected","sp0",24,false);
+		sp.animation.addByPrefix("unselected","unsp0",24,false);
+		sp.animation.addByPrefix("clicked","tapsp0",24,false);
+		sp.animation.play("unselected");
+		sp.antialiasing = false;
+		add(sp);
 
 		Instructions = new FlxText(0, 0, 0, "Click the buttons to navigate or play songs\nPress BACK to leave.\nPress P to Pause\n(C to Close Instructions)\n");
 		Instructions.screenCenter(X);
@@ -78,7 +130,7 @@ class TapeState extends MusicBeatState{
 
 		changeSong();
 
-		playSong("disco");
+		//playSong("disco");
 	}
 
 	override function update(elapsed:Float){
@@ -93,55 +145,55 @@ class TapeState extends MusicBeatState{
 			pauseSong();
 		}
 
-		if (FlxG.mouse.overlaps(TapeThings.leftkey) && FlxG.mouse.justPressed){
+		if (FlxG.mouse.overlaps(leftkey) && FlxG.mouse.justPressed){
 			changeSong(-1);
-			TapeThings.playAnim(0, "clicked");
+			playAnim(0, "clicked");
 		}
 
-		if (FlxG.mouse.overlaps(TapeThings.menu) && FlxG.mouse.justPressed ){
+		if (FlxG.mouse.overlaps(menu) && FlxG.mouse.justPressed ){
 			quit();
-			TapeThings.playAnim(1, "clicked");
+			playAnim(1, "clicked");
 		}
 
-		if (FlxG.mouse.overlaps(TapeThings.playkey) && FlxG.mouse.justPressed){
+		if (FlxG.mouse.overlaps(playkey) && FlxG.mouse.justPressed){
 			playSong(songID);
-			TapeThings.playAnim(2, "clicked");
+			playAnim(2, "clicked");
 		}
 
-		if (FlxG.mouse.overlaps(TapeThings.rightkey) && FlxG.mouse.justPressed){
+		if (FlxG.mouse.overlaps(rightkey) && FlxG.mouse.justPressed){
 			changeSong(1);
-			TapeThings.playAnim(3, "clicked");
+			playAnim(3, "clicked");
 		}
 
-		if (FlxG.mouse.overlaps(TapeThings.sp) && FlxG.mouse.justPressed){
-			TapeThings.playAnim(4, "clicked");
+		if (FlxG.mouse.overlaps(sp) && FlxG.mouse.justPressed){
+			playAnim(4, "clicked");
 			dontLeave();
 		}
 
-		if (FlxG.mouse.overlaps(TapeThings.sp))
-			TapeThings.playAnim(4, "selected");
+		if (FlxG.mouse.overlaps(sp))
+			playAnim(4, "selected");
 		else
-			TapeThings.playAnim(4, "unselected");
+			playAnim(4, "unselected");
 
-		if (FlxG.mouse.overlaps(TapeThings.rightkey))
-			TapeThings.playAnim(3, "selected");
+		if (FlxG.mouse.overlaps(rightkey))
+			playAnim(3, "selected");
 		else
-			TapeThings.playAnim(3, "unselected");
+			playAnim(3, "unselected");
 
-		if (FlxG.mouse.overlaps(TapeThings.playkey))
-			TapeThings.playAnim(2, "selected");
+		if (FlxG.mouse.overlaps(playkey))
+			playAnim(2, "selected");
 		else
-			TapeThings.playAnim(2, "unselected");
+			playAnim(2, "unselected");
 
-		if (FlxG.mouse.overlaps(TapeThings.menu))
-			TapeThings.playAnim(1, "selected");
+		if (FlxG.mouse.overlaps(menu))
+			playAnim(1, "selected");
 		else
-			TapeThings.playAnim(1, "unselected");
+			playAnim(1, "unselected");
 
-		if (FlxG.mouse.overlaps(TapeThings.leftkey))
-			TapeThings.playAnim(0, "selected");
+		if (FlxG.mouse.overlaps(leftkey))
+			playAnim(0, "selected");
 		else
-			TapeThings.playAnim(0, "unselected");
+			playAnim(0, "unselected");
 	}
 	var stupid:Int = 0;
 	function changeSong(?uh:Int = 0){
@@ -242,6 +294,22 @@ class TapeState extends MusicBeatState{
 					}
 				});
 			});
+		}
+	}
+	public function playAnim(ID:Int,Anim:String){
+		switch (ID){
+			case 0:
+				leftkey.animation.play(Anim);
+			case 1:
+				menu.animation.play(Anim);
+			case 2:
+				playkey.animation.play(Anim);
+			case 3:
+				rightkey.animation.play(Anim);
+			case 4:
+				sp.animation.play(Anim);
+			default:
+				trace('Invalid Id');
 		}
 	}
 }
