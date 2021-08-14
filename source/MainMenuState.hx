@@ -56,7 +56,7 @@ class MainMenuState extends MusicBeatState
 
 	var randomBg:Array<String> = ['8bit','red_eye','v8bit','SAND'];
 	var spike:FlxSprite;
-	var stupidItems:MenuThings;
+	
 
 	public var Achievement:FlxSprite;
 	public var Music:FlxSprite;
