@@ -259,7 +259,7 @@ class MainMenuState extends MusicBeatState
 		else
 			controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
 
-		FlxG.camera.fade(FlxColor.BLACK,0.7,true);
+		//FlxG.camera.fade(FlxColor.BLACK,0.7,true);
 
 		super.create();
 	}
