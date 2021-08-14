@@ -281,8 +281,10 @@ class MainMenuState extends MusicBeatState
 
 		if (!selectedSomethin)
 		{
-			if (FlxG.mouse.overlaps(spike) && FlxG.mouse.justPressed && ASS == 'SAND' && !FlxG.save.data.Spike)
-				medalPop('Spike');
+			if (spike != null && ASS == 'SAND'){
+				if (FlxG.mouse.overlaps(spike) && FlxG.mouse.justPressed && ASS == 'SAND' && !FlxG.save.data.Spike)
+					medalPop('Spike');
+			}
 //animation system for overlaps
 			if (FlxG.mouse.overlaps(Achievement)){
 				playAnimation(4, 'selected');
