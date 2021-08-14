@@ -210,7 +210,7 @@ class MainMenuState extends MusicBeatState
 			}
 //select system
 			if (FlxG.mouse.overlaps(stupidItems.Story) && FlxG.mouse.justPressed){
-				stupidItems.play(0, 'clicked');
+				stupidItems.playAnimation(0, 'clicked');
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				selectedSomethin = true;
 				FlxG.mouse.visible = false;
@@ -218,7 +218,7 @@ class MainMenuState extends MusicBeatState
 			}
 
 			if (FlxG.mouse.overlaps(stupidItems.Freeplay) && FlxG.mouse.justPressed && FlxG.save.data.storyBeated){
-				stupidItems.play(2, 'clicked');
+				stupidItems.playAnimation(2, 'clicked');
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				selectedSomethin = true;
 				FlxG.mouse.visible = false;
@@ -238,7 +238,7 @@ class MainMenuState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				selectedSomethin = true;
 				FlxG.mouse.visible = false;
-				FlxG.switchState(new TapeMenu());
+				FlxG.switchState(new TapeState());
 			}
 
 			if (FlxG.mouse.overlaps(stupidItems.Achievement) && FlxG.mouse.justPressed){

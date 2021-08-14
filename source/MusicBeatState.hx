@@ -234,7 +234,7 @@ class MusicBeatState extends FlxUIState
 					dontSpam = false;
 				});
 			}
-			if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.LEFT && downTwo && !downSpam){
+			if (FlxG.keys.justPressed.ANY && !FlxG.keys.justPressed.LEFT && downTwo && !dontSpam){
 			downTwo = false;
 			downOne = false;
 			upTwo = false;

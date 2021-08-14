@@ -16,7 +16,6 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
-
 class OldOptionsMenu extends MusicBeatState
 {
 	public static var instance:OldOptionsMenu;
@@ -29,7 +28,7 @@ class OldOptionsMenu extends MusicBeatState
 			#if desktop
 			new DFJKOption(controls),
 			#else
-			new mobileControls("Change your mobile controls"),
+			new MobileControls("Change your mobile controls"),
 			#end
 			new Judgement("Customize your Hit Timings. (LEFT or RIGHT)"),
 			new FPSCapOption("Change your FPS Cap."),

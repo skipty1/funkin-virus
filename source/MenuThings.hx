@@ -11,6 +11,7 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxMath;
 import flixel.util.FlxTimer;
+import flixel.util.FlxColor;
 import Paths;
 
 using StringTools;
@@ -26,7 +27,7 @@ class MenuThings extends FlxSpriteGroup{
 	public var Iron:FlxSprite;
 	public var Rainbow:FlxSprite;
 	public var Story:FlxSprite;
-	public var path:String = "";
+	public var pathOne:String = "";
 	public var Xshit:Float = 0;
 	public var Yshit:Float = 0;
 //functionsss
@@ -34,10 +35,10 @@ class MenuThings extends FlxSpriteGroup{
 		super(offsetX, offsetY);
 		Xshit = offsetX;
 		Yshit = offsetY;
-		path = Paths.getSparrowAtlas('8bit/MUNE','shared');
+		//pathOne = Paths.getSparrowAtlas('8bit/MUNE','shared');
 
 		Achievement = new FlxSprite(Xshit, Yshit);
-		Achievement.frames = path;
+		Achievement.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');;
 		Achievement.animation.addByPrefix('selected','Achievement0',24,false);
 		Achievement.animation.addByPrefix('unselected','unAchievement0',24,false);
 		Achievement.scale.set(2,2);
@@ -46,7 +47,7 @@ class MenuThings extends FlxSpriteGroup{
 		add(Achievement);
 
 		Music = new FlxSprite(Xshit,Yshit);
-		Music.frames = path;
+		Music.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');;
 		Music.animation.addByPrefix('selected','MUSIC',24,false);
 		Music.animation.addByPrefix('unselected','UNMUSIC',24,false);
 		Music.scale.set(2,2);
@@ -55,7 +56,7 @@ class MenuThings extends FlxSpriteGroup{
 		add(Music);
 
 		Bestplayer = new FlxSprite(Xshit,Yshit);
-		Bestplayer.frames = path;
+		Bestplayer.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');;
 		Bestplayer.animation.addByPrefix('mmmhi','best player',24,false);
 		Bestplayer.scale.set(2,2);
 		Bestplayer.antialiasing = false;
@@ -68,7 +69,7 @@ class MenuThings extends FlxSpriteGroup{
 
 
 		Freeplay = new FlxSprite(Xshit,Yshit);
-		Freeplay.frames = path;
+		Freeplay.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');;
 		Freeplay.animation.addByPrefix('selected','freepaly',24,false);
 		Freeplay.animation.addByPrefix('unselected','unfreeplay',24,false);
 		Freeplay.animation.addByPrefix('clicked','tapfreeplay0',24,false);
@@ -82,7 +83,7 @@ class MenuThings extends FlxSpriteGroup{
 			Freeplay.color = FlxColor.fromHSL(Freeplay.color.hue, Freeplay.color.saturation, 0.7, 1);
 
 		Gold = new FlxSprite(Xshit,Yshit);
-		Gold.frames = path;
+		Gold.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');;
 		Gold.animation.addByPrefix('mmmhi','gold0',24,false);
 		Gold.scale.set(2,2);
 		Gold.antialiasing = false;
@@ -94,7 +95,7 @@ class MenuThings extends FlxSpriteGroup{
 			Gold.color = FlxColor.fromHSL(Gold.color.hue, Gold.color.saturation, 0.7, 1);
 
 		Install = new FlxSprite(Xshit,Yshit);
-		Install.frames = path;
+		Install.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');;
 		Install.animation.addByPrefix('selected','install0',24,false);
 		Install.animation.addByPrefix('unselected','uninstall0',24,false);
 		Install.scale.set(2,2);
@@ -103,7 +104,7 @@ class MenuThings extends FlxSpriteGroup{
 		add(Install);
 
 		Iron = new FlxSprite(Xshit,Yshit);
-		Iron.frames = path;
+		Iron.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');;
 		Iron.animation.addByPrefix('mmmhi','iron0',24,false);
 		Iron.scale.set(2,2);
 		Iron.antialiasing = false;
@@ -115,7 +116,7 @@ class MenuThings extends FlxSpriteGroup{
 			Iron.color = FlxColor.fromHSL(Iron.color.hue, Iron.color.saturation, 0.7, 1);
 
 		Rainbow = new FlxSprite(Xshit,Yshit);
-		Rainbow.frames = path;
+		Rainbow.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');;
 		Rainbow.animation.addByPrefix('mmmhi','rainbow0',24,false);
 		Rainbow.scale.set(2,2);
 		Rainbow.antialiasing = false;
@@ -127,7 +128,7 @@ class MenuThings extends FlxSpriteGroup{
 			Rainbow.color = FlxColor.fromHSL(Rainbow.color.hue, Rainbow.color.saturation, 0.7, 1);
 
 		Story = new FlxSprite(Xshit,Yshit);
-		Story.frames = path;
+		Story.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');;
 		Story.animation.addByPrefix('selected','story0',24,false);
 		Story.animation.addByPrefix('unselected','unstory0',24,false);
 		Story.animation.addByPrefix('clicked','tapstory0',24,false);
@@ -156,7 +157,7 @@ class MenuThings extends FlxSpriteGroup{
 
 class TapeStuff extends FlxSpriteGroup{
 	//varrrsss
-	public var path:String = "";
+	public var pathTwo:String = "";
 	public var leftkey:FlxSprite;
 	public var menu:FlxSprite;
 	public var playkey:FlxSprite;
@@ -168,10 +169,10 @@ class TapeStuff extends FlxSpriteGroup{
 
 		super(x,y);
 
-		path = Paths.getSparrowAtlas('8bit/tap_them','shared');
+		//pathTwo = Paths.getSparrowAtlas('8bit/tap_them','shared');
 
 		leftkey = new FlxSprite(x,y);
-		leftkey.frames = path;
+		leftkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
 		leftkey.scale.set(2,2);
 		leftkey.animation.addByPrefix("selected","left0",24,false);
 		leftkey.animation.addByPrefix("unselected","unleft0",24,false);
@@ -181,7 +182,7 @@ class TapeStuff extends FlxSpriteGroup{
 		add(leftkey);
 
 		menu = new FlxSprite(x,y);
-		menu.frames = path;
+		menu.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
 		menu.scale.set(2,2);
 		menu.animation.addByPrefix("selected","menu0",24,false);
 		menu.animation.addByPrefix("unselected","unmenu0",24,false);
@@ -191,7 +192,7 @@ class TapeStuff extends FlxSpriteGroup{
 		add(menu);
 
 		playkey = new FlxSprite(x,y);
-		playkey.frames = path;
+		playkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
 		playkey.scale.set(2,2);
 		playkey.animation.addByPrefix("selected","paly0",24,false);
 		playkey.animation.addByPrefix("unselected","unplay0",24,false);
@@ -201,7 +202,7 @@ class TapeStuff extends FlxSpriteGroup{
 		add(playkey);
 
 		rightkey = new FlxSprite(x,y);
-		rightkey.frames = path;
+		rightkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
 		rightkey.scale.set(2,2);
 		rightkey.animation.addByPrefix("selected","right0",24,false);
 		rightkey.animation.addByPrefix("unselected","unright0",24,false);
@@ -211,7 +212,7 @@ class TapeStuff extends FlxSpriteGroup{
 		add(rightkey);
 
 		sp = new FlxSprite(x,y);
-		sp.frames = path;
+		sp.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
 		sp.scale.set(2,2);
 		sp.animation.addByPrefix("selected","sp0",24,false);
 		sp.animation.addByPrefix("unselected","unsp0",24,false);

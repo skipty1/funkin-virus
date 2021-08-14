@@ -3245,7 +3245,7 @@ class PlayState extends MusicBeatState
 			MusicBeatState.songEnded = true;
 			MusicBeatState.endedSongs += 1;
 			if (MusicBeatState.endedSongs == 5)
-				storyCompleted = true;
+				MusicBeatState.storyCompleted = true;
 		}
 
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
