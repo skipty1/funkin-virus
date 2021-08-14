@@ -1,6 +1,6 @@
 package;
 
-import MenuThings;
+//import MenuThings;
 import flixel.input.gamepad.FlxGamepad;
 import Controls.KeyboardScheme;
 import flixel.FlxG;
