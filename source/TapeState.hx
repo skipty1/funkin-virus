@@ -1,6 +1,6 @@
 package;
 
-import MenuThings;
+//import MenuThings;
 import flixel.input.gamepad.FlxGamepad;
 import Controls.KeyboardScheme;
 import flixel.FlxG;
@@ -29,7 +29,7 @@ import Discord.DiscordClient;
 using StringTools;
 
 class TapeState extends MusicBeatState{
-	public var TapeThings:TapeStuff;
+
 	public var rareSounds:Array<String> = ["starr01","patient08"];
 	public var songs:Array<String> = ["D1SC0","INTOXIC8","SALOON8"];
 	public var Playing:FlxSprite;
