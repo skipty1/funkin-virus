@@ -58,6 +58,10 @@ class MainMenuState extends MusicBeatState
 	var spike:FlxSprite;
 	var stupidItems:MenuThings;
 
+	public var Achievement:FlxSprite;
+	public var Music:FlxSprite;
+	public var Bestplayer:FlxSprite;
+
 	override function create()
 	{
 		#if polymod
@@ -120,6 +124,39 @@ class MainMenuState extends MusicBeatState
 		}
 		stupidItems = new MenuThings(0,0);
 		add(stupidItems);
+
+		Achievement = new FlxSprite(Xshit, Yshit);
+		Achievement.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');;
+		Achievement.animation.addByPrefix('selected','Achievement0',24,false);
+		Achievement.animation.addByPrefix('unselected','unAchievement0',24,false);
+		Achievement.scale.set(2,2);
+		Achievement.antialiasing = false;
+		Achievement.animation.play('unselected');
+		add(Achievement);
+
+		Music = new FlxSprite(Xshit,Yshit);
+		Music.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');;
+		Music.animation.addByPrefix('selected','MUSIC',24,false);
+		Music.animation.addByPrefix('unselected','UNMUSIC',24,false);
+		Music.scale.set(2,2);
+		Music.antialiasing = false;
+		Music.animation.play('unselected');
+		add(Music);
+
+		Bestplayer = new FlxSprite(Xshit,Yshit);
+		Bestplayer.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');;
+		Bestplayer.animation.addByPrefix('mmmhi','best player',24,false);
+		Bestplayer.scale.set(2,2);
+		Bestplayer.antialiasing = false;
+		Bestplayer.animation.play('mmmhi');
+		add(Bestplayer);
+		if (FlxG.save.data.BestTrophy)
+			Bestplayer.color = FlxColor.fromHSL(Bestplayer.color.hue, Bestplayer.color.saturation, 1, 1);
+		else
+			Bestplayer.color = FlxColor.fromHSL(Bestplayer.color.hue, Bestplayer.color.saturation, 0.7, 1);
+
+
+
 		var madvirus:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('8bit/MVAT','shared'));
 		madvirus.scrollFactor.x = 0;
 		madvirus.scrollFactor.y = 0.10;
