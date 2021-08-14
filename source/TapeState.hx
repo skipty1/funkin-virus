@@ -24,7 +24,7 @@ import sys.thread.Thread;
 #if windows
 import Discord.DiscordClient;
 #end
-import MenuThings.TapeStuff;
+//import MenuThings.TapeStuff;
 
 using StringTools;
 
