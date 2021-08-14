@@ -71,7 +71,7 @@ class TapeState extends MusicBeatState{
 		Playing.visible = false;
 
 		leftkey = new FlxSprite(0,0);
-		leftkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
+		leftkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		leftkey.scale.set(2,2);
 		leftkey.animation.addByPrefix("selected","left0",24,false);
 		leftkey.animation.addByPrefix("unselected","unleft0",24,false);
@@ -81,7 +81,7 @@ class TapeState extends MusicBeatState{
 		add(leftkey);
 
 		menu = new FlxSprite(0,0);
-		menu.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
+		menu.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		menu.scale.set(2,2);
 		menu.animation.addByPrefix("selected","menu0",24,false);
 		menu.animation.addByPrefix("unselected","unmenu0",24,false);
@@ -91,7 +91,7 @@ class TapeState extends MusicBeatState{
 		add(menu);
 
 		playkey = new FlxSprite(0,0);
-		playkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
+		playkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		playkey.scale.set(2,2);
 		playkey.animation.addByPrefix("selected","paly0",24,false);
 		playkey.animation.addByPrefix("unselected","unplay0",24,false);
@@ -101,7 +101,7 @@ class TapeState extends MusicBeatState{
 		add(playkey);
 
 		rightkey = new FlxSprite(0,0);
-		rightkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
+		rightkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		rightkey.scale.set(2,2);
 		rightkey.animation.addByPrefix("selected","right0",24,false);
 		rightkey.animation.addByPrefix("unselected","unright0",24,false);
@@ -111,7 +111,7 @@ class TapeState extends MusicBeatState{
 		add(rightkey);
 
 		sp = new FlxSprite(0,0);
-		sp.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');;
+		sp.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		sp.scale.set(2,2);
 		sp.animation.addByPrefix("selected","sp0",24,false);
 		sp.animation.addByPrefix("unselected","unsp0",24,false);
