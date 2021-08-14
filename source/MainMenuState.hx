@@ -130,8 +130,6 @@ class MainMenuState extends MusicBeatState
 			spike.antialiasing = false;
 			add(spike);
 		}
-		stupidItems = new MenuThings(0,0);
-		add(stupidItems);
 
 		Achievement = new FlxSprite(Xshit, Yshit);
 		Achievement.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');;
