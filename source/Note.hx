@@ -17,7 +17,7 @@ class Note extends FlxSprite
 {
 	public var strumTime:Float = 0;
 	public var baseStrum:Float = 0;
-	
+	public var typeNote:String = "normal";
 	public var rStrumTime:Float = 0;
 
 	public var mustPress:Bool = false;
@@ -61,7 +61,7 @@ class Note extends FlxSprite
 
 	public var children:Array<Note> = [];
 
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inCharter:Bool = false)
+	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inCharter:Bool = false, ?typeNote:String = "normal")
 	{
 		super();
 
@@ -70,6 +70,7 @@ class Note extends FlxSprite
 
 		this.prevNote = prevNote;
 		isSustainNote = sustainNote;
+		this.typeNote = typeNote;
 
 		x += 50;
 		// MAKE SURE ITS DEFINITELY OFF SCREEN?
@@ -133,15 +134,27 @@ class Note extends FlxSprite
 			switch (noteTypeCheck)
 			{
 				case 'pixel':
-					loadGraphic(Paths.image('8bit/arrows-pixels', 'shared'), true, 17, 17);
-					if (isSustainNote)
-						loadGraphic(Paths.image('weeb/pixelUI/arrowEnds', 'week6'), true, 7, 6);
+					var daPath:String;
+					switch (typeNote){
+						case "coins":
+							daPath = "8bit/COIN";
+						default:
+							daPath = "8bit/arrows-pixel";
+					}
 
-					for (i in 0...4)
-					{
-						animation.add(dataColor[i] + 'Scroll', [i + 4]); // Normal notes
-						animation.add(dataColor[i] + 'hold', [i]); // Holds
-						animation.add(dataColor[i] + 'holdend', [i + 4]); // Tails
+					switch (typeNote){
+						case "normal":
+							loadGraphic(Paths.image('8bit/arrows-pixels', 'shared'), true, 17, 17);
+							if (isSustainNote)
+								loadGraphic(Paths.image('weeb/pixelUI/arrowEnds', 'week6'), true, 7, 6);
+
+							for (i in 0...4)
+							{
+								animation.add(dataColor[i] + 'Scroll', [i + 4]); // Normal notes
+								animation.add(dataColor[i] + 'hold', [i]); // Holds
+								animation.add(dataColor[i] + 'holdend', [i + 4]); // Tails
+							}
+						case "coins":
 					}
 
 					setGraphicSize(Std.int(width * PlayState.daPixelZoom));
