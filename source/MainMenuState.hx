@@ -121,11 +121,11 @@ class MainMenuState extends MusicBeatState
 		bg.antialiasing = false;
 		add(bg);
 		if (ASS == 'SAND'){
-			var sentry:FlxSprite = new FlxSprite(-100,600).loadGraphic(Paths.image('8bit/MINI_SENTRY'));
+			var sentry:FlxSprite = new FlxSprite(-100,600).loadGraphic(Paths.image('8bit/MINI_SENTRY','shared'));
 			sentry.scale.set(2,2);
 			sentry.antialiasing = false;
 			add(sentry);
-			spike = new FlxSprite(-100,600).loadGraphic(Paths.image('8bit/SPIKE'));
+			spike = new FlxSprite(-100,600).loadGraphic(Paths.image('8bit/SPIKE','shared'));
 			spike.scale.set(2,2);
 			spike.antialiasing = false;
 			add(spike);
