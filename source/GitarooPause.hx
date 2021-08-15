@@ -77,6 +77,7 @@ class GitarooPause extends MusicBeatState
 		{
 			if (replaySelect)
 			{
+				PlayState.SONG = Song.loadFromJson('intertwined','intertwined');
 				FlxG.switchState(new PlayState());
 			}
 			else
