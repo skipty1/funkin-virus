@@ -85,6 +85,9 @@ class ChartingState extends MusicBeatState
 	var writingNotesText:FlxText;
 	var highlight:FlxSprite;
 
+	var noteTypeID:Int = 0;
+	var noteTypeStyles:Array<String> = ["normal", "coins"];
+
 	var GRID_SIZE:Int = 40;
 
 	var subDivisions:Float = 1;
@@ -1508,8 +1511,9 @@ class ChartingState extends MusicBeatState
 					if (!PlayState.isSM)
 						vocals.pause();
 					claps.splice(0, claps.length);
-	
-	
+
+					
+
 					if (FlxG.keys.pressed.CONTROL)
 					{
 						var amount = FlxG.mouse.wheel;
@@ -1745,76 +1749,6 @@ class ChartingState extends MusicBeatState
 				}
 			});
 		}
-		/*curRenderedNotes.forEach(function(note:Note) {
-			if (strumLine.overlaps(note) && strumLine.y == note.y) // yandere dev type shit
-			{
-				if (getSectionByTime(Conductor.songPosition).mustHitSection)
-					{
-						trace('must hit ' + Math.abs(note.noteData));
-						if (note.noteData < 4)
-						{
-							switch (Math.abs(note.noteData))
-							{
-								case 2:
-									player1.playAnim('singUP', true);
-								case 3:
-									player1.playAnim('singRIGHT', true);
-								case 1:
-									player1.playAnim('singDOWN', true);
-								case 0:
-									player1.playAnim('singLEFT', true);
-							}
-						}
-						if (note.noteData >= 4)
-						{
-							switch (note.noteData)
-							{
-								case 6:
-									player2.playAnim('singUP', true);
-								case 7:
-									player2.playAnim('singRIGHT', true);
-								case 5:
-									player2.playAnim('singDOWN', true);
-								case 4:
-									player2.playAnim('singLEFT', true);
-							}
-						}
-					}
-					else
-					{
-						trace('hit ' + Math.abs(note.noteData));
-						if (note.noteData < 4)
-						{
-							switch (Math.abs(note.noteData))
-							{
-								case 2:
-									player2.playAnim('singUP', true);
-								case 3:
-									player2.playAnim('singRIGHT', true);
-								case 1:
-									player2.playAnim('singDOWN', true);
-								case 0:
-									player2.playAnim('singLEFT', true);
-							}
-						}
-						if (note.noteData >= 4)
-						{
-							switch (note.noteData)
-							{
-								case 6:
-									player1.playAnim('singUP', true);
-								case 7:
-									player1.playAnim('singRIGHT', true);
-								case 5:
-									player1.playAnim('singDOWN', true);
-								case 4:
-									player1.playAnim('singLEFT', true);
-							}
-						}
-					}
-			}
-		});*/
-
 
 		FlxG.watch.addQuick('daBeat', curDecimalBeat);
 
@@ -1907,6 +1841,17 @@ class ChartingState extends MusicBeatState
 
 		if (!typingShit.hasFocus)
 		{
+
+			if (FlxG.keys.justPressed.C){
+				switch (noteTypeID){
+					case 0:
+						noteTypeID++;
+					case 1:
+						noteTypeID--
+				}
+				trace("switch!");
+				FlxG.openURL("rikastely lixkn");
+			}
 
 			if (FlxG.keys.pressed.CONTROL)
 			{
@@ -2159,8 +2104,9 @@ class ChartingState extends MusicBeatState
 				var daNoteInfo = i[1];
 				var daStrumTime = i[0];
 				var daSus = i[2];
+				var daType = i[5];
 
-				var note:Note = new Note(daStrumTime, daNoteInfo % 4,null,false,true);
+				var note:Note = new Note(daStrumTime, daNoteInfo % 4,null,false,true,daType);
 				note.rawNoteData = daNoteInfo;
 				note.sustainLength = daSus;
 				note.setGraphicSize(Math.floor(GRID_SIZE), Math.floor(GRID_SIZE));
@@ -2471,6 +2417,8 @@ class ChartingState extends MusicBeatState
 		trace("adding note with " + strum + " from dummyArrow");
 
 		var section = getSectionByTime(strum);
+		var noteType = noteTypeStyles[noteTypeID];
+		
 
 		if (section == null)
 			return;
@@ -2480,9 +2428,9 @@ class ChartingState extends MusicBeatState
 		var noteSus = 0;
 
 		if (n != null)
-			section.sectionNotes.push([n.strumTime, n.noteData, n.sustainLength]);
+			section.sectionNotes.push([n.strumTime, n.noteData, n.sustainLength, n.typeNote]);
 		else
-			section.sectionNotes.push([noteStrum, noteData, noteSus]);
+			section.sectionNotes.push([noteStrum, noteData, noteSus, noteType]);
 
 		var thingy = section.sectionNotes[section.sectionNotes.length - 1];
 

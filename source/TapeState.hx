@@ -70,7 +70,7 @@ class TapeState extends MusicBeatState{
 		add(Playing);
 		Playing.visible = false;
 
-		leftkey = new FlxSprite(0,0);
+		leftkey = new FlxSprite(-100);
 		leftkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		leftkey.scale.set(2,2);
 		leftkey.animation.addByPrefix("selected","left0",24,false);
@@ -80,7 +80,7 @@ class TapeState extends MusicBeatState{
 		leftkey.antialiasing = false;
 		add(leftkey);
 
-		menu = new FlxSprite(0,0);
+		menu = new FlxSprite(-100);
 		menu.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		menu.scale.set(2,2);
 		menu.animation.addByPrefix("selected","menu0",24,false);
@@ -90,7 +90,7 @@ class TapeState extends MusicBeatState{
 		menu.antialiasing = false;
 		add(menu);
 
-		playkey = new FlxSprite(0,0);
+		playkey = new FlxSprite(-100);
 		playkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		playkey.scale.set(2,2);
 		playkey.animation.addByPrefix("selected","paly0",24,false);
@@ -100,7 +100,7 @@ class TapeState extends MusicBeatState{
 		playkey.antialiasing = false;
 		add(playkey);
 
-		rightkey = new FlxSprite(0,0);
+		rightkey = new FlxSprite(-100);
 		rightkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		rightkey.scale.set(2,2);
 		rightkey.animation.addByPrefix("selected","right0",24,false);
@@ -110,7 +110,7 @@ class TapeState extends MusicBeatState{
 		rightkey.antialiasing = false;
 		add(rightkey);
 
-		sp = new FlxSprite(0,0);
+		sp = new FlxSprite(-100);
 		sp.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		sp.scale.set(2,2);
 		sp.animation.addByPrefix("selected","sp0",24,false);
@@ -120,7 +120,7 @@ class TapeState extends MusicBeatState{
 		sp.antialiasing = false;
 		add(sp);
 
-		Instructions = new FlxText(0, 0, 0, "Click the buttons to navigate or play songs\nPress BACK to leave.\nPress P to Pause\n(C to Close Instructions)\n");
+		Instructions = new FlxText(0, 0, 0, "Click the buttons to navigate or play songs\nPress BACK to leave.\nPress P to Pause\n(C to Close Instructions)\n", 32);
 		Instructions.screenCenter(X);
 		Instructions.screenCenter(Y);
 		Instructions.alignment = CENTER;
