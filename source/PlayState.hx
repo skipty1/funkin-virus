@@ -4462,6 +4462,7 @@ class PlayState extends MusicBeatState
 //shortcut #5
 		var shit:Int = FlxG.random.int(-900, 700);
 		var crap:Int = FlxG.random.int(-500, 400);
+		var songLowercase = SONG.song.toLowerCase();
 		switch (curStage){
 			case 'void':
 				floatyBitch();
