@@ -29,6 +29,9 @@ using StringTools;
 class FreeplayState extends MusicBeatState
 {
 	public static var songs:Array<SongMetadata> = [];
+	//var daSongs:Array<
+	var daBg:FlxSprite;
+	var daFlicker:FlxSprite;
 
 	var selector:FlxText;
 	public static var curSelected:Int = 0;
@@ -66,6 +69,7 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('data/freeplaySonglist'));
 
 		//var diffList = "";
@@ -150,22 +154,19 @@ class FreeplayState extends MusicBeatState
 
 		// LOAD CHARACTERS
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('8bit/arcade2','shared'));
-		var bg2:FlxSprite = new FlxSprite().loadGraphic(Paths.image('8bit/arcade1','shared'));
-		if(FlxG.save.data.antialiasing)
-			{
-				bg.antialiasing = true;
-			}
-		bg.setGraphicSize(Std.int(bg.width * 1.2));
-		bg.updateHitbox();
-		add(bg);
+		//var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('8bit/arcade2','shared'));
+		//var bg2:FlxSprite = new FlxSprite().loadGraphic(Paths.image('8bit/arcade1','shared'));
 
-		grpSongs = new FlxTypedGroup<Alphabet>();
+		//bg.setGraphicSize(Std.int(bg.width * 1.2));
+		//bg.updateHitbox();
+		//add(bg);
+
+		grpSongs = new FlxTypedGroup<FlxSprite>();
 		add(grpSongs);
 
 		for (i in 0...songs.length)
 		{
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false, true);
+			/*var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false, true);
 			songText.isMenuItem = true;
 			songText.targetY = i;
 			grpSongs.add(songText);
@@ -175,15 +176,44 @@ class FreeplayState extends MusicBeatState
 
 			// using a FlxGroup is too much fuss!
 			iconArray.push(icon);
-			add(icon);
+			add(icon);*/
+
+			var ThefuckingSongSpr = new FlxSprite(0, (70 * i) + 30);
+			ThefuckingSongSpr.frames = Paths.getSparrowAtlas("8bit/songs", "shared");
+			ThefuckingSongSpr.scale.set(2,2);
+			ThefuckingSongSpr.animation.addByPrefix("h", songs[i].songName + "0");
+			ThefuckingSongSpr.animation.play("h");
+			ThefuckingSongSpr.antialiasing = false;
+			grpSongs.add(ThefuckingSongSpr);
 
 			// songText.x += 40;
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 			// songText.screenCenter(X);
 		}
-		bg2.setGraphicSize(Std.int(bg2.width * 1.2));
-		bg2.updateHitbox();
-		add(bg2);
+
+		daBg = new FlxSprite(0,0).loadGraphic(Paths.image("8bit/game_room", "shared"));
+		daBg.scale.set(2,2);
+		
+		daBg.antialiasing = true;
+		add(daBg);
+		daFlicker = new FlxSprite(0,0).loadGraphic(Paths.image("8bit/game_room_blu", "shared"));
+		daFlicker.scale.set(2,2);
+		daFlicker.antialiasing = true;
+		add(daFlicker);
+		daFlicker.visible = false;
+	
+		daBf = new FlxSprite(0,100).loadGraphic(Paths.image("8bit/bf","shared"));
+		daBf.scale.set(2,2);
+		daBf.antialiasing = true;
+		add(daBf);
+		FlxTween.tween(daBf, {y: 0}, 0.6);
+	
+		daBfFlicker = new FlxSprite(0,0).loadGraphic(Paths.image("8bit/bf","shared"));
+		daBfFlicker.scale.set(2,2);
+		daBfFlicker.antialiasing = true;
+		add(daBfFlicker);
+		daBfFlicker.visible = false;
+
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		// scoreText.autoSize = false;
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);

@@ -104,7 +104,7 @@ class TitleState extends MusicBeatState
 
 		logoBl = new FlxSprite(-150, -100);
 		logoBl.x += 200;
-		logoBl.y += 400;
+		logoBl.y += 700;
 		logoBl.scale.set(2,2);
 		logoBl.frames = Paths.getSparrowAtlas('8bit/LOGO','shared');
 		logoBl.antialiasing = false;
@@ -283,11 +283,11 @@ class TitleState extends MusicBeatState
 						trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
 						OutdatedSubState.needVer = returnedData[0];
 						OutdatedSubState.currChanges = returnedData[1];
-						FlxG.switchState(new MainMenuState());
+						FlxG.switchState(new StoryMenuState());
 					}
 					else
 					{
-						FlxG.switchState(new MainMenuState());
+						FlxG.switchState(new StoryMenuState());
 					}
 				}
 				
