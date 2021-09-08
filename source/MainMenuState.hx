@@ -324,6 +324,7 @@ class MainMenuState extends MusicBeatState
 				playAnimation(4, 'unselected');
 			}
 
+			
 			Gold.x = FlxG.mouse.x;
 			trace(Gold.x);
 
