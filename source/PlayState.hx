@@ -4492,7 +4492,7 @@ class PlayState extends MusicBeatState
 										SONG.forceDad = true;
 									case 1153:
 										defaultCamZoom -= 0.3;
-										forceDad = false;
+										SONG.forceDad = false;
 									case 1281:
 										FlxTween.color(boyfriend, 3, FlxColor.fromRGB(196, 200, 207), FlxColor.fromRGB(0, 200, 255));
 										FlxTween.color(gf, 3, FlxColor.fromRGB(196, 200, 207), FlxColor.fromRGB(252, 3, 90));
