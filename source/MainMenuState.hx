@@ -270,7 +270,7 @@ class MainMenuState extends MusicBeatState
 		hitboxAchievement = new FlxObject(1100, 660, 136, 136);
 		add(hitboxAchievement);
 
-		hitboxAchievement.visble = false;
+		hitboxAchievement.visible = false;
 
 		// magenta.scrollFactor.set();
 
