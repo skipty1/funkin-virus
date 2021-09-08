@@ -33,6 +33,10 @@ typedef SwagSong =
 	var needsVoices:Bool;
 	var speed:Float;
 
+	public var forceDad:Bool = false;
+	public var forceBf:Bool = false;
+	public var forceMiddle:Bool = false;
+
 	var player1:String;
 	var player2:String;
 	var gfVersion:String;
@@ -50,10 +54,6 @@ class Song
 	public var needsVoices:Bool = true;
 	public var eventObjects:Array<Event>;
 	public var speed:Float = 1;
-
-	public var forceDad:Bool = false;
-	public var forceBf:Bool = false;
-	public var forceMiddle:Bool = false;
 
 	public var player1:String = 'bf';
 	public var player2:String = 'dad';
