@@ -178,7 +178,7 @@ class MainMenuState extends MusicBeatState
 		else
 			Bestplayer.color = FlxColor.fromHSL(Bestplayer.color.hue, Bestplayer.color.saturation, 0.7, 1);
 
-		Freeplay = new FlxSprite(1100 - moreX + 90,320 - Yshit + 20);
+		Freeplay = new FlxSprite(1100 - moreX + 70,320 - Yshit - 20);
 		Freeplay.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
 		Freeplay.animation.addByPrefix('selected','freepaly0',24,false);
 		Freeplay.animation.addByPrefix('unselected','unfreeplay0',24,false);
@@ -323,6 +323,9 @@ class MainMenuState extends MusicBeatState
 			}else{
 				playAnimation(4, 'unselected');
 			}
+
+			Gold.x = FlxG.mouse.x;
+			trace(Gold.x);
 
 			if (FlxG.mouse.overlaps(hitboxMusic)){
 				playAnimation(3, 'selected');
