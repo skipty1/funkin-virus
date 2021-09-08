@@ -4810,7 +4810,7 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(songPosBG, {y: FlxG.height * 0.9 + 45}, 0.5);
 				FlxTween.tween(healthBarBG, {y: 50}, 0.5);
 				if (FlxG.save.data.watermark)
-					FlxTween.tween(kadeEngineWatermark, {y: FlxG.height * 0.9 + 45;}, 0.5);
+					FlxTween.tween(kadeEngineWatermark, {y: FlxG.height * 0.9 + 45}, 0.5);
 				if (FlxG.save.data.botplay)
 					FlxTween.tween(botPlayState, {y: -100}, 0.5);
 				notes.sort(FlxSort.byY, FlxSort.DESCENDING);
