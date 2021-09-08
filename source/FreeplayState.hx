@@ -511,22 +511,15 @@ class FreeplayState extends MusicBeatState
 
 		var bullShit:Int = 0;
 
-		for (i in 0...iconArray.length)
-		{
-			iconArray[i].alpha = 0.6;
-		}
-
-		iconArray[curSelected].alpha = 1;
-
 		for (item in grpSongs.members)
 		{
-			item.targetY = bullShit - curSelected;
+			item.y = bullShit - curSelected;
 			bullShit++;
 
 			item.alpha = 0.6;
 			// item.setGraphicSize(Std.int(item.width * 0.8));
 
-			if (item.targetY == 0)
+			if (item.y == 0)
 			{
 				item.alpha = 1;
 				// item.setGraphicSize(Std.int(item.width));
