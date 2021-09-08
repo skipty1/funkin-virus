@@ -33,9 +33,9 @@ typedef SwagSong =
 	var needsVoices:Bool;
 	var speed:Float;
 
-	public var forceDad:Bool = false;
-	public var forceBf:Bool = false;
-	public var forceMiddle:Bool = false;
+	public var forceDad:Bool;
+	public var forceBf:Bool;
+	public var forceMiddle:Bool;
 
 	var player1:String;
 	var player2:String;
