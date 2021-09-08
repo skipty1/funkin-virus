@@ -32,6 +32,8 @@ class FreeplayState extends MusicBeatState
 	//var daSongs:Array<
 	var daBg:FlxSprite;
 	var daFlicker:FlxSprite;
+	var daBf:FlxSprite;
+	var daBfFlicker:FlxSprite;
 
 	var selector:FlxText;
 	public static var curSelected:Int = 0;
@@ -46,7 +48,7 @@ class FreeplayState extends MusicBeatState
 	var intendedScore:Int = 0;
 	var combo:String = '';
 
-	private var grpSongs:FlxTypedGroup<Alphabet>;
+	private var grpSongs:FlxTypedGroup<FlxSprite>;
 	private var curPlaying:Bool = false;
 
 	private var iconArray:Array<HealthIcon> = [];
