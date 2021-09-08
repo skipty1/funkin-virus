@@ -1178,7 +1178,7 @@ class PlayState extends MusicBeatState
 			case 'virus':
 				color1 = FlxColor.fromRGB(0, 255, 81);
 			case 'bit':
-				color1 = 0xFF00E7FF:
+				color1 = 0xFF00E7FF;
 			default:
 				color1 = FlxColor.RED;
 		}
