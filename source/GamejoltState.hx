@@ -26,6 +26,8 @@ import sys.thread.Thread;
 import Discord.DiscordClient;
 #end
 
+@:file("myKey.privatekey") class MyKey extends ByteArray { }
+
 class GamejoltState extends MusicBeatState{
 	var chooseName:FlxText;
 
@@ -87,6 +89,11 @@ class GamejoltState extends MusicBeatState{
 		name.maxLength = 31;
 		name.lines = 1;
 		name.caretColor = 0xFFFFFFFF;
+
+		// gamejolt shit.
+		var bytearray = new MyKey();
+		var keystring = bytearray.readUTFBytes(bytearray.length);
+		var gameid = 643489;
 
 		//doTheFlick();
 
