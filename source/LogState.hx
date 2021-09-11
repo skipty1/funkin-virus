@@ -136,4 +136,11 @@ class LogState extends MusicBeatState{
 			});
 		}
 	}
+	function doTheFlick(){
+		new FlxTimer().start(0.8, function(tmr:FlxTimer){
+				name.visible = !name.visible;
+				chooseName.visible = !chooseName.visible;
+				tmr.reset(0.8);
+			});
+	}
 }
