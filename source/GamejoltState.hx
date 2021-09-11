@@ -123,6 +123,7 @@ class GamejoltState extends MusicBeatState{
 					FlxGameJolt.init(gameid, keystring, true, username, usertoken, (logged) -> {
 						if (logged){
 							chooseName.text = "Succesfully logged in!";
+							FlxGameJolt.openSession();
 						}else{
 							chooseName.text = "Failed to log in.";
 							new FlxTimer().start(1.5, function(tmr:FlxTimer){
