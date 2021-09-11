@@ -141,6 +141,6 @@ class LogState extends MusicBeatState{
 				name.visible = !name.visible;
 				chooseName.visible = !chooseName.visible;
 				tmr.reset(0.8);
-			});
+		});
 	}
 }
