@@ -30,6 +30,12 @@ import Discord.DiscordClient;
 
 class GamejoltState extends MusicBeatState{
 	var chooseName:FlxText;
+	var bytearray:MyKey;
+	var gameid:Int;
+	var keystring:String;
+	
+	var usertoken:String;
+	var username:String;
 
 	var name:FlxUIInputText;
 
@@ -91,12 +97,32 @@ class GamejoltState extends MusicBeatState{
 		name.caretColor = 0xFFFFFFFF;
 
 		// gamejolt shit.
-		var bytearray = new MyKey();
-		var keystring = bytearray.readUTFBytes(bytearray.length);
-		var gameid = 643489;
+		bytearray = new MyKey();
+		keystring = bytearray.readUTFBytes(bytearray.length);
+		gameid = 643489;
 
 		//doTheFlick();
 
 		super.create();
+	}
+	var mode:String = "user";
+
+	override public function update(elapsed:Float){
+		super.update(elapsed);
+		if (FlxG.keys.justPressed.ENTER && name.text != '' && !name.text.contains(" ")){
+			switch (mode){
+				case "user":
+					username = name.text;
+					name.text = "";
+					chooseName.text = "Great! Now insert your user token,"
+					mode = "token"
+				case "token":
+					usertoken = name.text;
+					name.visible = false;
+					chooseName.text = "Please wait..."
+					FlxGameJolt.init(gameid, keystring, true, username, usertoken);
+			}
+		}
+		
 	}
 }
