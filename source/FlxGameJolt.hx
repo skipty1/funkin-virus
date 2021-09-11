@@ -319,6 +319,7 @@ class FlxGameJolt
 		{
 			#if debug
 			FlxG.log.warn("FlxGameJolt: Unable to access user name or token, and no user name or token was passed.");
+			trace("FlxGameJolt: Unable to access user name or token, and no user name or token was passed.");
 			#end
 		}
 	}

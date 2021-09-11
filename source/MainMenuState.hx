@@ -77,28 +77,6 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
-		#if (sys && desktop)
-		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
-			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
-		#end
-
-		@:privateAccess
-		{
-			trace("Loaded " + openfl.Assets.getLibrary("default").assetsLoaded + " assets (DEFAULT)");
-		}
-		
-		#if !cpp
-
-		FlxG.save.bind('funkin', 'virus99');
-
-		PlayerSettings.init();
-
-		KadeEngineData.initSave();
-		MedalSaves.initMedal();
-		#end
-
-		Highscore.load();
-
 		FlxG.mouse.visible = true;
 
 		#if windows
