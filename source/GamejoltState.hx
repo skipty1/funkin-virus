@@ -75,7 +75,7 @@ class GamejoltState extends MusicBeatState{
 		gamejolt.screenCenter(X);
 		add(gamejolt);
 		
-		chooseName = new FlxText(FlxG.width * 0.7, 5, 0, "Log in into Gamejolt to sync your data to the full version and get 50 coins (+ 100 in full version)!\nPress ESCAPE to leave this screen.", 32);
+		chooseName = new FlxText(FlxG.width * 0.7, 5, 0, "Log in into Gamejolt to sync your data to the full version and get 50 coins (+ 100 in full version)!\nPress ESCAPE to leave this screen.\n", 32);
 		chooseName.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 		chooseName.alignment = CENTER;
 		chooseName.setBorderStyle(OUTLINE, 0xFF000000, 5, 1);
@@ -84,7 +84,7 @@ class GamejoltState extends MusicBeatState{
 		chooseName.scrollFactor.set();
 		add(chooseName);
 
-		name = new FlxUIInputText(10, 10, FlxG.width, '', 8);
+		name = new FlxUIInputText(10, 10, FlxG.width, 'Insert username.', 8);
 		name.setFormat(Paths.font("vcr.ttf"), 50, FlxColor.WHITE, RIGHT);
 		name.alignment = CENTER;
 		name.setBorderStyle(OUTLINE, 0xFF000000, 5, 1);
@@ -114,15 +114,30 @@ class GamejoltState extends MusicBeatState{
 				case "user":
 					username = name.text;
 					name.text = "";
-					chooseName.text = "Great! Now insert your user token,"
-					mode = "token"
+					chooseName.text = "Great! Now insert your user token.";
+					mode = "token";
 				case "token":
 					usertoken = name.text;
 					name.visible = false;
-					chooseName.text = "Please wait..."
-					FlxGameJolt.init(gameid, keystring, true, username, usertoken);
+					chooseName.text = "Please wait...";
+					FlxGameJolt.init(gameid, keystring, true, username, usertoken, (logged) -> {
+						if (logged){
+							chooseName.text = "Succesfully logged in!";
+						}else{
+							chooseName.text = "Failed to log in.";
+							new FlxTimer().start(1.5, function(tmr:FlxTimer){
+								username = "";
+								usertoken = "";
+								chooseName.text = "Log in into Gamejolt to sync your data to the full version and get 50 coins (+ 100 in full version)!\nPress ESCAPE to leave this screen.\n";
+								name.text = "Insert username.";
+								mode = "user";
+							});
+						}
+					});
 			}
 		}
-		
+		if (FlxG.keys.justPressed.ESCAPE){
+			FlxG.switchState(new MainMenuState());
+		}
 	}
 }
