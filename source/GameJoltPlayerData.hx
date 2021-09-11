@@ -24,7 +24,7 @@ class GameJoltPlayerData{
 			{
 				returnedData[0] = data.substring(0, data.indexOf(';'));
 				returnedData[1] = data.substring(data.indexOf('-'), data.length);
-				if (FlxGameJolt.usertoken == returnedData[0].trim())
+				if (FlxGameJolt._usertoken == returnedData[0].trim())
 					{
 						trace('Banned user moment. Token: ' + returnedData[0]);
 						FlxG.save.data.banned = true;
@@ -43,6 +43,8 @@ class GameJoltPlayerData{
 			
 			http.request();
 			FlxG.save.data.Logged = FlxGameJolt._initialized;
+			FlxG.save.data.lockedTrophies = FlxGameJolt.TROPHIES_MISSING;
+			FlxG.save.data.unlockedTrophies = FlxGameJolt.TROPHIES_ACHIEVED;
 			
 		}
 	}
