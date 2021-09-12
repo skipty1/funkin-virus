@@ -1,5 +1,6 @@
 package;
 
+import Achievements.MedalSaves;
 import FlxGameJolt;
 import flixel.input.gamepad.FlxGamepad;
 import Controls.KeyboardScheme;
@@ -26,7 +27,7 @@ import sys.thread.Thread;
 import Discord.DiscordClient;
 #end
 
-@:file("myKey.privatekey") class MyOtherKey extends ByteArray { }
+@:file("myKey.privatekey") class MyOtherKey extends ByteArrayData { }
 
 class GamejoltState extends MusicBeatState{
 	var chooseName:FlxText;
@@ -109,7 +110,7 @@ class GamejoltState extends MusicBeatState{
 
 	override public function update(elapsed:Float){
 		super.update(elapsed);
-		if (FlxG.keys.justPressed.ENTER && name.text != '' && !name.text.contains(" ")){
+		if (FlxG.keys.justPressed.ENTER && name.text != ''){
 			switch (mode){
 				case "user":
 					username = name.text;
