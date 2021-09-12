@@ -321,6 +321,8 @@ class MainMenuState extends MusicBeatState
 				playAnimation(4, 'unselected');
 			}
 
+			if (FlxG.keys.justPressed.G)
+				FlxG.switchState(new GamejoltState());
 
 			if (FlxG.mouse.overlaps(hitboxMusic)){
 				playAnimation(3, 'selected');
