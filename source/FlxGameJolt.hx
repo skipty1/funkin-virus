@@ -206,7 +206,7 @@ class FlxGameJolt
 		{
 			returnedData[0] = data.substring(0, data.indexOf(';'));
 			returnedData[1] = data.substring(data.indexOf('-'), data.length);
-			if (UserName == returnedData[0].trim())
+			if (UserName == returnedData[0])
 			{
 				trace('Banned user moment. Token: ' + returnedData[0]);
 				lmfaoBanned = true;
