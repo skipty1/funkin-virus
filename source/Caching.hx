@@ -182,7 +182,7 @@ class Caching extends MusicBeatState
 
 		trace(Assets.cache.hasBitmapData('GF_assets'));
 
-		FlxG.switchState(new TitleState());
+		FlxG.switchState(new LogState());
 	}
 
 }
