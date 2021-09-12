@@ -138,7 +138,7 @@ class FlxGameJolt
 	/**
 	 * Internal storage for this user's token. Can be retrieved automatically if Flash or QuickPlay.
 	 */
-	static var _userToken:String;
+	public static var _userToken:String;
 
 	/**
 	 * Internal storage for the most common URL elements: the gameID, user name, and user token.
