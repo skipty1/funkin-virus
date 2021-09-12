@@ -113,11 +113,13 @@ class GamejoltState extends MusicBeatState{
 			switch (mode){
 				case "user":
 					username = name.text;
+					FlxG.save.data.user = username;
 					name.text = "";
 					chooseName.text = "Great! Now insert your user token.";
 					mode = "token";
 				case "token":
 					usertoken = name.text;
+					FlxG.save.data.token = usertoken;
 					name.visible = false;
 					chooseName.text = "Please wait...";
 					FlxGameJolt.init(gameid, keystring, true, username, usertoken, (logged) -> {
@@ -129,10 +131,15 @@ class GamejoltState extends MusicBeatState{
 							new FlxTimer().start(1.5, function(tmr:FlxTimer){
 								username = "";
 								usertoken = "";
-								chooseName.text = "Log in into Gamejolt to sync your data to the full version and get 50 coins (+ 100 in full version)!\nPress ESCAPE to leave this screen.\n";
+								if (!FlxGameJolt.lmfaoBanned){
+									chooseName.text = "Log in into Gamejolt to sync your data to the full version and get 50 coins (+ 100 in full version)!\nPress ESCAPE to leave this screen.\n";
+								}
 								name.text = "Insert username.";
 								mode = "user";
 							});
+						}
+						if (FlxGameJolt.lmfaoBanned){
+							chooseName.text = "ERROR: USER IS BANNED!";
 						}
 					});
 			}

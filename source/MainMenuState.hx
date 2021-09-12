@@ -1,6 +1,8 @@
 package;
 
 //import MenuThings;
+import flixel.addons.api.FlxGameJolt;
+import flixel.math.FlxRect;
 import flixel.input.gamepad.FlxGamepad;
 import Controls.KeyboardScheme;
 import flixel.FlxG;
@@ -79,6 +81,32 @@ class MainMenuState extends MusicBeatState
 	{
 		FlxG.mouse.visible = true;
 
+		/*
+		#if (sys && desktop)
+		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
+			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
+		#end
+
+		@:privateAccess
+		{
+			trace("Loaded " + openfl.Assets.getLibrary("default").assetsLoaded + " assets (DEFAULT)");
+		}
+		
+		#if !cpp
+
+		FlxG.save.bind('funkin', 'virus99');
+
+		PlayerSettings.init();
+
+		KadeEngineData.initSave();
+		MedalSaves.initMedal();
+		#end
+
+		Highscore.load();
+		*/
+
+		FlxG.mouse.visible = true;
+
 		#if windows
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
@@ -105,12 +133,14 @@ class MainMenuState extends MusicBeatState
 		var moreY:Float = Yshit;
 
 		if (ASS == 'SAND'){
-			var sentry:FlxSprite = new FlxSprite(-100,600).loadGraphic(Paths.image('8bit/MINI_SENTRY','shared'));
+			var sentry:FlxSprite = new FlxSprite(-50,600).loadGraphic(Paths.image('8bit/MINI_SENTRY','shared'));
 			sentry.scale.set(2,2);
+			sentry.updateHitbox();
 			sentry.antialiasing = false;
 			add(sentry);
-			spike = new FlxSprite(-100,600).loadGraphic(Paths.image('8bit/SPIKE','shared'));
+			spike = new FlxSprite(-50,500).loadGraphic(Paths.image('8bit/SPIKE','shared'));
 			spike.scale.set(2,2);
+			spike.updateHitbox();
 			spike.antialiasing = false;
 			add(spike);
 		}
@@ -135,7 +165,16 @@ class MainMenuState extends MusicBeatState
 		Achievement.animation.play('unselected');
 		add(Achievement);
 
-		Music = new FlxSprite(1235 - moreX + 200,660 + 70);
+		Install = new FlxSprite(Achievement.x - 50, 660 + 70);
+		Install.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
+		Install.animation.addByPrefix('selected','install0',24,false);
+		Install.animation.addByPrefix('unselected','uninstall0',24,false);
+		Install.scale.set(2,2);
+		Install.antialiasing = false;
+		Install.animation.play('unselected');
+		add(Install);
+
+		Music = new FlxSprite(Install.x - 50, 730);
 		Music.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
 		Music.animation.addByPrefix('selected','MUSIC0',24,false);
 		Music.animation.addByPrefix('unselected','UNMUSIC0',24,false);
@@ -144,7 +183,7 @@ class MainMenuState extends MusicBeatState
 		Music.animation.play('unselected');
 		add(Music);
 
-		Bestplayer = new FlxSprite(Xshit,Yshit);
+		Bestplayer = new FlxSprite(-18, 204);
 		Bestplayer.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
 		Bestplayer.animation.addByPrefix('mmmhi','best player0',24,false);
 		Bestplayer.scale.set(2,2);
@@ -154,23 +193,26 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.save.data.BestTrophy)
 			Bestplayer.color = FlxColor.fromHSL(Bestplayer.color.hue, Bestplayer.color.saturation, 1, 1);
 		else
-			Bestplayer.color = FlxColor.fromHSL(Bestplayer.color.hue, Bestplayer.color.saturation, 0.7, 1);
+			Bestplayer.color = FlxColor.fromHSL(Bestplayer.color.hue, Bestplayer.color.saturation, 0.3, 1);
 
-		Freeplay = new FlxSprite(1100 - moreX + 70,320 - Yshit - 20);
+		// 1100 - moreX + 70,320 - Yshit - 20
+		Freeplay = new FlxSprite(38, 44);
 		Freeplay.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
 		Freeplay.animation.addByPrefix('selected','freepaly0',24,false);
 		Freeplay.animation.addByPrefix('unselected','unfreeplay0',24,false);
 		Freeplay.animation.addByPrefix('clicked','tapfreeplay0',24,false);
-		Freeplay.scale.set(2,2);
 		Freeplay.antialiasing = false;
 		Freeplay.animation.play('unselected');
+		// set scale after anim?
+		Freeplay.scale.set(2,2);
+		Freeplay.updateHitbox();
 		add(Freeplay);
 		if (FlxG.save.data.storyBeated)
 			Freeplay.color = FlxColor.fromHSL(Freeplay.color.hue, Freeplay.color.saturation, 1, 1);
 		else
-			Freeplay.color = FlxColor.fromHSL(Freeplay.color.hue, Freeplay.color.saturation, 0.5, 1);
+			Freeplay.color = FlxColor.fromHSL(Freeplay.color.hue, Freeplay.color.saturation, 0.1, 1);
 
-		Gold = new FlxSprite(1082 - Xshit,110);
+		Gold = new FlxSprite(440, 204);
 		Gold.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
 		Gold.animation.addByPrefix('mmmhi','gold0',24,false);
 		Gold.scale.set(2,2);
@@ -180,42 +222,34 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.save.data.GoldTrophy)
 			Gold.color = FlxColor.fromHSL(Gold.color.hue, Gold.color.saturation, 1, 1);
 		else
-			Gold.color = FlxColor.fromHSL(Gold.color.hue, Gold.color.saturation, 0.7, 1);
+			Gold.color = FlxColor.fromHSL(Gold.color.hue, Gold.color.saturation, 0.3, 1);
 
-		Install = new FlxSprite(1025 - moreX + 300, 660 + 70);
-		Install.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
-		Install.animation.addByPrefix('selected','install0',24,false);
-		Install.animation.addByPrefix('unselected','uninstall0',24,false);
-		Install.scale.set(2,2);
-		Install.antialiasing = false;
-		Install.animation.play('unselected');
-		add(Install);
 
-		Iron = new FlxSprite(1000 - Xshit,110 - Yshit);
+		Iron = new FlxSprite(270, 204);
 		Iron.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
-		Iron.animation.addByPrefix('mmmhi','iron0',24,false);
+		Iron.animation.addByPrefix('mmmhi','iron',24,false);
 		Iron.scale.set(2,2);
 		Iron.antialiasing = false;
-		Iron.animation.play('unselected');
+		Iron.animation.play('mmmhi');
 		add(Iron);
 		if (FlxG.save.data.IronTrophy)
 			Iron.color = FlxColor.fromHSL(Iron.color.hue, Iron.color.saturation, 1, 1);
 		else
-			Iron.color = FlxColor.fromHSL(Iron.color.hue, Iron.color.saturation, 0.7, 1);
+			Iron.color = FlxColor.fromHSL(Iron.color.hue, Iron.color.saturation, 0.3, 1);
 
-		Rainbow = new FlxSprite(1208 - Xshit,110 - Yshit);
+		Rainbow = new FlxSprite(Bestplayer.x - 50, 204);
 		Rainbow.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
-		Rainbow.animation.addByPrefix('mmmhi','rainbow0',24,false);
+		Rainbow.animation.addByPrefix('mmmhi','rainbow',24,false);
 		Rainbow.scale.set(2,2);
 		Rainbow.antialiasing = false;
-		Rainbow.animation.play('unselected');
+		Rainbow.animation.play('mmmhi');
 		add(Rainbow);
 		if (FlxG.save.data.RainbowTrophy)
 			Rainbow.color = FlxColor.fromHSL(Rainbow.color.hue, Rainbow.color.saturation, 1, 1);
 		else
-			Rainbow.color = FlxColor.fromHSL(Rainbow.color.hue, Rainbow.color.saturation, 0.7, 1);
+			Rainbow.color = FlxColor.fromHSL(Rainbow.color.hue, Rainbow.color.saturation, 0.3, 1);
 
-		Story = new FlxSprite(730 - Xshit,320 - Yshit);
+		Story = new FlxSprite(730 - Xshit, 225);
 		Story.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
 		Story.animation.addByPrefix('selected','story0',24,false);
 		Story.animation.addByPrefix('unselected','unstory0',24,false);
@@ -225,27 +259,27 @@ class MainMenuState extends MusicBeatState
 		Story.animation.play('unselected');
 		add(Story);
 
-		hitboxStory = new FlxObject(730, 320, 214, 88);
+		hitboxStory = new FlxObject(615, 290, 214, 88);
 		add(hitboxStory);
 
 		hitboxStory.visible = false;
 
-		hitboxFreeplay = new FlxObject(1100, 320, 214, 88);
+		hitboxFreeplay = new FlxObject(1000, 290, 214, 88);
 		add(hitboxFreeplay);
 
 		hitboxFreeplay.visible = false;
 
-		hitboxMusic = new FlxObject(1235, 660, 136, 136);
+		hitboxMusic = new FlxObject(925, 630, 65, 70);
 		add(hitboxMusic);
 
 		hitboxMusic.visible = false;
 
-		hitboxSettings = new FlxObject(1025, 660, 136, 136);
+		hitboxSettings = new FlxObject(1019, 611, 100, 100);
 		add(hitboxSettings);
 
 		hitboxMusic.visible = false;
 
-		hitboxAchievement = new FlxObject(1100, 660, 136, 136);
+		hitboxAchievement = new FlxObject(1175, 625, 80, 80);
 		add(hitboxAchievement);
 
 		hitboxAchievement.visible = false;
@@ -256,7 +290,7 @@ class MainMenuState extends MusicBeatState
 
 		firstStart = false;
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer +  (Main.watermarks ? " FUNKIN VIRUS - " + kadeEngineVer + " Kade Engine" : "FUNKIN VIRUS - PRIVATE DEMO"), 12);
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer +  (Main.watermarks ? " FUNKIN VIRUS - " + kadeEngineVer + " Kade Engine" : " FUNKIN VIRUS - PRIVATE DEMO"), 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -282,12 +316,6 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
-		if (FlxG.keys.justPressed.X)
-			trace('x' + FlxG.mouse.x);
-		if (FlxG.keys.justPressed.Y)
-			trace('y' + FlxG.mouse.y);
-		if (FlxG.keys.justPressed.F)
-			trace('x:' + FlxG.mouse.x + ' y:' + FlxG.mouse.y);
 
 		if (!selectedSomethin)
 		{
@@ -302,9 +330,6 @@ class MainMenuState extends MusicBeatState
 				playAnimation(4, 'unselected');
 			}
 
-			
-			Gold.x = FlxG.mouse.x;
-			trace(Gold.x);
 
 			if (FlxG.mouse.overlaps(hitboxMusic)){
 				playAnimation(3, 'selected');

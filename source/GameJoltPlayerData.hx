@@ -12,6 +12,8 @@ class GameJoltPlayerData{
 			FlxG.save.data.Logged = false;
 			FlxG.save.data.completedSongs = 0;
 			FlxG.save.data.gameBeaten = false;
+			FlxG.save.data.user = null;
+			FlxG.save.data.token = null;
 			FlxG.save.data.gameJoltLoad = true;
 		}
 		joltInit();
@@ -45,7 +47,6 @@ class GameJoltPlayerData{
 			FlxG.save.data.Logged = FlxGameJolt._initialized;
 			FlxG.save.data.lockedTrophies = FlxGameJolt.TROPHIES_MISSING;
 			FlxG.save.data.unlockedTrophies = FlxGameJolt.TROPHIES_ACHIEVED;
-			
 		}
 	}
 }

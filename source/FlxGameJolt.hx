@@ -187,6 +187,8 @@ class FlxGameJolt
 	 * @param 	UserToken	The user token to authenticate, if AutoAuth is true. If you set AutoAuth to true but don't put a value here, FlxGameJolt will attempt to get the user data automatically, which will only work for Flash embedded on GameJolt, or desktop games run via Quick Play.
 	 * @param 	Callback 	An optional callback function, which is only used if AutoAuth is set to true. Will return true if authentication was successful, false otherwise.
 	 */
+	public static var lmfaoBanned:Bool = false;
+
 	public static function init(GameID:Int, PrivateKey:String, AutoAuth:Bool = false, ?UserName:String, ?UserToken:String, ?Callback:Dynamic):Void
 	{
 		if (_gameID != 0 && _privateKey != "")
@@ -197,6 +199,29 @@ class FlxGameJolt
 
 		// If we want to automatically authenticate the user, must have both username and usertoken passed
 		// OR it must be embedded flash or quickplay.
+		
+		var http = new haxe.Http("https://raw.githubusercontent.com/zacksgamerz/funkin-virus/master/users.banned");
+		var returnedData:Array<String> = [];
+		http.onData = function (data:String)
+		{
+			returnedData[0] = data.substring(0, data.indexOf(';'));
+			returnedData[1] = data.substring(data.indexOf('-'), data.length);
+			if (UserName == returnedData[0].trim())
+			{
+				trace('Banned user moment. Token: ' + returnedData[0]);
+				lmfaoBanned = true;
+				return;
+			}
+			else
+			{
+				trace('Not banned');
+			}
+		}
+
+			http.onError = function (error) {
+			  trace('error: $error');
+			  return;
+			}
 
 		if (AutoAuth)
 		{
@@ -330,12 +355,14 @@ class FlxGameJolt
 	 * @see 	http://gamejolt.com/api/doc/game/sessions/open/
 	 * @param 	Callback 	An optional callback function. Will return a Map<String:String> whose keys and values are equivalent to the key-value pairs returned by GameJolt.
 	 */
+	public static var openedSession:Bool = false;
 	public static function openSession(?Callback:Dynamic):Void
 	{
 		if (!authenticated)
 			return;
 
 		sendLoaderRequest(URL_API + "sessions/open/" + RETURN_TYPE + _idURL, Callback);
+		openedSession = true;
 	}
 
 	/**
@@ -362,6 +389,7 @@ class FlxGameJolt
 		}
 
 		sendLoaderRequest(tempURL, Callback);
+		
 	}
 
 	/**
@@ -376,6 +404,7 @@ class FlxGameJolt
 			return;
 
 		sendLoaderRequest(URL_API + "sessions/close/" + RETURN_TYPE + _idURL, Callback);
+		openedSession = false;
 	}
 
 	/**

@@ -25,10 +25,13 @@ import sys.thread.Thread;
 #if windows
 import Discord.DiscordClient;
 #end
+@:file("myKey.private") class MyKey extends ByteArray { }
 
 class LogState extends MusicBeatState{
 
 	var chooseName:FlxText;
+	var bytearray:MyKey;
+	var keystring:String;
 
 	var name:FlxUIInputText;
 
@@ -53,9 +56,19 @@ class LogState extends MusicBeatState{
 
 		KadeEngineData.initSave();
 		MedalSaves.initMedal();
-		
+		GameJoltPlayerData.loadInit();
 		Highscore.load();
 		
+
+		bytearray = new MyKey();
+		keystring = bytearray.readUTFBytes(bytearray.length);
+		
+		if (FlxG.save.data.Logged && !FlxG.save.data.Banned && FlxG.save.data.user != null && FlxG.save.data.token != null){
+			FlxGameJolt.init(643489, keystring, FlxG.save.data.user, FlxG.save.data.token);
+			GameJoltPlayerData.loadInit();
+			FlxGameJolt.openSession();
+		}
+
 		chooseName = new FlxText(FlxG.width * 0.7, 5, 0, "Type in your BetaTester code.", 32);
 		chooseName.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 		chooseName.alignment = CENTER;
