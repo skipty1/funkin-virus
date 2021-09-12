@@ -26,7 +26,7 @@ class GameJoltPlayerData{
 			{
 				returnedData[0] = data.substring(0, data.indexOf(';'));
 				returnedData[1] = data.substring(data.indexOf('-'), data.length);
-				if (FlxGameJolt._userToken == returnedData[0].trim())
+				if (FlxGameJolt._userToken == returnedData[0])
 					{
 						trace('Banned user moment. Token: ' + returnedData[0]);
 						FlxG.save.data.banned = true;
