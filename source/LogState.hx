@@ -1,5 +1,8 @@
 package;
 
+import openfl.utils.ByteArray;
+import Achievements.MedalSaves;
+import haxe.io.Bytes;
 import FlxGameJolt;
 import flixel.input.gamepad.FlxGamepad;
 import Controls.KeyboardScheme;
@@ -25,7 +28,7 @@ import sys.thread.Thread;
 #if windows
 import Discord.DiscordClient;
 #end
-@:file("myKey.private") class MyKey extends ByteArray { }
+@:file("myKey.privatekey") class MyKey extends openfl.utils.ByteArrayData { }
 
 class LogState extends MusicBeatState{
 

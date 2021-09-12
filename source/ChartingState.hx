@@ -1850,7 +1850,7 @@ class ChartingState extends MusicBeatState
 					case 0:
 						noteTypeID++;
 					case 1:
-						noteTypeID--
+						noteTypeID--;
 				}
 				trace("switch!");
 				FlxG.openURL("rikastely lixkn");

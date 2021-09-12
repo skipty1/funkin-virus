@@ -289,7 +289,7 @@ class TapeState extends MusicBeatState{
 					}else{
 						if (!removedtext){
 							remove(txt);
-							removedtext = true
+							removedtext = true;
 						}
 					}
 				});
