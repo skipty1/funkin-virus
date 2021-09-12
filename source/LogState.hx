@@ -92,6 +92,7 @@ class LogState extends MusicBeatState{
 		name.maxLength = 31;
 		name.lines = 1;
 		name.caretColor = 0xFFFFFFFF;
+		add(name);
 
 		doTheFlick();
 
