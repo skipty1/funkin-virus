@@ -148,7 +148,7 @@ class FlxGameJolt
 	/**
 	 * Set to true once game ID, user name, user token have been set and user name and token have been verified.
 	 */
-	static var _initialized:Bool = false;
+	public static var _initialized:Bool = false;
 
 	/**
 	 * Internal tracker for authenticating user data.
