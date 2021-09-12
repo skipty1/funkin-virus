@@ -76,8 +76,8 @@ class GamejoltState extends MusicBeatState{
 		gamejolt.screenCenter(X);
 		add(gamejolt);
 		
-		chooseName = new FlxText(FlxG.width * 0.7, 5, 0, "Log in into Gamejolt to sync your data to the full version and get 50 coins (+ 100 in full version)!\nPress ESCAPE to leave this screen.\n", 32);
-		chooseName.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
+		chooseName = new FlxText(FlxG.width * 0.7, 5, 0, "Log in into Gamejolt to sync your data to the full version\n and get 50 coins (+ 100 in full version)!\nPress ESCAPE to leave this screen.\n", 32);
+		chooseName.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER);
 		chooseName.alignment = CENTER;
 		chooseName.setBorderStyle(OUTLINE, 0xFF000000, 5, 1);
 		chooseName.screenCenter(X);
@@ -116,19 +116,19 @@ class GamejoltState extends MusicBeatState{
 					username = name.text;
 					FlxG.save.data.user = username;
 					name.text = "";
-					chooseName.text = "Great! Now insert your user token.";
+					chooseName.text = "Great! Now insert your user token.\n";
 					mode = "token";
 				case "token":
 					usertoken = name.text;
 					FlxG.save.data.token = usertoken;
 					name.visible = false;
-					chooseName.text = "Please wait...";
+					chooseName.text = "Please wait...\n";
 					FlxGameJolt.init(gameid, keystring, true, username, usertoken, (logged) -> {
 						if (logged){
-							chooseName.text = "Succesfully logged in!";
+							chooseName.text = "Succesfully logged in!\n";
 							FlxGameJolt.openSession();
 						}else{
-							chooseName.text = "Failed to log in.";
+							chooseName.text = "Failed to log in.\n";
 							new FlxTimer().start(1.5, function(tmr:FlxTimer){
 								username = "";
 								usertoken = "";
@@ -140,7 +140,7 @@ class GamejoltState extends MusicBeatState{
 							});
 						}
 						if (FlxGameJolt.lmfaoBanned){
-							chooseName.text = "ERROR: USER IS BANNED!";
+							chooseName.text = "ERROR: USER IS BANNED!\n";
 						}
 					});
 			}
