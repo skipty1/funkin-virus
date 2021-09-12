@@ -1,6 +1,8 @@
 package;
 
 //import MenuThings;
+import flixel.addons.transition.TransitionData;
+import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.api.FlxGameJolt;
 import flixel.math.FlxRect;
 import flixel.input.gamepad.FlxGamepad;
@@ -80,6 +82,9 @@ class MainMenuState extends MusicBeatState
 	override function create()
 	{
 		FlxG.mouse.visible = true;
+
+		FlxTransitionableState.defaultTransIn = new TransitionData(TILES, FlxColor.BLACK, 0.5);
+        FlxTransitionableState.defaultTransOut = new TransitionData(TILES, FlxColor.BLACK, 2);
 
 		/*
 		#if (sys && desktop)

@@ -1,5 +1,6 @@
 package;
 
+import openfl.utils.ByteArray;
 import Achievements.MedalSaves;
 import FlxGameJolt;
 import flixel.input.gamepad.FlxGamepad;
