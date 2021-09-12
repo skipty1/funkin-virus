@@ -70,7 +70,7 @@ class GamejoltState extends MusicBeatState{
 		bg.screenCenter();
 		add(bg);
 		
-		var gamejolt = new FlxSprite(0, -50).loadGraphic(Paths.image("gamejolt","shared"));
+		var gamejolt = new FlxSprite(0, -50).loadGraphic(Paths.image("8bit/gamejolt","shared"));
 		gamejolt.scale.set(2,2);
 		gamejolt.antialiasing = false;
 		gamejolt.screenCenter(X);
