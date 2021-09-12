@@ -26,11 +26,11 @@ import sys.thread.Thread;
 import Discord.DiscordClient;
 #end
 
-@:file("myKey.privatekey") class MyKey extends ByteArray { }
+@:file("myKey.privatekey") class MyOtherKey extends ByteArray { }
 
 class GamejoltState extends MusicBeatState{
 	var chooseName:FlxText;
-	var bytearray:MyKey;
+	var bytearray:MyOtherKey;
 	var gameid:Int;
 	var keystring:String;
 	
@@ -97,7 +97,7 @@ class GamejoltState extends MusicBeatState{
 		name.caretColor = 0xFFFFFFFF;
 
 		// gamejolt shit.
-		bytearray = new MyKey();
+		bytearray = new MyOtherKey();
 		keystring = bytearray.readUTFBytes(bytearray.length);
 		gameid = 643489;
 
