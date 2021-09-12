@@ -103,6 +103,11 @@ class GamejoltState extends MusicBeatState{
 		gameid = 643489;
 
 		//doTheFlick();
+		
+		if (FlxGameJolt._initialized){
+			name.visible = false;
+			chooseName.text = "Logged in as " + FlxG.save.data.user;
+		}
 
 		super.create();
 	}
