@@ -447,6 +447,22 @@ class MusicBeatState extends FlxUIState
 		switch (ass){
 			case "GGWP":
 				FlxGameJolt.addTrophy(148525);
+			case "TOUHOU Bit"
+				FlxGameJolt.addTrophy(148552);
+			case "Spike":
+				FlxGameJolt.addTrophy(148550);
+			case "Firewall":
+				FlxGameJolt.addTrophy(148540);
+			case "TWTMF":
+				FlxGameJolt.addTrophy(148554);
+			case "Big Sus":
+				FlxGameJolt.addTrophy(148549);
+			case "Gamer":
+				FlxGameJolt.addTrophy(148537);
+			case "Pro Player":
+				FlxGameJolt.addTrophy(148545);
+			case "Only One Coin":
+				FlxGameJolt.addTrophy(148553);
 			case "CDBZ":
 				FlxGameJolt.addTrophy(148522);
 			case "ECHO":
@@ -454,7 +470,7 @@ class MusicBeatState extends FlxUIState
 			case "Sus":
 				FlxGameJolt.addTrophy(148524);
 			case "Gamejolt":
-				FlxGameJolt.addTrophy(158521);
+				FlxGameJolt.addTrophy(148521);
 			case "DUNABD":
 				FlxGameJolt.addTrophy(148526);
 			default:
