@@ -439,6 +439,27 @@ class MusicBeatState extends FlxUIState
 		.cameras = [cameraStuff];
 		
 		textPop(ass);
+		if (FlxGameJolt._initialized)
+			gameJoltunlock(ass);
+	}
+
+	public function gameJoltunlock(ass:String){
+		switch (ass){
+			case "GGWP":
+				FlxGameJolt.addTrophy(148525);
+			case "CDBZ":
+				FlxGameJolt.addTrophy(148522);
+			case "ECHO":
+				FlxGameJolt.addTrophy(148523);
+			case "Sus":
+				FlxGameJolt.addTrophy(148524);
+			case "Gamejolt":
+				FlxGameJolt.addTrophy(158521);
+			case "DUNABD":
+				FlxGameJolt.addTrophy(148526);
+			default:
+				trace("lmao null gamejolt trophy dumbfuck.");
+		}
 	}
 
 	public function textPop(ass:String){
@@ -472,7 +493,7 @@ class MusicBeatState extends FlxUIState
 				txt.text = "Pro Player!\nEnter the magical cheat code passed down from the ancestors.\n";
 				FlxG.save.data.ProPlayer = true;
 			case 'ECHO':
-				txt.text = "ECHO!\nDiscover and defeat DarkBit.\n";
+				txt.text = "ECHO!\nFC Alterbyte.\n";
 				FlxG.save.data.ECHO = true;
 			case 'Firewall':
 				txt.text = "Firewall!\nFC The 2nd chapter.\n";

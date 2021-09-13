@@ -81,13 +81,13 @@ class GamejoltState extends MusicBeatState{
 		chooseName.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER);
 		chooseName.alignment = CENTER;
 		chooseName.setBorderStyle(OUTLINE, 0xFF000000, 5, 1);
-		chooseName.screenCenter(X);
+		chooseName.screenCenter();
 		chooseName.y = 38;
 		chooseName.scrollFactor.set();
 		add(chooseName);
 
 		name = new FlxUIInputText(10, 10, FlxG.width, 'Insert username.', 8);
-		name.setFormat(Paths.font("vcr.ttf"), 50, FlxColor.WHITE, RIGHT);
+		name.setFormat(Paths.font("vcr.ttf"), 50, FlxColor.WHITE, CENTER);
 		name.alignment = CENTER;
 		name.setBorderStyle(OUTLINE, 0xFF000000, 5, 1);
 		name.screenCenter();
@@ -107,7 +107,7 @@ class GamejoltState extends MusicBeatState{
 		
 		if (FlxGameJolt._initialized){
 			name.visible = false;
-			chooseName.text = "Logged in as " + FlxG.save.data.user;
+			chooseName.text = "Logged in: " + FlxG.save.data.user + "\nToken: " + FlxG.save.data.usertoken;
 		}
 
 		super.create();
@@ -132,6 +132,7 @@ class GamejoltState extends MusicBeatState{
 					FlxGameJolt.init(gameid, keystring, true, username, usertoken, (logged) -> {
 						if (logged){
 							chooseName.text = "Succesfully logged in!\n";
+							GameJoltPlayerData.loadInit();
 							FlxGameJolt.openSession();
 						}else{
 							chooseName.text = "Failed to log in.\n";
