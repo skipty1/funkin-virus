@@ -32,13 +32,13 @@ class Highscore
 				}
 				FlxG.save.data.totalSongScores += score;
 				if (FlxGameJolt._initialized)
-					addScore("" + FlxG.save.daya.totalSongScores  + "Total Scores", FlxG.save.data.totalSongScores, 654903, false, "", "" + FlxG.save.data.user);
+					addScore("" + FlxG.save.data.totalSongScores  + "Total Scores", FlxG.save.data.totalSongScores, 654903, false, "", "" + FlxG.save.data.user);
 			}
 			else{
 				setScore(daSong, score);
 				FlxG.save.data.totalSongScores += score;
 				if (FlxGameJolt._initialized)
-					addScore("" + FlxG.save.daya.totalSongScores  + "Total Scores", FlxG.save.data.totalSongScores, 654903, false, "", "" + FlxG.save.data.user);
+					addScore("" + FlxG.save.data.totalSongScores  + "Total Scores", FlxG.save.data.totalSongScores, 654903, false, "", "" + FlxG.save.data.user);
 			}
 		}else trace('BotPlay detected. Score saving is disabled.');
 	}
