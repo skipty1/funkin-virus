@@ -84,31 +84,7 @@ class MainMenuState extends MusicBeatState
 		FlxG.mouse.visible = true;
 
 		FlxTransitionableState.defaultTransIn = new TransitionData(TILES, FlxColor.BLACK, 0.5);
-        FlxTransitionableState.defaultTransOut = new TransitionData(TILES, FlxColor.BLACK, 2);
-
-		/*
-		#if (sys && desktop)
-		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
-			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
-		#end
-
-		@:privateAccess
-		{
-			trace("Loaded " + openfl.Assets.getLibrary("default").assetsLoaded + " assets (DEFAULT)");
-		}
-		
-		#if !cpp
-
-		FlxG.save.bind('funkin', 'virus99');
-
-		PlayerSettings.init();
-
-		KadeEngineData.initSave();
-		MedalSaves.initMedal();
-		#end
-
-		Highscore.load();
-		*/
+		FlxTransitionableState.defaultTransOut = new TransitionData(TILES, FlxColor.BLACK, 2);
 
 		FlxG.mouse.visible = true;
 
@@ -361,7 +337,7 @@ class MainMenuState extends MusicBeatState
 				FlxG.switchState(new TitleState());
 			}
 
-			if (FlxG.mouse.overlaps(hitboxFreeplay) && FlxG.mouse.justPressed && FlxG.save.data.storyBeated){
+			if (FlxG.mouse.overlaps(hitboxFreeplay) && FlxG.mouse.justPressed){
 				playAnimation(2, 'clicked');
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				selectedSomethin = true;
