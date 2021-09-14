@@ -447,7 +447,7 @@ class MusicBeatState extends FlxUIState
 		switch (ass){
 			case "GGWP":
 				FlxGameJolt.addTrophy(148525);
-			case "TOUHOU Bit"
+			case "TOUHOU Bit":
 				FlxGameJolt.addTrophy(148552);
 			case "Spike":
 				FlxGameJolt.addTrophy(148550);
