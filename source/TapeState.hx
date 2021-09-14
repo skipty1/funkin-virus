@@ -43,8 +43,8 @@ class TapeState extends MusicBeatState{
 	public var sp:FlxSprite;
 
 	override function create(){
-		if (FlxG.sound.music.playing)
-			FlxG.sound.music.stop();
+		//if (FlxG.sound.music.playing)
+			//FlxG.sound.music.stop();
 
 		super.create();
 
