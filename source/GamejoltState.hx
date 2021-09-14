@@ -71,8 +71,8 @@ class GamejoltState extends MusicBeatState{
 		bg.screenCenter();
 		add(bg);
 		
-		var gamejolt = new FlxSprite(0, 18).loadGraphic(Paths.image("8bit/gamejolt","shared"));
-		gamejolt.scale.set(2,2);
+		var gamejolt = new FlxSprite(0, 30).loadGraphic(Paths.image("8bit/gamejolt","shared"));
+		//gamejolt.scale.set(2,2);
 		gamejolt.antialiasing = false;
 		gamejolt.screenCenter(X);
 		add(gamejolt);
@@ -116,7 +116,7 @@ class GamejoltState extends MusicBeatState{
 
 	override public function update(elapsed:Float){
 		super.update(elapsed);
-		if (FlxG.keys.justPressed.ENTER && name.text != ''){
+		if (FlxG.keys.justPressed.ENTER && name.text != '' && !FlxGameJolt._initialized){
 			switch (mode){
 				case "user":
 					username = name.text;
