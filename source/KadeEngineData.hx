@@ -6,6 +6,9 @@ class KadeEngineData
 {
     public static function initSave()
     {
+    	if (FlxG.save.data.totalSongScores == null)
+    		FlxG.save.data.totalSongScores = 0;
+
         if (FlxG.save.data.weekUnlocked == null)
 			FlxG.save.data.weekUnlocked = 7;
 
