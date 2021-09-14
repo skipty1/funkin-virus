@@ -214,17 +214,17 @@ class TapeState extends MusicBeatState{
 	}
 
 	function playSong(song:String){
-		if (!isPaused)
-			FlxG.sound.music.stop();
+		//if (!isPaused)
+			//FlxG.sound.music.stop();
 
 		if (FlxG.random.bool(20)){
-			FlxG.sound.play(Paths.sound(FlxG.random.getObject(rareSounds), 'shared'));
+			//FlxG.sound.play(Paths.sound(FlxG.random.getObject(rareSounds), 'shared'));
 		}else{
 			if (isPaused){
-				FlxG.sound.music.resume();
+				//FlxG.sound.music.resume();
 				isPaused = false;
 			}else{
-				FlxG.sound.playMusic(Paths.music(song), 0);
+				//FlxG.sound.playMusic(Paths.music(song), 0);
 			}
 		}
 
@@ -233,11 +233,11 @@ class TapeState extends MusicBeatState{
 	}
 
 	function pauseSong(){
-		if (FlxG.sound.music.playing){
+		/*if (FlxG.sound.music.playing){
 			FlxG.sound.music.pause();
 			isPaused = true;
 			Playing.visible = false;
-		}
+		}*/
 	}
 
 	function quit(){
@@ -246,10 +246,10 @@ class TapeState extends MusicBeatState{
 
 	function dontLeave(){
 		if (FlxG.random.bool(1)){
-			if (FlxG.sound.music.playing)
-				FlxG.sound.music.stop();
+			//if (FlxG.sound.music.playing)
+				//FlxG.sound.music.stop();
 
-			FlxG.sound.play(Paths.sound('starrpark','shared'));
+			//FlxG.sound.play(Paths.sound('starrpark','shared'));
 			//new FlxTimer()
 		}
 	}
