@@ -214,7 +214,7 @@ class TapeState extends MusicBeatState{
 	}
 
 	function playSong(song:String){
-		if (FlxG.sound.music.playing && !isPaused)
+		if (!isPaused)
 			FlxG.sound.music.stop();
 
 		if (FlxG.random.bool(20)){
