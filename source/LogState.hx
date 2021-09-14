@@ -66,7 +66,7 @@ class LogState extends MusicBeatState{
 		bytearray = new MyKey();
 		keystring = bytearray.readUTFBytes(bytearray.length);
 		
-		if (FlxG.save.data.Logged && !FlxG.save.data.Banned && FlxG.save.data.user != null && FlxG.save.data.token != null){
+		if (!FlxGameJolt._initialized && !FlxG.save.data.Banned && FlxG.save.data.user != null && FlxG.save.data.token != null){
 			FlxGameJolt.init(643489, keystring, FlxG.save.data.user, FlxG.save.data.token);
 			GameJoltPlayerData.loadInit();
 			FlxGameJolt.openSession();
