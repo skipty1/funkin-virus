@@ -20,15 +20,19 @@ class Highscore
 
 
 		#if !switch
-		NGio.postScore(score, song);
+		//NGio.postScore(score, song);
 		#end
 
 		if(!FlxG.save.data.botplay)
 		{
 			if (songScores.exists(daSong))
 			{
-				if (songScores.get(daSong) < score)
+				if (songScores.get(daSong) < score){
 					setScore(daSong, score);
+				}
+				FlxG.save.data.totalSongScores += score;
+				if (FlxGameJolt._initialized)
+					addScore("" + FlxG.save.daya.totalSongScores  + "Total Scores", FlxG.save.data.totalSongScores, 654903, false, "", "" + FlxG.save.data.user);
 			}
 			else
 				setScore(daSong, score);
