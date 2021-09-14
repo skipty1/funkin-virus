@@ -41,10 +41,14 @@ class TapeState extends MusicBeatState{
 	public var playkey:FlxSprite;
 	public var rightkey:FlxSprite;
 	public var sp:FlxSprite;
+	var autoReplay:FlxSprite;
 
 	override function create(){
-		//if (FlxG.sound.music.playing)
-			//FlxG.sound.music.stop();
+		FlxG.sound.playMusic(null);
+		FlxG.mouse.visible = true;
+		
+		if (FlxG.sound.music.playing)
+			FlxG.sound.music.stop();
 
 		super.create();
 
@@ -70,7 +74,7 @@ class TapeState extends MusicBeatState{
 		add(Playing);
 		Playing.visible = false;
 
-		leftkey = new FlxSprite(-100);
+		leftkey = new FlxSprite(320, 180);
 		leftkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		leftkey.scale.set(2,2);
 		leftkey.animation.addByPrefix("selected","left0",24,false);
@@ -80,7 +84,7 @@ class TapeState extends MusicBeatState{
 		leftkey.antialiasing = false;
 		add(leftkey);
 
-		menu = new FlxSprite(-100);
+		menu = new FlxSprite(320, 180);
 		menu.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		menu.scale.set(2,2);
 		menu.animation.addByPrefix("selected","menu0",24,false);
@@ -90,7 +94,7 @@ class TapeState extends MusicBeatState{
 		menu.antialiasing = false;
 		add(menu);
 
-		playkey = new FlxSprite(-100);
+		playkey = new FlxSprite(320, 180);
 		playkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		playkey.scale.set(2,2);
 		playkey.animation.addByPrefix("selected","paly0",24,false);
@@ -100,7 +104,7 @@ class TapeState extends MusicBeatState{
 		playkey.antialiasing = false;
 		add(playkey);
 
-		rightkey = new FlxSprite(-100);
+		rightkey = new FlxSprite(320, 180);
 		rightkey.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		rightkey.scale.set(2,2);
 		rightkey.animation.addByPrefix("selected","right0",24,false);
@@ -110,7 +114,7 @@ class TapeState extends MusicBeatState{
 		rightkey.antialiasing = false;
 		add(rightkey);
 
-		sp = new FlxSprite(-100);
+		sp = new FlxSprite(320, 180);
 		sp.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
 		sp.scale.set(2,2);
 		sp.animation.addByPrefix("selected","sp0",24,false);
@@ -119,6 +123,15 @@ class TapeState extends MusicBeatState{
 		sp.animation.play("unselected");
 		sp.antialiasing = false;
 		add(sp);
+
+		autoReplay = new FlxSprite(320, 180);
+		autoReplay.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
+		autoReplay.scale.set(2,2);
+		autoReplay.animation.addByPrefix("selected","Single cycle",24,false);
+		autoReplay.animation.addByPrefix("unselected","unSingle cycle",24,false);
+		autoReplay.animation.play("unselected");
+		autoReplay.antialiasing = false;
+		add(autoReplay);
 
 		Instructions = new FlxText(0, 0, 0, "Click the buttons to navigate or play songs\nPress BACK to leave.\nPress P to Pause\n(C to Close Instructions)\n", 32);
 		Instructions.screenCenter(X);
@@ -130,14 +143,55 @@ class TapeState extends MusicBeatState{
 
 		changeSong();
 
+		add(htsprite);
+
 		//playSong("disco");
 	}
+
+	// offsets for buttons hitboxes
+
+	// 1 - 288, 489, 64, 139
+	// 2 - 355, 489, 65, 139
+	// 3 - 423, 488, 65, 140
+	
+	// 4 - 792, 488, 64, 140
+	// 5 - 859, 488, 65, 140
+	// 6 - 927, 488, 65, 140
+
+
+	var spoint = {x: 0, y:0}
+	var htsprite:FlxSprite = new FlxSprite();
 
 	override function update(elapsed:Float){
 		if (FlxG.keys.justPressed.C && !FlxG.save.data.closedd){
 			remove(Instructions);
 			FlxG.save.data.closedd = true;
 		}
+
+		// var t = autoReplay;
+		// 	if (FlxG.mouse.pressed)
+		// 	{
+		// 		FlxG.mouse.visible = true;
+		// 		t.y = FlxG.mouse.y;
+		// 		t.x = FlxG.mouse.x;
+		// 	}
+		// 	FlxG.log.add("x: " + t.x);
+		// 	FlxG.log.add("y: " + t.y);
+
+		if (FlxG.mouse.justPressed)
+		{
+			htsprite.x = spoint.x = FlxG.mouse.x;
+			htsprite.y = spoint.y = FlxG.mouse.y;
+		}
+
+		if (FlxG.mouse.pressed)
+		{
+			htsprite.makeGraphic((FlxG.mouse.x - spoint.x), (FlxG.mouse.y - spoint.y), FlxColor.WHITE);
+			htsprite.alpha = 0.25;
+		}
+
+		if (FlxG.mouse.justReleased)
+			trace([htsprite.x, htsprite.y, htsprite.width, htsprite.height]);
 
 		super.update(elapsed);
 
@@ -151,7 +205,8 @@ class TapeState extends MusicBeatState{
 		}
 
 		if (FlxG.mouse.overlaps(menu) && FlxG.mouse.justPressed ){
-			quit();
+			// quit();
+			playSong(songID);
 			playAnim(1, "clicked");
 		}
 
@@ -214,30 +269,30 @@ class TapeState extends MusicBeatState{
 	}
 
 	function playSong(song:String){
-		//if (!isPaused)
-			//FlxG.sound.music.stop();
-
-		if (FlxG.random.bool(20)){
-			//FlxG.sound.play(Paths.sound(FlxG.random.getObject(rareSounds), 'shared'));
-		}else{
-			if (isPaused){
-				//FlxG.sound.music.resume();
-				isPaused = false;
-			}else{
-				//FlxG.sound.playMusic(Paths.music(song), 0);
-			}
-		}
-
 		Playing.visible = true;
 		textAppear(true);
+
+		if (FlxG.random.bool(20))
+		{
+			// its crashing
+			//FlxG.sound.play(Paths.sound(FlxG.random.getObject(rareSounds), 'shared'));
+			return;
+		}
+
+		FlxG.sound.playMusic(Paths.inst(song), 0);
+		FlxG.sound.music.fadeIn(2, 0, 1);
 	}
 
 	function pauseSong(){
-		/*if (FlxG.sound.music.playing){
+		if (FlxG.sound.music.playing)
+		{
 			FlxG.sound.music.pause();
-			isPaused = true;
 			Playing.visible = false;
-		}*/
+			isPaused = true;
+		}else if (isPaused)
+		{
+			FlxG.sound.music.resume();
+		}
 	}
 
 	function quit(){
