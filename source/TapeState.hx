@@ -1,6 +1,10 @@
 package;
 
 //import MenuThings;
+import flixel.math.FlxRect;
+import flixel.math.FlxVector;
+import flixel.math.FlxPoint;
+import flixel.ui.FlxButton;
 import flixel.input.gamepad.FlxGamepad;
 import Controls.KeyboardScheme;
 import flixel.FlxG;
@@ -41,7 +45,7 @@ class TapeState extends MusicBeatState{
 	public var playkey:FlxSprite;
 	public var rightkey:FlxSprite;
 	public var sp:FlxSprite;
-	var autoReplay:FlxSprite;
+	var cycleReplay:FlxSprite;
 
 	override function create(){
 		FlxG.sound.playMusic(null);
@@ -49,6 +53,30 @@ class TapeState extends MusicBeatState{
 		
 		if (FlxG.sound.music.playing)
 			FlxG.sound.music.stop();
+
+		menuHitbox = new FlxObject(288, 489, 64, 139);
+		menuHitbox.visible = false;
+		add(menuHitbox);
+
+		playkeyHitbox = new FlxObject(355, 489, 65, 139);
+		playkeyHitbox.visible = false;
+		add(playkeyHitbox);
+
+		cycleReplayHitbox = new FlxObject(423, 488, 65, 140);
+		cycleReplayHitbox.visible = false;
+		add(cycleReplayHitbox);
+
+		leftkeyHitbox = new FlxObject(792, 488, 64, 140);
+		leftkeyHitbox.visible = false;
+		add(leftkeyHitbox);
+
+		spHitbox = new FlxObject(859, 488, 65, 140);
+		spHitbox.visible = false;
+		add(spHitbox);
+
+		rightkeyHitbox = new FlxObject(927, 488, 65, 140);
+		rightkeyHitbox.visible = false;
+		add(rightkeyHitbox);
 
 		super.create();
 
@@ -124,14 +152,14 @@ class TapeState extends MusicBeatState{
 		sp.antialiasing = false;
 		add(sp);
 
-		autoReplay = new FlxSprite(320, 180);
-		autoReplay.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
-		autoReplay.scale.set(2,2);
-		autoReplay.animation.addByPrefix("selected","Single cycle",24,false);
-		autoReplay.animation.addByPrefix("unselected","unSingle cycle",24,false);
-		autoReplay.animation.play("unselected");
-		autoReplay.antialiasing = false;
-		add(autoReplay);
+		cycleReplay = new FlxSprite(320, 180);
+		cycleReplay.frames = Paths.getSparrowAtlas('8bit/tap_them','shared');
+		cycleReplay.scale.set(2,2);
+		cycleReplay.animation.addByPrefix("selected","Single cycle",24,false);
+		cycleReplay.animation.addByPrefix("unselected","unSingle cycle",24,false);
+		cycleReplay.animation.play("unselected");
+		cycleReplay.antialiasing = false;
+		add(cycleReplay);
 
 		Instructions = new FlxText(0, 0, 0, "Click the buttons to navigate or play songs\nPress BACK to leave.\nPress P to Pause\n(C to Close Instructions)\n", 32);
 		Instructions.screenCenter(X);
@@ -143,55 +171,22 @@ class TapeState extends MusicBeatState{
 
 		changeSong();
 
-		add(htsprite);
-
 		//playSong("disco");
 	}
 
-	// offsets for buttons hitboxes
-
-	// 1 - 288, 489, 64, 139
-	// 2 - 355, 489, 65, 139
-	// 3 - 423, 488, 65, 140
+	var leftkeyHitbox:FlxObject;
+	var menuHitbox:FlxObject;
+	var playkeyHitbox:FlxObject;
 	
-	// 4 - 792, 488, 64, 140
-	// 5 - 859, 488, 65, 140
-	// 6 - 927, 488, 65, 140
-
-
-	var spoint = {x: 0, y:0}
-	var htsprite:FlxSprite = new FlxSprite();
+	var rightkeyHitbox:FlxObject;
+	var spHitbox:FlxObject;
+	var cycleReplayHitbox:FlxObject;
 
 	override function update(elapsed:Float){
 		if (FlxG.keys.justPressed.C && !FlxG.save.data.closedd){
 			remove(Instructions);
 			FlxG.save.data.closedd = true;
 		}
-
-		// var t = autoReplay;
-		// 	if (FlxG.mouse.pressed)
-		// 	{
-		// 		FlxG.mouse.visible = true;
-		// 		t.y = FlxG.mouse.y;
-		// 		t.x = FlxG.mouse.x;
-		// 	}
-		// 	FlxG.log.add("x: " + t.x);
-		// 	FlxG.log.add("y: " + t.y);
-
-		if (FlxG.mouse.justPressed)
-		{
-			htsprite.x = spoint.x = FlxG.mouse.x;
-			htsprite.y = spoint.y = FlxG.mouse.y;
-		}
-
-		if (FlxG.mouse.pressed)
-		{
-			htsprite.makeGraphic((FlxG.mouse.x - spoint.x), (FlxG.mouse.y - spoint.y), FlxColor.WHITE);
-			htsprite.alpha = 0.25;
-		}
-
-		if (FlxG.mouse.justReleased)
-			trace([htsprite.x, htsprite.y, htsprite.width, htsprite.height]);
 
 		super.update(elapsed);
 
@@ -225,30 +220,35 @@ class TapeState extends MusicBeatState{
 			dontLeave();
 		}
 
-		if (FlxG.mouse.overlaps(sp))
+		if (FlxG.mouse.overlaps(spHitbox))
 			playAnim(4, "selected");
 		else
 			playAnim(4, "unselected");
 
-		if (FlxG.mouse.overlaps(rightkey))
+		if (FlxG.mouse.overlaps(rightkeyHitbox))
 			playAnim(3, "selected");
 		else
 			playAnim(3, "unselected");
 
-		if (FlxG.mouse.overlaps(playkey))
+		if (FlxG.mouse.overlaps(playkeyHitbox))
 			playAnim(2, "selected");
 		else
 			playAnim(2, "unselected");
 
-		if (FlxG.mouse.overlaps(menu))
+		if (FlxG.mouse.overlaps(menuHitbox))
 			playAnim(1, "selected");
 		else
 			playAnim(1, "unselected");
 
-		if (FlxG.mouse.overlaps(leftkey))
+		if (FlxG.mouse.overlaps(leftkeyHitbox))
 			playAnim(0, "selected");
 		else
 			playAnim(0, "unselected");
+
+		if (FlxG.mouse.overlaps(cycleReplayHitbox))
+			playAnim(5, "selected");
+		else
+			playAnim(5, "unselected");
 	}
 	var stupid:Int = 0;
 	function changeSong(?uh:Int = 0){
@@ -363,8 +363,19 @@ class TapeState extends MusicBeatState{
 				rightkey.animation.play(Anim);
 			case 4:
 				sp.animation.play(Anim);
+			case 5:
+				cycleReplay.animation.play(Anim);
 			default:
 				trace('Invalid Id');
 		}
 	}
 }
+	// offsets for buttons hitboxes
+
+	// 1 - 288, 489, 64, 139
+	// 2 - 355, 489, 65, 139
+	// 3 - 423, 488, 65, 140
+	
+	// 4 - 792, 488, 64, 140
+	// 5 - 859, 488, 65, 140
+	// 6 - 927, 488, 65, 140
