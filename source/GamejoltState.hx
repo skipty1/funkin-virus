@@ -42,29 +42,6 @@ class GamejoltState extends MusicBeatState{
 	var name:FlxUIInputText;
 
 	override public function create(){
-		#if sys
-		#if desktop
-		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
-		#else 
-		if (!sys.FileSystem.exists(Main.path + Sys.getCwd() + "/assets/replays"))
-		#end
-			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
-		#end
-
-		@:privateAccess
-		{
-			trace("Loaded " + openfl.Assets.getLibrary("default").assetsLoaded + " assets (DEFAULT)");
-		}
-		
-		FlxG.save.bind('funkin', 'virus99');
-
-		PlayerSettings.init();
-
-		KadeEngineData.initSave();
-		MedalSaves.initMedal();
-		
-		Highscore.load();
-		
 		var bg = new FlxSprite().loadGraphic(Paths.image("8bit/skoy","shared"));
 		bg.scale.set(6,6);
 		bg.antialiasing = false;

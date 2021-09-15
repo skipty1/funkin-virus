@@ -25,20 +25,21 @@ class Highscore
 
 		if(!FlxG.save.data.botplay)
 		{
+
 			if (songScores.exists(daSong))
 			{
 				if (songScores.get(daSong) < score){
 					setScore(daSong, score);
 				}
-				FlxG.save.data.totalSongScores += score;
-				if (FlxGameJolt._initialized)
-					addScore("" + FlxG.save.data.totalSongScores  + "Total Scores", FlxG.save.data.totalSongScores, 654903, false, "", "" + FlxG.save.data.user);
+				//FlxG.save.data.totalSongScores += score;
+				//if (FlxGameJolt._initialized)
+					//addScore("" + FlxG.save.data.totalSongScores  + "Total Scores", FlxG.save.data.totalSongScores, 654903, false, "", "" + FlxG.save.data.user);
 			}
 			else{
 				setScore(daSong, score);
-				FlxG.save.data.totalSongScores += score;
-				if (FlxGameJolt._initialized)
-					addScore("" + FlxG.save.data.totalSongScores  + "Total Scores", FlxG.save.data.totalSongScores, 654903, false, "", "" + FlxG.save.data.user);
+				//FlxG.save.data.totalSongScores += score;
+				//if (FlxGameJolt._initialized)
+					//addScore("" + FlxG.save.data.totalSongScores  + "Total Scores", FlxG.save.data.totalSongScores, 654903, false, "", "" + FlxG.save.data.user);
 			}
 		}else trace('BotPlay detected. Score saving is disabled.');
 	}
@@ -64,7 +65,7 @@ class Highscore
 	{
 
 		#if !switch
-		NGio.postScore(score, "Week " + week);
+		//NGio.postScore(score, "Week " + week);
 		#end
 
 		if(!FlxG.save.data.botplay)
@@ -73,11 +74,15 @@ class Highscore
 
 			if (songScores.exists(daWeek))
 			{
-				if (songScores.get(daWeek) < score)
+				if (songScores.get(daWeek) < score){
 					setScore(daWeek, score);
+					FlxG.save.data.totalSongScores = score;
+				}
 			}
-			else
+			else{
 				setScore(daWeek, score);
+				FlxG.save.data.totalSongScores = score;
+			}
 		}else trace('BotPlay detected. Score saving is disabled.');
 	}
 
@@ -88,6 +93,16 @@ class Highscore
 	{
 		// Reminder that I don't need to format this song, it should come formatted!
 		songScores.set(song, score);
+		switch (song){
+			case "disco-hard":
+				FlxG.save.data.discoScore = score;
+				if (FlxGameJolt._initialized)
+					addScore("" + FlxG.save.data.discoScore + "Total Scores", FlxG.save.data.discoScore, 654903, false, "", "" + FlxG.save.data.user);
+			case "intoxicate-hard":
+				FlxG.save.data.toxicScore = score;
+				if (FlxGameJolt._initialized)
+					addScore("" + FlxG.save.data.toxicScore + "Total Scores", FlxG.save.data.toxicScore, 654903, false, "", "" + FlxG.save.data.user);
+		}
 		FlxG.save.data.songScores = songScores;
 		FlxG.save.flush();
 	}

@@ -78,12 +78,6 @@ class Main extends Sprite
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
 
-		#if cpp
-		//if (FlxG.save.data.cacheImages)
-		initialState = Caching;
-		//im stupid
-		#end
-
 		#if (android || ios)
 		zoom = 1;
 		gameWidth = 1280;
@@ -97,13 +91,17 @@ class Main extends Sprite
 		addChild(game);
 		#if windows
 		DiscordClient.initialize();
+		#end
 
 		Application.current.onExit.add (function (exitCode) {
+			#if windows
 			DiscordClient.shutdown();
+			#end
+			FlxGameJolt.closeSession();
 		 });
 		 
-		#end
-		FlxGameJolt.closeSession();
+		//#end
+		
 
 		#if !web
 		fpsCounter = new FPS(10, 3, 0xFFFFFF);
