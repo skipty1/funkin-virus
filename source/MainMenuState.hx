@@ -81,6 +81,8 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
+		
+		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 		FlxG.mouse.visible = true;
 
 		FlxTransitionableState.defaultTransIn = new TransitionData(TILES, FlxColor.BLACK, 0.5);
