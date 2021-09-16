@@ -97,11 +97,11 @@ class Highscore
 			case "disco-hard":
 				FlxG.save.data.discoScore = score;
 				if (FlxGameJolt._initialized)
-					addScore("" + FlxG.save.data.discoScore + "Total Scores", FlxG.save.data.discoScore, 654903, false, "", "" + FlxG.save.data.user);
+					FlxGameJolt.addScore("" + FlxG.save.data.discoScore + "Total Scores", FlxG.save.data.discoScore, 654903, false, "", "" + FlxG.save.data.user);
 			case "intoxicate-hard":
 				FlxG.save.data.toxicScore = score;
 				if (FlxGameJolt._initialized)
-					addScore("" + FlxG.save.data.toxicScore + "Total Scores", FlxG.save.data.toxicScore, 654903, false, "", "" + FlxG.save.data.user);
+					FlxGameJolt.addScore("" + FlxG.save.data.toxicScore + "Total Scores", FlxG.save.data.toxicScore, 654903, false, "", "" + FlxG.save.data.user);
 		}
 		FlxG.save.data.songScores = songScores;
 		FlxG.save.flush();
