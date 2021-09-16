@@ -318,8 +318,11 @@ class MainMenuState extends MusicBeatState
 				playAnimation(4, 'unselected');
 			}
 
-			if (FlxG.keys.justPressed.G)
-				FlxG.switchState(new GamejoltState());
+			if (FlxG.mouse.overlaps(hitboxCloud)){
+				playAnimation(5, "selected");
+			}else{
+				playAnimation(5, "unselected");
+			}
 
 			if (FlxG.mouse.overlaps(hitboxMusic)){
 				playAnimation(3, 'selected');
@@ -351,6 +354,12 @@ class MainMenuState extends MusicBeatState
 				selectedSomethin = true;
 				FlxG.mouse.visible = false;
 				FlxG.switchState(new TitleState());
+			}
+			if (FlxG.mouse.overlaps(hitboxCloud) && FlxG.mouse.justPressed){
+				FlxG.mouse.visible = false;
+				selectedSomethin = true;
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				FlxG.switchState(new GamejoltState());
 			}
 
 			if (FlxG.mouse.overlaps(hitboxFreeplay) && FlxG.mouse.justPressed){
@@ -409,6 +418,8 @@ class MainMenuState extends MusicBeatState
 				Music.animation.play(Anim);
 			case 4:
 				Achievement.animation.play(Anim);
+			case 5:
+				cloud.animation.play(Anim);
 			default:
 				trace('No valid animation');
 		}
