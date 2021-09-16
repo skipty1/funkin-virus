@@ -69,6 +69,7 @@ class MainMenuState extends MusicBeatState
 	public var Gold:FlxSprite;
 	public var Install:FlxSprite;
 	public var Iron:FlxSprite;
+	public var cloud:FlxSprite;
 	public var Rainbow:FlxSprite;
 	public var Story:FlxSprite;
 	public var Xshit:Float = 410;
@@ -78,10 +79,10 @@ class MainMenuState extends MusicBeatState
 	public var hitboxAchievement:FlxObject;
 	public var hitboxSettings:FlxObject;
 	public var hitboxMusic:FlxObject;
+	public var hitboxCloud:FlxObject;
 
 	override function create()
 	{
-		
 		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 		FlxG.mouse.visible = true;
 
@@ -161,6 +162,15 @@ class MainMenuState extends MusicBeatState
 		Music.antialiasing = false;
 		Music.animation.play('unselected');
 		add(Music);
+
+		cloud = new FlxSprite(Music.x - 50, 730);
+		cloud.frames = Paths.getSparrowAtlas('8bit/clouds','shared');
+		cloud.animation.addByPrefix('selected','cloud',24,false);
+		cloud.animation.addByPrefix('unselected','uncloud0',24,false);
+		cloud.scale.set(2,2);
+		cloud.antialiasing = false;
+		cloud.animation.play('unselected');
+		add(cloud);
 
 		Bestplayer = new FlxSprite(-18, 204);
 		Bestplayer.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
@@ -250,6 +260,10 @@ class MainMenuState extends MusicBeatState
 
 		hitboxMusic = new FlxObject(925, 630, 65, 70);
 		add(hitboxMusic);
+		
+		hitboxCloud = new FlxObject(785, 630, 70,70);
+		add(hitboxCloud);
+		hitboxCloud.visible = false;
 
 		hitboxMusic.visible = false;
 
