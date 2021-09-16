@@ -147,7 +147,7 @@ class LogState extends MusicBeatState{
 	function moveStates(?lmaoNo:Bool = false){
 		if (!lmaoNo){
 			new FlxTimer().start(1.5, function(tmr:FlxTimer){
-				FlxG.switchState(new MainMenuState());
+				FlxG.switchState(new TitleState());
 			});
 		}
 		else{
