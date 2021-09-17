@@ -163,7 +163,7 @@ class MainMenuState extends MusicBeatState
 		Music.animation.play('unselected');
 		add(Music);
 
-		cloud = new FlxSprite(Music.x - 50, 730);
+		cloud = new FlxSprite(Music.x - 130, 730);
 		cloud.frames = Paths.getSparrowAtlas('8bit/clouds','shared');
 		cloud.animation.addByPrefix('selected','cloud',24,false);
 		cloud.animation.addByPrefix('unselected','uncloud0',24,false);
@@ -302,14 +302,20 @@ class MainMenuState extends MusicBeatState
 	}
 
 	var selectedSomethin:Bool = false;
+	var onDiffic:Bool = false;
+	var difficEz:FlxSprite;
+	var difficNor:FlxSprite;
+	var difficHar:FlxSprite;
+	var black:FlxSprite;
+	var curDiff:Int = 0;
 
 	override function update(elapsed:Float)
 	{
 		if (!selectedSomethin)
 		{
-			if (FlxG.keys.justPressed.A){
+			if (FlxG.keys.justPressed.A && FlxGameJolt._initialized)
 				FlxGameJolt.setData("BetaTester?", "true", true);
-			}
+
 			if (spike != null && ASS == 'SAND'){
 				if (FlxG.mouse.overlaps(spike) && FlxG.mouse.justPressed && ASS == 'SAND' && !FlxG.save.data.Spike)
 					medalPop('Spike');
@@ -356,7 +362,8 @@ class MainMenuState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				selectedSomethin = true;
 				FlxG.mouse.visible = false;
-				FlxG.switchState(new TitleState());
+				openDifficSelect();
+				//FlxG.switchState(new TitleState());
 			}
 			if (FlxG.mouse.overlaps(hitboxCloud) && FlxG.mouse.justPressed){
 				FlxG.mouse.visible = false;
@@ -402,6 +409,27 @@ class MainMenuState extends MusicBeatState
 				
 			}
 		}
+		if (onDiffic){
+			if (controls.UP_P)
+				openDifficSelect(-1);
+			if (controls.DOWN_P)
+				openDifficSelect(1);
+
+			if (controls.ACCEPT){
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				openDifficSelect(-99, false, true);
+			}
+			if (controls.BACK){
+				FlxG.sound.play(Paths.sound('cancelMenu'));
+				openDifficSelect(-99, true);
+			}
+			if (difficEz.animation.curAnim.name == "tapped" && difficEz.animation.curAnim.finished)
+				difficEz.animation.play("selected");
+			if (difficNor.animation.curAnim.name == "tapped" && difficNor.animation.curAnim.finished)
+				difficNor.animation.play("selected");
+			if (difficHar.animation.curAnim.name == "tapped" && difficHar.animation.curAnim.finished)
+				difficHar.animation.play("selected");
+		}
 
 		if (FlxG.save.data.lessUpdate)
 			super.update(elapsed/2);
@@ -425,6 +453,90 @@ class MainMenuState extends MusicBeatState
 				cloud.animation.play(Anim);
 			default:
 				trace('No valid animation');
+		}
+	}
+	function openDifficSelect(?huh:Int = -99, ?die:Bool = false, ?play:Bool = false){
+		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
+		if (huh == -99){
+			black = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 10, FlxG.height * 10, FlxColor.BLACK);
+			black.scrollFactor.set();
+			black.alpha = 0.4;
+			add(black);
+			onDiffic = true;
+			difficEz = new FlxSprite(-100);
+			difficEz.frames = Paths.getSparrowAtlas("8bit/Difficulty_selection","shared");
+			difficEz.animation.addByPrefix("selected","EZ");
+			difficEz.animation.addByPrefix("unselected","unEZ");
+			difficEz.animation.addByPrefix("tapped","tap EZ");
+			difficEz.animation.play("unselected");
+			difficEz.scale.set(2,2);
+			add(difficEz);
+			difficNor = new FlxSprite(-100);
+			difficNor.frames = Paths.getSparrowAtlas("8bit/Difficulty_selection","shared");
+			difficNor.animation.addByPrefix("selected","NOM");
+			difficNor.animation.addByPrefix("unselected","unNOM");
+			difficNor.animation.addByPrefix("tapped","tap NOM");
+			difficNor.animation.play("unselected");
+			difficNor.scale.set(2,2);
+			add(difficNor);
+			difficHar = new FlxSprite(-100);
+			difficHar.frames = Paths.getSparrowAtlas("8bit/Difficulty_selection","shared");
+			difficHar.animation.addByPrefix("selected","HARD");
+			difficHar.animation.addByPrefix("unselected","unHARD");
+			difficHar.animation.addByPrefix("tapped","tap HARD");
+			difficHar.animation.play("unselected");
+			difficHar.scale.set(2,2);
+			add(difficHar);
+			difficHar.antialiasing = false;
+			difficNor.antialiasing = false;
+			difficEz.antialiasing = false;
+		}
+		if (die){
+			remove(black);
+			remove(difficEz);
+			remove(difficHar);
+			remove(difficNor);
+			onDiffic = false;
+			selectedSomethin = false;
+		}
+		if (huh != -99){
+			if (huh == 0)
+				curDiff = huh;
+			else
+				curDiff += huh;
+			if (curDiff < 0)
+				curDiff = 2
+			if (curDiff > 2)
+				curDiff = 0;
+		}
+		switch (curDiff){
+			case 0:
+				difficEz.animation.play("tapped");
+				difficNor.animation.play("unselected");
+				difficHar.animation.play("unselected");
+			case 1:
+				difficNor.animation.play("tapped");
+				difficEz.animation.play("unselected");
+				difficHar.animation.play("unselected");
+			case 2:
+				difficHar.animation.play("tapped");
+				difficNor.animation.play("unselected");
+				difficEz.animation.play("unselected");
+		}
+		if (play){
+			PlayState.storyPlaylist = ["Disco","Intoxicate"];
+			PlayState.isStoryMode = true;
+			PlayState.storyDifficulty = curDiff;
+			var poop:String = Highscore.formatSong(songFormat, curDifficulty);
+			PlayState.sicks = 0;
+			PlayState.bads = 0;
+			PlayState.shits = 0;
+			PlayState.goods = 0;
+			PlayState.campaignMisses = 0;
+			PlayState.SONG = Song.loadFromJson(poop, PlayState.storyPlaylist[0]);
+			PlayState.storyWeek = 1;
+			PlayState.campaignScore = 0;
+			LoadingState.loadAndSwitchState(new PlayState(), true);
 		}
 	}
 }
