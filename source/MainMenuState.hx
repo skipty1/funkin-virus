@@ -527,7 +527,7 @@ class MainMenuState extends MusicBeatState
 			PlayState.storyPlaylist = ["Disco","Intoxicate"];
 			PlayState.isStoryMode = true;
 			PlayState.storyDifficulty = curDiff;
-			var poop:String = Highscore.formatSong(songFormat, curDifficulty);
+			var poop:String = Highscore.formatSong(PlayState.storyPlaylist[0], curDifficulty);
 			PlayState.sicks = 0;
 			PlayState.bads = 0;
 			PlayState.shits = 0;
