@@ -96,8 +96,8 @@ class FreeplayState extends MusicBeatState
 		ThefuckingSongSpr.frames = Paths.getSparrowAtlas("8bit/songs", "shared");
 		ThefuckingSongSpr.scale.set(2,2);
 		//ThefuckingSongSpr.animation.addByPrefix("1","BOOTED UP0");
-		//ThefuckingSongSpr.animation.addByPrefix("1","DISCO0");
-		ThefuckingSongSpr.animation.addByPrefix("1","INTOXIC80");
+		ThefuckingSongSpr.animation.addByPrefix("1","DISCO0");
+		ThefuckingSongSpr.animation.addByPrefix("2","INTOXIC80");
 		//ThefuckingSongSpr.animation.addByPrefix("4","QUICKDRAW0");
 		//ThefuckingSongSpr.animation.addByPrefix("5","EXERROR");
 		//ThefuckingSongSpr.animation.addByPrefix("6","ALTERBYTE");
@@ -304,16 +304,16 @@ class FreeplayState extends MusicBeatState
 
 		curSelected += change;
 
-		if (curSelected < 1)
+		if (curSelected == 3)
 			curSelected = 1;
-		if (curSelected > 1)
+		if (curSelected == 0)
 			curSelected = 1;
 
 		switch(curSelected){
 			case 1:
-				curSong = "intoxicate";
+				curSong = "disco";
 			case 2:
-				//curSong = "intoxicate";
+				curSong = "intoxicate";
 		}
 
 		#if !switch
