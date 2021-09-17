@@ -1,6 +1,7 @@
 //package flixel.addons.api;
 package;
 
+import flixel.util.FlxTimer;
 import flash.display.Loader;
 import flash.display.BitmapData;
 import flash.events.Event;
