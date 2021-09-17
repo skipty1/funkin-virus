@@ -12,8 +12,8 @@ class GameJoltPlayerData{
 			FlxG.save.data.Logged = false;
 			FlxG.save.data.completedSongs = 0;
 			FlxG.save.data.gameBeaten = false;
-			FlxG.save.data.user = null;
-			FlxG.save.data.token = null;
+			//FlxG.save.data.user = null;
+			//FlxG.save.data.token = null;
 			FlxG.save.data.gameJoltLoad = true;
 		}
 		joltInit();
