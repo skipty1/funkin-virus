@@ -363,6 +363,9 @@ class FlxGameJolt
 
 		sendLoaderRequest(URL_API + "sessions/open/" + RETURN_TYPE + _idURL, Callback);
 		openedSession = true;
+		new FlxTimer().start(0.5, function(tmr:FlxTimer){
+			pingSession(true);
+		});
 	}
 
 	/**
