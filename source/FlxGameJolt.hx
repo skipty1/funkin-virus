@@ -365,6 +365,7 @@ class FlxGameJolt
 		openedSession = true;
 		new FlxTimer().start(1, function(tmr:FlxTimer){
 			pingSession(true);
+			tmr.reset();
 		});
 	}
 
