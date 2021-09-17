@@ -35,7 +35,7 @@ class FreeplayState extends MusicBeatState
 	var daBf:FlxSprite;
 	var daBfFlicker:FlxSprite;
 	var curMode:String = "";
-	var curSong:String = "disco";
+	var curSong:String = "intoxicate";
 
 	var selector:FlxText;
 	public static var curSelected:Int = 0;
