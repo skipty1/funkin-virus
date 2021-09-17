@@ -311,9 +311,9 @@ class FreeplayState extends MusicBeatState
 
 		switch(curSelected){
 			case 1:
-				curSong = "disco";
+				curSong = "Disco";
 			case 2:
-				curSong = "intoxicate";
+				curSong = "Intoxicate";
 		}
 
 		#if !switch
