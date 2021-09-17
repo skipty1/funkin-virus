@@ -96,8 +96,8 @@ class FreeplayState extends MusicBeatState
 		ThefuckingSongSpr.frames = Paths.getSparrowAtlas("8bit/songs", "shared");
 		ThefuckingSongSpr.scale.set(2,2);
 		//ThefuckingSongSpr.animation.addByPrefix("1","BOOTED UP0");
-		ThefuckingSongSpr.animation.addByPrefix("1","DISCO0");
-		ThefuckingSongSpr.animation.addByPrefix("2","INTOXIC80");
+		//ThefuckingSongSpr.animation.addByPrefix("1","DISCO0");
+		ThefuckingSongSpr.animation.addByPrefix("1","INTOXIC80");
 		//ThefuckingSongSpr.animation.addByPrefix("4","QUICKDRAW0");
 		//ThefuckingSongSpr.animation.addByPrefix("5","EXERROR");
 		//ThefuckingSongSpr.animation.addByPrefix("6","ALTERBYTE");
@@ -306,7 +306,7 @@ class FreeplayState extends MusicBeatState
 
 		if (curSelected < 1)
 			curSelected = 1;
-		if (curSelected > 2)
+		if (curSelected > 1)
 			curSelected = 1;
 
 		switch(curSelected){
