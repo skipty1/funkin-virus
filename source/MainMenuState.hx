@@ -511,15 +511,15 @@ class MainMenuState extends MusicBeatState
 		}
 		switch (curDiff){
 			case 0:
-				difficEz.animation.play("tapped");
+				difficEz.animation.play("tapped", false);
 				difficNor.animation.play("unselected");
 				difficHar.animation.play("unselected");
 			case 1:
-				difficNor.animation.play("tapped");
+				difficNor.animation.play("tapped", false);
 				difficEz.animation.play("unselected");
 				difficHar.animation.play("unselected");
 			case 2:
-				difficHar.animation.play("tapped");
+				difficHar.animation.play("tapped", false);
 				difficNor.animation.play("unselected");
 				difficEz.animation.play("unselected");
 		}
