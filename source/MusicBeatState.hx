@@ -385,8 +385,8 @@ class MusicBeatState extends FlxUIState
 		if (!FlxG.save.data.Coin && !dontSpam && deaths == 0 && storyCompleted)
 			medalPop('One Coin');
 
-		if (FlxGameJolt._initialized && FlxGameJolt.openedSession)
-			FlxGameJolt.pingSession(true);
+		//if (FlxGameJolt._initialized && FlxGameJolt.openedSession)
+			//FlxGameJolt.pingSession(true);
 	}
 
 	private function updateBeat():Void
