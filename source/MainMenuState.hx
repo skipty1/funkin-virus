@@ -498,6 +498,7 @@ class MainMenuState extends MusicBeatState
 			remove(difficNor);
 			onDiffic = false;
 			selectedSomethin = false;
+			FlxG.mouse.visible = true;
 		}
 		if (huh != -99){
 			if (huh == 0)
