@@ -38,7 +38,7 @@ class FreeplayState extends MusicBeatState
 	var curSong:String = "intoxicate";
 
 	var selector:FlxText;
-	public static var curSelected:Int = 0;
+	public static var curSelected:Int = 1;
 	public static var curDifficulty:Int = 1;
 
 	var scoreText:FlxText;
