@@ -96,12 +96,16 @@ class GamejoltState extends MusicBeatState{
 		if (FlxG.keys.justPressed.ENTER && name.text != '' && !FlxGameJolt._initialized){
 			switch (mode){
 				case "user":
+					trace(name.text);
 					username = name.text;
 					FlxG.save.data.user = username;
 					name.text = "";
 					chooseName.text = "Great! Now insert your user token.\n";
 					mode = "token";
 				case "token":
+					trace(name.text);
+					trace(keystring);
+					trace(gameid);
 					usertoken = name.text;
 					FlxG.save.data.token = usertoken;
 					name.visible = false;
