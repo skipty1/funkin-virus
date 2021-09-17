@@ -306,20 +306,14 @@ class FreeplayState extends MusicBeatState
 
 		if (curSelected < 1)
 			curSelected = 1;
-		if (curSelected >= 6)
+		if (curSelected > 2)
 			curSelected = 1;
 
 		switch(curSelected){
 			case 1:
-				curSong = "booted-up";
-			case 2:
 				curSong = "disco";
-			case 3:
+			case 2:
 				curSong = "intoxicate";
-			case 4:
-				curSong = "quickdraw";
-			case 5:
-				curSong = "exerror";
 		}
 
 		#if !switch
