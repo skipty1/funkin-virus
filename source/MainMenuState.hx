@@ -163,7 +163,7 @@ class MainMenuState extends MusicBeatState
 		Music.animation.play('unselected');
 		add(Music);
 
-		cloud = new FlxSprite(Music.x - 130, 730);
+		cloud = new FlxSprite(Music.x - 250, 730);
 		cloud.frames = Paths.getSparrowAtlas('8bit/clouds','shared');
 		cloud.animation.addByPrefix('selected','cloud',24,false);
 		cloud.animation.addByPrefix('unselected','uncloud0',24,false);
