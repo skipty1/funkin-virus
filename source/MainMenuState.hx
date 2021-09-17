@@ -113,7 +113,7 @@ class MainMenuState extends MusicBeatState
 		var moreY:Float = Yshit;
 
 		if (ASS == 'SAND'){
-			var sentry:FlxSprite = new FlxSprite(-50,600).loadGraphic(Paths.image('8bit/MINI_SENTRY','shared'));
+			var sentry:FlxSprite = new FlxSprite(-50,500).loadGraphic(Paths.image('8bit/MINI_SENTRY','shared'));
 			sentry.scale.set(2,2);
 			sentry.updateHitbox();
 			sentry.antialiasing = false;
