@@ -505,7 +505,7 @@ class MainMenuState extends MusicBeatState
 			else
 				curDiff += huh;
 			if (curDiff < 0)
-				curDiff = 2
+				curDiff = 2;
 			if (curDiff > 2)
 				curDiff = 0;
 		}
