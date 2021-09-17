@@ -314,7 +314,7 @@ class MainMenuState extends MusicBeatState
 		if (!selectedSomethin)
 		{
 			if (FlxG.keys.justPressed.A && FlxGameJolt._initialized)
-				FlxGameJolt.setData("BetaTester?", "true", true);
+				FlxGameJolt.setData("BetaTester?", "true", false);
 
 			if (spike != null && ASS == 'SAND'){
 				if (FlxG.mouse.overlaps(spike) && FlxG.mouse.justPressed && ASS == 'SAND' && !FlxG.save.data.Spike)
