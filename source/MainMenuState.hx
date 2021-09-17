@@ -3,7 +3,7 @@ package;
 //import MenuThings;
 import flixel.addons.transition.TransitionData;
 import flixel.addons.transition.FlxTransitionableState;
-import flixel.addons.api.FlxGameJolt;
+import FlxGameJolt;
 import flixel.math.FlxRect;
 import flixel.input.gamepad.FlxGamepad;
 import Controls.KeyboardScheme;
