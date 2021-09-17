@@ -95,12 +95,12 @@ class FreeplayState extends MusicBeatState
 		ThefuckingSongSpr = new FlxSprite(-50, 50);
 		ThefuckingSongSpr.frames = Paths.getSparrowAtlas("8bit/songs", "shared");
 		ThefuckingSongSpr.scale.set(2,2);
-		ThefuckingSongSpr.animation.addByPrefix("1","BOOTED UP0");
-		ThefuckingSongSpr.animation.addByPrefix("2","DISCO0");
-		ThefuckingSongSpr.animation.addByPrefix("3","INTOXIC80");
-		ThefuckingSongSpr.animation.addByPrefix("4","QUICKDRAW0");
-		ThefuckingSongSpr.animation.addByPrefix("5","EXERROR");
-		ThefuckingSongSpr.animation.addByPrefix("6","ALTERBYTE");
+		//ThefuckingSongSpr.animation.addByPrefix("1","BOOTED UP0");
+		ThefuckingSongSpr.animation.addByPrefix("1","DISCO0");
+		ThefuckingSongSpr.animation.addByPrefix("2","INTOXIC80");
+		//ThefuckingSongSpr.animation.addByPrefix("4","QUICKDRAW0");
+		//ThefuckingSongSpr.animation.addByPrefix("5","EXERROR");
+		//ThefuckingSongSpr.animation.addByPrefix("6","ALTERBYTE");
 		ThefuckingSongSpr.animation.play("1");
 		ThefuckingSongSpr.antialiasing = false;
 		add(ThefuckingSongSpr);
