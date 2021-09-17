@@ -163,7 +163,7 @@ class MainMenuState extends MusicBeatState
 		Music.animation.play('unselected');
 		add(Music);
 
-		cloud = new FlxSprite(Music.x - 250, 730);
+		cloud = new FlxSprite(Music.x - 450, 730);
 		cloud.frames = Paths.getSparrowAtlas('8bit/clouds','shared');
 		cloud.animation.addByPrefix('selected','cloud',24,false);
 		cloud.animation.addByPrefix('unselected','uncloud0',24,false);
@@ -463,7 +463,7 @@ class MainMenuState extends MusicBeatState
 			black.alpha = 0.4;
 			add(black);
 			onDiffic = true;
-			difficEz = new FlxSprite();
+			difficEz = new FlxSprite(200, 150);
 			difficEz.frames = Paths.getSparrowAtlas("8bit/Difficulty_selection","shared");
 			difficEz.animation.addByPrefix("selected","EZ");
 			difficEz.animation.addByPrefix("unselected","unEZ");
@@ -471,7 +471,7 @@ class MainMenuState extends MusicBeatState
 			difficEz.animation.play("unselected");
 			difficEz.scale.set(2,2);
 			add(difficEz);
-			difficNor = new FlxSprite();
+			difficNor = new FlxSprite(200,150);
 			difficNor.frames = Paths.getSparrowAtlas("8bit/Difficulty_selection","shared");
 			difficNor.animation.addByPrefix("selected","NOM");
 			difficNor.animation.addByPrefix("unselected","unNOM");
@@ -479,7 +479,7 @@ class MainMenuState extends MusicBeatState
 			difficNor.animation.play("unselected");
 			difficNor.scale.set(2,2);
 			add(difficNor);
-			difficHar = new FlxSprite();
+			difficHar = new FlxSprite(200,150);
 			difficHar.frames = Paths.getSparrowAtlas("8bit/Difficulty_selection","shared");
 			difficHar.animation.addByPrefix("selected","HARD");
 			difficHar.animation.addByPrefix("unselected","unHARD");
