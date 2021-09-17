@@ -66,7 +66,7 @@ class FlxGameJolt
 	 * Useful if you're not getting the right data back.
 	 * Only works in debug mode.
 	 */
-	public static var verbose:Bool = false;
+	public static var verbose:Bool = true;
 
 	/**
 	 * Whether or not the API has been fully initialized by passing game id, private key, and authenticating user name and token.
