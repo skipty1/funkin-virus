@@ -1699,6 +1699,8 @@ class ChartingState extends MusicBeatState
 		+ currentBPM
 		+ "\nCurBeat: " 
 		+ HelperFunctions.truncateFloat(curDecimalBeat,3)
+		+ "\nCurStep: "
+		+ curStep
 		+ "\nZoom: "
 		+ zoomFactor;
 
