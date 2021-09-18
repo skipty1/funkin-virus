@@ -31,7 +31,7 @@ class NewFreeplay extends MusicBeatState
 	var curDiffInt:Int = 1;
 	var curDiffString:String = "";
 	var curSong:String = "disco";
-	var curSelected:String = 0;
+	var curSelected:Int = 0;
 	
 	var daBg:FlxSprite;
 	var daFlicker:FlxSprite;
@@ -87,9 +87,9 @@ class NewFreeplay extends MusicBeatState
 		add(daBfFlicker);
 		daBfFlicker.visible = false;
 		
-		var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 105, 0xFF000000);
+		/*var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 105, 0xFF000000);
 		scoreBG.alpha = 0.6;
-		add(scoreBG);
+		add(scoreBG);*/
 		
 	}
 	
@@ -121,7 +121,7 @@ class NewFreeplay extends MusicBeatState
 			play();
 	}
 	function changeDiff(?crap:Int = 0){
-		curDiffInt += crap
+		curDiffInt += crap;
 		if (curDiffInt == 3 || curDiffInt == -1)
 			curDiffInt = 0;
 		
