@@ -51,7 +51,7 @@ class NewFreeplay extends MusicBeatState
 		curSong = "disco";
 		curDiffInt = 1;
 		
-		ThefuckingSongSpr = new FlxSprite(-50, 50);
+		ThefuckingSongSpr = new FlxSprite();
 		ThefuckingSongSpr.frames = Paths.getSparrowAtlas("8bit/songs", "shared");
 		ThefuckingSongSpr.scale.set(2,2);
 		//ThefuckingSongSpr.animation.addByPrefix("1","BOOTED UP0");
@@ -64,24 +64,24 @@ class NewFreeplay extends MusicBeatState
 		ThefuckingSongSpr.antialiasing = false;
 		add(ThefuckingSongSpr);
 		
-		daBg = new FlxSprite(-100).loadGraphic(Paths.image("8bit/game_room", "shared"));
+		daBg = new FlxSprite().loadGraphic(Paths.image("8bit/game_room", "shared"));
 		daBg.scale.set(2,2);
 		
 		daBg.antialiasing = true;
 		add(daBg);
-		daFlicker = new FlxSprite(-100).loadGraphic(Paths.image("8bit/game_room_blu", "shared"));
+		daFlicker = new FlxSprite().loadGraphic(Paths.image("8bit/game_room_blu", "shared"));
 		daFlicker.scale.set(2,2);
 		daFlicker.antialiasing = true;
 		add(daFlicker);
 		daFlicker.visible = false;
 	
-		daBf = new FlxSprite(-100,100).loadGraphic(Paths.image("8bit/bf","shared"));
+		daBf = new FlxSprite(0,100).loadGraphic(Paths.image("8bit/bf","shared"));
 		daBf.scale.set(2,2);
 		daBf.antialiasing = true;
 		add(daBf);
 		FlxTween.tween(daBf, {y: 0}, 0.6);
 		
-		daBfFlicker = new FlxSprite(-100).loadGraphic(Paths.image("8bit/bf","shared"));
+		daBfFlicker = new FlxSprite().loadGraphic(Paths.image("8bit/bf","shared"));
 		daBfFlicker.scale.set(2,2);
 		daBfFlicker.antialiasing = true;
 		add(daBfFlicker);
