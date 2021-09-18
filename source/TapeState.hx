@@ -187,7 +187,7 @@ class TapeState extends MusicBeatState{
 
 	override function update(elapsed:Float){
 		if (FlxG.keys.justPressed.C)
-			Instructions.visible = !Instructions.visible
+			Instructions.visible = !Instructions.visible;
 
 		super.update(elapsed);
 
