@@ -16,6 +16,7 @@ class Character extends FlxSprite
 	public var curCharacter:String = 'bf';
 
 	public var holdTimer:Float = 0;
+	public static var icon:String = "dkksks";
 
 	public function new(?isMenu = false, x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
