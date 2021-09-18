@@ -4518,7 +4518,8 @@ class PlayState extends MusicBeatState
 								}
 								switch (curStep){
 									case 1023:
-										PlayStateChangeables.scrollSpeed += 0.3;
+										//PlayStateChangeables.scrollSpeed += 0.3;
+										SONG.speed += 0.3;
 										remove(dad);
 										dad = new Character(olddadx, olddady, 'virus-mad');
 										add(dad);
@@ -4557,7 +4558,8 @@ class PlayState extends MusicBeatState
 											remove(gf);
 										});
 									case 1462:
-										PlayStateChangeables.scrollSpeed -= 1;
+										//PlayStateChangeables.scrollSpeed -= 1;
+										SONG.speed -= 1;
 										gf = new Character (oldgfx + 180, oldgfy, 'gf-box');
 										dad = new Character(200, 400, 'bit');
 										boyfriend = new Boyfriend(oldbfx, oldbfy, 'bf-pixel');
