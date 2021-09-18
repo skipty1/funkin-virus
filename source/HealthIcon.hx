@@ -13,41 +13,28 @@ class HealthIcon extends FlxSprite
 	public function new(char:String = 'bf', isPlayer:Bool = false)
 	{
 		super();
-
-		if(FlxG.save.data.antialiasing)
-			{
-				antialiasing = true;
-			}
-		if (char == 'sm')
-		{
-			loadGraphic(Paths.image("stepmania-icon"));
-			return;
-		}
-		loadGraphic(Paths.image('iconGrid'), true, 150, 150);
-		animation.add('bf', [0, 1], 0, false, false);
-		animation.add('bf-car', [0, 1], 0, false);
-		animation.add('bf-christmas', [0, 1], 0, false);
-		animation.add('bf-pixel', [0, 1], 0, false, false);
-		animation.add('virus', [2, 3], 0, false, isPlayer);
-		animation.add('bit', [4, 5], 0, false, isPlayer);
-		animation.add('retro', [6, 7], 0, false, isPlayer);
-		animation.add('classic', [8, 9], 0, false, isPlayer);
-		animation.add('virus-mad', [10, 11], 0, false, isPlayer);
-		animation.add('dark', [12, 13], 0, false, isPlayer);
-		animation.add('blue', [14, 15], 0, false, isPlayer);
-		animation.add('bf-pixel-lose', [1, 1], 0, false, false);
-		animation.add('virus-lose', [3, 3], 0, false, isPlayer);
-		animation.add('bit-lose', [5, 5], 0, false, isPlayer);
-		animation.add('retro-lose', [7, 7], 0, false, isPlayer);
-		animation.add('classic-lose', [9, 9], 0, false, isPlayer);
-		animation.add('virus-mad-lose', [11, 11], 0, false, isPlayer);
-		animation.add('dark-lose', [13, 13], 0, false, isPlayer);
-		animation.add('blue-lose', [15, 15], 0, false, isPlayer);
-		animation.add('virus-win', [20, 20], 0, false, isPlayer);
-		animation.add('dark-win', [21, 21], 0, false, isPlayer);
-		animation.add('bf-pixel-win', [22, 22], 0, false, false);
-		animation.add('bit-win', [30, 30], 0, false, isPlayer);
-		animation.add('classic-win', [31, 31], 0, false, isPlayer);
+		frames = Paths.getSparrowAtlas('8bit/BITS');
+		animation.addByPrefix('bf-pixel', "BF", 24, false, false);
+		animation.addByPrefix('virus', "8V", 24, false, isPlayer);
+		animation.addByPrefix('bit', "8B", 24, false, isPlayer);
+		//animation.addByPrefix('retro', [6, 7], 0, false, isPlayer);
+		animation.addByPrefix('classic', "8S", 0, false, isPlayer);
+		animation.addByPrefix('virus-mad', "MAD", 24, false, isPlayer);
+		animation.addByPrefix('dark', [12, 13], 0, false, isPlayer);
+		animation.addByPrefix('blue', [14, 15], 0, false, isPlayer);
+		animation.addByPrefix('bf-pixel-lose', "BF LOSING", 24, false, false);
+		animation.addByPrefix('virus-lose', "8V LOSING", 24, false, isPlayer);
+		animation.addByPrefix('bit-lose', "8B LOSING", 24, false, isPlayer);
+		//animation.addByPrefix('retro-lose', [7, 7], 0, false, isPlayer);
+		animation.addByPrefix('classic-lose', "8S LOSING", 2, false, isPlayer);
+		animation.addByPrefix('virus-mad-lose', "MAD LOSING", 24, false, isPlayer);
+		animation.addByPrefix('dark-lose', [13, 13], 0, false, isPlayer);
+		//animation.addByPrefix('blue-lose', [15, 15], 0, false, isPlayer);
+		animation.addByPrefix('virus-win', "8V WINNING", 24, false, isPlayer);
+		animation.addByPrefix('dark-win', [21, 21], 0, false, isPlayer);
+		animation.addByPrefix('bf-pixel-win', "BF WINNING", 24, false, false);
+		animation.addByPrefix('bit-win', "8B WINNING", 24, false, isPlayer);
+		animation.addByPrefix('classic-win', "8S WINNING", 0, false, isPlayer);
 		animation.play(char);
 
 		scrollFactor.set();
