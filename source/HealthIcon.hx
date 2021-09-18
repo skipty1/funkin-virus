@@ -35,7 +35,7 @@ class HealthIcon extends FlxSprite
 		animation.addByPrefix('bf-pixel-win', "BF WINNING", 24, false, false);
 		animation.addByPrefix('bit-win', "8B WINNING", 24, false, isPlayer);
 		animation.addByPrefix('classic-win', "8S WINNING", 0, false, isPlayer);
-		animation.play(char);
+		animation.play(char, false);
 
 		scrollFactor.set();
 		antialiasing = false;//cuz pixelll
