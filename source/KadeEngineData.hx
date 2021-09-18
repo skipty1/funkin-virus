@@ -9,6 +9,9 @@ class KadeEngineData
     	if (FlxG.save.data.totalSongScores == null)
     		FlxG.save.data.totalSongScores = 0;
 
+    	if (FlxG.save.data.discordPresence == null)
+    		FlxG.save.data.discordPresence = true;
+
         if (FlxG.save.data.weekUnlocked == null)
 			FlxG.save.data.weekUnlocked = 7;
 
