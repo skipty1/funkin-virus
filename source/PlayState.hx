@@ -1516,6 +1516,7 @@ class PlayState extends MusicBeatState
 		{
 			dad.dance();
 			iconP1.setGraphicSize(Std.int(iconP1.width + 30));
+			iconP1.updateHitbox();
 			gf.dance();
 			boyfriend.playAnim('idle');
 
@@ -2285,6 +2286,12 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
+	var isNormal = true;
+	var isWinning = false;
+	var isLosing = false;
+	var iconp1Anim = SONG.player1;
+	var iconp2Anim = SONG.player2;
+
 	override public function update(elapsed:Float)
 	{
 		#if !debug
@@ -2438,14 +2445,6 @@ class PlayState extends MusicBeatState
 				maxNPS = nps;
 		}
 
-		if (FlxG.keys.justPressed.NINE)
-		{
-			if (iconP1.animation.curAnim.name == 'blue')
-				iconP1.animation.play(SONG.player1);
-			else
-				iconP1.animation.play('blue');
-		}
-
 		switch (curStage)
 		{
 			case 'philly':
@@ -2545,27 +2544,17 @@ class PlayState extends MusicBeatState
 		if (health > 2)
 			health = 2;
 
-		if (healthBar.percent < 20){
-			switch (dad.curCharacter){
-				case 'virus-mad':
-					trace('no.');
-					iconP1.animation.play(SONG.player1 + '-lose');
-				default:
-					iconP2.animation.play(SONG.player2 + '-win');
-					iconP1.animation.play(SONG.player1 + '-lose');
-			}
-		}else{
-			iconP2.animation.play(SONG.player2);
-			iconP1.animation.play(SONG.player1);
-		}
+		if (healthBar.percent < 20 && !isLosing)
+			changeMood(false);
+		else if (!isNormal)
+			changeMood(false,true);
+		
 
-		if (healthBar.percent > 80){
-			iconP1.animation.play(SONG.player1 + '-win');
-			iconP2.animation.play(SONG.player2 + '-lose');
-		}else{
-			iconP1.animation.play(SONG.player1);
-			iconP2.animation.play(SONG.player2);
-		}
+		if (healthBar.percent > 80 && !isWinning)
+			changeMood(true);
+		else if (!isNormal)
+			changeMood(false,true);
+		
 
 		#if debug
 		if (FlxG.keys.justPressed.SIX)
@@ -3356,6 +3345,27 @@ class PlayState extends MusicBeatState
 			songLength
 			- Conductor.songPosition);
 		#end
+	}
+	
+	function changeMood(winning:Bool, ?normal:Bool = false){
+		if (winning && !isWinning){
+			iconp1Anim = SONG.player1 + "-win";
+			iconp2Anim = SONG.player2 + "-lose";
+			isWinning = true;
+			isLosing = false;
+		}
+		if (!winning && !isLosing && !normal){
+			iconp1Anim = SONG.player1 + "-lose";
+			iconp2Anim = SONG.player2 + "-win";
+			isWinning = false;
+			isLosing = true;
+		}
+		if (normal){
+			isLosing = false;
+			isWinning = false;
+			iconp2Anim = SONG.player2;
+			iconp1Anim = SONG.player1;
+		}
 	}
 
 	function endSong():Void
@@ -4652,7 +4662,10 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (curBeat % 1 == 0){//why not?
+		if (curBeat % 1 == 0){
+			//why not?
+			iconP1.animation.play(iconp1Anim, false);
+			iconP2.animation.play(iconp2Anim, false);
 			iconP1.setGraphicSize(Std.int(iconP1.width + 30));
 			iconP2.setGraphicSize(Std.int(iconP2.width + 30));
 
