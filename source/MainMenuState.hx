@@ -411,9 +411,9 @@ class MainMenuState extends MusicBeatState
 		}
 		if (onDiffic){
 			if (controls.UP_P)
-				openDifficSelect(-1);
-			if (controls.DOWN_P)
 				openDifficSelect(1);
+			if (controls.DOWN_P)
+				openDifficSelect(-1);
 
 			if (controls.ACCEPT){
 				FlxG.sound.play(Paths.sound('confirmMenu'));
