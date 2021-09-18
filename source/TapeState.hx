@@ -48,7 +48,7 @@ class TapeState extends MusicBeatState{
 	var cycleReplay:FlxSprite;
 
 	override function create(){
-		FlxG.sound.playMusic(null);
+		//FlxG.sound.playMusic(null);
 		FlxG.mouse.visible = true;
 		
 		if (FlxG.sound.music.playing)
@@ -157,17 +157,20 @@ class TapeState extends MusicBeatState{
 		cycleReplay.scale.set(2,2);
 		cycleReplay.animation.addByPrefix("selected","Single cycle",24,false);
 		cycleReplay.animation.addByPrefix("unselected","unSingle cycle",24,false);
+		cycleReplay.animation.addByPrefix("clicked","tapSingle cycle",24,false);
 		cycleReplay.animation.play("unselected");
 		cycleReplay.antialiasing = false;
 		add(cycleReplay);
 
-		Instructions = new FlxText(0, 0, 0, "Click the buttons to navigate or play songs\nPress BACK to leave.\nPress P to Pause\n(C to Close Instructions)\n", 32);
+		Instructions = new FlxText(0, 0, 0, "Click the buttons to navigate or play songs\nPress BACK to leave.\nPress P to Pause\n(C to Close/Open Instructions)\n", 48);
 		Instructions.screenCenter(X);
 		Instructions.screenCenter(Y);
+		Instructions.setFormat(Paths.font("vcr.ttf"), 48, FlxColor.WHITE, CENTER);
 		Instructions.alignment = CENTER;
-		Instructions.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 3);
-		if (!FlxG.save.data.closedd)
-			add(Instructions);
+		Instructions.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 5);
+		//if (!FlxG.save.data.closedd)
+		add(Instructions);
+		
 
 		changeSong();
 
@@ -177,45 +180,48 @@ class TapeState extends MusicBeatState{
 	var leftkeyHitbox:FlxObject;
 	var menuHitbox:FlxObject;
 	var playkeyHitbox:FlxObject;
-	
+	var loop = false;
 	var rightkeyHitbox:FlxObject;
 	var spHitbox:FlxObject;
 	var cycleReplayHitbox:FlxObject;
 
 	override function update(elapsed:Float){
-		if (FlxG.keys.justPressed.C && !FlxG.save.data.closedd){
-			remove(Instructions);
-			FlxG.save.data.closedd = true;
-		}
+		if (FlxG.keys.justPressed.C)
+			Instructions.visible = !Instructions.visible
 
 		super.update(elapsed);
 
-		if (FlxG.keys.justPressed.P){
+		if (FlxG.keys.justPressed.P)
 			pauseSong();
-		}
 
-		if (FlxG.mouse.overlaps(leftkey) && FlxG.mouse.justPressed){
+		if (FlxG.mouse.overlaps(leftkeyHitbox) && FlxG.mouse.justPressed){
 			changeSong(-1);
 			playAnim(0, "clicked");
 		}
 
-		if (FlxG.mouse.overlaps(menu) && FlxG.mouse.justPressed ){
+		if (FlxG.mouse.overlaps(menuHitbox) && FlxG.mouse.justPressed){
 			// quit();
 			playSong(songID);
 			playAnim(1, "clicked");
 		}
 
-		if (FlxG.mouse.overlaps(playkey) && FlxG.mouse.justPressed){
+		if (FlxG.mouse.overlaps(cycleReplayHitbox) && FlxG.mouse.justPressed){
+			loop = !loop;
+			textAppear(false,true);
+			playAnim(5, "clicked");
+		}
+
+		if (FlxG.mouse.overlaps(playkeyHitbox) && FlxG.mouse.justPressed){
 			playSong(songID);
 			playAnim(2, "clicked");
 		}
 
-		if (FlxG.mouse.overlaps(rightkey) && FlxG.mouse.justPressed){
+		if (FlxG.mouse.overlaps(rightkeyHitbox) && FlxG.mouse.justPressed){
 			changeSong(1);
 			playAnim(3, "clicked");
 		}
 
-		if (FlxG.mouse.overlaps(sp) && FlxG.mouse.justPressed){
+		if (FlxG.mouse.overlaps(spHitbox) && FlxG.mouse.justPressed){
 			playAnim(4, "clicked");
 			dontLeave();
 		}
@@ -254,7 +260,7 @@ class TapeState extends MusicBeatState{
 	function changeSong(?uh:Int = 0){
 		stupid += uh;
 
-		if (stupid < 0 || stupid > 1)
+		if (stupid == -1 || stupid == 2)
 			stupid = 0;
 
 		switch (stupid){
@@ -268,7 +274,7 @@ class TapeState extends MusicBeatState{
 		textAppear();
 	}
 
-	function playSong(song:String){
+	function playSong(song:String):Void{
 		Playing.visible = true;
 		textAppear(true);
 
@@ -279,8 +285,13 @@ class TapeState extends MusicBeatState{
 			return;
 		}
 
-		FlxG.sound.playMusic(Paths.inst(song), 0);
-		FlxG.sound.music.fadeIn(2, 0, 1);
+		if (loop){
+			FlxG.sound.playMusic(Paths.inst(song), 0);
+			FlxG.sound.music.fadeIn(2,0,1);
+		}else{
+		
+			//FlxG.sound.music.fadeIn(2, 0, 1);
+		}
 	}
 
 	function pauseSong(){
@@ -301,24 +312,27 @@ class TapeState extends MusicBeatState{
 
 	function dontLeave(){
 		if (FlxG.random.bool(1)){
-			//if (FlxG.sound.music.playing)
-				//FlxG.sound.music.stop();
+			if (FlxG.sound.music.playing)
+				FlxG.sound.music.stop();
 
 			//FlxG.sound.play(Paths.sound('starrpark','shared'));
 			//new FlxTimer()
 		}
 	}
-	var txt:FlxText;
-	var removedtext = true;
-	function textAppear(?isPlay:Bool = false){
-		if (!removedtext){
-			remove(txt);
-			removedtext = true;
-		}
-		txt = new FlxText(0, 0, 0, "Selected: " + songID + "\n", 48);
+	//var txt:FlxText;
+	//var removedtext = true;
+	function textAppear(?isPlay:Bool = false, ?isLoop:Bool = false){
+		var txt = new FlxText(0, 0, 0, "Selected: " + songID + "\n", 48);
 
 		if (isPlay)
 			txt.text = "Playing: " + songID + "\n";
+
+		if (isLoop){
+			if (loop)
+				txt.text = "Looping turned on.\n";
+			else
+				txt.text = "Looping turned off.\n";
+		}
 
 		txt.color = FlxColor.fromRGB(133, 256, 133);
 		txt.alignment = CENTER;
@@ -326,30 +340,25 @@ class TapeState extends MusicBeatState{
 		txt.alpha = 0;
 		txt.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 3);
 		add(txt);
-		removedtext = false;
+		//removedtext = false;
 		txt.screenCenter(X);
 
-		if (!removedtext){
 			new FlxTimer().start(0.1, function(tmr:FlxTimer){
 				txt.alpha += 0.1;
 				if (txt.alpha < 0.9)
 					tmr.reset(0.1);
 			});
 
-			new FlxTimer().start(3.5, function(tmrvv:FlxTimer){
-				new FlxTimer().start(0.1, function(tmr:FlxTimer){
-					txt.alpha -= 0.1;
-					if (txt.alpha != 0){
-						tmr.reset(0.1);
-					}else{
-						if (!removedtext){
-							remove(txt);
-							removedtext = true;
-						}
-					}
-				});
+		new FlxTimer().start(3.5, function(tmrvv:FlxTimer){
+			new FlxTimer().start(0.1, function(tmr:FlxTimer){
+				txt.alpha -= 0.1;
+				if (txt.alpha != 0){
+					tmr.reset(0.1);
+				}else{
+					remove(txt);
+				}
 			});
-		}
+		});
 	}
 	public function playAnim(ID:Int,Anim:String){
 		switch (ID){

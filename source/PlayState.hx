@@ -3474,7 +3474,7 @@ class PlayState extends MusicBeatState
 					{
 						FlxG.sound.playMusic(Paths.music('freakyMenu'));
 						Conductor.changeBPM(102);
-						FlxG.switchState(new StoryMenuState());
+						FlxG.switchState(new MainMenuState());
 					}
 
 					#if windows
@@ -3491,7 +3491,7 @@ class PlayState extends MusicBeatState
 						Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
 					}
 
-					StoryMenuState.unlockNextWeek(storyWeek);
+					//StoryMenuState.unlockNextWeek(storyWeek);
 				}
 				else
 				{
@@ -3549,7 +3549,7 @@ class PlayState extends MusicBeatState
 						});
 				}
 				else
-					FlxG.switchState(new FreeplayState());
+					FlxG.switchState(new NewFreeplay());
 			}
 		}
 	}
@@ -4468,6 +4468,31 @@ class PlayState extends MusicBeatState
 				floatyBitch();
 			case 'darkroom':
 				switch (songLowercase){
+					case "disco":
+						switch (curStep){
+							case 380:
+								changeScroll(2);
+							case 511:
+								changeScroll(1);
+							case 672:
+								changeScroll(2);
+							case 799:
+								changeScroll(1);
+							case 832:
+								changeScroll(2);
+							case 863:
+								changeScroll(1);
+							case 878:
+								changeScroll(2);
+							case 895:
+								changeScroll(1);
+							case 912:
+								changeScroll(2);
+							case 920 | 922 | 924 | 926:
+								changeScroll(1);
+							case 921 | 923 | 925:
+							changeScroll(2);
+						}
 					case 'intoxicate':
 									if (curStep > 1408 && curStep < 1422){
 										playerStrums.forEach(function(spr:FlxSprite){

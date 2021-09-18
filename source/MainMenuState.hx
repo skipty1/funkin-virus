@@ -92,8 +92,8 @@ class MainMenuState extends MusicBeatState
 		FlxG.mouse.visible = true;
 
 		#if windows
-		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		if (FlxG.save.data.discordPresence)
+			DiscordClient.changePresence("In the Main Menu", null);
 		#end
 
 		ASS = FlxG.random.getObject(randomBg);
@@ -313,8 +313,8 @@ class MainMenuState extends MusicBeatState
 	{
 		if (!selectedSomethin)
 		{
-			if (FlxG.keys.justPressed.A && FlxGameJolt._initialized)
-				FlxGameJolt.setData("BetaTester?", "true", false);
+			//if (FlxG.keys.justPressed.A && FlxGameJolt._initialized)
+				//FlxGameJolt.setData("BetaTester?", "true", false);
 
 			if (spike != null && ASS == 'SAND'){
 				if (FlxG.mouse.overlaps(spike) && FlxG.mouse.justPressed && ASS == 'SAND' && !FlxG.save.data.Spike)
@@ -377,7 +377,7 @@ class MainMenuState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				selectedSomethin = true;
 				FlxG.mouse.visible = false;
-				FlxG.switchState(new FreeplayState());
+				FlxG.switchState(new NewFreeplay());
 			}
 
 			if (FlxG.mouse.overlaps(hitboxSettings) && FlxG.mouse.justPressed){
@@ -463,7 +463,7 @@ class MainMenuState extends MusicBeatState
 			black.alpha = 0.4;
 			add(black);
 			onDiffic = true;
-			difficEz = new FlxSprite(300, 200);
+			difficEz = new FlxSprite(350, 300);
 			difficEz.frames = Paths.getSparrowAtlas("8bit/Difficulty_selection","shared");
 			difficEz.animation.addByPrefix("selected","EZ");
 			difficEz.animation.addByPrefix("unselected","unEZ");
@@ -471,7 +471,7 @@ class MainMenuState extends MusicBeatState
 			difficEz.animation.play("unselected");
 			difficEz.scale.set(2,2);
 			add(difficEz);
-			difficNor = new FlxSprite(300,200);
+			difficNor = new FlxSprite(350,300);
 			difficNor.frames = Paths.getSparrowAtlas("8bit/Difficulty_selection","shared");
 			difficNor.animation.addByPrefix("selected","NOM");
 			difficNor.animation.addByPrefix("unselected","unNOM");
@@ -479,7 +479,7 @@ class MainMenuState extends MusicBeatState
 			difficNor.animation.play("unselected");
 			difficNor.scale.set(2,2);
 			add(difficNor);
-			difficHar = new FlxSprite(300,200);
+			difficHar = new FlxSprite(350,300);
 			difficHar.frames = Paths.getSparrowAtlas("8bit/Difficulty_selection","shared");
 			difficHar.animation.addByPrefix("selected","HARD");
 			difficHar.animation.addByPrefix("unselected","unHARD");
