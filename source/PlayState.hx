@@ -4785,7 +4785,7 @@ class PlayState extends MusicBeatState
 
 	function changeScroll(?scrollVer:Int = -2):Void{
 		if (scrollVer != -2)
-			trace("CHANGED SCROLL TO ID " + scrollVer);
+			trace('CHANGED SCROLL TO ID $scrollVer');
 		
 		if (scrollVer > 4){
 			trace("invalid scroll version");
@@ -4794,9 +4794,9 @@ class PlayState extends MusicBeatState
 		
 		switch (scrollVer){
 			default:
-				notes.sort(FlxSort.byY, (PlayStateChangeables.useDownscroll ? FlxSort.ASCENDING : FlxSort.DESCENDING));
+				trace('lol lmao xd');
 			case -1: //Down-Up Scroll (TO DOWN)
-				if (PlayStateChangeables.useDownscroll){
+				/*if (PlayStateChangeables.useDownscroll){
 					strumLine.y = FlxG.height + 82.5;
 					if (songPosition)
 						songPosBG.y = 10;
@@ -4807,11 +4807,11 @@ class PlayState extends MusicBeatState
 					if (FlxG.save.data.botplay)
 						botPlayState.y = 100;
 					notes.sort(FlxSort.byY, FlxSort.DESCENDING);
-				}
+				}*/
 
 				PlayStateChangeables.useDownscroll = true;
 			case 0: //Down-Up Scroll (TO UP)
-				if (PlayStateChangeables.useDownscroll){
+				/*if (PlayStateChangeables.useDownscroll){
 					strumLine.y = FlxG.height + 82.5;
 					if (songPosition)
 						songPosBG.y = 10;
@@ -4822,39 +4822,74 @@ class PlayState extends MusicBeatState
 					if (FlxG.save.data.botplay)
 						botPlayState.y = 100;
 					notes.sort(FlxSort.byY, FlxSort.ASCENDING);
-				}
+				}*/
 
 				PlayStateChangeables.useDownscroll = false;
 			case 1: //UpScroll
-				if (PlayStateChangeables.useDownscroll){
-					FlxTween.tween(strumLine, {y: FlxG.height * 0.9 + 165}, 0.5);
-					if (songPosition)
-						FlxTween.tween(songPosBG, {y: 10}, 0.5);
-					FlxTween.tween(healthBarBG, {y: FlxG.height * 0.9}, 0.5);
-					if (FlxG.save.data.watermark)
-						FlxTween.tween(kadeEngineWatermark, {y: healthBarBG.y}, 0.5);
-					FlxTween.tween(songName, {y: songName.y += 3}, 0.5);
-					if (FlxG.save.data.botplay)
-						FlxTween.tween(botPlayState, {y: 100}, 0.5);
-					notes.sort(FlxSort.byY, FlxSort.ASCENDING);
-				}
+				var duration = 0.25;
+				var ease = FlxEase.quadOut;
 
 				PlayStateChangeables.useDownscroll = false;
-			case 2: //DownScroll
-				if (!PlayStateChangeables.useDownscroll){
-					if (songName != null)
-						FlxTween.tween(songName, {y: songName.y -= 3}, 0.5);
-				}
-				PlayStateChangeables.useDownscroll = true;
-				FlxTween.tween(strumLine, {y: FlxG.height - 165}, 0.5);
+
+				playerStrums.forEach(o -> {
+					FlxTween.tween(o, {y: 50}, duration, { ease: ease });
+				});
+
+				cpuStrums.forEach(o -> {
+					FlxTween.tween(o, {y: 50}, duration, { ease: ease });
+				});
+
+				
+				FlxTween.tween(strumLine, {y: 10}, duration, { ease: ease });
 				if (songPosition)
-					FlxTween.tween(songPosBG, {y: FlxG.height * 0.9 + 45}, 0.5);
-				FlxTween.tween(healthBarBG, {y: 50}, 0.5);
+				{
+					FlxTween.tween(songPosBG, {y: 10}, duration, { ease: ease });
+					FlxTween.tween(songName, {y: 10}, duration, { ease: ease });
+				}
+				FlxTween.tween(healthBarBG, {y: FlxG.height * 0.9}, duration, { ease: ease });
+				
 				if (FlxG.save.data.watermark)
-					FlxTween.tween(kadeEngineWatermark, {y: FlxG.height * 0.9 + 45}, 0.5);
-				if (FlxG.save.data.botplay)
-					FlxTween.tween(botPlayState, {y: -100}, 0.5);
-				notes.sort(FlxSort.byY, FlxSort.DESCENDING);
+					FlxTween.tween(kadeEngineWatermark, {y: FlxG.height * 0.9 + 50}, duration, { ease: ease });
+				
+				if (loadRep)
+					FlxTween.tween(replayTxt, {y: FlxG.height * 0.9 + -100}, duration, { ease: ease });
+				
+				if (PlayStateChangeables.botPlay && !loadRep)
+					FlxTween.tween(botPlayState, {y: FlxG.height * 0.9 + -100}, duration, { ease: ease });
+				
+				FlxTween.tween(iconP1, {y: FlxG.height * 0.9 - (iconP1.height / 2)}, duration, { ease: ease });
+				FlxTween.tween(iconP2, {y: FlxG.height * 0.9 - (iconP2.height / 2)}, duration, { ease: ease });
+				FlxTween.tween(healthBar, {y: FlxG.height * 0.9 + 4}, duration, { ease: ease });
+			case 2: //DownScroll
+				var duration = 0.25;
+				var ease = FlxEase.quadOut;
+
+				PlayStateChangeables.useDownscroll = true;
+				playerStrums.forEach(o -> {
+					FlxTween.tween(o, {y: FlxG.height - 165}, duration, { ease: ease });
+				});
+
+				cpuStrums.forEach(o -> {
+					FlxTween.tween(o, {y: FlxG.height - 165}, duration, { ease: ease });
+				});
+
+				
+				FlxTween.tween(strumLine, {y: FlxG.height - 165}, duration, { ease: ease });
+				if (songPosition)
+				{
+					FlxTween.tween(songPosBG, {y: FlxG.height * 0.9 + 45}, duration, { ease: ease });
+					FlxTween.tween(songName, {y: songPosBG.y - 3}, duration, { ease: ease });
+				}
+				FlxTween.tween(healthBarBG, {y: 50}, duration, { ease: ease });
+				if (FlxG.save.data.watermark)
+					FlxTween.tween(kadeEngineWatermark, {y: FlxG.height * 0.9 + 45}, duration, { ease: ease });
+				if (loadRep)
+					FlxTween.tween(replayTxt, {y: 50 + 100}, duration, { ease: ease });
+				if (PlayStateChangeables.botPlay && !loadRep)
+					FlxTween.tween(botPlayState, {y: 50 + 100}, duration, { ease: ease });
+				FlxTween.tween(iconP1, {y: 50 - (iconP1.height / 2)}, duration, { ease: ease });
+				FlxTween.tween(iconP2, {y: 50 - (iconP2.height / 2)}, duration, { ease: ease });
+				FlxTween.tween(healthBar, {y: 50 + 4}, duration, { ease: ease });
 			case 3: //SideScroll (Left2Right)
 				
 			case 4: //SideScroll (Right2Left);
