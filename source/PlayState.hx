@@ -4841,8 +4841,10 @@ class PlayState extends MusicBeatState
 
 				PlayStateChangeables.useDownscroll = false;
 			case 2: //DownScroll
-				if (!PlayStateChangeables.useDownscroll)
-					FlxTween.tween(songName, {y: songName.y -= 3}, 0.5);
+				if (!PlayStateChangeables.useDownscroll){
+					if (songName != null)
+						FlxTween.tween(songName, {y: songName.y -= 3}, 0.5);
+				}
 				PlayStateChangeables.useDownscroll = true;
 				FlxTween.tween(strumLine, {y: FlxG.height - 165}, 0.5);
 				if (songPosition)
