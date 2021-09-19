@@ -3443,9 +3443,19 @@ class PlayState extends MusicBeatState
 			}
 
 			#if !switch
-			Highscore.saveScore(songHighscore, Math.round(songScore), storyDifficulty);
-			Highscore.saveCombo(songHighscore, Ratings.GenerateLetterRank(accuracy), storyDifficulty);
+			/*Highscore.saveScore(songHighscore, Math.round(songScore), storyDifficulty);
+			Highscore.saveCombo(songHighscore, Ratings.GenerateLetterRank(accuracy), storyDifficulty);*/
 			#end
+			if ((FlxG.save.data.discoScore == 0 || FlxG.save.data.discoScore < songScore) && SONG.song.toLowerCase() == "disco"){
+				FlxG.save.data.discoScore = songScore;
+				if (FlxGameJolt._initialized)
+					FlxGameJolt.addScore("" + FlxG.save.data.discoScore + "points", FlxG.save.data.discoScore, 657398, false, "", "" + FlxG.save.data.user);
+			}
+			if ((FlxG.save.data.intoxicateScore == 0 || FlxG.save.data.intoxicateScore < songScore) && SONG.song.toLowerCase() == "intoxicate"){
+				FlxG.save.data.intoxicateScore = songScore;
+				if (FlxGameJolt._initialized)
+					FlxGameJolt.addScore("" + FlxG.save.data.intoxicateScore + "points", FlxG.save.data.intoxicateScore, 654903, false, "", "" + FlxG.save.data.user);
+			}
 			if (isStoryMode){
 				switch (SONG.song.toLowerCase()){
 					case "disco":
