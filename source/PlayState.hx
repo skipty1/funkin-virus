@@ -4478,6 +4478,7 @@ class PlayState extends MusicBeatState
 		boyfriend.playAnim('scared', true);
 		gf.playAnim('scared', true);
 	}
+	var fuckingAnimationPlaying = false;
 
 	override function stepHit()
 	{
@@ -4529,7 +4530,19 @@ class PlayState extends MusicBeatState
 								changeScroll(2);
 							case 511:
 								changeScroll(1);
+							case 638:
+								remove(dad);
+								dad = new Character(100,100, "fake");
+								dad.x += 100;
+								dad.y += 300;
+								add(dad);//shortcut #8
+								dad.playAnim("tremble",true);
+								SONG.forceDad = true;
+								fuckingAnimationPlaying = true;
+							case 640 |
 							case 672:
+								fuckingAnimationPlaying = false;
+								SONG.forceDad = false;
 								changeScroll(2);
 							case 799:
 								changeScroll(1);
