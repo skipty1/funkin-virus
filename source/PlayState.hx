@@ -2800,7 +2800,7 @@ class PlayState extends MusicBeatState
 
 				switch (dad.curCharacter)
 				{
-					case 'virus' | 'error' | 'bit'://probably most cavemanish way to do shit but ehhh who cares.
+					case 'virus' | 'error' | 'bit' | 'fake'://probably most cavemanish way to do shit but ehhh who cares.
 						switch (dad.animation.curAnim.name){
 							case 'singDOWN':
 								camFollow.x = dad.getMidpoint().x - 100;
