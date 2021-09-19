@@ -1,5 +1,5 @@
 package;
-
+import lime.system.Clipboard;
 import openfl.utils.ByteArray;
 import Achievements.MedalSaves;
 import FlxGameJolt;
@@ -95,6 +95,8 @@ class GamejoltState extends MusicBeatState{
 
 	override public function update(elapsed:Float){
 		super.update(elapsed);
+		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.V)
+			name.text = name.text + Clipboard.text;
 		if (FlxG.keys.justPressed.ENTER && name.text != '' && !FlxGameJolt._initialized){
 			switch (mode){
 				case "user":
