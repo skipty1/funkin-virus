@@ -4539,8 +4539,21 @@ class PlayState extends MusicBeatState
 								dad.playAnim("tremble",true);
 								SONG.forceDad = true;
 								fuckingAnimationPlaying = true;
-							case 640 |
+							case 640 | 642 | 648 | 654 | 656 | 667 | 669 | 671:
+								bg.visible = false;
+								things.visible = false;
+							case 641 | 643 | 649 | 655 | 657 | 668 | 670:
+								bg.visible = true;
+								things.visible = true;
+							case 657:
+								bg.visible = false;
+								things.visible = false;
+							case 660:
+								bg.visible = true;
+								things.visible = true;
 							case 672:
+								bg.visible = true;
+								things.visible = true;
 								fuckingAnimationPlaying = false;
 								SONG.forceDad = false;
 								changeScroll(2);
