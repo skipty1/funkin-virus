@@ -47,6 +47,7 @@ class GamejoltState extends MusicBeatState{
 		bg.antialiasing = false;
 		bg.screenCenter();
 		add(bg);
+		FlxG.mouse.visible = true;
 		
 		var gamejolt = new FlxSprite(0, 30).loadGraphic(Paths.image("8bit/gamejolt","shared"));
 		//gamejolt.scale.set(2,2);
