@@ -406,6 +406,7 @@ class PlayState extends MusicBeatState
 
 	var trainMoving:Bool = false;
 	var trainFrameTiming:Float = 0;
+	var fuckingAnimationPlaying = false;
 
 	var trainCars:Int = 8;
 	var trainFinishing:Bool = false;
@@ -1059,10 +1060,6 @@ class PlayState extends MusicBeatState
 			// Shitty layering but whatev it works LOL
 			if (curStage == 'limo')
 				add(limo);
-			if (SONG.song.toLowerCase() == 'disco'){
-				virusMan.alpha = 0.1;
-				add(virusMan);
-			}
 			add(dad);
 			add(boyfriend);
 			if (curStage == 'darkroom')
@@ -3128,13 +3125,8 @@ class PlayState extends MusicBeatState
 					
 					// Accessing the animation name directly to play it
 					var singData:Int = Std.int(Math.abs(daNote.noteData));
-					dad.playAnim('sing' + dataSuffix[singData] + altAnim, true);
-					if (SONG.song.toLowerCase() == 'disco'){
-						new FlxTimer().start(0.1, function(e:FlxTimer){
-							virusMan.playAnim('sing' + dataSuffix[singData] + altAnim, true);
-						});
-					}
-
+					if (!fuckingAnimationPlaying)
+						dad.playAnim('sing' + dataSuffix[singData] + altAnim, true);
 					if (cpuStrumsA)
 					{
 						cpuStrums.forEach(function(spr:FlxSprite)
@@ -4478,8 +4470,7 @@ class PlayState extends MusicBeatState
 		boyfriend.playAnim('scared', true);
 		gf.playAnim('scared', true);
 	}
-	var fuckingAnimationPlaying = false;
-
+	
 	override function stepHit()
 	{
 		super.stepHit();
@@ -4784,7 +4775,7 @@ class PlayState extends MusicBeatState
 			gf.dance();
 		}
 
-		if (!boyfriend.animation.curAnim.name.startsWith("sing") && curBeat % idleBeat == 0)
+		if (!boyfriend.animation.curAnim.name.startsWith("sing") && curBeat % idleBeat == 0 && !fuckingAnimationPlaying)
 		{
 			boyfriend.playAnim('idle', idleToBeat);
 		}
