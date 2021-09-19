@@ -92,7 +92,7 @@ class FreeplayState extends MusicBeatState
 
 		// LOAD CHARACTERS
 
-		ThefuckingSongSpr = new FlxSprite(-50, 50);
+		ThefuckingSongSpr = new FlxSprite(20, 50);
 		ThefuckingSongSpr.frames = Paths.getSparrowAtlas("8bit/songs", "shared");
 		ThefuckingSongSpr.scale.set(2,2);
 		//ThefuckingSongSpr.animation.addByPrefix("1","BOOTED UP0");

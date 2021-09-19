@@ -42,6 +42,7 @@ class GamejoltState extends MusicBeatState{
 	var name:FlxUIInputText;
 
 	override public function create(){
+		FlxG.mouse.visible = true;
 		var bg = new FlxSprite().loadGraphic(Paths.image("8bit/skoy","shared"));
 		bg.scale.set(6,6);
 		bg.antialiasing = false;
@@ -54,7 +55,7 @@ class GamejoltState extends MusicBeatState{
 		gamejolt.screenCenter(X);
 		add(gamejolt);
 		
-		chooseName = new FlxText(FlxG.width * 0.7, 5, 0, "Log in into Gamejolt to sync your data to the full version\n and get 50 coins (+ 100 in full version)!\nPress ESCAPE to leave this screen.\n", 32);
+		chooseName = new FlxText(FlxG.width * 0.7, 20, 0, "Log in into Gamejolt to sync your data to the full version\n and get 50 coins (+ 100 in full version)!\nPress ESCAPE to leave this screen.\n", 32);
 		chooseName.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER);
 		chooseName.alignment = CENTER;
 		chooseName.setBorderStyle(OUTLINE, 0xFF000000, 5, 1);

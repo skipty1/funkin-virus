@@ -30,7 +30,7 @@ class KeyJolt{
 	
 	public static function getData(dataId:Int = -1, ?user:Bool = false):String{
 		var Stupid:String = "";
-		var ass = Std.string(dataId)
+		var ass = Std.string(dataId);
 		FlxGameJolt.fetchData(ass, user, (stringT) -> {
 			Stupid = stringT;
 		});
