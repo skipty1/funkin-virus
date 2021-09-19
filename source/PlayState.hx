@@ -4556,23 +4556,50 @@ class PlayState extends MusicBeatState
 								things.visible = true;
 								fuckingAnimationPlaying = false;
 								SONG.forceDad = false;
-								changeScroll(2);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(2);
+								else
+									changeScroll(1);
 							case 799:
-								changeScroll(1);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(1);
+								else
+									changeScroll(2);
 							case 832:
-								changeScroll(2);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(2);
+								else
+									changeScroll(1);
 							case 863:
-								changeScroll(1);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(1);
+								else
+									changeScroll(2);
 							case 878:
-								changeScroll(2);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(2);
+								else
+									changeScroll(1);
 							case 895:
-								changeScroll(1);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(1);
+								else
+									changeScroll(2);
 							case 912:
-								changeScroll(2);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(2);
+								else
+									changeScroll(1);
 							case 920 | 922 | 924 | 926:
-								changeScroll(1);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(1);
+								else
+									changeScroll(2);
 							case 921 | 923 | 925:
-							changeScroll(2);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(2);
+								else
+									changeScroll(1);
 						}
 					case 'intoxicate':
 									if (curStep > 1408 && curStep < 1422){
