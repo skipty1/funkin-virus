@@ -3450,22 +3450,32 @@ class PlayState extends MusicBeatState
 			#end
 			if ((FlxG.save.data.discoScore == 0 || FlxG.save.data.discoScore < songScore) && SONG.song.toLowerCase() == "disco"){
 				FlxG.save.data.discoScore = songScore;
-				if (FlxGameJolt._initialized)
+				if (FlxGameJolt._initialized){
 					FlxGameJolt.addScore("" + FlxG.save.data.discoScore + "points", FlxG.save.data.discoScore, 657398, false, "", "" + FlxG.save.data.user);
+					KeyJolt.setData(3, Std.string(FlxG.save.data.discoScore), true);
+				}
 			}
 			if ((FlxG.save.data.intoxicateScore == 0 || FlxG.save.data.intoxicateScore < songScore) && SONG.song.toLowerCase() == "intoxicate"){
 				FlxG.save.data.intoxicateScore = songScore;
-				if (FlxGameJolt._initialized)
+				if (FlxGameJolt._initialized){
 					FlxGameJolt.addScore("" + FlxG.save.data.intoxicateScore + "points", FlxG.save.data.intoxicateScore, 654903, false, "", "" + FlxG.save.data.user);
+					KeyJolt.setData(4, Std.string(FlxG.save.data.intoxicateScore), true);
+				}
 			}
 			if (isStoryMode){
 				switch (SONG.song.toLowerCase()){
 					case "disco":
 						FlxG.save.data.discoDone = true;
+						if (FlxGameJolt._initialized)
+							KeyJolt.setData(1, "true", true);
 					case "intoxicate":
 						FlxG.save.data.intoxicateDone = true;
+						if(FlxGameJolt._initialized)
+							KeyJolt.setData(2, "true", true);
 				}
 				if (FlxG.save.data.discoDone && FlxG.save.data.intoxicateDone && SONG.song.toLowerCase() == "intoxicate"){
+					if (FlxGameJolt._initialized)
+						KeyJolt.setData(0, "true", true);
 					switch (storyDifficulty){
 						case 0:
 							FlxG.save.data.storyBeatedEz = true;
