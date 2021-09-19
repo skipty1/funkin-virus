@@ -2546,13 +2546,13 @@ class PlayState extends MusicBeatState
 
 		if (healthBar.percent < 20 && !isLosing)
 			changeMood(false);
-		else if (!isNormal)
+		else
 			changeMood(false,true);
 		
 
 		if (healthBar.percent > 80 && !isWinning)
 			changeMood(true);
-		else if (!isNormal)
+		else
 			changeMood(false,true);
 		
 
