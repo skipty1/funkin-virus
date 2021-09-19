@@ -189,7 +189,7 @@ class MusicBeatState extends FlxUIState
 		if (endedSongs == 1 && !dontSpam && !FlxG.save.data.GGWP)
 			medalPop('GGWP');
 		
-		if (storyCompleted && !dontSpam && !FlxG.save.data.Gamer)
+		if (FlxG.save.data.discoDone && FlxG.save.data.intoxicateDone && FlxG.save.data.storyBeated && !dontSpam && !FlxG.save.data.Gamer)
 			medalPop('Gamer');
 		
 		if (!FlxG.save.data.ProPlayer){

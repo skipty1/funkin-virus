@@ -179,7 +179,7 @@ class MainMenuState extends MusicBeatState
 		Bestplayer.antialiasing = false;
 		Bestplayer.animation.play('mmmhi');
 		add(Bestplayer);
-		if (FlxG.save.data.BestTrophy)
+		if (FlxG.save.data.Spike)
 			Bestplayer.color = FlxColor.fromHSL(Bestplayer.color.hue, Bestplayer.color.saturation, 1, 1);
 		else
 			Bestplayer.color = FlxColor.fromHSL(Bestplayer.color.hue, Bestplayer.color.saturation, 0.3, 1);
@@ -208,7 +208,7 @@ class MainMenuState extends MusicBeatState
 		Gold.antialiasing = false;
 		Gold.animation.play('mmmhi');
 		add(Gold);
-		if (FlxG.save.data.GoldTrophy)
+		if (FlxG.save.data.storyBeatedNom)
 			Gold.color = FlxColor.fromHSL(Gold.color.hue, Gold.color.saturation, 1, 1);
 		else
 			Gold.color = FlxColor.fromHSL(Gold.color.hue, Gold.color.saturation, 0.3, 1);
@@ -221,7 +221,7 @@ class MainMenuState extends MusicBeatState
 		Iron.antialiasing = false;
 		Iron.animation.play('mmmhi');
 		add(Iron);
-		if (FlxG.save.data.IronTrophy)
+		if (FlxG.save.data.storyBeatedEz)
 			Iron.color = FlxColor.fromHSL(Iron.color.hue, Iron.color.saturation, 1, 1);
 		else
 			Iron.color = FlxColor.fromHSL(Iron.color.hue, Iron.color.saturation, 0.3, 1);
@@ -233,7 +233,7 @@ class MainMenuState extends MusicBeatState
 		Rainbow.antialiasing = false;
 		Rainbow.animation.play('mmmhi');
 		add(Rainbow);
-		if (FlxG.save.data.RainbowTrophy)
+		if (FlxG.save.data.storyBeatedHard)
 			Rainbow.color = FlxColor.fromHSL(Rainbow.color.hue, Rainbow.color.saturation, 1, 1);
 		else
 			Rainbow.color = FlxColor.fromHSL(Rainbow.color.hue, Rainbow.color.saturation, 0.3, 1);

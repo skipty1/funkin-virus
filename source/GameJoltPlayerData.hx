@@ -3,24 +3,12 @@ import flixel.FlxG;
 import FlxGameJolt;
 
 class GameJoltPlayerData{
-	public static function loadInit(){
-		if (FlxG.save.data.gameJoltLoad == null){
-			FlxG.save.data.banned = false;
-			FlxG.save.data.songScores = 0;
-			FlxG.save.data.lockedTrophies = 10;
-			FlxG.save.data.unlockedTrophies = 0;
-			FlxG.save.data.Logged = false;
-			FlxG.save.data.completedSongs = 0;
-			FlxG.save.data.gameBeaten = false;
-			//FlxG.save.data.user = null;
-			//FlxG.save.data.token = null;
-			FlxG.save.data.gameJoltLoad = true;
-		}
-		joltInit();
+	public static function loadInit(?ass:Bool = false){
+		joltInit(ass);
 	}
-	public static function joltInit():Void{
+	public static function joltInit(ass:Bool):Void{
 		if (FlxGameJolt._initialized){
-			var http = new haxe.Http("https://raw.githubusercontent.com/zacksgamerz/funkin-virus/master/users.banned");
+			/*var http = new haxe.Http("https://raw.githubusercontent.com/zacksgamerz/funkin-virus/master/users.banned");
 			var returnedData:Array<String> = [];
 			http.onData = function (data:String)
 			{
@@ -42,11 +30,22 @@ class GameJoltPlayerData{
 			  trace('error: $error');
 			  return;
 			}
+			*/
+			KeyJolt.setData(0,"false",true);
+			KeyJolt.setData(1,"false",true);
+			KeyJolt.setData(2,"false",true);
+			KeyJolt.setData(5,"false",true);
+			if (FlxG.save.data.storyBeated)
+				KeyJolt.setData(0,"true",true);
+			if (FlxG.save.data.discoBeated)
+				KeyJolt.setData(1,"true",true);
+			if (FlxG.save.data.intoxicateBeated)
+				KeyJolt.setData(2,"true",true);
+			if (ass)
+				KeyJolt.setData(5,"true",true);
 			
-			http.request();
-			FlxG.save.data.Logged = FlxGameJolt._initialized;
-			FlxG.save.data.lockedTrophies = FlxGameJolt.TROPHIES_MISSING;
-			FlxG.save.data.unlockedTrophies = FlxGameJolt.TROPHIES_ACHIEVED;
+			KeyJolt.setData(3,Std.string(FlxG.save.data.discoScore),true);
+			KeyJolt.setData(4,Std.string(FlxG.save.data.intoxicateScore),true);
 		}
 	}
 }

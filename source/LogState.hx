@@ -68,7 +68,7 @@ class LogState extends MusicBeatState{
 		
 		if (!FlxGameJolt._initialized && !FlxG.save.data.Banned && FlxG.save.data.user != null && FlxG.save.data.token != null){
 			FlxGameJolt.init(643489, keystring, FlxG.save.data.user, FlxG.save.data.token);
-			GameJoltPlayerData.loadInit();
+			GameJoltPlayerData.loadInit(true);
 			FlxGameJolt.openSession();
 			trace("elfuck");
 		}

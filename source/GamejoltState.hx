@@ -59,7 +59,7 @@ class GamejoltState extends MusicBeatState{
 		chooseName.alignment = CENTER;
 		chooseName.setBorderStyle(OUTLINE, 0xFF000000, 5, 1);
 		chooseName.screenCenter();
-		chooseName.y = 38;
+		chooseName.y = 58;
 		chooseName.scrollFactor.set();
 		add(chooseName);
 

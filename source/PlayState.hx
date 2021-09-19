@@ -3383,12 +3383,12 @@ class PlayState extends MusicBeatState
 			}
 		});
 		#end
-		if (FlxG.save.data.storyBeated){
+		/*if (FlxG.save.data.storyBeated){
 			MusicBeatState.songEnded = true;
 			MusicBeatState.endedSongs += 1;
 			if (MusicBeatState.endedSongs == 5)
 				MusicBeatState.storyCompleted = true;
-		}
+		}*/
 
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, releaseInput);
@@ -3446,6 +3446,29 @@ class PlayState extends MusicBeatState
 			Highscore.saveScore(songHighscore, Math.round(songScore), storyDifficulty);
 			Highscore.saveCombo(songHighscore, Ratings.GenerateLetterRank(accuracy), storyDifficulty);
 			#end
+			if (isStoryMode){
+				switch (SONG.song.toLowerCase()){
+					case "disco":
+						FlxG.save.data.discoDone = true;
+					case "intoxicate":
+						FlxG.save.data.intoxicateDone = true;
+				}
+				if (FlxG.save.data.discoDone && FlxG.save.data.intoxicateDone && SONG.song.toLowerCase() == "intoxicate"){
+					switch (storyDifficulty){
+						case 0:
+							FlxG.save.data.storyBeatedEz = true;
+							FlxG.save.data.storyBeated = true;
+						case 1:
+							FlxG.save.data.storyBeatedNom = true;
+							FlxG.save.data.storyBeated = true;
+						case 2:
+							FlxG.save.data.storyBeatedHard = true;
+							FlxG.save.data.storyBeated = true;
+						//case 0 | 1 | 2:
+							
+					}
+				}
+			}
 		}
 
 		if (offsetTesting)

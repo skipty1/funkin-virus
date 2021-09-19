@@ -8,6 +8,18 @@ class KadeEngineData
     {
     	if (FlxG.save.data.totalSongScores == null)
     		FlxG.save.data.totalSongScores = 0;
+    	if (FlxG.save.data.discoScore == null)
+    		FlxG.save.data.discoScore = 0;
+    	if (FlxG.save.data.intoxicateScore == null)
+    		FlxG.save.data.intoxicateScore = 0;
+    	if (FlxG.save.data.discoDone == null)
+    		FlxG.save.data.discoDone = false;
+    	if (FlxG.save.data.intoxicateDone == null)
+    		FlxG.save.data.intoxicateDone = false;
+    	if (FlxG.save.data.storyBeated == null)
+    		FlxG.save.data.storyBeated = false;
+    	if (FlxG.save.data.storyBeatedNom == null)
+    		FlxG.save.data.storyBeatedNom = false;
 
     	if (FlxG.save.data.discordPresence == null)
     		FlxG.save.data.discordPresence = true;
