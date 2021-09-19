@@ -4527,9 +4527,15 @@ class PlayState extends MusicBeatState
 					case "disco":
 						switch (curStep){
 							case 380:
-								changeScroll(2);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(2);
+								else
+									changeScroll(1);
 							case 511:
-								changeScroll(1);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(1);
+								else
+									changeScroll(2);
 							case 638:
 								remove(dad);
 								dad = new Character(100,100, "fake");
