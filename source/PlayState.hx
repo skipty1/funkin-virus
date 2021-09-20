@@ -4769,8 +4769,8 @@ class PlayState extends MusicBeatState
 
 		if (curBeat % 1 == 0){
 			//why not?
-			iconP1.animation.play(iconp1Anim, false);
-			iconP2.animation.play(iconp2Anim, false);
+			iconP1.animation.play(iconp1Anim, true);
+			iconP2.animation.play(iconp2Anim, true);
 			iconP1.setGraphicSize(Std.int(iconP1.width + 30));
 			iconP2.setGraphicSize(Std.int(iconP2.width + 30));
 
