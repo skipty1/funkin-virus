@@ -42,8 +42,8 @@ class Character extends FlxSprite
 				animation.addByPrefix("fall","fakebit fall",24,false);
 				animation.addByPrefix('idle', "fakebit idle", 24, false);
 				animation.addByPrefix('singLEFT', 'fakebit left note', 24, false);
-				animation.addByPrefix('singRIGHT', 'fakebit right Note', 24, false);
-				animation.addByPrefix('singUP', 'fakebit up Note', 24, false);
+				animation.addByPrefix('singUP', 'fakebit up note0', 24, false);
+				animation.addByPrefix('singRIGHT', 'fakebit right note0', 24, false);
 				animation.addByPrefix('singDOWN', 'fakebit down note', 24, false);
 				addOffset("singDOWN");
 				addOffset("singUP");
