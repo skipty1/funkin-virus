@@ -3657,16 +3657,16 @@ class PlayState extends MusicBeatState
 				var recycledNote = grpNoteSplashes.recycle(NoteSplash);
 				switch (daNote.noteData){
 					case 1:
-						recycledNote.setupNoteSplash(160 * 0.7 * 1, strumLine.y, 1);
+						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 1);
 						//Note.swagWidth * 2;
 					case 2:
-						recycledNote.setupNoteSplash(160 * 0.7 * 2, strumLine.y, 2);
+						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 2);
 					case 3:
-						recycledNote.setupNoteSplash(160 * 0.7 * 3, strumLine.y, 3);
+						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 3);
 					case 0:
-						recycledNote.setupNoteSplash(160 * 0.7 * 0, strumLine.y, 0);
+						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 0);
 					default:
-						recycledNote.setupNoteSplash(160 * 0.7 * 0, strumLine.y, 0);
+						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 0);
 				}//shortcut #2
 				
 				grpNoteSplashes.add(recycledNote);
@@ -4561,6 +4561,10 @@ class PlayState extends MusicBeatState
 									changeScroll(2);
 								else
 									changeScroll(1);
+							case 784:
+								SONG.forceDad = true;
+							case 800:
+								SONG.forceDad = false;
 							case 799:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(1);
@@ -4601,11 +4605,31 @@ class PlayState extends MusicBeatState
 									changeScroll(2);
 								else
 									changeScroll(1);
+							case 928:
+								dad.playAnim("tremble",true);
+							case 929:
+								dad.playAnim("fall",true);
+								FlxTween.tween(boyfriend, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
+								FlxTween.tween(gf, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
+								FlxTween.tween(bg, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
+								FlxTween.tween(things, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
+							case 979://shortcut #9
+								dad.playAnim("virus",true);
 						}
-						if (curStep > 638  && curStep < 673){
+						if ((curStep > 638  && curStep < 673) || (curStep > 784 && curStep < 800)){
 							if (dad.curCharacter == "fake");
 								dad.playAnim("tremble",true);
 						}
+						if (dad.animation.curAnim.name == "fall" && dad.animation.curAnim.finished)
+							fallenCrap = true;
+						if (dad.animation.curAnim.name == "virus" && dad.animation.curAnim.finished){//shortcut#10
+							FlxG.camera.fade(FlxColor.BLACK, 2.0, false);
+							virusCrap = true;
+						}
+						if (fallenCrap && curStep > 928 && curStep < 978)
+							dad.playAnim("stuck",true);
+						if (virusCrap)
+							dad.playAnim("virus-idle",true);
 					case 'intoxicate':
 									if (curStep > 1408 && curStep < 1422){
 										playerStrums.forEach(function(spr:FlxSprite){

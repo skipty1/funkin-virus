@@ -52,6 +52,7 @@ class MainMenuState extends MusicBeatState
 
 	public static var kadeEngineVer:String = "1.6" + nightly;
 	public static var gameVer:String = "0.2.7.1";
+	public static var comingBack = false;
 
 	var magenta:FlxSprite;
 
@@ -83,7 +84,10 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
-		//FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+		if (comingBack){
+			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+			comingBack = false;
+		}
 		FlxG.mouse.visible = true;
 
 		FlxTransitionableState.defaultTransIn = new TransitionData(TILES, FlxColor.BLACK, 0.5);
@@ -179,10 +183,8 @@ class MainMenuState extends MusicBeatState
 		Bestplayer.antialiasing = false;
 		Bestplayer.animation.play('mmmhi');
 		add(Bestplayer);
-		if (FlxG.save.data.Spike)
-			Bestplayer.color = FlxColor.fromHSL(Bestplayer.color.hue, Bestplayer.color.saturation, 1, 1);
-		else
-			Bestplayer.color = FlxColor.fromHSL(Bestplayer.color.hue, Bestplayer.color.saturation, 0.3, 1);
+		if (!FlxG.save.data.Spike)
+			Bestplayer.visible = false;
 
 		// 1100 - moreX + 70,320 - Yshit - 20
 		Freeplay = new FlxSprite(38, 44);
@@ -199,7 +201,7 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.save.data.storyBeated)
 			Freeplay.color = FlxColor.fromHSL(Freeplay.color.hue, Freeplay.color.saturation, 1, 1);
 		else
-			Freeplay.color = FlxColor.fromHSL(Freeplay.color.hue, Freeplay.color.saturation, 0.1, 1);
+			Freeplay.color = FlxColor.fromHSL(Freeplay.color.hue, Freeplay.color.saturation, 0.3, 1);
 
 		Gold = new FlxSprite(440, 204);
 		Gold.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
@@ -208,11 +210,8 @@ class MainMenuState extends MusicBeatState
 		Gold.antialiasing = false;
 		Gold.animation.play('mmmhi');
 		add(Gold);
-		if (FlxG.save.data.storyBeatedNom)
-			Gold.color = FlxColor.fromHSL(Gold.color.hue, Gold.color.saturation, 1, 1);
-		else
-			Gold.color = FlxColor.fromHSL(Gold.color.hue, Gold.color.saturation, 0.3, 1);
-
+		if (!FlxG.save.data.storyBeatedNom)
+			Gold.visible = false;
 
 		Iron = new FlxSprite(270, 204);
 		Iron.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
@@ -221,10 +220,8 @@ class MainMenuState extends MusicBeatState
 		Iron.antialiasing = false;
 		Iron.animation.play('mmmhi');
 		add(Iron);
-		if (FlxG.save.data.storyBeatedEz)
-			Iron.color = FlxColor.fromHSL(Iron.color.hue, Iron.color.saturation, 1, 1);
-		else
-			Iron.color = FlxColor.fromHSL(Iron.color.hue, Iron.color.saturation, 0.3, 1);
+		if (!FlxG.save.data.storyBeatedEz)
+			Iron.visible = false;
 
 		Rainbow = new FlxSprite(Bestplayer.x - 50, 204);
 		Rainbow.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
@@ -233,10 +230,8 @@ class MainMenuState extends MusicBeatState
 		Rainbow.antialiasing = false;
 		Rainbow.animation.play('mmmhi');
 		add(Rainbow);
-		if (FlxG.save.data.storyBeatedHard)
-			Rainbow.color = FlxColor.fromHSL(Rainbow.color.hue, Rainbow.color.saturation, 1, 1);
-		else
-			Rainbow.color = FlxColor.fromHSL(Rainbow.color.hue, Rainbow.color.saturation, 0.3, 1);
+		if (!FlxG.save.data.storyBeatedHard)
+			Rainbow.visible = false;
 
 		Story = new FlxSprite(730 - Xshit, 225);
 		Story.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
@@ -406,7 +401,7 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.BACK)
 			{
-				
+				FlxG.switchState(new TitleState());
 			}
 		}
 		if (onDiffic){
@@ -525,7 +520,7 @@ class MainMenuState extends MusicBeatState
 				difficEz.animation.play("unselected");
 		}
 		if (play){
-			PlayState.storyPlaylist = ["Disco","Intoxicate"];
+			PlayState.storyPlaylist = ["Disco"];
 			PlayState.isStoryMode = true;
 			PlayState.storyDifficulty = curDiff;
 			var poop:String = Highscore.formatSong(PlayState.storyPlaylist[0], curDiff);

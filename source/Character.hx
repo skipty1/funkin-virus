@@ -37,6 +37,7 @@ class Character extends FlxSprite
 			case 'fake':
 				frames = Paths.getSparrowAtlas('fakebit','shared',true);
 				animation.addByPrefix("tremble","fakebit Trembling",24,true);
+				animation.addByPrefix("stuck","ass",24,true);
 				animation.addByPrefix("virus", "incoming virus",24,false);
 				animation.addByPrefix("virus-idle", "the virus", 24, false);
 				animation.addByPrefix("fall","fakebit fall",24,false);
@@ -54,6 +55,7 @@ class Character extends FlxSprite
 				addOffset("virus");
 				addOffset("virus-idle");
 				addOffset("tremble");
+				addOffset("stuck");
 				playAnim("idle");
 				if (!isMenu)
 					setGraphicSize(Std.int(width * PlayState.daPixelZoom));

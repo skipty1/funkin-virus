@@ -62,22 +62,26 @@ class NewFreeplay extends MusicBeatState
 		//ThefuckingSongSpr.animation.addByPrefix("6","ALTERBYTE");
 		ThefuckingSongSpr.animation.play("1");
 		ThefuckingSongSpr.antialiasing = false;
+		ThefuckingSongSpr.screenCenter();
 		add(ThefuckingSongSpr);
 		
 		daBg = new FlxSprite().loadGraphic(Paths.image("8bit/game_room", "shared"));
 		daBg.scale.set(2,2);
 		
 		daBg.antialiasing = true;
+		daBg.screenCenter();
 		add(daBg);
 		daFlicker = new FlxSprite().loadGraphic(Paths.image("8bit/game_room_blu", "shared"));
 		daFlicker.scale.set(2,2);
 		daFlicker.antialiasing = true;
+		daFlicker.screenCenter();
 		add(daFlicker);
 		daFlicker.visible = false;
 	
 		daBf = new FlxSprite(0,100).loadGraphic(Paths.image("8bit/bf","shared"));
 		daBf.scale.set(2,2);
 		daBf.antialiasing = true;
+		daBf.screenCenter();
 		add(daBf);
 		FlxTween.tween(daBf, {y: 0}, 0.6);
 		
