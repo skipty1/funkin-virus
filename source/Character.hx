@@ -36,7 +36,7 @@ class Character extends FlxSprite
 		{
 			case 'fake':
 				frames = Paths.getSparrowAtlas('fakebit','shared',true);
-				animation.addByPrefix("tremble","fakebit Trembling",24,false);
+				animation.addByPrefix("tremble","fakebit Trembling",24,true);
 				animation.addByPrefix("virus", "incoming virus",24,false);
 				animation.addByPrefix("virus-idle", "the virus", 24, false);
 				animation.addByPrefix("fall","fakebit fall",24,false);
