@@ -4533,7 +4533,7 @@ class PlayState extends MusicBeatState
 								dad.x += 100;
 								dad.y += 300;
 								add(dad);//shortcut #8
-								//dad.playAnim("tremble",true);
+								dad.playAnim("tremble",true);
 								SONG.forceDad = true;
 								fuckingAnimationPlaying = true;
 							case 639:
@@ -4601,6 +4601,10 @@ class PlayState extends MusicBeatState
 									changeScroll(2);
 								else
 									changeScroll(1);
+						}
+						if (curStep > 638  && curStep < 673){
+							if (dad.curCharacter == "fake");
+								dad.playAnim("tremble",true);
 						}
 					case 'intoxicate':
 									if (curStep > 1408 && curStep < 1422){
