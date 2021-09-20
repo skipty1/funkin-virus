@@ -465,7 +465,7 @@ class MainMenuState extends MusicBeatState
 			onDiffic = true;
 			difficEz = new FlxSprite(350, 250);
 			difficEz.frames = Paths.getSparrowAtlas("8bit/Difficulty_selection","shared");
-			difficEz.animation.addByPrefix("selected","EZ");
+			difficEz.animation.addByPrefix("selected","EZ",24,false);
 			difficEz.animation.addByPrefix("unselected","unEZ");
 			difficEz.animation.addByPrefix("tapped","tap EZ");
 			difficEz.animation.play("unselected");
@@ -473,7 +473,7 @@ class MainMenuState extends MusicBeatState
 			add(difficEz);
 			difficNor = new FlxSprite(350,250);
 			difficNor.frames = Paths.getSparrowAtlas("8bit/Difficulty_selection","shared");
-			difficNor.animation.addByPrefix("selected","NOM");
+			difficNor.animation.addByPrefix("selected","NOM",24,false);
 			difficNor.animation.addByPrefix("unselected","unNOM");
 			difficNor.animation.addByPrefix("tapped","tap NOM");
 			difficNor.animation.play("unselected");
@@ -481,7 +481,7 @@ class MainMenuState extends MusicBeatState
 			add(difficNor);
 			difficHar = new FlxSprite(350,250);
 			difficHar.frames = Paths.getSparrowAtlas("8bit/Difficulty_selection","shared");
-			difficHar.animation.addByPrefix("selected","HARD");
+			difficHar.animation.addByPrefix("selected","HARD",24,false);
 			difficHar.animation.addByPrefix("unselected","unHARD");
 			difficHar.animation.addByPrefix("tapped","tap HARD");
 			difficHar.animation.play("unselected");
@@ -512,15 +512,15 @@ class MainMenuState extends MusicBeatState
 		}
 		switch (curDiff){
 			case 0:
-				difficEz.animation.play("tapped", false);
+				difficEz.animation.play("tapped", true);
 				difficNor.animation.play("unselected");
 				difficHar.animation.play("unselected");
 			case 1:
-				difficNor.animation.play("tapped", false);
+				difficNor.animation.play("tapped", true);
 				difficEz.animation.play("unselected");
 				difficHar.animation.play("unselected");
 			case 2:
-				difficHar.animation.play("tapped", false);
+				difficHar.animation.play("tapped", true);
 				difficNor.animation.play("unselected");
 				difficEz.animation.play("unselected");
 		}
