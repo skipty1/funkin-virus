@@ -55,6 +55,10 @@ class Character extends FlxSprite
 				addOffset("virus-idle");
 				addOffset("tremble");
 				playAnim("idle");
+				if (!isMenu)
+					setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+				antialiasing = false;
 			case 'gf':
 				// GIRLFRIEND CODE
 				tex = Paths.getSparrowAtlas('GF_assets','shared',true);
