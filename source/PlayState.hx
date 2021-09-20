@@ -3342,23 +3342,23 @@ class PlayState extends MusicBeatState
 	}
 	
 	function changeMood(winning:Bool, ?normal:Bool = false){
-		if (winning && !isWinning){
-			iconp1Anim = SONG.player1 + "-win";
-			iconp2Anim = SONG.player2 + "-lose";
+		if (winning && !isWinning && !normal){
+			iconp1Anim = boyfriend.curCharacter + "-win";
+			iconp2Anim = dad.curCharacter + "-lose";
 			isWinning = true;
 			isLosing = false;
 		}
 		if (!winning && !isLosing && !normal){
-			iconp1Anim = SONG.player1 + "-lose";
-			iconp2Anim = SONG.player2 + "-win";
+			iconp1Anim = boyfriend.curCharacter + "-lose";
+			iconp2Anim = dad.curCharacter + "-win";
 			isWinning = false;
 			isLosing = true;
 		}
 		if (normal){
 			isLosing = false;
 			isWinning = false;
-			iconp2Anim = SONG.player2;
-			iconp1Anim = SONG.player1;
+			iconp2Anim = dad.curCharacter;
+			iconp1Anim = boyfriend.curCharacter;
 		}
 	}
 
@@ -4533,9 +4533,12 @@ class PlayState extends MusicBeatState
 								dad.x += 100;
 								dad.y += 300;
 								add(dad);//shortcut #8
-								dad.playAnim("tremble",true);
+								//dad.playAnim("tremble",true);
 								SONG.forceDad = true;
 								fuckingAnimationPlaying = true;
+							case 639:
+								dad.playAnim("tremble",true);
+								defaultCamZoom += 0.3;
 							case 640 | 642 | 648 | 654 | 656 | 667 | 669 | 671:
 								bg.visible = false;
 								things.visible = false;
@@ -4549,6 +4552,7 @@ class PlayState extends MusicBeatState
 								bg.visible = true;
 								things.visible = true;
 							case 672:
+								defaultCamZoom -= 0.3;
 								bg.visible = true;
 								things.visible = true;
 								fuckingAnimationPlaying = false;
