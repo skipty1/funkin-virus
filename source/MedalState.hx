@@ -46,6 +46,7 @@ class MedalState extends MusicBeatState
 			'The Perfect Player'
 		];
 		#end
+		FlxG.sound.playMusic(Paths.music('trophyRoom','shared'));
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic('assets/images/menuDesat.png');
 		menuBG.color = FlxColor.fromRGB(82, 79, 78);
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
