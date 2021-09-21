@@ -12,7 +12,7 @@ class DiscordClient
 	{
 		trace("Discord Client starting...");
 		DiscordRpc.start({
-			clientID: "557069829501091850", // change this to what ever the fuck you want lol
+			clientID: "888494460466511945", // change this to what ever the fuck you want lol
 			onReady: onReady,
 			onError: onError,
 			onDisconnected: onDisconnected
@@ -39,8 +39,8 @@ class DiscordClient
 		DiscordRpc.presence({
 			details: "In the Main Menu",
 			state: null,
-			largeImageKey: 'icon',
-			largeImageText: "fridaynightfunkin"
+			largeImageKey: 'bilibili2',
+			largeImageText: "madvirusattack"
 		});
 	}
 
@@ -75,9 +75,9 @@ class DiscordClient
 		DiscordRpc.presence({
 			details: details,
 			state: state,
-			largeImageKey: 'icon',
-			largeImageText: "fridaynightfunkin",
-			smallImageKey : smallImageKey,
+			largeImageKey: 'bilibili2',
+			largeImageText: "madvirusattack",
+			smallImageKey: null,
 			// Obtained times are in milliseconds so they are divided so Discord can use it
 			startTimestamp : Std.int(startTimestamp / 1000),
             endTimestamp : Std.int(endTimestamp / 1000)
