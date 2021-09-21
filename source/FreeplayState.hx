@@ -92,18 +92,7 @@ class FreeplayState extends MusicBeatState
 
 		// LOAD CHARACTERS
 
-		ThefuckingSongSpr = new FlxSprite(20, 50);
-		ThefuckingSongSpr.frames = Paths.getSparrowAtlas("8bit/songs", "shared");
-		ThefuckingSongSpr.scale.set(2,2);
-		//ThefuckingSongSpr.animation.addByPrefix("1","BOOTED UP0");
-		ThefuckingSongSpr.animation.addByPrefix("1","DISCO0");
-		ThefuckingSongSpr.animation.addByPrefix("2","INTOXIC80");
-		//ThefuckingSongSpr.animation.addByPrefix("4","QUICKDRAW0");
-		//ThefuckingSongSpr.animation.addByPrefix("5","EXERROR");
-		//ThefuckingSongSpr.animation.addByPrefix("6","ALTERBYTE");
-		ThefuckingSongSpr.animation.play("1");
-		ThefuckingSongSpr.antialiasing = false;
-		add(ThefuckingSongSpr);
+
 
 		daBg = new FlxSprite(0,0).loadGraphic(Paths.image("8bit/game_room", "shared"));
 		daBg.scale.set(2,2);
@@ -116,17 +105,30 @@ class FreeplayState extends MusicBeatState
 		add(daFlicker);
 		daFlicker.visible = false;
 	
-		daBf = new FlxSprite(0,100).loadGraphic(Paths.image("8bit/bf","shared"));
+		daBf = new FlxSprite(0,500).loadGraphic(Paths.image("8bit/bf","shared"));
 		daBf.scale.set(2,2);
 		daBf.antialiasing = true;
 		add(daBf);
-		FlxTween.tween(daBf, {y: 0}, 0.6);
+		FlxTween.tween(daBf, {y: 100}, 0.6);
 	
-		daBfFlicker = new FlxSprite(0,0).loadGraphic(Paths.image("8bit/bf","shared"));
+		daBfFlicker = new FlxSprite(0,100).loadGraphic(Paths.image("8bit/bf","shared"));
 		daBfFlicker.scale.set(2,2);
 		daBfFlicker.antialiasing = true;
 		add(daBfFlicker);
 		daBfFlicker.visible = false;
+
+		ThefuckingSongSpr = new FlxSprite(20, 50);
+		ThefuckingSongSpr.frames = Paths.getSparrowAtlas("8bit/songs", "shared");
+		ThefuckingSongSpr.scale.set(2,2);
+		//ThefuckingSongSpr.animation.addByPrefix("1","BOOTED UP0");
+		ThefuckingSongSpr.animation.addByPrefix("1","DISCO0");
+		ThefuckingSongSpr.animation.addByPrefix("2","INTOXICATE0");
+		//ThefuckingSongSpr.animation.addByPrefix("4","QUICKDRAW0");
+		//ThefuckingSongSpr.animation.addByPrefix("5","EXERROR");
+		//ThefuckingSongSpr.animation.addByPrefix("6","ALTERBYTE");
+		ThefuckingSongSpr.animation.play("1");
+		ThefuckingSongSpr.antialiasing = false;
+		add(ThefuckingSongSpr);
 
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		// scoreText.autoSize = false;
@@ -165,6 +167,7 @@ class FreeplayState extends MusicBeatState
 		selector.size = 40;
 		selector.text = ">";
 		// add(selector);
+		changeSelection();
 
 		var swag:Alphabet = new Alphabet(1, 0, "swag");
 
@@ -238,6 +241,8 @@ class FreeplayState extends MusicBeatState
 		{
 			changeSelection(1);
 		}
+		ThefuckingSongSpr.animation.play(Std.string(curSelected));
+
 
 		//if (FlxG.keys.justPressed.SPACE && !openedPreview)
 			//openSubState(new DiffOverview());
@@ -252,7 +257,6 @@ class FreeplayState extends MusicBeatState
 			FlxG.switchState(new MainMenuState());
 		}
 
-		ThefuckingSongSpr.animation.play(Std.string(curSelected));
 
 		if (accepted)
 		{
@@ -307,14 +311,30 @@ class FreeplayState extends MusicBeatState
 		if (curSelected == 3)
 			curSelected = 1;
 		if (curSelected == 0)
-			curSelected = 1;
+			curSelected = 2;
+		var hmm;
+		try
+		{
+			hmm = Song.loadFromJson(curSong + curMode, curSong);
+			if (hmm != null)
+				Conductor.changeBPM(hmm.bpm);
+		}
+		catch(ex)
+		{trace('penis ' + ex.message);}
 
+		if (openedPreview)
+		{
+			closeSubState();
+			openSubState(new DiffOverview());
+		}
+		trace('this sucks');
 		switch(curSelected){
 			case 1:
 				curSong = "Disco";
 			case 2:
 				curSong = "Intoxicate";
 		}
+
 
 		#if !switch
 		intendedScore = Highscore.getScore(curSong, curDifficulty);
@@ -328,21 +348,7 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.playMusic(Paths.inst(curSong), 0);
 		#end
 
-		var hmm;
-			try
-			{
-				hmm = Song.loadFromJson(curSong + curMode, curSong);
-				if (hmm != null)
-					Conductor.changeBPM(hmm.bpm);
-			}
-			catch(ex)
-			{}
 
-		if (openedPreview)
-		{
-			closeSubState();
-			openSubState(new DiffOverview());
-		}
 
 		var bullShit:Int = 0;
 

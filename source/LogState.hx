@@ -38,6 +38,8 @@ class LogState extends MusicBeatState{
 
 	var name:FlxUIInputText;
 
+	var flicktimer:FlxTimer;
+
 	override public function create(){
 		#if sys
 		#if desktop
@@ -105,6 +107,8 @@ class LogState extends MusicBeatState{
 		name.hasFocus = true;
 		
 		if (FlxG.keys.justPressed.ENTER){
+		flicktimer.cancel();
+		chooseName.visible = true;
 			switch(name.text.toLowerCase()){
 				case "8bitryan" | "8-bitryan":
 					chooseName.text = "Welcome, Ryan.";
@@ -162,8 +166,7 @@ class LogState extends MusicBeatState{
 		}
 	}
 	function doTheFlick(){
-		new FlxTimer().start(0.8, function(tmr:FlxTimer){
-				name.visible = !name.visible;
+		flicktimer = new FlxTimer().start(0.8, function(tmr:FlxTimer){
 				chooseName.visible = !chooseName.visible;
 				tmr.reset(0.8);
 		});
