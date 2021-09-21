@@ -4916,11 +4916,34 @@ class PlayState extends MusicBeatState
 			FlxTween.linearMotion(flot, 500, 600, 500, 380, 2, true);
 	}
 
-/*	function warnAss(?down:Bool = false){
+	function warnAss(?down:Bool = false){
 		var warn = new FlxSprite();
 		warn.frames = Paths.getSparrowAtlas("8bit/warning","shared");
-		warn.animation.addByPrefix()
-	}*/
+		warn.animation.addByPrefix("idle", "WARNING loop",24,true);
+		warn.animation.addByPrefix("end", "WARNING end",24,false);
+		warn.animation.play("idle", false);
+		warn.scale.set(6,6);
+		warn.screenCenter(X);
+		if (down)
+			warn.y = 200;
+		else
+			warn.y = -100;
+		add(warn);
+		var curShit = curStep + 30;
+		var assBull = false;
+		new FlxTimer().start(0.01, function(tmr:FlxTimer){
+			if (curShit == curStep){
+				assBull = true;
+				warn.animation.play("end", true);
+				new FlxTimer().start(0.6, function(tmddr:FlxTimer){
+					remove(warn);
+				});
+				
+			}
+			if (!assBull)
+				tmr.reset(0.01);
+		});
+	}
 
 	function changeScroll(?scrollVer:Int = -2):Void{
 		if (scrollVer != -2)
