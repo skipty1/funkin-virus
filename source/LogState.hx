@@ -182,10 +182,11 @@ class LogState extends MusicBeatState{
 				chooseName.text = "Type in your BetaTester code.";
 			});
 		}
+		chooseName.screenCenter(X);
 	}
 	function doTheFlick(){
 		flicktimer = new FlxTimer().start(0.8, function(tmr:FlxTimer){
-				chooseName.visible = !chooseName.visible;
+				// chooseName.visible = !chooseName.visible;
 				tmr.reset(0.8);
 		});
 	}
