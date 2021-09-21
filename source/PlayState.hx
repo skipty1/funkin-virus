@@ -303,6 +303,10 @@ class PlayState extends MusicBeatState
 	var missSounds:Bool;
 	var camzoom:Bool;
 
+	
+	var fallenCrap=false;
+	var virusCrap=true;
+
 	var halloweenLevel:Bool = false;
 
 	var songLength:Float = 0;
@@ -4617,7 +4621,7 @@ class PlayState extends MusicBeatState
 								dad.playAnim("virus",true);
 						}
 						if ((curStep > 638  && curStep < 673) || (curStep > 784 && curStep < 800)){
-							if (dad.curCharacter == "fake");
+							if (dad.curCharacter == "fake")
 								dad.playAnim("tremble",true);
 						}
 						if (dad.animation.curAnim.name == "fall" && dad.animation.curAnim.finished)
