@@ -4916,6 +4916,12 @@ class PlayState extends MusicBeatState
 			FlxTween.linearMotion(flot, 500, 600, 500, 380, 2, true);
 	}
 
+/*	function warnAss(?down:Bool = false){
+		var warn = new FlxSprite();
+		warn.frames = Paths.getSparrowAtlas("8bit/warning","shared");
+		warn.animation.addByPrefix()
+	}*/
+
 	function changeScroll(?scrollVer:Int = -2):Void{
 		if (scrollVer != -2)
 			trace('CHANGED SCROLL TO ID $scrollVer');
