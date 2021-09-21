@@ -4942,7 +4942,7 @@ class PlayState extends MusicBeatState
 	}
 
 	function warnAss(?down:Bool = false){
-		var warn = new FlxSprite();
+		/*var warn = new FlxSprite();
 		warn.frames = Paths.getSparrowAtlas("8bit/warning","shared");
 		warn.animation.addByPrefix("idle", "WARNING loop",24,true);
 		warn.animation.addByPrefix("end", "WARNING end",24,false);
@@ -4967,7 +4967,7 @@ class PlayState extends MusicBeatState
 			}
 			if (!assBull)
 				tmr.reset(0.01);
-		});
+		});*/
 	}
 
 	function changeScroll(?scrollVer:Int = -2):Void{
