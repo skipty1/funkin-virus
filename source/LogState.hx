@@ -117,7 +117,7 @@ class LogState extends MusicBeatState{
 				case "8bitryan" | "8-bitryan":
 					chooseName.text = "Welcome, Ryan.";
 					moveStates();
-				case "aqua":
+				case "eastenders":
 					chooseName.text = "Welcome, Aqua from the MVA Team.";
 					moveStates();
 				case "rusron":
@@ -144,6 +144,18 @@ class LogState extends MusicBeatState{
 				case "ginger":
 					chooseName.text = "Welcome, Ginger from the MVA Team.";
 					moveStates();
+				case "cory":
+					chooseName.text = "Welcome, Coach Cory.";
+				case "lpt":
+					chooseName.text = "Welcome, La Pecera Tonta.";
+				case "pawchaw":
+					chooseName.text = "Welcome, Paul.";
+				case "dani";
+					chooseName.text = "Welcome, Dani.";
+				case "gus":
+					chooseName.text = "Welcome, Tio Gus";
+				case "nery":
+					chooseName.text = "Welcome, Nery.";
 				case "oraku":
 					chooseName.text = "Welcome, Ilu from the TRASHKNIGHT Team.";
 				case "redsty":
