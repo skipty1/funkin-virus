@@ -4535,6 +4535,8 @@ class PlayState extends MusicBeatState
 									changeScroll(1);
 								else
 									changeScroll(2);
+							//case 608:
+								//warnAss();
 							case 638:
 								remove(dad);
 								dad = new Character(100,100, "fake");
@@ -4559,6 +4561,8 @@ class PlayState extends MusicBeatState
 							case 660:
 								bg.visible = true;
 								things.visible = true;
+							case 642:
+								warnAss();
 							case 672:
 								defaultCamZoom -= 0.3;
 								bg.visible = true;
@@ -4573,36 +4577,50 @@ class PlayState extends MusicBeatState
 								SONG.forceDad = true;
 							case 800:
 								SONG.forceDad = false;
+							case 769:
+								warnAss();
 							case 799:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(1);
 								else
 									changeScroll(2);
+							case 802:
+								warnAss();
 							case 832:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(2);
 								else
 									changeScroll(1);
+							case 833:
+								warnAss();
 							case 863:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(1);
 								else
 									changeScroll(2);
+							case 848:
+								warnAss();
 							case 878:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(2);
 								else
 									changeScroll(1);
+							case 865:
+								warnAss();
 							case 895:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(1);
 								else
 									changeScroll(2);
+							case 882:
+								warnAss();
 							case 912:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(2);
 								else
 									changeScroll(1);
+							case 890 | 892 | 894 | 896:
+								warnAss();
 							case 920 | 922 | 924 | 926:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(1);
