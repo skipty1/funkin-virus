@@ -68,10 +68,11 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			FlxG.sound.music.stop();
 
-			if (PlayState.isStoryMode)
-				FlxG.switchState(new StoryMenuState());
-			else
-				FlxG.switchState(new FreeplayState());
+			if (PlayState.isStoryMode){
+				MainMenuState.comingBack = true;
+				FlxG.switchState(new MainMenuState());
+			}else
+				FlxG.switchState(new NewFreeplay());
 			PlayState.loadRep = false;
 		}
 
@@ -88,6 +89,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (FlxG.sound.music.playing)
 		{
+			//Conductor.changeBPM
 			Conductor.songPosition = FlxG.sound.music.time;
 		}
 	}

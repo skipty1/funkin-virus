@@ -406,6 +406,7 @@ class PlayState extends MusicBeatState
 
 	var trainMoving:Bool = false;
 	var trainFrameTiming:Float = 0;
+	var fuckingAnimationPlaying = false;
 
 	var trainCars:Int = 8;
 	var trainFinishing:Bool = false;
@@ -1059,10 +1060,6 @@ class PlayState extends MusicBeatState
 			// Shitty layering but whatev it works LOL
 			if (curStage == 'limo')
 				add(limo);
-			if (SONG.song.toLowerCase() == 'disco'){
-				virusMan.alpha = 0.1;
-				add(virusMan);
-			}
 			add(dad);
 			add(boyfriend);
 			if (curStage == 'darkroom')
@@ -1245,10 +1242,12 @@ class PlayState extends MusicBeatState
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
 		add(iconP1);
+		iconP1.y -= 30;
 
 		iconP2 = new HealthIcon(SONG.player2, false);
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
+		iconP2.y -= 30;
 		var overlayy:FlxSprite;
 
 		if (cool){
@@ -2546,13 +2545,13 @@ class PlayState extends MusicBeatState
 
 		if (healthBar.percent < 20 && !isLosing)
 			changeMood(false);
-		else if (!isNormal)
+		else
 			changeMood(false,true);
 		
 
 		if (healthBar.percent > 80 && !isWinning)
 			changeMood(true);
-		else if (!isNormal)
+		else
 			changeMood(false,true);
 		
 
@@ -2798,7 +2797,7 @@ class PlayState extends MusicBeatState
 
 				switch (dad.curCharacter)
 				{
-					case 'virus' | 'error' | 'bit'://probably most cavemanish way to do shit but ehhh who cares.
+					case 'virus' | 'error' | 'bit' | 'fake'://probably most cavemanish way to do shit but ehhh who cares.
 						switch (dad.animation.curAnim.name){
 							case 'singDOWN':
 								camFollow.x = dad.getMidpoint().x - 100;
@@ -3126,13 +3125,8 @@ class PlayState extends MusicBeatState
 					
 					// Accessing the animation name directly to play it
 					var singData:Int = Std.int(Math.abs(daNote.noteData));
-					dad.playAnim('sing' + dataSuffix[singData] + altAnim, true);
-					if (SONG.song.toLowerCase() == 'disco'){
-						new FlxTimer().start(0.1, function(e:FlxTimer){
-							virusMan.playAnim('sing' + dataSuffix[singData] + altAnim, true);
-						});
-					}
-
+					if (!fuckingAnimationPlaying)
+						dad.playAnim('sing' + dataSuffix[singData] + altAnim, true);
 					if (cpuStrumsA)
 					{
 						cpuStrums.forEach(function(spr:FlxSprite)
@@ -3348,23 +3342,23 @@ class PlayState extends MusicBeatState
 	}
 	
 	function changeMood(winning:Bool, ?normal:Bool = false){
-		if (winning && !isWinning){
-			iconp1Anim = SONG.player1 + "-win";
-			iconp2Anim = SONG.player2 + "-lose";
+		if (winning && !isWinning && !normal){
+			iconp1Anim = boyfriend.curCharacter + "-win";
+			iconp2Anim = dad.curCharacter + "-lose";
 			isWinning = true;
 			isLosing = false;
 		}
 		if (!winning && !isLosing && !normal){
-			iconp1Anim = SONG.player1 + "-lose";
-			iconp2Anim = SONG.player2 + "-win";
+			iconp1Anim = boyfriend.curCharacter + "-lose";
+			iconp2Anim = dad.curCharacter + "-win";
 			isWinning = false;
 			isLosing = true;
 		}
 		if (normal){
 			isLosing = false;
 			isWinning = false;
-			iconp2Anim = SONG.player2;
-			iconp1Anim = SONG.player1;
+			iconp2Anim = dad.curCharacter;
+			iconp1Anim = boyfriend.curCharacter;
 		}
 	}
 
@@ -3443,17 +3437,37 @@ class PlayState extends MusicBeatState
 			}
 
 			#if !switch
-			Highscore.saveScore(songHighscore, Math.round(songScore), storyDifficulty);
-			Highscore.saveCombo(songHighscore, Ratings.GenerateLetterRank(accuracy), storyDifficulty);
+			/*Highscore.saveScore(songHighscore, Math.round(songScore), storyDifficulty);
+			Highscore.saveCombo(songHighscore, Ratings.GenerateLetterRank(accuracy), storyDifficulty);*/
 			#end
+			if ((FlxG.save.data.discoScore == 0 || FlxG.save.data.discoScore < songScore) && SONG.song.toLowerCase() == "disco"){
+				FlxG.save.data.discoScore = songScore;
+				if (FlxGameJolt._initialized){
+					FlxGameJolt.addScore("" + FlxG.save.data.discoScore + "points", FlxG.save.data.discoScore, 657398, false, "", "" + FlxG.save.data.user);
+					KeyJolt.setData(3, Std.string(FlxG.save.data.discoScore), true);
+				}
+			}
+			if ((FlxG.save.data.intoxicateScore == 0 || FlxG.save.data.intoxicateScore < songScore) && SONG.song.toLowerCase() == "intoxicate"){
+				FlxG.save.data.intoxicateScore = songScore;
+				if (FlxGameJolt._initialized){
+					FlxGameJolt.addScore("" + FlxG.save.data.intoxicateScore + "points", FlxG.save.data.intoxicateScore, 654903, false, "", "" + FlxG.save.data.user);
+					KeyJolt.setData(4, Std.string(FlxG.save.data.intoxicateScore), true);
+				}
+			}
 			if (isStoryMode){
 				switch (SONG.song.toLowerCase()){
 					case "disco":
 						FlxG.save.data.discoDone = true;
+						if (FlxGameJolt._initialized)
+							KeyJolt.setData(1, "true", true);
 					case "intoxicate":
 						FlxG.save.data.intoxicateDone = true;
+						if(FlxGameJolt._initialized)
+							KeyJolt.setData(2, "true", true);
 				}
 				if (FlxG.save.data.discoDone && FlxG.save.data.intoxicateDone && SONG.song.toLowerCase() == "intoxicate"){
+					if (FlxGameJolt._initialized)
+						KeyJolt.setData(0, "true", true);
 					switch (storyDifficulty){
 						case 0:
 							FlxG.save.data.storyBeatedEz = true;
@@ -3643,16 +3657,16 @@ class PlayState extends MusicBeatState
 				var recycledNote = grpNoteSplashes.recycle(NoteSplash);
 				switch (daNote.noteData){
 					case 1:
-						recycledNote.setupNoteSplash(160 * 0.7 * 1, strumLine.y, 1);
+						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 1);
 						//Note.swagWidth * 2;
 					case 2:
-						recycledNote.setupNoteSplash(160 * 0.7 * 2, strumLine.y, 2);
+						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 2);
 					case 3:
-						recycledNote.setupNoteSplash(160 * 0.7 * 3, strumLine.y, 3);
+						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 3);
 					case 0:
-						recycledNote.setupNoteSplash(160 * 0.7 * 0, strumLine.y, 0);
+						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 0);
 					default:
-						recycledNote.setupNoteSplash(160 * 0.7 * 0, strumLine.y, 0);
+						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 0);
 				}//shortcut #2
 				
 				grpNoteSplashes.add(recycledNote);
@@ -4456,7 +4470,7 @@ class PlayState extends MusicBeatState
 		boyfriend.playAnim('scared', true);
 		gf.playAnim('scared', true);
 	}
-
+	
 	override function stepHit()
 	{
 		super.stepHit();
@@ -4504,28 +4518,118 @@ class PlayState extends MusicBeatState
 					case "disco":
 						switch (curStep){
 							case 380:
-								changeScroll(2);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(2);
+								else
+									changeScroll(1);
 							case 511:
-								changeScroll(1);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(1);
+								else
+									changeScroll(2);
+							case 638:
+								remove(dad);
+								dad = new Character(100,100, "fake");
+								dad.x += 100;
+								dad.y += 300;
+								add(dad);//shortcut #8
+								dad.playAnim("tremble",true);
+								SONG.forceDad = true;
+								fuckingAnimationPlaying = true;
+							case 639:
+								dad.playAnim("tremble",true);
+								defaultCamZoom += 0.3;
+							case 640 | 642 | 648 | 654 | 656 | 667 | 669 | 671:
+								bg.visible = false;
+								things.visible = false;
+							case 641 | 643 | 649 | 655 | 657 | 668 | 670:
+								bg.visible = true;
+								things.visible = true;
+							case 657:
+								bg.visible = false;
+								things.visible = false;
+							case 660:
+								bg.visible = true;
+								things.visible = true;
 							case 672:
-								changeScroll(2);
+								defaultCamZoom -= 0.3;
+								bg.visible = true;
+								things.visible = true;
+								fuckingAnimationPlaying = false;
+								SONG.forceDad = false;
+								if (!FlxG.save.data.downscroll)
+									changeScroll(2);
+								else
+									changeScroll(1);
+							case 784:
+								SONG.forceDad = true;
+							case 800:
+								SONG.forceDad = false;
 							case 799:
-								changeScroll(1);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(1);
+								else
+									changeScroll(2);
 							case 832:
-								changeScroll(2);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(2);
+								else
+									changeScroll(1);
 							case 863:
-								changeScroll(1);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(1);
+								else
+									changeScroll(2);
 							case 878:
-								changeScroll(2);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(2);
+								else
+									changeScroll(1);
 							case 895:
-								changeScroll(1);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(1);
+								else
+									changeScroll(2);
 							case 912:
-								changeScroll(2);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(2);
+								else
+									changeScroll(1);
 							case 920 | 922 | 924 | 926:
-								changeScroll(1);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(1);
+								else
+									changeScroll(2);
 							case 921 | 923 | 925:
-							changeScroll(2);
+								if (!FlxG.save.data.downscroll)
+									changeScroll(2);
+								else
+									changeScroll(1);
+							case 928:
+								dad.playAnim("tremble",true);
+							case 929:
+								dad.playAnim("fall",true);
+								FlxTween.tween(boyfriend, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
+								FlxTween.tween(gf, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
+								FlxTween.tween(bg, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
+								FlxTween.tween(things, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
+							case 979://shortcut #9
+								dad.playAnim("virus",true);
 						}
+						if ((curStep > 638  && curStep < 673) || (curStep > 784 && curStep < 800)){
+							if (dad.curCharacter == "fake");
+								dad.playAnim("tremble",true);
+						}
+						if (dad.animation.curAnim.name == "fall" && dad.animation.curAnim.finished)
+							fallenCrap = true;
+						if (dad.animation.curAnim.name == "virus" && dad.animation.curAnim.finished){//shortcut#10
+							FlxG.camera.fade(FlxColor.BLACK, 2.0, false);
+							virusCrap = true;
+						}
+						if (fallenCrap && curStep > 928 && curStep < 978)
+							dad.playAnim("stuck",true);
+						if (virusCrap)
+							dad.playAnim("virus-idle",true);
 					case 'intoxicate':
 									if (curStep > 1408 && curStep < 1422){
 										playerStrums.forEach(function(spr:FlxSprite){
@@ -4689,8 +4793,8 @@ class PlayState extends MusicBeatState
 
 		if (curBeat % 1 == 0){
 			//why not?
-			iconP1.animation.play(iconp1Anim, false);
-			iconP2.animation.play(iconp2Anim, false);
+			iconP1.animation.play(iconp1Anim, true);
+			iconP2.animation.play(iconp2Anim, true);
 			iconP1.setGraphicSize(Std.int(iconP1.width + 30));
 			iconP2.setGraphicSize(Std.int(iconP2.width + 30));
 
@@ -4703,7 +4807,7 @@ class PlayState extends MusicBeatState
 			gf.dance();
 		}
 
-		if (!boyfriend.animation.curAnim.name.startsWith("sing") && curBeat % idleBeat == 0)
+		if (!boyfriend.animation.curAnim.name.startsWith("sing") && curBeat % idleBeat == 0 && !fuckingAnimationPlaying)
 		{
 			boyfriend.playAnim('idle', idleToBeat);
 		}

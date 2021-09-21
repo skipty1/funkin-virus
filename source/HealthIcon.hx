@@ -14,6 +14,9 @@ class HealthIcon extends FlxSprite
 	{
 		super();
 		frames = Paths.getSparrowAtlas('8bit/BITS');
+		animation.addByPrefix('fake',"fakebit", 24, false);
+		animation.addByPrefix('fake-win',"fakebit",24,false);
+		animation.addByPrefix('fake-lose',"fakebit",24,false);
 		animation.addByPrefix('bf-pixel', "BF", 24, false, isPlayer);
 		animation.addByPrefix('virus', "8V", 24, false, isPlayer);
 		animation.addByPrefix('bit', "8B", 24, false, isPlayer);

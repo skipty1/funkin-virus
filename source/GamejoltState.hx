@@ -1,5 +1,5 @@
 package;
-
+import lime.system.Clipboard;
 import openfl.utils.ByteArray;
 import Achievements.MedalSaves;
 import FlxGameJolt;
@@ -48,6 +48,7 @@ class GamejoltState extends MusicBeatState{
 		bg.antialiasing = false;
 		bg.screenCenter();
 		add(bg);
+		FlxG.mouse.visible = true;
 		
 		var gamejolt = new FlxSprite(0, 30).loadGraphic(Paths.image("8bit/gamejolt","shared"));
 		//gamejolt.scale.set(2,2);
@@ -94,6 +95,8 @@ class GamejoltState extends MusicBeatState{
 
 	override public function update(elapsed:Float){
 		super.update(elapsed);
+		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.V)
+			name.text = name.text + Clipboard.text;
 		if (FlxG.keys.justPressed.ENTER && name.text != '' && !FlxGameJolt._initialized){
 			switch (mode){
 				case "user":
@@ -101,7 +104,7 @@ class GamejoltState extends MusicBeatState{
 					username = name.text;
 					FlxG.save.data.user = username;
 					name.text = "";
-					chooseName.text = "Great! Now insert your user token.\n";
+					changeText("Great! Now insert your user token.\n");
 					mode = "token";
 				case "token":
 					trace(name.text);
@@ -110,26 +113,26 @@ class GamejoltState extends MusicBeatState{
 					usertoken = name.text;
 					FlxG.save.data.token = usertoken;
 					name.visible = false;
-					chooseName.text = "Please wait...\n";
+					changeText("Please wait...\n");
 					FlxGameJolt.init(gameid, keystring, true, username, usertoken, (logged) -> {
 						if (logged){
-							chooseName.text = "Succesfully logged in!\n";
+							changeText("Succesfully logged in!\n");
 							GameJoltPlayerData.loadInit();
 							FlxGameJolt.openSession();
 						}else{
-							chooseName.text = "Failed to log in.\n";
+							changeText("Failed to log in.\n");
 							new FlxTimer().start(1.5, function(tmr:FlxTimer){
 								username = "";
 								usertoken = "";
 								if (!FlxGameJolt.lmfaoBanned){
-									chooseName.text = "Log in into Gamejolt to sync your data to the full version and get 50 coins (+ 100 in full version)!\nPress ESCAPE to leave this screen.\n";
+									changeText("Log in into Gamejolt to sync your data to the full version and get 50 coins (+ 100 in full version)!\nPress ESCAPE to leave this screen.\n");
 								}
 								name.text = "Insert username.";
 								mode = "user";
 							});
 						}
 						if (FlxGameJolt.lmfaoBanned){
-							chooseName.text = "ERROR: USER IS BANNED!\n";
+							changeText("ERROR: USER IS BANNED!\n");
 						}
 					});
 			}
@@ -137,5 +140,16 @@ class GamejoltState extends MusicBeatState{
 		if (FlxG.keys.justPressed.ESCAPE){
 			FlxG.switchState(new MainMenuState());
 		}
+	}
+	function changeText(GUCK:String){
+		remove(chooseName);
+		chooseName = new FlxText(FlxG.width * 0.7, 5, 0, GUCK, 32);
+		chooseName.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER);
+		chooseName.alignment = CENTER;
+		chooseName.setBorderStyle(OUTLINE, 0xFF000000, 5, 1);
+		chooseName.screenCenter();
+		chooseName.y = 58;
+		chooseName.scrollFactor.set();
+		add(chooseName);
 	}
 }
