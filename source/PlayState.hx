@@ -3650,16 +3650,16 @@ class PlayState extends MusicBeatState
 				var recycledNote = grpNoteSplashes.recycle(NoteSplash);
 				switch (daNote.noteData){
 					case 1:
-						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 1);
+						recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 40, 1);
 						//Note.swagWidth * 2;
 					case 2:
-						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 2);
+						recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 40, 2);
 					case 3:
-						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 3);
+						recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 40, 3);
 					case 0:
-						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 0);
+						recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 40, 0);
 					default:
-						recycledNote.setupNoteSplash(daNote.x + 20, strumLine.y + 20, 0);
+						recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 40, 0);
 				}//shortcut #2
 				
 				grpNoteSplashes.add(recycledNote);
