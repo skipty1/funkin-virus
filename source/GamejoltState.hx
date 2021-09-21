@@ -49,7 +49,10 @@ class GamejoltState extends MusicBeatState{
 		bg.screenCenter();
 		add(bg);
 		FlxG.mouse.visible = true;
-		
+		#if windows
+		if (FlxG.save.data.discordPresence)
+			DiscordClient.changePresence("Logging in by gamejolt.", null);
+		#end
 		var gamejolt = new FlxSprite(0, 30).loadGraphic(Paths.image("8bit/gamejolt","shared"));
 		//gamejolt.scale.set(2,2);
 		gamejolt.antialiasing = false;
