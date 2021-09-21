@@ -4635,6 +4635,7 @@ class PlayState extends MusicBeatState
 									changeScroll(1);
 							case 928:
 								dad.playAnim("tremble",true);
+								fuckingAnimationPlaying = true;
 							case 929:
 								dad.playAnim("fall",true);
 								FlxTween.tween(boyfriend, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
