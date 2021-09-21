@@ -305,7 +305,7 @@ class PlayState extends MusicBeatState
 
 	
 	var fallenCrap=false;
-	var virusCrap=true;
+	var virusCrap=false;
 
 	var halloweenLevel:Bool = false;
 
