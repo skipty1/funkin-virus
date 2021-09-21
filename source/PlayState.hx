@@ -4648,6 +4648,7 @@ class PlayState extends MusicBeatState
 								FlxTween.tween(things, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
 							case 979://shortcut #9
 								dad.playAnim("virus",true);
+								dad.lock = true;
 						}
 						if ((curStep > 638  && curStep < 673) || (curStep > 784 && curStep < 800)){
 							if (dad.curCharacter == "fake")
