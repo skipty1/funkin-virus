@@ -150,7 +150,7 @@ class LogState extends MusicBeatState{
 					chooseName.text = "Welcome, La Pecera Tonta.";
 				case "pawchaw":
 					chooseName.text = "Welcome, Paul.";
-				case "dani";
+				case "dani":
 					chooseName.text = "Welcome, Dani.";
 				case "gus":
 					chooseName.text = "Welcome, Tio Gus";
