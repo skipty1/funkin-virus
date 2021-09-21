@@ -3648,20 +3648,35 @@ class PlayState extends MusicBeatState
 					totalNotesHit += 1;
 				sicks++;
 				var recycledNote = grpNoteSplashes.recycle(NoteSplash);
-				switch (daNote.noteData){
-					case 1:
-						recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 40, 1);
-						//Note.swagWidth * 2;
-					case 2:
-						recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 40, 2);
-					case 3:
-						recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 40, 3);
-					case 0:
-						recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 40, 0);
-					default:
-						recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 40, 0);
-				}//shortcut #2
-				
+				if (PlayStateChangeables.useDownscroll){
+					switch (daNote.noteData){
+						case 1:
+							recycledNote.setupNoteSplash(daNote.x + 40,strumLine.y + 40, 1);
+							//Note.swagWidth * 2;
+						case 2:
+							recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 40, 2);
+						case 3:
+							recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 40, 3);
+						case 0:
+							recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 40, 0);
+						default:
+							recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 40, 0);
+					}//shortcut #2
+				}else{
+					switch (daNote.noteData){
+						case 1:
+							recycledNote.setupNoteSplash(daNote.x + 40,strumLine.y + 60, 1);
+							//Note.swagWidth * 2;
+						case 2:
+							recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 60, 2);
+						case 3:
+							recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 60, 3);
+						case 0:
+							recycledNote.setupNoteSplash(daNote.x + 40, strumLine.y + 60, 0);
+						default:
+							recycledNote.setupNoteSplash(daNote.x + 60, strumLine.y + 60, 0);
+					}//shortcut #2
+				}
 				grpNoteSplashes.add(recycledNote);
 		}
 
