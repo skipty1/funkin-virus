@@ -49,6 +49,10 @@ class LogState extends MusicBeatState{
 		#end
 			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
 		#end
+		#if windows
+		if (FlxG.save.data.discordPresence)
+			DiscordClient.changePresence("08", null);
+		#end
 
 		@:privateAccess
 		{
