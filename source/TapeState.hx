@@ -53,7 +53,10 @@ class TapeState extends MusicBeatState{
 		
 		if (FlxG.sound.music.playing)
 			FlxG.sound.music.stop();
-
+		#if windows
+		if (FlxG.save.data.discordPresence)
+			DiscordClient.changePresence("Playing a tape in the music menu.", null);
+		#end
 		menuHitbox = new FlxObject(288, 489, 64, 139);
 		menuHitbox.visible = false;
 		add(menuHitbox);
