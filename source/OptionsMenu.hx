@@ -30,6 +30,10 @@ class OptionsMenu extends MusicBeatState
 		menuBG.screenCenter();
 		menuBG.antialiasing = true;
 		add(menuBG);
+		#if windows
+		if (FlxG.save.data.discordPresence)
+			DiscordClient.changePresence("Setting up options", null);
+		#end
 
 		grpControls = new FlxTypedGroup<Alphabet>();
 		add(grpControls);
