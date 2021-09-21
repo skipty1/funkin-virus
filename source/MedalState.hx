@@ -8,6 +8,9 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import BitData;
 import MedalSprite;
+#if windows
+import Discord.DiscordClient;
+#end
 
 class MedalState extends MusicBeatState
 {
