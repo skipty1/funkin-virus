@@ -21,6 +21,7 @@ import flixel.util.FlxColor;
 import lime.utils.Assets;
 import flixel.effects.FlxFlicker;
 import flixel.util.FlxTimer;
+import flixel.tweens.*;
 
 #if windows
 import Discord.DiscordClient;
@@ -40,6 +41,7 @@ class NewFreeplay extends MusicBeatState
 	var daBf:FlxSprite;
 	var daBfFlicker:FlxSprite;
 	var ThefuckingSongSpr:FlxSprite;
+	var diffic:FlxSprite;
 	
 	override function create(){
 		#if windows
@@ -94,6 +96,16 @@ class NewFreeplay extends MusicBeatState
 		add(daBfFlicker);
 		daBfFlicker.screenCenter(X);
 		daBfFlicker.visible = false;
+
+		diffic = new FlxSprite(FlxG.width - 440, -230);
+		diffic.antialiasing = false;
+		diffic.frames = Paths.getSparrowAtlas('8bit/Difficulty_selection', 'shared');
+		diffic.animation.addByPrefix('easy', 'unEZ');
+		diffic.animation.addByPrefix('normal', 'unNOM');
+		diffic.animation.addByPrefix('hard', 'unHARD');
+		diffic.setGraphicSize(Std.int(diffic.width * 2));
+		diffic.animation.play('normal');
+		add(diffic);
 		
 		/*var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 105, 0xFF000000);
 		scoreBG.alpha = 0.6;
@@ -136,6 +148,7 @@ class NewFreeplay extends MusicBeatState
 			play();
 	}
 	function changeDiff(?crap:Int = 0){
+		var isBlank:Bool = false;
 		curDiffInt += crap;
 		if (curDiffInt == 3 || curDiffInt == -1)
 			curDiffInt = 0;
@@ -145,9 +158,29 @@ class NewFreeplay extends MusicBeatState
 				curDiffString = "-easy";
 			case 1:
 				curDiffString = "";
+				isBlank = true;
 			case 2:
 				curDiffString = "-hard";
 		}
+		var help = (isBlank ? "normal" : curDiffString.substr(1).trim());
+		diffic.animation.play(help);
+		diffic.y = -230;
+		switch (help)
+		{
+			case 'normal':
+				diffic.y -= 0;
+			case 'hard':
+				diffic.y += 30;
+			case 'easy':
+				diffic.y -= 40;
+		}
+		FlxTween.tween(diffic, {x: diffic.x + 300}, 0.02, {ease: FlxEase.quadInOut, onComplete: function(twn:FlxTween){
+			diffic.x = FlxG.width - 500;
+			if (help == 'easy')
+				diffic.x += 60;
+			else if (help == 'hard')
+				diffic.x += 20;
+		}});
 	}
 	function changeSong(?crap:Int = 0){
 		curSelected += crap;
@@ -164,6 +197,7 @@ class NewFreeplay extends MusicBeatState
 		ThefuckingSongSpr.animation.play(Std.string(curSelected));
 	}
 	function play(){
+			FlxG.sound.play(Paths.sound('confirmMenu'));
 			FlxFlicker.flicker(daBfFlicker, 2, 0.5);
 			FlxFlicker.flicker(daFlicker, 2, 0.5, true, true, function(flick:FlxFlicker){
 				PlayState.storyPlaylist = ["Disco","Intoxicate"];
