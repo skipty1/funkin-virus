@@ -780,7 +780,7 @@ class PlayState extends MusicBeatState
 					bg.animation.addByPrefix('idle', 'ROOM DRAK', 24);
 					bg.animation.play('idle');
 					bg.scrollFactor.set(0.9, 0.9);
-					bg.scale.set(6, 6);
+					bg.scale.set(6.2, 6.2);
 					add(bg);
 					sky = new FlxSprite(posX, posY);
 					sky.frames = Paths.getSparrowAtlas('8bit/sky', 'shared');
