@@ -161,7 +161,7 @@ class LogState extends MusicBeatState{
 				case "redsty":
 					chooseName.text = "Welcome, Redsty from Team Darcayic.";
 				case 'klav':
-					chooseName.text = 'tfw you let yourself in -klav';
+					chooseName.text = 'you sneaky bumbass.';
 					moveStates();
 				default:
 					moveStates(true);
