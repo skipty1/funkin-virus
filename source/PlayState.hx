@@ -1252,17 +1252,6 @@ class PlayState extends MusicBeatState
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
 		iconP2.y -= 30;
-		var overlayy:FlxSprite;
-
-		if (cool){
-			overlayy = new FlxSprite(0,-10).loadGraphic(Paths.image('8bit/overlay','shared'));
-			overlayy.scale.set(1,1.1);
-			overlayy.screenCenter(X);
-			overlayy.alpha = 0.6;
-			overlayy.updateHitbox();
-			overlayy.cameras = [camHUD];
-			add(overlayy);
-		}
 
 		strumLineNotes.cameras = [camHUDNOTES];
 		grpNoteSplashes.cameras = [camHUDNOTES];
