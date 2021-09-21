@@ -994,7 +994,7 @@ class PlayState extends MusicBeatState
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'bit':
 				dad.x += 100;
-				dad.y += 300;
+				dad.y += 350;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 				if (SONG.song.toLowerCase() == 'disco'){
 					virusMan.setPosition(200,520);
@@ -4521,11 +4521,15 @@ class PlayState extends MusicBeatState
 				switch (songLowercase){
 					case "disco":
 						switch (curStep){
+							case 350:
+								warnAss();
 							case 380:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(2);
 								else
 									changeScroll(1);
+							case 481:
+								warnAss();
 							case 511:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(1);
@@ -4535,7 +4539,7 @@ class PlayState extends MusicBeatState
 								remove(dad);
 								dad = new Character(100,100, "fake");
 								dad.x += 100;
-								dad.y += 300;
+								dad.y += 350;
 								add(dad);//shortcut #8
 								dad.playAnim("tremble",true);
 								SONG.forceDad = true;
