@@ -766,7 +766,7 @@ class PlayState extends MusicBeatState
 					var skoy:FlxSprite = new FlxSprite(posX, posY).loadGraphic(Paths.image('8bit/skoy','shared'));
 					skoy.scrollFactor.set(0.9, 0.9);
 					skoy.scale.set(6, 6);
-					add(skoy);
+					//add(skoy);
 					var flot:FlxSprite = new FlxSprite(posX, posY).loadGraphic(Paths.image('8bit/crap','shared'));
 					flot.scrollFactor.set(0.9, 0.9);
 					flot.scale.set(6, 6);
@@ -780,7 +780,7 @@ class PlayState extends MusicBeatState
 					bg.animation.addByPrefix('idle', 'ROOM DRAK', 24);
 					bg.animation.play('idle');
 					bg.scrollFactor.set(0.9, 0.9);
-					bg.scale.set(6.2, 6.2);
+					bg.scale.set(6, 6);
 					add(bg);
 					sky = new FlxSprite(posX, posY);
 					sky.frames = Paths.getSparrowAtlas('8bit/sky', 'shared');
@@ -4648,7 +4648,6 @@ class PlayState extends MusicBeatState
 								FlxTween.tween(things, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
 							case 979://shortcut #9
 								dad.playAnim("virus",true);
-								dad.lock = true;
 						}
 						if ((curStep > 638  && curStep < 673) || (curStep > 784 && curStep < 800)){
 							if (dad.curCharacter == "fake")
