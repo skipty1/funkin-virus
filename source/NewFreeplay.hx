@@ -60,7 +60,7 @@ class NewFreeplay extends MusicBeatState
 		ThefuckingSongSpr.scale.set(2,2);
 		//ThefuckingSongSpr.animation.addByPrefix("1","BOOTED UP0");
 		ThefuckingSongSpr.animation.addByPrefix("1","DISCO0");
-		ThefuckingSongSpr.animation.addByPrefix("2","INTOXIC80");
+		//ThefuckingSongSpr.animation.addByPrefix("2","INTOXIC80");
 		//ThefuckingSongSpr.animation.addByPrefix("4","QUICKDRAW0");
 		//ThefuckingSongSpr.animation.addByPrefix("5","EXERROR");
 		//ThefuckingSongSpr.animation.addByPrefix("6","ALTERBYTE");
@@ -184,14 +184,14 @@ class NewFreeplay extends MusicBeatState
 	}
 	function changeSong(?crap:Int = 0){
 		curSelected += crap;
-		if (curSelected == 3 || curSelected == 0)
+		if (curSelected == 2 || curSelected == 0)
 			curSelected = 1;
 		
 		switch (curSelected){
 			case 1:
 				curSong = "disco";
-			case 2:
-				curSong = "intoxicate";
+			//case 2:
+				//curSong = "intoxicate";
 		}
 		FlxG.sound.playMusic(Paths.inst(curSong), 0);
 		ThefuckingSongSpr.animation.play(Std.string(curSelected));
@@ -200,7 +200,7 @@ class NewFreeplay extends MusicBeatState
 			FlxG.sound.play(Paths.sound('confirmMenu'));
 			FlxFlicker.flicker(daBfFlicker, 2, 0.5);
 			FlxFlicker.flicker(daFlicker, 2, 0.5, true, true, function(flick:FlxFlicker){
-				PlayState.storyPlaylist = ["Disco","Intoxicate"];
+				PlayState.storyPlaylist = ["Disco"];
 				PlayState.isStoryMode = false;
 				PlayState.storyDifficulty = curDiffInt;
 				var poop:String = Highscore.formatSong(PlayState.storyPlaylist[curSelected - 1], curDiffInt);
