@@ -146,25 +146,34 @@ class LogState extends MusicBeatState{
 					moveStates();
 				case "cory":
 					chooseName.text = "Welcome, Coach Cory.";
+					moveStates();
 				case "lpt":
 					chooseName.text = "Welcome, La Pecera Tonta.";
+					moveStates();
 				case "pawchaw":
 					chooseName.text = "Welcome, Paul.";
+					moveStates();
 				case "dani":
 					chooseName.text = "Welcome, Dani.";
+					moveStates();
 				case "gus":
 					chooseName.text = "Welcome, Tio Gus";
+					moveStates();
 				case "nery":
 					chooseName.text = "Welcome, Nery.";
+					moveStates();
 				case "oraku":
 					chooseName.text = "Welcome, Ilu from the TRASHKNIGHT Team.";
+					moveStates();
 				case "redsty":
 					chooseName.text = "Welcome, Redsty from Team Darcayic.";
+					moveStates();
 				case 'klav':
 					chooseName.text = 'you sneaky bumbass.';
 					moveStates();
 				case "08404":
 					chooseName.text = "can i put my balls in yo jaws";
+					moveStates();
 				default:
 					moveStates(true);
 			}
