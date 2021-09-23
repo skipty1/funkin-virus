@@ -198,7 +198,7 @@ class MainMenuState extends MusicBeatState
 		Freeplay.scale.set(2,2);
 		Freeplay.updateHitbox();
 		add(Freeplay);
-		if (FlxG.save.data.storyBeated)
+		if (FlxG.save.data.discoBeated)
 			Freeplay.color = FlxColor.fromHSL(Freeplay.color.hue, Freeplay.color.saturation, 1, 1);
 		else
 			Freeplay.color = FlxColor.fromHSL(Freeplay.color.hue, Freeplay.color.saturation, 0.3, 1);
