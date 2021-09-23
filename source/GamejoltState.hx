@@ -81,8 +81,6 @@ class GamejoltState extends MusicBeatState{
 		name.caretColor = 0xFFFFFFFF;
 
 		// gamejolt shit.
-		bytearray = new MyOtherKey();
-		keystring = bytearray.readUTFBytes(bytearray.length);
 		gameid = 643489;
 
 		//doTheFlick();
