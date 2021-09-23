@@ -14,15 +14,15 @@ class HealthIcon extends FlxSprite
 	{
 		super();
 		frames = Paths.getSparrowAtlas('8bit/BITS');
-		animation.addByPrefix('fake',"fakebit", 24, false);
-		animation.addByPrefix('fake-win',"fakebit",24,false);
-		animation.addByPrefix('fake-lose',"fakebit",24,false);
-		animation.addByPrefix('bf-pixel', "BF", 24, false, isPlayer);
-		animation.addByPrefix('virus', "8V", 24, false, isPlayer);
-		animation.addByPrefix('bit', "8B", 24, false, isPlayer);
+		animation.addByPrefix('fake',"fakebit0", 24, false);
+		animation.addByPrefix('fake-win',"fakebit0",24,false);
+		animation.addByPrefix('fake-lose',"fakebit0",24,false);
+		animation.addByPrefix('bf-pixel', "BF0", 24, false, isPlayer);
+		animation.addByPrefix('virus', "8V0", 24, false, isPlayer);
+		animation.addByPrefix('bit', "8B0", 24, false, isPlayer);
 		//animation.addByPrefix('retro', [6, 7], 0, false, isPlayer);
-		animation.addByPrefix('classic', "8S", 24, false, isPlayer);
-		animation.addByPrefix('virus-mad', "MAD", 24, false, isPlayer);
+		animation.addByPrefix('classic', "8S0", 24, false, isPlayer);
+		animation.addByPrefix('virus-mad', "MAD0", 24, false, isPlayer);
 		//animation.addByPrefix('dark', [12, 13], 0, false, isPlayer);
 		//animation.addByPrefix('blue', [14, 15], 0, false, isPlayer);
 		animation.addByPrefix('bf-pixel-lose', "BF LOSING", 24, false, isPlayer);

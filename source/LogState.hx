@@ -28,12 +28,12 @@ import sys.thread.Thread;
 #if windows
 import Discord.DiscordClient;
 #end
-@:file("myKey.privatekey") class MyKey extends openfl.utils.ByteArrayData { }
+//@:file("myKey.privatekey") class MyKey extends openfl.utils.ByteArrayData { }
 
 class LogState extends MusicBeatState{
 
 	var chooseName:FlxText;
-	var bytearray:MyKey;
+	//var bytearray:MyKey;
 	var keystring:String;
 
 	var name:FlxUIInputText;
@@ -69,11 +69,27 @@ class LogState extends MusicBeatState{
 		Highscore.load();
 		
 
-		bytearray = new MyKey();
+		//bytearray = new MyKey();
+		var http = new haxe.Http("https://raw.githubusercontent.com/zacksgamerz/funkin-virus/master/myKey.privatekey");
+		var returnedData:Array<String> = [];
+		http.onData = function (data:String)
+			{
+				returnedData[0] = data.substring(0, data.indexOf(';'));
+				returnedData[1] = data.substring(data.indexOf('-'), data.length);
+				if (FlxG.save.data.privatekey != returnedData[0] || FlxG.save.data.privatekey == null)
+					FlxG.save.data.privatekey == returnedData[0];
+				else
+					trace('awesomed');
+			}
+
+		http.onError = function (error) {
+		  trace('error: $error');
+		}
+		http.request();
 		keystring = bytearray.readUTFBytes(bytearray.length);
 		
 		if (!FlxGameJolt._initialized && !FlxG.save.data.Banned && FlxG.save.data.user != null && FlxG.save.data.token != null){
-			FlxGameJolt.init(643489, keystring, FlxG.save.data.user, FlxG.save.data.token);
+			FlxGameJolt.init(643489, , FlxG.save.data.user, FlxG.save.data.token);
 			GameJoltPlayerData.loadInit(true);
 			FlxGameJolt.openSession();
 			trace("elfuck");

@@ -221,8 +221,9 @@ class FlxGameJolt
 
 			http.onError = function (error) {
 			  trace('error: $error');
-			  return;
+			  //return;
 			}
+		http.request();
 
 		if (AutoAuth)
 		{
