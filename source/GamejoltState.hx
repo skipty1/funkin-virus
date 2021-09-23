@@ -111,8 +111,6 @@ class GamejoltState extends MusicBeatState{
 					mode = "token";
 				case "token":
 					trace(name.text);
-					trace(keystring);
-					trace(gameid);
 					usertoken = name.text;
 					FlxG.save.data.token = usertoken;
 					name.visible = false;
