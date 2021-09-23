@@ -28,13 +28,13 @@ import sys.thread.Thread;
 import Discord.DiscordClient;
 #end
 
-@:file("myKey.privatekey") class MyOtherKey extends ByteArrayData { }
+//@:file("myKey.privatekey") class MyOtherKey extends ByteArrayData { }
 
 class GamejoltState extends MusicBeatState{
 	var chooseName:FlxText;
-	var bytearray:MyOtherKey;
+	//var bytearray:MyOtherKey;
 	var gameid:Int;
-	var keystring:String;
+	//var keystring:String;
 	
 	var usertoken:String;
 	var username:String;
@@ -117,7 +117,7 @@ class GamejoltState extends MusicBeatState{
 					FlxG.save.data.token = usertoken;
 					name.visible = false;
 					changeText("Please wait...\n");
-					FlxGameJolt.init(gameid, keystring, true, username, usertoken, (logged) -> {
+					FlxGameJolt.init(gameid, FlxG.save.data.privatekey, true, username, usertoken, (logged) -> {
 						if (logged){
 							changeText("Succesfully logged in!\n");
 							GameJoltPlayerData.loadInit();
