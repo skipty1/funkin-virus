@@ -280,4 +280,17 @@ class NewFreeplay extends MusicBeatState
 			});
 		}
 	}
+	function goBack(bool:Bool){
+		if (bool){
+			isDiff = false;
+			daBf.alpha = 1;
+			difficEz.alpha = 0;
+			difficNor.alpha = 0;
+			difficHar.alpha = 0;
+			daBfFlicker.visible = false;
+		}
+		else{
+			FlxG.switchState(new MainMenuState());
+		}
+	}
 }
