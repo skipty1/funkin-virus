@@ -86,7 +86,7 @@ class LogState extends MusicBeatState{
 		  trace('error: $error');
 		}
 		http.request();
-		keystring = bytearray.readUTFBytes(bytearray.length);
+		//keystring = bytearray.readUTFBytes(bytearray.length);
 		
 		if (!FlxGameJolt._initialized && !FlxG.save.data.Banned && FlxG.save.data.user != null && FlxG.save.data.token != null){
 			FlxGameJolt.init(643489, FlxG.save.data.privatekey, FlxG.save.data.user, FlxG.save.data.token);
