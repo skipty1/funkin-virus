@@ -17,6 +17,8 @@ class BattleTest extends MusicBeatState
 	
 	var loopthing:Int = 0;
 	var looplimit:Int = 10;
+	var enemyAcurAnim:String = "";
+	var battleTimer:Float = 0.0;
 	
 	public var enemyA:FlxSprite;
 	
@@ -48,14 +50,21 @@ class BattleTest extends MusicBeatState
 			else
 				changeAnim(1, "idle");
 		});
+		
+		new FlxTimer().start(0.1, function(tmr:FlxTimer){
+			battleTimer += 0.1;
+			tmr.reset(0.1);
+		});
 	}
 	
 	function changeAnim(enem:Int, anim:String)
 	{
+		
 		switch (enem)
 		{
 			case 1:
 				remove(enemyA);
+				enemyAcurAnim = anim;
 				switch (anim)
 				{
 					case "idle":
@@ -96,7 +105,7 @@ class BattleTest extends MusicBeatState
 						{
 							loopthing = 0;
 							trace("anim finished");
-							changeAnim(enem, "idle");
+							changeAnim(enem, enemyAcurAnim);
 						}
 						else
 						{
