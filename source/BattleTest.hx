@@ -94,8 +94,9 @@ class BattleTest extends MusicBeatState
 					{
 						if (looping)
 						{
-							tmr.reset(0.1);
 							loopthing = 0;
+							trace("anim finished");
+							changeAnim(enem, "idle");
 						}
 						else
 						{
