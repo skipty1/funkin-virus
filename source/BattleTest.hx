@@ -15,12 +15,15 @@ class BattleTest extends MusicBeatState
 	public static var enemBCode:Int = -1;
 	public static var enemCCode:Int = -1;
 	
+	public static var hasBit:Bool = false;
+	
 	var loopthing:Int = 0;
 	var looplimit:Int = 10;
 	var enemyAcurAnim:String = "";
 	var battleTimer:Float = 0.0;
 	
 	public var enemyA:FlxSprite;
+	public var kris:FlxSprite;
 	
 	override function create()
 	{
@@ -55,6 +58,8 @@ class BattleTest extends MusicBeatState
 			battleTimer += 0.1;
 			tmr.reset(0.1);
 		});
+		
+		kris = new FlxSprite();
 	}
 	
 	function changeAnim(enem:Int, anim:String)
@@ -85,6 +90,8 @@ class BattleTest extends MusicBeatState
 				}
 		}
 	}
+	
+	
 	
 	function playAnim(enem:Int, frames:Int, loop:Bool)
 	{
