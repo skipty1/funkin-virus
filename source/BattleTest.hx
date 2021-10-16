@@ -3,6 +3,9 @@ package;
 import flixel.*;
 import openfl.utils.Assets;
 import openfl.utils.AssetType;
+import haxe.Json;
+import haxe.format.JsonParser;
+import lime.utils.Assets;
 //import openfl.utils.Assets as OpenFlAssets;
 
 class BattleTest extends MusicBeatState
@@ -20,6 +23,8 @@ class BattleTest extends MusicBeatState
 	override function create()
 	{
 		enemyA = new FlxSprite();
+		enemyA.x = 1054;
+		enemyA.y = 254;
 		enemyA.frames = fromJson(Paths.image("rpg/darrly-roll-start", "shared"), Paths.file("rpg/darrly-roll-start.json", "shared"));
 		enemyA.animation.addByNames('idle0', ['darrly-roll-start 0.gif'], 24, false);
 		enemyA.animation.addByNames('idle1', ['darrly-roll-start 1.gif'], 24, false);
@@ -55,6 +60,8 @@ class BattleTest extends MusicBeatState
 				{
 					case "idle":
 						enemyA = new FlxSprite();
+						enemyA.x = 1054;
+						enemyA.y = 254;
 						enemyA.frames = fromJson(Paths.image("rpg/darrly-idle", "shared"), Paths.file("rpg/darrly-idle.json", "shared"));
 						enemyA.animation.addByNames('idle0', ['darrly-idle 0.gif'], 24, false);
 						enemyA.animation.addByNames('idle1', ['darrly-idle 1.gif'], 24, false);
