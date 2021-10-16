@@ -65,7 +65,39 @@ class BattleTest extends MusicBeatState
 						enemyA.antialiasing = false;
 						enemyA.scale.set(2,2);
 						add(enemyA);
+						playAnim(1, 5, true);
 				}
+		}
+	}
+	
+	function playAnim(enem:Int, frames:Int, loop:Bool)
+	{
+		looplimit = frames + 1;
+		loopthing = 0;
+		switch (enem)
+		{
+			case 1:
+				new FlxTimer().start(0.1, function(tmr:FlxTimer){
+					enemyA.animation.play("idle" + loopthing);
+					if (loopthing != looplimit)
+					{
+						tmr.reset(0.1);
+					}
+					else
+					{
+						if (looping)
+						{
+							tmr.reset(0.1);
+							loopthing = 0;
+						}
+						else
+						{
+							loopthing = 0;
+							trace("anim finished");
+							changeAnim(enem, "idle");
+						}
+					}
+				});
 		}
 	}
 	
