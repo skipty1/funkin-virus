@@ -23,13 +23,11 @@ class BattleTest extends MusicBeatState
 	var battleTimer:Float = 0.0;
 	
 	public var enemyA:FlxSprite;
-	public var kris:FlxSprite;
+	public var kris:AllyChar;
 	
 	override function create()
 	{
 		enemyA = new FlxSprite();
-		enemyA.x = 1054;
-		enemyA.y = 254;
 		enemyA.frames = fromJson(Paths.image("rpg/darrly-roll-start", "shared"), Paths.file("images/rpg/darrly-roll-start.json", "shared"));
 		enemyA.animation.addByNames('idle0', ['darrly-roll-start 0.gif'], 24, false);
 		enemyA.animation.addByNames('idle1', ['darrly-roll-start 1.gif'], 24, false);
@@ -53,13 +51,47 @@ class BattleTest extends MusicBeatState
 			else
 				changeAnim(1, "idle");
 		});
+		enemyA.x = 1054;
+		enemyA.y = 254;
 		
 		new FlxTimer().start(0.1, function(tmr:FlxTimer){
 			battleTimer += 0.1;
 			tmr.reset(0.1);
 		});
 		
-		kris = new FlxSprite();
+		kris = new AllyChar();
+		kris.frames = fromJson(Paths.image("rpg/Kris_battle_intro", "shared"), Paths.file("images/rpg/Kris_battle_intro.json", "shared"));
+		kris.animation.addByNames('idle0', ['Kris_battle_intro 0.gif'], 24, false);
+		kris.animation.addByNames('idle1', ['Kris_battle_intro 1.gif'], 24, false);
+		kris.animation.addByNames('idle2', ['Kris_battle_intro 2.gif'], 24, false);
+		kris.animation.addByNames('idle3', ['Kris_battle_intro 3.gif'], 24, false);
+		kris.animation.addByNames('idle4', ['Kris_battle_intro 4.gif'], 24, false);
+		kris.animation.addByNames('idle5', ['Kris_battle_intro 5.gif'], 24, false);
+		kris.animation.addByNames('idle6', ['Kris_battle_intro 6.gif'], 24, false);
+		kris.animation.addByNames('idle7', ['Kris_battle_intro 7.gif'], 24, false);
+		kris.animation.addByNames('idle8', ['Kris_battle_intro 8.gif'], 24, false);
+		kris.animation.addByNames('idle9', ['Kris_battle_intro 9.gif'], 24, false);
+		kris.animation.addByNames('idle10', ['Kris_battle_intro 10.gif'], 24, false);
+		kris.animation.addByNames('idle11', ['Kris_battle_intro 11.gif'], 24, false);
+		kris.antialiasing = false;
+		kris.scale.set(2,2);
+		add(kris);
+		new FlxTimer().start(0.1, function(tmr:FlxTimer){
+			enemyA.animation.play('idle' + Std.int(loopthing));
+			loopthing += 1;
+			if (loopthing != 11)
+			{
+				tmr.reset(0.1);
+			}
+			else
+			{
+				remove(kris);
+				loopthing = 0;
+				kris.changeAnim(1, "idle");
+			}
+		});
+		kris.x = 262;
+		kris.y = enemyA.y;
 	}
 	
 	function changeAnim(enem:Int, anim:String)
