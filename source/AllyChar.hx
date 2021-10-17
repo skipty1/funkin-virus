@@ -25,7 +25,14 @@ class AllyChar extends FlxSprite
 		switch (id)
 		{
 			frames = fromJson(Paths.image("rpg/Kris_battle_idle", "shared"), Paths.json("images/rpg/Kris_battle_idle.json", "shared"));
+			animation.addByNames("idle", ["Kris_battle_idle 0.gif", "Kris_battle_idle 1.gif", "Kris_battle_idle 2.gif", "Kris_battle_idle 3.gif", "Kris_battle_idle 4.gif", "Kris_battle_idle 5.gif"], 10, true);
+			animation.play("idle");
 		}
+	}
+	override public function update(elapsed:Float)
+	{
+		if (!playingAnim && animation.finished)
+			animation.play("idle");
 	}
 	
 	public static function fromJson(Source:FlxGraphicAsset, Description:String):Null<Dynamic> {
