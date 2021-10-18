@@ -4648,6 +4648,7 @@ class PlayState extends MusicBeatState
 								FlxTween.tween(things, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
 							case 979://shortcut #9
 								dad.playAnim("virus",true);
+								dad.lock = true;
 						}
 						if ((curStep > 638  && curStep < 673) || (curStep > 784 && curStep < 800)){
 							if (dad.curCharacter == "fake")
@@ -4656,7 +4657,13 @@ class PlayState extends MusicBeatState
 						if (dad.animation.curAnim.name == "fall" && dad.animation.curAnim.finished)
 							fallenCrap = true;
 						if (dad.animation.curAnim.name == "virus" && dad.animation.curAnim.finished){//shortcut#10
-							FlxG.camera.fade(FlxColor.BLACK, 2.0, false);
+							// FlxG.camera.fade(FlxColor.BLACK, 2.0, false);
+							var blackt = new FlxSprite(-1000, -1000).makeGraphic(FlxG.width + 2000, FlxG.height + 2000, FlxColor.BLACK);
+							blackt.alpha = 0;
+							add(blackt);
+							FlxTween.num(0, 1, 2, {}, (val)->{
+								blackt.alpha = val;
+							});
 							virusCrap = true;
 						}
 						if (fallenCrap && curStep > 928 && curStep < 978)
