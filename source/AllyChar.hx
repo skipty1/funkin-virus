@@ -1,6 +1,11 @@
 package;
 
-import flixel.*
+import flixel.math.FlxRect;
+import flixel.math.FlxPoint;
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.graphics.FlxGraphic;
+import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.*;
 import openfl.utils.Assets;
 import openfl.utils.AssetType;
 import haxe.Json;
@@ -36,12 +41,12 @@ class AllyChar extends FlxSprite
 				animation.addByNames("attack-charge", ["Kris_battle_attack 0.gif"], 10, false);
 				animation.addByNames("act", ["Kris_battle_act 0.gif", "Kris_battle_act 1.gif", "Kris_battle_act 2.gif", "Kris_battle_act 3.gif", "Kris_battle_act 4.gif", "Kris_battle_act 5.gif", "Kris_battle_act 6.gif", "Kris_battle_act 7.gif", "Kris_battle_act 8.gif", "Kris_battle_act 9.gif", "Kris_battle_act 10.gif", "Kris_battle_act 11.gif"], 10, false);
 				animation.addByNames("think", ["Kris_battle_act 0.gif", "Kris_battle_act 1"], 10, false);
-				animation.addByNames("guard", ["Kris_battle_guard 0.gif", "Kris_battle_guard 1.gif", "Kris_battle_guard 2.gif", "Kris_battle_guard 3.gif", "Kris_battle_guard 4.gif", "Kris_battle_guard 5.gif"], 10, false);;
+				animation.addByNames("guard", ["Kris_battle_guard 0.gif", "Kris_battle_guard 1.gif", "Kris_battle_guard 2.gif", "Kris_battle_guard 3.gif", "Kris_battle_guard 4.gif", "Kris_battle_guard 5.gif"], 10, false);
 				animation.addByNames("item", ["Kris_battle_item 0.gif", "Kris_battle_item 1.gif", "Kris_battle_item 2.gif", "Kris_battle_item 3.gif", "Kris_battle_item 4.gif", "Kris_battle_item 5.gif", "Kris_battle_item 6.gif"], 10, false);
 				animation.addByNames("grabbingitem", ["Kris_battle_item 7.gif"], 10, false);
 				animation.addByNames("victory", ["Kris_battle_victory 0.gif", "Kris_battle_victory 1.gif", "Kris_battle_victory 2.gif", "Kris_battle_victory 3.gif", "Kris_battle_victory 4.gif", "Kris_battle_victory 5.gif", "Kris_battle_victory 6.gif", "Kris_battle_victory 7.gif"], 10, false);
 				animation.addByNames("down", ["Kris_battle_sitting.png"], 10, false);
-				animation.addByNames("hurt" ["Kris_battle_hurt.png"], 10, false);
+				animation.addByNames("hurt", ["Kris_battle_hurt.png"], 10, false);
 				
 				addOffset("down");
 				addOffset("hurt");

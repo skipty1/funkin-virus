@@ -3,9 +3,11 @@ package;
 import flixel.*;
 import flixel.util.*;
 import flixel.text.*;
-import flixel.tweens.FlxTween;;
+import flixel.tweens.FlxTween;
 import SaveUtil;
-import SaveUtil.rpgvars;
+import SaveUtil.Rpgvars;
+import flixel.addons.effects.FlxTrail;
+import flixel.tweens.FlxEase;
 
 using StringTools;
 
@@ -42,6 +44,7 @@ class BattleTest extends RPGState
 	* 15 : +65AtkDmg.
 	*/
 	
+	var textBox:FlxSprite;
 
 	var addedButtons: Bool = false;
 	var tweenVar: FlxTween;
@@ -49,7 +52,7 @@ class BattleTest extends RPGState
 	override function create() {
 		savefile = new SaveUtil();
 		savefile.rpgSave("init");
-		rpgvars.startInit();
+		Rpgvars.startInit();
 
 		//Before anything, do bg.
 
@@ -78,7 +81,7 @@ class BattleTest extends RPGState
 		textBox.screenCenter();
 		add(textBox);
 
-		totalHp = rpgvars.krisHp;
+		totalHp = Rpgvars.krisHp;
 
 		krisStatA = new FlxSprite(700, 0).loadGraphic(Paths.image("rpg/bar", "shared"));
 		krisStatA.setGraphicSize(Std.int(krisStatA.width * 2));
@@ -101,9 +104,9 @@ class BattleTest extends RPGState
 	}
 
 	override public function update(elapsed: Float) {
-		super.update(elapse);
+		super.update(elapsed);
 
-		totalHp = rpgvars.krisHp;
+		totalHp = Rpgvars.krisHp;
 
 		if (totalHp < 1)
 			die();
@@ -132,34 +135,37 @@ class BattleTest extends RPGState
 				buttons("select", 1);
 			
 			if (FlxG.keys.justPressed.Z && !isAttack) {
-				case 0: //
-					attack(false);
-					buttons("die");
-				case 3:
-					defend();
-					buttons("die");
-				case 1:
-					//
-					enemyA.sparify(true, (thing) -> {
-						enemyASpare = thing;
-					}, 50);
-					buttons("die");
-					playerTurn = "enemy";
-				case 2:
-					//do nada
-				case 4:
-					if (enemyASpare == 100 || enemyASpare > 100) {
-						enemyA.sparify(false, (thing) -> {
-							new FlxTimer().start(0.1, function(tmr:FlxTimer) {
-								if (thing != true) {
-									tmr.reset(0.1);
-								}
-								else {
-									endBattle();
-								}
+				switch (curButton)
+				{
+					case 0: //
+						attack(false);
+						buttons("die");
+					case 3:
+						defend();
+						buttons("die");
+					case 1:
+						//
+						enemyA.sparify(true, (thing) -> {
+							enemyASpare = thing;
+						}, 50);
+						buttons("die");
+						playerTurn = "enemy";
+					case 2:
+						//do nada
+					case 4:
+						if (enemyASpare == 100 || enemyASpare > 100) {
+							enemyA.sparify(false, (thing) -> {
+								new FlxTimer().start(0.1, function(tmr:FlxTimer) {
+									if (thing != true) {
+										tmr.reset(0.1);
+									}
+									else {
+										endBattle();
+									}
+								});
 							});
-						});
-					}
+						}
+				}
 			}
 			
 			if (FlxG.keys.justPressed.Z && isAttack && FlxObject.updateTouchingFlags(atkbar, fightthing)) {
@@ -252,7 +258,7 @@ class BattleTest extends RPGState
 						buttonAct.updateHitbox();
 						buttonAct.antialiasing = false;
 						buttonAct.setPosition(krisStatA.getGraphicMidpoint().x - 10, krisStatA.y);
-						add(buttonAct)
+						add(buttonAct);
 					case 2:
 						remove(buttonItem);
 						buttonItem = new FlxSprite().loadGraphic(Paths.image("rpg/ITEM_Selected", "shared"));
@@ -279,8 +285,8 @@ class BattleTest extends RPGState
 		}
 	}
 
-	public function turn(string: String) {
-		switch (turn) {
+	public function turn(string:String) {
+		switch (string) {
 			case "enemy":
 				soul.visible = true;
 				buttons("die");
@@ -317,12 +323,12 @@ class BattleTest extends RPGState
 				onComplete: function (twn:FlxTween) {
 					isAttack = false;
 					FlxTween.tween(atkbar, {alpha: 0}, 0.2, {
-						ease:FlxEase.smoothStepOut;
+						ease:FlxEase.smoothStepOut
 					});
 				}
 			});
 			FlxTween.tween(kris, {dmg: 280}, 1.2);
-			FlxTween.color(atkbar, 0xFFFFFFFF, 0xFF008BFF, 1.2);
+			FlxTween.color(atkbar, 1.2, 0xFFFFFFFF, 0xFF008BFF);
 			isAttack = true;
 		}
 		else {
@@ -338,7 +344,7 @@ class BattleTest extends RPGState
 			var float: Float = 2.1;
 			
 			new FlxTimer().start(0.1, function(tmr:FlxTimer) {
-				atkbar.setGraphicSize(Std.int(atkbar.width * float))
+				atkbar.setGraphicSize(Std.int(atkbar.width * float));
 				atkbar.updateHitbox();
 				if (float < 2.3) {
 					float += 0.1;
@@ -373,10 +379,10 @@ class BattleTest extends RPGState
 		
 			Rating.antialiasing = false;
 			Rating.setGraphicSize(Std.int(Rating.width * 2));
-			add(Rating)
+			add(Rating);
 		
 			FlxTween.tween(Rating, {alpha: 0}, 0.3, {
-				onComplete: function (twn:Tween) {
+				onComplete: function (twn:FlxTween) {
 					Rating.destroy();
 					isAttack = false;
 					remove(fightthing);

@@ -32,14 +32,14 @@ class SaveUtil
 					save.data.played = false;
 					save.data.defeatedboss = false;
 					save.data.items = ["funni dog"];
-					save.data.init = true
+					save.data.init = true;
 					
 					save.flush();
 				}
 			case "save":
 				if (slot == 0)
 				{
-					trace("ERROR: No slot given, save has been stopped.")
+					trace("ERROR: No slot given, save has been stopped.");
 					return;
 				}
 				
@@ -49,8 +49,8 @@ class SaveUtil
 					return;
 				}
 				
-				save.data.map = rpgvars.roomId;
-				save.data.killed = rpgvars.killsTotal;
+				save.data.map = Rpgvars.roomId;
+				save.data.killed = Rpgvars.killsTotal;
 				
 				var saveThing = {
 					"name": save.data.name,
@@ -79,7 +79,7 @@ class SaveUtil
 	public function returnSave()
 	{
 		FlxG.save.data.killsTotal = save.data.killed;
-		FlxG.save.data.roomId = save.data.map
+		FlxG.save.data.roomId = save.data.map;
 		FlxG.save.data.chars = save.data.team;
 		FlxG.save.data.killsDarryl = 0;
 		
@@ -91,7 +91,7 @@ class SaveUtil
 	}
 }
 
-class rpgvars
+class Rpgvars
 {
 	public static var killsDarryl:Int;
 	public static var roomId:Int;

@@ -44,6 +44,6 @@ class Kris extends AllyChar
 		var thing:Int = def + def;
 		realAmount = amount - thing;
 		hp -= realAmount;
-		FlxG.sound.play(Paths.sound("rpg/hurt", "shared")):
+		FlxG.sound.play(Paths.sound("rpg/hurt", "shared"));
 	}
 }

@@ -1,5 +1,11 @@
 package;
 
+import flixel.util.FlxColor;
+import flixel.math.FlxPoint;
+import flixel.math.FlxRect;
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.graphics.FlxGraphic;
+import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.*;
 import flixel.tweens.*;
 import openfl.utils.Assets;
@@ -193,7 +199,7 @@ class EnemChar extends FlxSprite
 		}
 		else
 		{
-			var xThing:Int = x;
+			var xThing = x;
 			FlxTween.color(this, 0.3, FlxColor.fromHSL(this.color.hue, this.color.saturation, 1, 1), 0xFFFFFFFF);
 			FlxTween.tween(this, {x: xThing + 100, alpha: 0}, 0.3, {
 				ease: FlxEase.cubeInOut,
