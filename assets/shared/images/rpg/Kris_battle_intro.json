@@ -1,0 +1,114 @@
+{ "frames": {
+   "Kris_battle_intro 0.gif": {
+    "frame": { "x": 0, "y": 0, "w": 132, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 132, "h": 94 },
+    "sourceSize": { "w": 132, "h": 94 },
+    "duration": 100
+   },
+   "Kris_battle_intro 1.gif": {
+    "frame": { "x": 132, "y": 0, "w": 132, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 132, "h": 94 },
+    "sourceSize": { "w": 132, "h": 94 },
+    "duration": 100
+   },
+   "Kris_battle_intro 2.gif": {
+    "frame": { "x": 264, "y": 0, "w": 132, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 132, "h": 94 },
+    "sourceSize": { "w": 132, "h": 94 },
+    "duration": 100
+   },
+   "Kris_battle_intro 3.gif": {
+    "frame": { "x": 396, "y": 0, "w": 132, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 132, "h": 94 },
+    "sourceSize": { "w": 132, "h": 94 },
+    "duration": 100
+   },
+   "Kris_battle_intro 4.gif": {
+    "frame": { "x": 528, "y": 0, "w": 132, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 132, "h": 94 },
+    "sourceSize": { "w": 132, "h": 94 },
+    "duration": 100
+   },
+   "Kris_battle_intro 5.gif": {
+    "frame": { "x": 660, "y": 0, "w": 132, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 132, "h": 94 },
+    "sourceSize": { "w": 132, "h": 94 },
+    "duration": 100
+   },
+   "Kris_battle_intro 6.gif": {
+    "frame": { "x": 792, "y": 0, "w": 132, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 132, "h": 94 },
+    "sourceSize": { "w": 132, "h": 94 },
+    "duration": 100
+   },
+   "Kris_battle_intro 7.gif": {
+    "frame": { "x": 924, "y": 0, "w": 132, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 132, "h": 94 },
+    "sourceSize": { "w": 132, "h": 94 },
+    "duration": 100
+   },
+   "Kris_battle_intro 8.gif": {
+    "frame": { "x": 1056, "y": 0, "w": 132, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 132, "h": 94 },
+    "sourceSize": { "w": 132, "h": 94 },
+    "duration": 100
+   },
+   "Kris_battle_intro 9.gif": {
+    "frame": { "x": 1188, "y": 0, "w": 132, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 132, "h": 94 },
+    "sourceSize": { "w": 132, "h": 94 },
+    "duration": 100
+   },
+   "Kris_battle_intro 10.gif": {
+    "frame": { "x": 1320, "y": 0, "w": 132, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 132, "h": 94 },
+    "sourceSize": { "w": 132, "h": 94 },
+    "duration": 100
+   },
+   "Kris_battle_intro 11.gif": {
+    "frame": { "x": 1452, "y": 0, "w": 132, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 132, "h": 94 },
+    "sourceSize": { "w": 132, "h": 94 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.29-x64",
+  "image": "Kris_battle_intro.png",
+  "format": "I8",
+  "size": { "w": 1584, "h": 94 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

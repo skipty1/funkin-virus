@@ -1,0 +1,66 @@
+{ "frames": {
+   "darrly-roll-over 0.gif": {
+    "frame": { "x": 0, "y": 0, "w": 120, "h": 54 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 120, "h": 54 },
+    "sourceSize": { "w": 120, "h": 54 },
+    "duration": 100
+   },
+   "darrly-roll-over 1.gif": {
+    "frame": { "x": 120, "y": 0, "w": 120, "h": 54 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 120, "h": 54 },
+    "sourceSize": { "w": 120, "h": 54 },
+    "duration": 100
+   },
+   "darrly-roll-over 2.gif": {
+    "frame": { "x": 240, "y": 0, "w": 120, "h": 54 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 120, "h": 54 },
+    "sourceSize": { "w": 120, "h": 54 },
+    "duration": 100
+   },
+   "darrly-roll-over 3.gif": {
+    "frame": { "x": 360, "y": 0, "w": 120, "h": 54 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 120, "h": 54 },
+    "sourceSize": { "w": 120, "h": 54 },
+    "duration": 100
+   },
+   "darrly-roll-over 4.gif": {
+    "frame": { "x": 480, "y": 0, "w": 120, "h": 54 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 120, "h": 54 },
+    "sourceSize": { "w": 120, "h": 54 },
+    "duration": 100
+   },
+   "darrly-roll-over 5.gif": {
+    "frame": { "x": 600, "y": 0, "w": 120, "h": 54 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 120, "h": 54 },
+    "sourceSize": { "w": 120, "h": 54 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.29-x64",
+  "image": "darrly-roll-over.png",
+  "format": "I8",
+  "size": { "w": 720, "h": 54 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

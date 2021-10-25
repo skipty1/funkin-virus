@@ -1,0 +1,82 @@
+{ "frames": {
+   "darrly-walk 0.gif": {
+    "frame": { "x": 0, "y": 0, "w": 74, "h": 53 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 74, "h": 53 },
+    "sourceSize": { "w": 74, "h": 53 },
+    "duration": 100
+   },
+   "darrly-walk 1.gif": {
+    "frame": { "x": 74, "y": 0, "w": 74, "h": 53 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 74, "h": 53 },
+    "sourceSize": { "w": 74, "h": 53 },
+    "duration": 100
+   },
+   "darrly-walk 2.gif": {
+    "frame": { "x": 148, "y": 0, "w": 74, "h": 53 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 74, "h": 53 },
+    "sourceSize": { "w": 74, "h": 53 },
+    "duration": 100
+   },
+   "darrly-walk 3.gif": {
+    "frame": { "x": 222, "y": 0, "w": 74, "h": 53 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 74, "h": 53 },
+    "sourceSize": { "w": 74, "h": 53 },
+    "duration": 100
+   },
+   "darrly-walk 4.gif": {
+    "frame": { "x": 296, "y": 0, "w": 74, "h": 53 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 74, "h": 53 },
+    "sourceSize": { "w": 74, "h": 53 },
+    "duration": 100
+   },
+   "darrly-walk 5.gif": {
+    "frame": { "x": 370, "y": 0, "w": 74, "h": 53 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 74, "h": 53 },
+    "sourceSize": { "w": 74, "h": 53 },
+    "duration": 100
+   },
+   "darrly-walk 6.gif": {
+    "frame": { "x": 444, "y": 0, "w": 74, "h": 53 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 74, "h": 53 },
+    "sourceSize": { "w": 74, "h": 53 },
+    "duration": 100
+   },
+   "darrly-walk 7.gif": {
+    "frame": { "x": 518, "y": 0, "w": 74, "h": 53 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 74, "h": 53 },
+    "sourceSize": { "w": 74, "h": 53 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.29-x64",
+  "image": "darrly-walk.png",
+  "format": "I8",
+  "size": { "w": 592, "h": 53 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
