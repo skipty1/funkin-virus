@@ -194,8 +194,8 @@ class EnemChar extends FlxSprite
 	{
 		if (IsAct)
 		{
-			sparePresentage += present;
-			Callback(sparePresentage);
+			sparePersentage += present;
+			Callback(sparePersentage);
 		}
 		else
 		{
