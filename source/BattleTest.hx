@@ -37,6 +37,7 @@ class BattleTest extends RPGState
 	public var combo: Int = 0;
 	public var krisDmg: Int = 0;
 	public var enemyASpare: Int = 0;
+	public var extradef: Int = 0;
 	/*List for combos (Might change soon)
 	* 0 : +0 AtkDmg.
 	* 3 : +10AtkDmg.
