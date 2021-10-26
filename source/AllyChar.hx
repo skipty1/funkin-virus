@@ -23,6 +23,8 @@ class AllyChar extends FlxSprite
 	public function new (xPos:Float, yPos:Float, char:String)
 	{
 		super(xPos,yPos);
+
+		animOffsets = [];
 		
 		x = xPos;
 		y = yPos;

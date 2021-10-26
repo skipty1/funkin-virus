@@ -31,6 +31,8 @@ class EnemChar extends FlxSprite
 	public function new (xPos:Float, yPos:Float, char:String)
 	{
 		super(xPos,yPos);
+
+		animOffsets = [];
 		
 		x = xPos;
 		y = yPos;
@@ -78,15 +80,15 @@ class EnemChar extends FlxSprite
 	{
 		super.update(elapsed);
 		
-		if (!lockAnim && animation.finished && sparePresentage != 100)
+		if (!lockAnim && animation.finished && sparePersentage != 100)
 			playAnim("idle", true, false, 10);
 		
-		if (!lockAnim && animation.finished && sparePresentage == 100)
+		if (!lockAnim && animation.finished && sparePersentage == 100)
 			playAnim("spare", true, false, 10);
 		
-		if (sparePresentage == maxSpareP)
+		if (sparePersentage == maxSpareP)
 		{
-			sparePresentage = maxSpareP - 1;
+			sparePersentage = maxSpareP - 1;
 		}
 	}
 	
