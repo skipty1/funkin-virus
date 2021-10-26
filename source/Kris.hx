@@ -16,6 +16,7 @@ class Kris extends AllyChar
 	public var atk:Int = 14;
 	public var isDef:Bool = false;
 	public var dmg:Int = 0;
+	public var lockAnim: Bool = false;
 	
 	public function new(x:Float, y:Float, ?char:String = "kris")
 	{
@@ -31,11 +32,13 @@ class Kris extends AllyChar
 			playAnim("down", true, false, 10);
 			lockAnim = true;
 		}
-		if (hp > 1 && lockAnim)
+		if (hp > 1 && lockAnim && animation.curAnim.name == "down")
 		{
 			playAnim("idle", true, false, 10);
 			lockAnim = false;
 		}
+		if (animation.finished && !lockAnim)
+			playAnim("idle", true, false, 10);
 	}
 	
 	public function decreaseHp(amount:Int)
