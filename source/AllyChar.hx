@@ -117,7 +117,7 @@ class AllyChar extends FlxSprite
 		for (framename in framelist)
 		{
 			var frame = Reflect.field(json.frames, framename);
-			trace(frame);
+			// trace(frame);
 			var rect = FlxRect.get(frame.frame.x, frame.frame.y, frame.frame.w, frame.frame.h);
 			// var duration:Int = frame.duration; // 100 = 10fps???
 

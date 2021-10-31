@@ -1,5 +1,8 @@
 package;
 
+import flixel.math.FlxMath;
+import flixel.group.FlxSpriteGroup;
+import flixel.group.FlxGroup;
 import flixel.*;
 import flixel.util.*;
 import flixel.text.*;
@@ -19,14 +22,14 @@ class BattleTest extends RPGState
 	public var soul: FlxSprite;
 	public var enemyA: EnemChar;
 	public var totalHp: Int = 1;
-	public var krisStatA: FlxSprite;
-	public var krisStatB: FlxSprite;
+	// public var krisStatA: FlxSprite;
+	// public var krisStatB: FlxSprite;
 
-	public var buttonFight: FlxSprite;
-	public var buttonAct: FlxSprite;
-	public var buttonItem: FlxSprite;
-	public var buttonDef: FlxSprite;
-	public var buttonSpare: FlxSprite;
+	// public var buttonFight: FlxSprite;
+	// public var buttonAct: FlxSprite;
+	// public var buttonItem: FlxSprite;
+	// public var buttonDef: FlxSprite;
+	// public var buttonSpare: FlxSprite;
 	public var fightthing: FlxSprite;
 	public var atkbar: FlxSprite;
 
@@ -49,6 +52,8 @@ class BattleTest extends RPGState
 
 	var addedButtons: Bool = false;
 	var tweenVar: FlxTween;
+
+	var krisStat:KrisStat;
 
 	override function create() {
 		savefile = new SaveUtil();
@@ -73,9 +78,14 @@ class BattleTest extends RPGState
 		add(soul);
 
 		kris = new Kris(297, 386);
+		kris.setGraphicSize(Std.int(kris.width * 2));
+		kris.updateHitbox();
+		kris.screenCenter(Y);
 		add(kris);
 
 		enemyA = new EnemChar(1050, 386, "darryl");
+		enemyA.setGraphicSize(Std.int(enemyA.width * 2));
+		enemyA.updateHitbox();
 		add(enemyA);
 
 		textBox = new FlxSprite().loadGraphic(Paths.image("rpg/textThing", "shared"));
@@ -84,21 +94,12 @@ class BattleTest extends RPGState
 
 		totalHp = Rpgvars.krisHp;
 
-		krisStatA = new FlxSprite(700, 0).loadGraphic(Paths.image("rpg/bar", "shared"));
-		krisStatA.setGraphicSize(Std.int(krisStatA.width * 2));
-		krisStatA.updateHitbox();
-		krisStatA.antialiasing = false;
-		krisStatA.screenCenter(Y);
-		add(krisStatA);
+		krisStat = new KrisStat();
+		krisStat.screenCenter(X);
+		krisStat.y = FlxG.height - krisStat.height;
+		add(krisStat);
 
-		krisStatB = new FlxSprite(700, 0).loadGraphic(Paths.image("rpg/bar", "shared"));
-		krisStatB.setGraphicSize(Std.int(krisStatB.width * 2));
-		krisStatB.updateHitbox();
-		krisStatB.antialiasing = false;
-		krisStatB.screenCenter(Y);
-		add(krisStatB);
-
-		buttons("add");
+		krisStat.buttons("add");
 
 		//DO THIS LATER!!!!!
 		//hpText = new FlxText();
@@ -106,6 +107,9 @@ class BattleTest extends RPGState
 
 	override public function update(elapsed: Float) {
 		super.update(elapsed);
+
+		if (FlxG.keys.justReleased.B)
+			krisStat.closed = !krisStat.closed;
 
 		totalHp = Rpgvars.krisHp;
 
@@ -131,25 +135,25 @@ class BattleTest extends RPGState
 			turn("kris");
 			
 			if (FlxG.keys.justPressed.LEFT)
-				buttons("select", -1);
+				krisStat.buttons("select", -1);
 			if (FlxG.keys.justPressed.RIGHT)
-				buttons("select", 1);
+				krisStat.buttons("select", 1);
 			
 			if (FlxG.keys.justPressed.Z && !isAttack) {
 				switch (curButton)
 				{
 					case 0: //
 						attack(false);
-						buttons("die");
+						krisStat.buttons("die");
 					case 3:
 						defend();
-						buttons("die");
+						krisStat.buttons("die");
 					case 1:
 						//
 						enemyA.sparify(true, (thing) -> {
 							enemyASpare = thing;
 						}, 50);
-						buttons("die");
+						krisStat.buttons("die");
 						playerTurn = "enemy";
 					case 2:
 						//do nada
@@ -185,122 +189,20 @@ class BattleTest extends RPGState
 		//
 	}
 
-	public function buttons(string: String, ?int: Int = 0) {
-		switch (string) {
-			case "add":
-				buttonFight = new FlxSprite().loadGraphic(Paths.image("rpg/FIGHT", "shared"));
-				buttonFight.setGraphicSize(Std.int(buttonFight.width * 2));
-				buttonFight.updateHitbox();
-				buttonFight.antialiasing = false;
-				buttonFight.setPosition(krisStatA.getGraphicMidpoint().x - 20, krisStatA.y);
-				add(buttonFight);
-
-				buttonAct = new FlxSprite().loadGraphic(Paths.image("rpg/ACT", "shared"));
-				buttonAct.setGraphicSize(Std.int(buttonAct.width * 2));
-				buttonAct.updateHitbox();
-				buttonAct.antialiasing = false;
-				buttonAct.setPosition(krisStatA.getGraphicMidpoint().x - 10, krisStatA.y);
-				add(buttonAct);
-
-				buttonItem = new FlxSprite().loadGraphic(Paths.image("rpg/ITEM", "shared"));
-				buttonItem.setGraphicSize(Std.int(buttonAct.width * 2));
-				buttonItem.updateHitbox();
-				buttonItem.setPosition(krisStatA.getGraphicMidpoint().x, krisStatA.y);
-				add(buttonItem);
-
-				buttonDef = new FlxSprite().loadGraphic(Paths.image("rpg/DEFEND", "shared"));
-				buttonDef.setGraphicSize(Std.int(buttonDef.width * 2));
-				buttonDef.updateHitbox();
-				buttonDef.setPosition(krisStatA.getGraphicMidpoint().x + 10, krisStatA.y);
-				buttonDef.antialiasing = false;
-				add(buttonDef);
-
-				buttonSpare = new FlxSprite().loadGraphic(Paths.image("rpg/SPARE", "shared"));
-				buttonSpare.setGraphicSize(Std.int(buttonSpare.width * 2));
-				buttonSpare.antialiasing = false;
-				buttonSpare.setPosition(krisStatA.getGraphicMidpoint().x + 20, krisStatA.y);
-				add(buttonSpare);
-
-			case "die":
-				buttonFight.visible = false;
-				buttonSpare.visible = false;
-				buttonAct.visible = false;
-				buttonItem.visible = false;
-				buttonDef.visible = false;
-
-			case "live":
-				buttonFight.visible = true;
-				buttonDef.visible = true;
-				buttonItem.visible = true;
-				buttonSpare.visible = true;
-				buttonAct.visible = true;
-
-			case "select":
-				curButton += int;
-
-				if (curButton == -1)
-					curButton = 4;
-				if (curButton == 5)
-					curButton = 0;
-
-				switch (curButton) {
-					case 0:
-						remove(buttonFight);
-						buttonFight = new FlxSprite().loadGraphic(Paths.image("rpg/FIGHT_Selected", "shared"));
-						buttonFight.setGraphicSize(Std.int(buttonFight.width * 2));
-						buttonFight.updateHitbox();
-						buttonFight.antialiasing = false;
-						buttonFight.setPosition(krisStatA.getGraphicMidpoint().x - 20, krisStatA.y);
-						add(buttonFight);
-					case 1:
-						remove(buttonAct);
-						buttonAct = new FlxSprite().loadGraphic(Paths.image("rpg/ACT_Selcted", "shared"));
-						buttonAct.setGraphicSize(Std.int(buttonAct.width * 2));
-						buttonAct.updateHitbox();
-						buttonAct.antialiasing = false;
-						buttonAct.setPosition(krisStatA.getGraphicMidpoint().x - 10, krisStatA.y);
-						add(buttonAct);
-					case 2:
-						remove(buttonItem);
-						buttonItem = new FlxSprite().loadGraphic(Paths.image("rpg/ITEM_Selected", "shared"));
-						buttonItem.setGraphicSize(Std.int(buttonAct.width * 2));
-						buttonItem.updateHitbox();
-						buttonItem.setPosition(krisStatA.getGraphicMidpoint().x, krisStatA.y);
-						add(buttonItem);
-					case 3:
-						remove(buttonDef);
-						buttonDef = new FlxSprite().loadGraphic(Paths.image("rpg/DEFEND_Selected", "shared"));
-						buttonDef.setGraphicSize(Std.int(buttonDef.width * 2));
-						buttonDef.updateHitbox();
-						buttonDef.setPosition(krisStatA.getGraphicMidpoint().x + 10, krisStatA.y);
-						buttonDef.antialiasing = false;
-						add(buttonDef);
-					case 4:
-						remove(buttonSpare);
-						buttonSpare = new FlxSprite().loadGraphic(Paths.image("rpg/SPARE_Selected", "shared"));
-						buttonSpare.setGraphicSize(Std.int(buttonSpare.width * 2));
-						buttonSpare.antialiasing = false;
-						buttonSpare.setPosition(krisStatA.getGraphicMidpoint().x + 20, krisStatA.y);
-						add(buttonSpare);
-				}
-		}
-	}
 
 	public function turn(string:String) {
 		switch (string) {
 			case "enemy":
 				soul.visible = true;
-				buttons("die");
-				krisStatA.visible = true;
-				krisStatB.visible = false;
+				krisStat.buttons("die");
+				krisStat.closed = true;
 				curButton = 0;
 			case "kris":
 				if (extradef != 0)
 					
 				soul.visible = false;
-				buttons("live");
-				krisStatA.visible = false;
-				krisStatB.visible = true;
+				krisStat.buttons("live");
+				krisStat.closed = false;
 		}
 	}
 	
@@ -407,4 +309,174 @@ class BattleTest extends RPGState
 		
 	}
 
+}
+
+// trying to use class
+class KrisStat extends FlxSpriteGroup {
+	
+	var openStat:FlxSprite;
+	var closedStat:FlxSprite;
+
+	var buttonFight:FlxSprite;
+	var buttonAct:FlxSprite;
+	var buttonItem:FlxSprite;
+	var buttonDef:FlxSprite;
+	var buttonSpare:FlxSprite;
+	
+	var curButton:Int = 0;
+
+	@:isVar public var closed(get, set):Bool;
+	function get_closed():Bool
+		return closed;
+	
+	function set_closed(closed:Bool):Bool {
+		// if (closed)
+		// {
+		// 	openStat.visible = false;
+		// 	closedStat.visible = true;
+		// }else
+		// {
+		// 	openStat.visible = true;
+		// 	closedStat.visible = false;
+		// }
+
+		// buttonFight.visible = !closed;
+		// buttonDef.visible = !closed;
+		// buttonItem.visible = !closed;
+		// buttonSpare.visible = !closed;
+		// buttonAct.visible = !closed;	
+
+		FlxTween.num(closed ? 1 : 0, closed ? 0 : 1, 0.5, {}, val ->{
+			buttonFight.y = buttonAct.y = buttonItem.y = buttonDef.y = buttonSpare.y = FlxMath.lerp(160, 80, val); // use openStat.y instead of this
+			openStat.y = FlxMath.lerp(openStat.width / 2, 0, val);
+		});
+		
+		return this.closed = closed;
+	}
+	public function new(?x, ?y) {
+		super(x, y);
+
+		openStat = new FlxSprite().loadGraphic(Paths.image("rpg/bar_open", "shared"));
+		openStat.setGraphicSize(Std.int(openStat.width * 2));
+		openStat.updateHitbox();
+		openStat.antialiasing = false;
+
+		closedStat = new FlxSprite().loadGraphic(Paths.image("rpg/bar", "shared"));
+		closedStat.setGraphicSize(Std.int(closedStat.width * 2));
+		closedStat.updateHitbox();
+		closedStat.antialiasing = false;
+		closedStat.x = 2;
+		closedStat.y = openStat.height - closedStat.height;
+
+		add(closedStat);
+		add(openStat);
+		initButtons();
+		closed = false;
+	}	
+
+	function initButtons() {
+		buttonFight = new FlxSprite().loadGraphic(Paths.image("rpg/FIGHT", "shared"));
+		buttonFight.setGraphicSize(Std.int(buttonFight.width * 2));
+		buttonFight.updateHitbox();
+		buttonFight.antialiasing = false;
+		buttonFight.setPosition(8, openStat.height - buttonFight.height - 10);
+		add(buttonFight);
+		var y = openStat.height - buttonFight.height - 10;
+		trace(openStat.height - buttonFight.height - 10);
+
+		buttonAct = new FlxSprite().loadGraphic(Paths.image("rpg/ACT", "shared"));
+		buttonAct.setGraphicSize(Std.int(buttonAct.width * 2));
+		buttonAct.updateHitbox();
+		buttonAct.antialiasing = false;
+		buttonAct.setPosition(buttonFight.x + buttonFight.width + 10, y);
+		add(buttonAct);
+
+		buttonItem = new FlxSprite().loadGraphic(Paths.image("rpg/ITEM", "shared"));
+		buttonItem.setGraphicSize(Std.int(buttonAct.width * 1));
+		buttonItem.updateHitbox();
+		buttonItem.setPosition(buttonAct.x + buttonAct.width + 10, y);
+		add(buttonItem);
+
+		buttonDef = new FlxSprite().loadGraphic(Paths.image("rpg/DEFEND", "shared"));
+		buttonDef.setGraphicSize(Std.int(buttonDef.width * 2));
+		buttonDef.updateHitbox();
+		buttonDef.setPosition(buttonItem.x + buttonItem.width + 10, y);
+		buttonDef.antialiasing = false;
+		add(buttonDef);
+
+		buttonSpare = new FlxSprite().loadGraphic(Paths.image("rpg/SPARE", "shared"));
+		buttonSpare.setGraphicSize(Std.int(buttonSpare.width * 2));
+		buttonSpare.antialiasing = false;
+		buttonSpare.setPosition(buttonDef.x + buttonDef.width + 10, y);
+		add(buttonSpare);
+	}
+	public function buttons(string: String, ?int: Int = 0) {
+		switch (string) {
+			case "add":
+				initButtons();
+
+			case "die":
+				// buttonFight.visible = false;
+				// buttonSpare.visible = false;
+				// buttonAct.visible = false;
+				// buttonItem.visible = false;
+				// buttonDef.visible = false;
+
+			case "live":
+				// buttonFight.visible = true;
+				// buttonDef.visible = true;
+				// buttonItem.visible = true;
+				// buttonSpare.visible = true;
+				// buttonAct.visible = true;
+
+			case "select":
+				curButton += int;
+
+				if (curButton == -1)
+					curButton = 4;
+				if (curButton == 5)
+					curButton = 0;
+
+				switch (curButton) {
+					case 0:
+						remove(buttonFight);
+						buttonFight = new FlxSprite().loadGraphic(Paths.image("rpg/FIGHT_Selected", "shared"));
+						buttonFight.setGraphicSize(Std.int(buttonFight.width * 2));
+						buttonFight.updateHitbox();
+						buttonFight.antialiasing = false;
+						buttonFight.setPosition(openStat.getGraphicMidpoint().x - 20, openStat.y);
+						add(buttonFight);
+					case 1:
+						remove(buttonAct);
+						buttonAct = new FlxSprite().loadGraphic(Paths.image("rpg/ACT_Selcted", "shared"));
+						buttonAct.setGraphicSize(Std.int(buttonAct.width * 2));
+						buttonAct.updateHitbox();
+						buttonAct.antialiasing = false;
+						buttonAct.setPosition(openStat.getGraphicMidpoint().x - 10, openStat.y);
+						add(buttonAct);
+					case 2:
+						remove(buttonItem);
+						buttonItem = new FlxSprite().loadGraphic(Paths.image("rpg/ITEM_Selected", "shared"));
+						buttonItem.setGraphicSize(Std.int(buttonAct.width * 2));
+						buttonItem.updateHitbox();
+						buttonItem.setPosition(openStat.getGraphicMidpoint().x, openStat.y);
+						add(buttonItem);
+					case 3:
+						remove(buttonDef);
+						buttonDef = new FlxSprite().loadGraphic(Paths.image("rpg/DEFEND_Selected", "shared"));
+						buttonDef.setGraphicSize(Std.int(buttonDef.width * 2));
+						buttonDef.updateHitbox();
+						buttonDef.setPosition(openStat.getGraphicMidpoint().x + 10, openStat.y);
+						buttonDef.antialiasing = false;
+						add(buttonDef);
+					case 4:
+						remove(buttonSpare);
+						buttonSpare = new FlxSprite().loadGraphic(Paths.image("rpg/SPARE_Selected", "shared"));
+						buttonSpare.setGraphicSize(Std.int(buttonSpare.width * 2));
+						buttonSpare.antialiasing = false;
+						buttonSpare.setPosition(openStat.getGraphicMidpoint().x + 20, openStat.y);
+						add(buttonSpare);
+				}
+		}
+	}
 }
