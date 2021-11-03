@@ -45,7 +45,7 @@ class LogState extends MusicBeatState{
 		#if desktop
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
 		#else 
-		if (!sys.FileSystem.exists(Main.path + Sys.getCwd() + "/assets/replays"))
+		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays")) // Main.path + 
 		#end
 			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
 		#end

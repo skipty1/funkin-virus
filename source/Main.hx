@@ -32,6 +32,9 @@ class Main extends Sprite
 
 	public static function main():Void
 	{
+		#if android
+		Sys.setCwd(lime.system.System.applicationStorageDirectory);
+		#end
 
 		// quick checks 
 

@@ -376,11 +376,13 @@ class MusicBeatState extends FlxUIState
 			}
 		}
 
+		#if !mobile // temporarily disabled
 		if (!FlxG.save.data.DUNABD && !dontSpam && deaths >= 5 && PlayState.isEasy)
 			medalPop('DUNABD');
 
 		if (!FlxG.save.data.CDBZ && !dontSpam && PlayState.misses == 0 && songEnded)
 			medalPop('CDBZ');
+		#end
 
 		if (!FlxG.save.data.Coin && !dontSpam && deaths == 0 && storyCompleted)
 			medalPop('One Coin');

@@ -1,0 +1,34 @@
+{
+  "name": "test",
+  "ogmoVersion": "3.4.0",
+  "levelPaths": ["."],
+  "backgroundColor": "#282c34ff",
+  "gridColor": "#3c4049cc",
+  "anglesRadians": true,
+  "directoryDepth": 5,
+  "layerGridDefaultSize": {"x": 20, "y": 20},
+  "levelDefaultSize": {"x": 320, "y": 240},
+  "levelMinSize": {"x": 128, "y": 128},
+  "levelMaxSize": {"x": 4096, "y": 4096},
+  "levelValues": [],
+  "defaultExportMode": ".json",
+  "compactExport": false,
+  "externalScript": "",
+  "playCommand": "",
+  "entityTags": [],
+  "layers": [
+    {
+      "definition": "tile",
+      "name": "main",
+      "gridSize": {"x": 20, "y": 20},
+      "exportID": "86123820",
+      "exportMode": 0,
+      "arrayMode": 0,
+      "defaultTileset": "New Tileset"
+    }
+  ],
+  "entities": [],
+  "tilesets": [
+    {"label": "New Tileset", "path": "a.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAA8CAMAAAD48GC1AAAAD1BMVEU9E393QcsAAAATCFxRQ87BpONMAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB7klEQVRo3u2aiw7DIAhFUff/37y+SwWrWOqjkS2bYW1yeoMIOgCTbJDrs5s5ZIsDljcxzo19YKAc9Mx9+c6GTqduCdqAbywx7/88tHsQ07/FMLTJN6nSWO3PQ883OTugJdA3Mb1NqTkM4hOxsNI2ovSAVoe+pAQcHtNHW9BnRBNopLRtTWnHpoSI9Qjd/uKiAh2qR0LQvgmzB2vixQVEP1FX+9DMxRrQ4okogeauVYfmzCibo5W0GNrSGuVdaJI1BnSk3cp9uC6he41p9zR7eLdRqwHNlnbNQu819C9cmp6OdVQE2hHzJVuZuSbgcAAaFVI6mD12ZnfTblVROgx9xkY/0AjFBbYQaodHOOd6HYyLKV1wGb9NXyBI3wM6E5r0ZFFoezZyx+gJOCdCanH/CPphhy5WWgwdCI8BrQ7tGEtsbJOaWsiAjlZ5+dBJuweNQSdt09SETkzmb0H76bMYtN8eiqC9IUzVCXlpnznfFXlp0Oe6l6x0c9DdKG2x0gz1O9CX03EMfdT4gRVvgbb2GEJBpXm5gem+gVF6fZgaSmtB57ZbatCoBcTnK354rAGyDWvHNLM5Q04X90lYS+n7tjxwUkdT3oDWgfZzN13GlaG5GoX5v4cM2i+Y3lZ6dmbsP0NiAfUS9OTtENqANvQfKAM78yn2htcAAAAASUVORK5CYII=", "tileWidth": 20, "tileHeight": 20, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0}
+  ]
+}
