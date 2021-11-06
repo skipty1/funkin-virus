@@ -24,6 +24,17 @@ import flixel.FlxCamera;
 import flixel.text.FlxText;
 import flixel.math.FlxPoint;
 import flixel.FlxObject;
+import flixel.math.FlxRect;
+import flixel.math.FlxPoint;
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.graphics.FlxGraphic;
+import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.*;
+import openfl.utils.Assets;
+import openfl.utils.AssetType;
+import haxe.Json;
+import haxe.format.JsonParser;
+import lime.utils.Assets;
 import dr.*;
 
 using StringTools;
