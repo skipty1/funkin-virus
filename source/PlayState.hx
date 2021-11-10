@@ -2457,7 +2457,7 @@ class PlayState extends MusicBeatState
 		else
 			super.update(elapsed);
 
-		if (PlayState.SONG.song.toLowerCase() == 'Disco' && PlayState.misses == 0 && MusicBeatState.songEnded && !FlxG.save.data.BluSpy && !MusicBeatState.dontSpam)
+		if (PlayState.SONG.song.toLowerCase() == 'disco' && PlayState.misses == 0 && MusicBeatState.songEnded && !FlxG.save.data.BluSpy && !MusicBeatState.dontSpam)
 			medalPop('Blue Spy');
 
 		if (PlayState.misses > 100 && MusicBeatState.songEnded && !FlxG.save.data.TOUHOU && !MusicBeatState.dontSpam)
