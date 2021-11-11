@@ -200,7 +200,8 @@ class BattleTest extends RPGState
 				curButton = 0;
 			case "kris":
 				if (extradef != 0)
-					
+					extradef == 0;
+				
 				soul.visible = false;
 				krisStat.buttons("live");
 				krisStat.closed = false;
