@@ -1,80 +1,64 @@
 { "frames": {
    "Kris_battle_attack 0.gif": {
-    "frame": { "x": 0, "y": 0, "w": 90, "h": 100 },
+    "frame": { "x": 0, "y": 0, "w": 45, "h": 47 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 100 },
-    "sourceSize": { "w": 90, "h": 100 },
-    "duration": 200
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 45, "h": 47 },
+    "sourceSize": { "w": 45, "h": 47 },
+    "duration": 100
    },
    "Kris_battle_attack 1.gif": {
-    "frame": { "x": 90, "y": 0, "w": 90, "h": 100 },
+    "frame": { "x": 45, "y": 0, "w": 45, "h": 47 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 100 },
-    "sourceSize": { "w": 90, "h": 100 },
-    "duration": 70
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 45, "h": 47 },
+    "sourceSize": { "w": 45, "h": 47 },
+    "duration": 100
    },
    "Kris_battle_attack 2.gif": {
-    "frame": { "x": 180, "y": 0, "w": 90, "h": 100 },
+    "frame": { "x": 90, "y": 0, "w": 45, "h": 47 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 100 },
-    "sourceSize": { "w": 90, "h": 100 },
-    "duration": 60
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 45, "h": 47 },
+    "sourceSize": { "w": 45, "h": 47 },
+    "duration": 100
    },
    "Kris_battle_attack 3.gif": {
-    "frame": { "x": 270, "y": 0, "w": 90, "h": 100 },
+    "frame": { "x": 135, "y": 0, "w": 45, "h": 47 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 100 },
-    "sourceSize": { "w": 90, "h": 100 },
-    "duration": 70
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 45, "h": 47 },
+    "sourceSize": { "w": 45, "h": 47 },
+    "duration": 100
    },
    "Kris_battle_attack 4.gif": {
-    "frame": { "x": 360, "y": 0, "w": 90, "h": 100 },
+    "frame": { "x": 180, "y": 0, "w": 45, "h": 47 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 100 },
-    "sourceSize": { "w": 90, "h": 100 },
-    "duration": 70
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 45, "h": 47 },
+    "sourceSize": { "w": 45, "h": 47 },
+    "duration": 100
    },
    "Kris_battle_attack 5.gif": {
-    "frame": { "x": 450, "y": 0, "w": 90, "h": 100 },
+    "frame": { "x": 225, "y": 0, "w": 45, "h": 47 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 100 },
-    "sourceSize": { "w": 90, "h": 100 },
-    "duration": 60
-   },
-   "Kris_battle_attack 6.gif": {
-    "frame": { "x": 540, "y": 0, "w": 90, "h": 100 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 100 },
-    "sourceSize": { "w": 90, "h": 100 },
-    "duration": 70
-   },
-   "Kris_battle_attack 7.gif": {
-    "frame": { "x": 630, "y": 0, "w": 90, "h": 100 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 100 },
-    "sourceSize": { "w": 90, "h": 100 },
-    "duration": 500
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 45, "h": 47 },
+    "sourceSize": { "w": 45, "h": 47 },
+    "duration": 100
    }
  },
  "meta": {
-  "app": "http://www.aseprite.org/",
-  "version": "1.2.29-x64",
+  "app": "https://www.aseprite.org/",
+  "version": "1.3-beta7-x64",
   "image": "Kris_battle_attack.png",
-  "format": "I8",
-  "size": { "w": 720, "h": 100 },
+  "format": "RGBA8888",
+  "size": { "w": 270, "h": 47 },
   "scale": "1",
   "frameTags": [
   ],
   "layers": [
-   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+   { "name": "图层 1", "opacity": 255, "blendMode": "normal" }
   ],
   "slices": [
   ]
