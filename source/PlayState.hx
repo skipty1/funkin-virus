@@ -776,9 +776,9 @@ class PlayState extends MusicBeatState
 					flor.scale.set(6, 6);
 					add(flor);
 					bg = new FlxSprite(posX, posY);
-					bg.frames = Paths.getSparrowAtlas('8bit/ROOM_DRAK', 'shared');
-					bg.animation.addByPrefix('idle', 'ROOM DRAK', 24);
-					bg.animation.play('idle');
+					bg.frames = fromJson(Paths.image("8bit/new_room_close", "shared"), Paths.I8json("8bit/new_room_close", "shared"));
+					bg.animation.addByNames('idle', ["new_room_close 0.aseprite", "new_room_close 1.aseprite", "new_room_close 2.aseprite", "new_room_close 3.aseprite", "new_room_close 4.aseprite", "new_room_close 5.aseprite", "new_room_close 6.aseprite", "new_room_close 7.aseprite", "new_room_close 8.aseprite", "new_room_close 9.aseprite", "new_room_close 10.aseprite", "new_room_close 11.aseprite", "new_room_close 12.aseprite", "new_room_close 13.aseprite", "new_room_close 14.aseprite", "new_room_close 15.aseprite", "new_room_close 16.aseprite", "new_room_close 17.aseprite", "new_room_close 18.aseprite", "new_room_close 19.aseprite", "new_room_close 20.aseprite", "new_room_close 21.aseprite", "new_room_close 22.aseprite", 'new_room_close 23.aseprite', "new_room_close 24.aseprite", "new_room_close 25.aseprite", "new_room_close 26.aseprite", "new_room_close 27.aseprite"], 24);
+					bg.animation.play('idle');//shortcut ass
 					bg.scrollFactor.set(0.9, 0.9);
 					bg.scale.set(6, 6);
 					add(bg);
@@ -795,7 +795,10 @@ class PlayState extends MusicBeatState
 					bg2.scrollFactor.set(0.9, 0.9);
 					bg2.scale.set(6, 6);
 
-					things = new FlxSprite(posX, posY).loadGraphic(Paths.image('8bit/things','shared'));
+					things = new FlxSprite(posX, posY);
+					things.frames = fromJson(Paths.image("8bit/new_room_close_Arcade", "shared"), Paths.I8json("8bit/new_room_close_Arcade", "shared"));
+					things.animation.addByNames("idle", ["new_room_close_Arcade 0.aseprite", "new_room_close_Arcade 1.aseprite", "new_room_close_Arcade 2.aseprite", "new_room_close_Arcade 3.aseprite", "new_room_close_Arcade 4.aseprite", "new_room_close_Arcade 5.aseprite", "new_room_close_Arcade 6.aseprite", "new_room_close_Arcade 7.aseprite", "new_room_close_Arcade 8.aseprite", "new_room_close_Arcade 9.aseprite", "new_room_close_Arcade 10.aseprite", "new_room_close_Arcade 11.aseprite", "new_room_close_Arcade 12.aseprite", "new_room_close_Arcade 13.aseprite", "new_room_close_Arcade 14.aseprite", "new_room_close_Arcade 15.aseprite", "new_room_close_Arcade 16.aseprite", "new_room_close_Arcade 17.aseprite", "new_room_close_Arcade 18.aseprite", "new_room_close_Arcade 19.aseprite", "new_room_close_Arcade 20.aseprite", "new_room_close_Arcade 21.aseprite", "new_room_close_Arcade 22.aseprite", 'new_room_close_Arcade 23.aseprite', "new_room_close_Arcade 24.aseprite", "new_room_close_Arcade 25.aseprite", "new_room_close_Arcade 26.aseprite", "new_room_close_Arcade 27.aseprite"], 24);
+					things.animation.play("idle");
 					things.scale.set(6, 6);
 					things.scrollFactor.set(0.9,0.9);
 					
@@ -2456,6 +2459,13 @@ class PlayState extends MusicBeatState
 			super.update(elapsed/2);
 		else
 			super.update(elapsed);
+			
+		if (bg != null && things != null) {
+			if (bg.animation.finished)
+				bg.animation.play("idle");
+			if (things.animation.finished)
+				things.animation.play("idle");
+		}
 
 		if (PlayState.SONG.song.toLowerCase() == 'disco' && PlayState.misses == 0 && MusicBeatState.songEnded && !FlxG.save.data.BluSpy && !MusicBeatState.dontSpam)
 			medalPop('Blue Spy');
@@ -5099,4 +5109,52 @@ class PlayState extends MusicBeatState
 		return FlxSort.byValues(FlxSort.ASCENDING, Obj1.strumTime, Obj2.strumTime);
 	}
 
+	public static function fromJson(Source:FlxGraphicAsset, Description:String):Null<Dynamic> {
+		var graphic:FlxGraphic = FlxG.bitmap.add(Source);
+		if (graphic == null)
+			return null;
+
+		// No need to parse data again
+		var frames:FlxAtlasFrames = FlxAtlasFrames.findFrame(graphic);
+		if (frames != null)
+			return frames;
+
+		if (graphic == null || Description == null)
+			return null;
+
+		frames = new FlxAtlasFrames(graphic);
+
+		if (Assets.exists(Description))
+			Description = Assets.getText(Description);
+
+		var json = Json.parse(Description);
+		var framelist = Reflect.fields(json.frames);
+
+		for (framename in framelist)
+		{
+			var frame = Reflect.field(json.frames, framename);
+			// trace(frame);
+			var rect = FlxRect.get(frame.frame.x, frame.frame.y, frame.frame.w, frame.frame.h);
+			// var duration:Int = frame.duration; // 100 = 10fps???
+
+			frames.addAtlasFrame(rect, FlxPoint.get(rect.width, rect.height), FlxPoint.get(), framename);
+		}
+
+		return frames;
+	}
+	
+	public static function fromI8Array(array:Array<{Source:FlxGraphicAsset, Description:String}>):FlxAtlasFrames {
+		var i8frames:Array<FlxAtlasFrames> = [];
+		for (i8 in array)
+			i8frames.push(fromJson(i8.Source, i8.Description));
+
+		var parent = i8frames[0];
+		i8frames.shift();
+
+		for (frames in i8frames)
+			for (frame in frames.frames)
+				parent.pushFrame(frame);
+
+		return parent;
+	}
 }
