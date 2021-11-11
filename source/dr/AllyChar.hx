@@ -20,7 +20,7 @@ class AllyChar extends FlxSprite
 	public var animOffsets:Map<String, Array<Dynamic>>;
 	public static var lockAnim:Bool = false;
 	
-	public function new (xPos:Float, yPos:Float, char:String)
+	public function new (xPos:Float = 0, yPos:Float = 0, char:String)
 	{
 		super(xPos,yPos);
 
@@ -34,7 +34,21 @@ class AllyChar extends FlxSprite
 		{
 			case "kris":
 				frames = fromI8Array(
-					[ { Source: Paths.image("rpg/Kris_battle_idle", "shared"), Description: Paths.file("images/rpg/Kris_battle_idle.json", "shared")}, { Source: Paths.image("rpg/Kris_battle_intro", "shared"), Description: Paths.file("images/rpg/Kris_battle_intro.json", "shared")}, { Source: Paths.image("rpg/Kris_battle_act", "shared"), Description: Paths.file("images/rpg/Kris_battle_act.json", "shared")}, { Source: Paths.image("rpg/Kris_battle_attack", "shared"), Description: Paths.file("images/rpg/Kris_battle_attack.json", "shared")}, { Source: Paths.image("rpg/Kris_battle_guard", "shared"), Description: Paths.file("images/rpg/Kris_battle_guard.json", "shared")}, { Source: Paths.image("rpg/Kris_battle_hurt", "shared"), Description: Paths.file("images/rpg/Kris_battle_hurt.json", "shared")}, { Source: Paths.image("rpg/Kris_battle_item", "shared"), Description: Paths.file("images/rpg/Kris_battle_item.json", "shared")}, { Source: Paths.image("rpg/Kris_battle_sitting", "shared"), Description: Paths.file("images/rpg/Kris_battle_sitting.json", "shared")}, { Source: Paths.image("rpg/Kris_battle_victory", "shared"), Description: Paths.file("images/rpg/Kris_battle_victory.json", "shared")}, { Source: Paths.image("rpg/Kris_goup", "shared"), Description: Paths.file("images/rpg/Kris_goup.json", "shared")}, { Source: Paths.image("rpg/Kris_goright", "shared"), Description: Paths.image("images/rpg/Kris_goright.json", "shared")}, { Source: Paths.image("rpg/Kris_goleft", "shared"), Description: Paths.file("images/rpg/Kris_goleft.json", "shared")}, { Source: Paths.image("rpg/Kris_godown", "shared"), Description: Paths.file("images/rpg/Kris_godown.json", "shared")}, { Source: Paths.image("rpg/Kris_battle_attack_ready", "shared"), Description: Paths.file("images/rpg/Kris_battle_attack_ready.json", "shared")}, { Source: Paths.image("rpg/Kris_battle_act_ready", "shared"), Description: Paths.I8json("rpg/Kris_battle_act_ready", "shared")}
+					[ { Source: Paths.image("rpg/Kris_battle_idle", "shared"), Description: Paths.file("images/rpg/Kris_battle_idle.json", "shared")}, 
+						{ Source: Paths.image("rpg/Kris_battle_intro", "shared"), Description: Paths.file("images/rpg/Kris_battle_intro.json", "shared")}, 
+						{ Source: Paths.image("rpg/Kris_battle_act", "shared"), Description: Paths.file("images/rpg/Kris_battle_act.json", "shared")}, 
+						{ Source: Paths.image("rpg/Kris_battle_attack", "shared"), Description: Paths.file("images/rpg/Kris_battle_attack.json", "shared")}, 
+						{ Source: Paths.image("rpg/Kris_battle_guard", "shared"), Description: Paths.file("images/rpg/Kris_battle_guard.json", "shared")}, 
+						{ Source: Paths.image("rpg/Kris_battle_hurt", "shared"), Description: Paths.file("images/rpg/Kris_battle_hurt.json", "shared")}, 
+						{ Source: Paths.image("rpg/Kris_battle_item", "shared"), Description: Paths.file("images/rpg/Kris_battle_item.json", "shared")}, 
+						{ Source: Paths.image("rpg/Kris_battle_sitting", "shared"), Description: Paths.file("images/rpg/Kris_battle_sitting.json", "shared")}, 
+						{ Source: Paths.image("rpg/Kris_battle_victory", "shared"), Description: Paths.file("images/rpg/Kris_battle_victory.json", "shared")}, 
+						{ Source: Paths.image("rpg/Kris_goup", "shared"), Description: Paths.file("images/rpg/Kris_goup.json", "shared")}, 
+						{ Source: Paths.image("rpg/Kris_goright", "shared"), Description: Paths.image("images/rpg/Kris_goright.json", "shared")}, 
+						{ Source: Paths.image("rpg/Kris_goleft", "shared"), Description: Paths.file("images/rpg/Kris_goleft.json", "shared")}, 
+						{ Source: Paths.image("rpg/Kris_godown", "shared"), Description: Paths.file("images/rpg/Kris_godown.json", "shared")}, 
+						{ Source: Paths.image("rpg/Kris_battle_attack_ready", "shared"), Description: Paths.file("images/rpg/Kris_battle_attack_ready.json", "shared")}, 
+						{ Source: Paths.image("rpg/Kris_battle_act_ready", "shared"), Description: Paths.file("images/rpg/Kris_battle_act_ready.json", "shared")}
 					]
 				);
 				animation.addByNames('intro', ["Kris_battle_intro 0.gif", "Kris_battle_intro 1.gif", "Kris_battle_intro 2.gif", "Kris_battle_intro 3.gif", "Kris_battle_intro 4.gif", "Kris_battle_intro 5.gif", "Kris_battle_intro 6.gif", "Kris_battle_intro 7.gif", "Kris_battle_intro 8.gif", "Kris_battle_intro 9.gif", "Kris_battle_intro 10.gif", "Kris_battle_intro 11.gif"], 10, false);
@@ -127,7 +141,10 @@ class AllyChar extends FlxSprite
 		frames = new FlxAtlasFrames(graphic);
 
 		if (Assets.exists(Description))
-			Description = Assets.getText(Description);
+		{
+			var bytes = Assets.getBytes(Description);
+			Description = bytes.getString(1, bytes.length - 1);
+		} // hi
 
 		var json = Json.parse(Description);
 		var framelist = Reflect.fields(json.frames);
@@ -141,6 +158,8 @@ class AllyChar extends FlxSprite
 
 			frames.addAtlasFrame(rect, FlxPoint.get(rect.width, rect.height), FlxPoint.get(), framename);
 		}
+
+		trace('${Description} \n Source');
 
 		return frames;
 	}

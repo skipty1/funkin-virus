@@ -20,7 +20,7 @@ import flixel.math.FlxPoint;
 import flixel.FlxObject;
 import dr.*;
 
-class BasePlayer extends FlxSprite {
+class BasePlayer extends AllyChar {
 	public var speed:Int = 300; // speed of player
 	
 	var up:Bool = false;
@@ -28,18 +28,17 @@ class BasePlayer extends FlxSprite {
 	var left:Bool = false;
 	var right:Bool = false;
 
-	public var onMove:FlxSignal;
+	public var freeze:Bool = false;
 	
-	public function new(?x:Float = 0, ?y:Float = 0) {
-		super(x, y);
+	public function new(?x:Float = 0, ?y:Float = 0, ?char:String = "kris") {
+		super(x, y, char);
 		//makeGraphic(20, 20, FlxColor.BLUE);
 		drag.x = drag.y = 1600;
-
-		onMove = new FlxSignal();
 	}
 
 	override public function update(elapsed:Float) {
-		updateMovement();
+		if(!freeze)
+			updateMovement();
 		
 		super.update(elapsed);
 	}
@@ -73,8 +72,6 @@ class BasePlayer extends FlxSprite {
 
 		if (up || down || left || right)
 		{
-			onMove.dispatch();
-
 			var newAngle:Float = 0;
 			if (up)
 			{
@@ -110,21 +107,46 @@ class BasePlayer extends FlxSprite {
 			velocity.rotate(FlxPoint.weak(0, 0), newAngle);
 
 			// if the player is moving (velocity is not 0 for either axis), we need to change the animation to match their facing
-			// if ((velocity.x != 0 || velocity.y != 0) && touching == NONE)
-			// {
-			// 	stepSound.play();
+			if ((velocity.x != 0 || velocity.y != 0)/* && touching == NONE*/)
+			{
 
-			// 	switch (facing)
-			// 	{
-			// 		case LEFT, RIGHT:
-			// 			animation.play("lr");
-			// 		case UP:
-			// 			animation.play("u");
-			// 		case DOWN:
-			// 			animation.play("d");
-			// 		case _:
-			// 	}
-			// }
+				switch (facing)
+				{
+					case FlxObject.LEFT:
+						playAnim("walk-left");
+					case FlxObject.RIGHT:
+						playAnim("walk-right");
+					case FlxObject.UP:
+						playAnim("walk-up");
+					case FlxObject.DOWN:
+						playAnim("walk-down");
+					case _:
+				}
+			}
 		}
-	}	
+
+		var upR:Bool = false;
+		var downR:Bool = false;
+		var leftR:Bool = false;
+		var rightR:Bool = false;
+
+		#if FLX_KEYBOARD
+		upR = FlxG.keys.anyJustReleased([UP, W]);
+		downR = FlxG.keys.anyJustReleased([DOWN, S]);
+		leftR = FlxG.keys.anyJustReleased([LEFT, A]);
+		rightR = FlxG.keys.anyJustReleased([RIGHT, D]);
+		#end
+
+		if ((upR || downR || leftR || rightR) && animation.finished) {
+			if (upR)
+				playAnim("up", true, false, 10);
+			if (downR)
+				playAnim("down", true, false, 10);
+			if (leftR)
+				playAnim("left", true, false, 10);
+			if (rightR)
+				playAnim("right", true, false, 10);
+		}
+	}
+
 }

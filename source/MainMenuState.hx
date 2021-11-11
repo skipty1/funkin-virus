@@ -309,9 +309,6 @@ class MainMenuState extends MusicBeatState
 	{
 		if (!selectedSomethin)
 		{
-			if (FlxG.keys.justPressed.A)
-				FlxG.switchState(new BattleTest());
-
 			if (spike != null && ASS == 'SAND'){
 				if (FlxG.mouse.overlaps(spike) && FlxG.mouse.justPressed && ASS == 'SAND' && !FlxG.save.data.Spike)
 					medalPop('Spike');

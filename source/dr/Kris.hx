@@ -24,9 +24,9 @@ class Kris extends AllyChar
 	public var dmg:Int = 0;
 	public var lockAnim: Bool = false;
 	
-	public function new(x:Float, y:Float, ?char:String = "kris")
+	public function new(?x:Float, ?y:Float) // , ?char:String = "kris"
 	{
-		super(x, y, char);
+		super(x, y, "kris");
 	}
 	
 	override public function update(el:Float)

@@ -27,8 +27,8 @@ class WorldEditorState extends MusicBeatState {
 	var tilemap:FlxTilemap;
 	var walls:FlxTilemap; // invis walls
 	//based lucky.
-	public var player:BasePlayer;
-	public var krisHolyFuck:BetterKris;
+	// public var player:BasePlayer;
+	public var player:BetterKris;
 	var ogmo:FlxOgmo3Loader;
 	
 	override public function create() 
@@ -68,13 +68,13 @@ class WorldEditorState extends MusicBeatState {
 		//player = new BasePlayer();
 		//player.cameras = [camWorld];
 		//add(player);
-		krisHolyFuck = new Kris();
-		krisHolyFuck.cameras = [camWorld];
-		add(krisHolyFuck);
+		player = new BetterKris();
+		player.cameras = [camWorld];
+		add(player);
 
 		ogmo.loadEntities(placeEntities, "entities"); // entities - layer
 
-		camWorld.follow(krisHolyFuck, NO_DEAD_ZONE);
+		camWorld.follow(player, NO_DEAD_ZONE);
 	}
 
 	function createLevel(level:String = "start") {
@@ -98,9 +98,9 @@ class WorldEditorState extends MusicBeatState {
 		tilemap = null;
 		// FlxDestroyUtil.destroyArray(entities);
 		//player.destroy();
-		krisHolyFuck.destroy();
+		player.destroy();
 		//player = null;
-		krisHolyFuck = null;
+		player = null;
 	}
 
 	function createWalls(path) {
@@ -118,7 +118,7 @@ class WorldEditorState extends MusicBeatState {
 		if (entity.name == "player")
 		{
 			//player.setPosition(entity.x, entity.y);
-			krisHolyFuck.setPosition(entity.x, entity.y);
+			player.setPosition(entity.x, entity.y);
 		}
 
 		if (entity.name == "tp") 
@@ -146,13 +146,13 @@ class WorldEditorState extends MusicBeatState {
 
 		for(e in entities)
 		{
-			if (krisHolyFuck != null)
-				e.checkPlayerCollision(krisHolyFuck);
+			if (player != null)
+				e.checkPlayerCollision(player);
 		}
 		
 		super.update(elapsed);
 
-		FlxG.collide(krisHolyFuck, tilemap);
+		FlxG.collide(player, tilemap);
 	}
 }
 
