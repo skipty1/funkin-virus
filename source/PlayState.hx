@@ -4963,7 +4963,7 @@ class PlayState extends MusicBeatState
 	}
 
 	function warnAss(?down:Bool = false){
-		/*var warn = new FlxSprite();
+		var warn = new FlxSprite();
 		warn.frames = Paths.getSparrowAtlas("8bit/warning","shared");
 		warn.animation.addByPrefix("idle", "WARNING loop",24,true);
 		warn.animation.addByPrefix("end", "WARNING end",24,false);
@@ -4971,9 +4971,9 @@ class PlayState extends MusicBeatState
 		warn.scale.set(6,6);
 		warn.screenCenter(X);
 		if (down)
-			warn.y = 200;
+			warn.y = FlxG.height - 200;
 		else
-			warn.y = -100;
+			warn.y = FlxG.height - 500;
 		add(warn);
 		var curShit = curStep + 30;
 		var assBull = false;
@@ -4988,7 +4988,7 @@ class PlayState extends MusicBeatState
 			}
 			if (!assBull)
 				tmr.reset(0.01);
-		});*/
+		});
 	}
 
 	function changeScroll(?scrollVer:Int = -2):Void{
