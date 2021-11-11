@@ -1,4 +1,4 @@
-package;
+package dr;
 
 import flixel.math.FlxMath;
 import flixel.group.FlxSpriteGroup;
@@ -11,6 +11,7 @@ import SaveUtil;
 import SaveUtil.Rpgvars;
 import flixel.addons.effects.FlxTrail;
 import flixel.tweens.FlxEase;
+import dr.*;
 
 using StringTools;
 
