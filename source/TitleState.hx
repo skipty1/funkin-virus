@@ -102,7 +102,7 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		logoBl = new FlxSprite(-150, -100);
+		logoBl = new FlxSprite(-150, -30); // y: -100
 		logoBl.x += 200;
 		logoBl.y += 700;
 		logoBl.scale.set(2,2);
@@ -175,6 +175,8 @@ class TitleState extends MusicBeatState
 		ngSpr.screenCenter(Y);
 		scSpr.screenCenter(Y);
 
+		ngSpr.setPosition(230, 160);
+		scSpr.setPosition(660, 125);
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
@@ -283,23 +285,23 @@ class TitleState extends MusicBeatState
 			super.update(elapsed);
 	}
 
-	function createCoolText(textArray:Array<String>)
+	function createCoolText(textArray:Array<String>, y:Int = 0)
 	{
 		for (i in 0...textArray.length)
 		{
 			var money:Alphabet = new Alphabet(0, 0, textArray[i], true, false);
 			money.screenCenter(X);
-			money.y += (i * 60) + 200;
+			money.y += (i * 60) + 200 + y;
 			credGroup.add(money);
 			textGroup.add(money);
 		}
 	}
 
-	function addMoreText(text:String)
+	function addMoreText(text:String, y:Int = 0)
 	{
 		var coolText:Alphabet = new Alphabet(0, 0, text, true, false);
 		coolText.screenCenter(X);
-		coolText.y += (textGroup.length * 60) + 200;
+		coolText.y += (textGroup.length * 60) + 200 + y;
 		credGroup.add(coolText);
 		textGroup.add(coolText);
 	}
@@ -340,7 +342,8 @@ class TitleState extends MusicBeatState
 			case 5:
 				createCoolText(['In association with', 'Newgrounds and Supercell']);
 			case 7:
-				addMoreText('For Brawlstars!');
+				deleteCoolText();
+				addMoreText('For Brawlstars!', -120);
 				ngSpr.visible = true;
 				scSpr.visible = true;
 			case 8:
@@ -377,7 +380,7 @@ class TitleState extends MusicBeatState
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
 
-			FlxTween.tween(logoBl,{y: -100}, 1.4, {ease: FlxEase.expoInOut});
+			FlxTween.tween(logoBl,{y: -30}, 1.4, {ease: FlxEase.expoInOut}); // y: -100
 
 			logoBl.angle = -4;
 

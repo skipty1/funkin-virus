@@ -776,7 +776,8 @@ class PlayState extends MusicBeatState
 					flor.scale.set(6, 6);
 					add(flor);
 					bg = new FlxSprite(posX, posY);
-					bg.frames = fromJson(Paths.image("8bit/new_room_close", "shared"), Paths.I8json("8bit/new_room_close", "shared"));
+					// bg.frames = fromJson(Paths.image("8bit/new_room_close", "shared"), Paths.I8json("8bit/new_room_close", "shared"));
+					bg.frames = Paths.I8json(Paths.image("8bit/new_room_close", "shared"), Paths.image("8bit/new_room_close", "shared").replace('.png', '.json'));
 					bg.animation.addByNames('idle', ["new_room_close 0.aseprite", "new_room_close 1.aseprite", "new_room_close 2.aseprite", "new_room_close 3.aseprite", "new_room_close 4.aseprite", "new_room_close 5.aseprite", "new_room_close 6.aseprite", "new_room_close 7.aseprite", "new_room_close 8.aseprite", "new_room_close 9.aseprite", "new_room_close 10.aseprite", "new_room_close 11.aseprite", "new_room_close 12.aseprite", "new_room_close 13.aseprite", "new_room_close 14.aseprite", "new_room_close 15.aseprite", "new_room_close 16.aseprite", "new_room_close 17.aseprite", "new_room_close 18.aseprite", "new_room_close 19.aseprite", "new_room_close 20.aseprite", "new_room_close 21.aseprite", "new_room_close 22.aseprite", 'new_room_close 23.aseprite', "new_room_close 24.aseprite", "new_room_close 25.aseprite", "new_room_close 26.aseprite", "new_room_close 27.aseprite"], 24);
 					bg.animation.play('idle');//shortcut ass
 					bg.scrollFactor.set(0.9, 0.9);
@@ -796,7 +797,8 @@ class PlayState extends MusicBeatState
 					bg2.scale.set(6, 6);
 
 					things = new FlxSprite(posX, posY);
-					things.frames = fromJson(Paths.image("8bit/new_room_close_Arcade", "shared"), Paths.I8json("8bit/new_room_close_Arcade", "shared"));
+					// things.frames = fromJson(Paths.image("8bit/new_room_close_Arcade", "shared"), Paths.I8json("8bit/new_room_close_Arcade", "shared"));
+					things.frames = Paths.I8json(Paths.image("8bit/new_room_close_Arcade", "shared"), Paths.image("8bit/new_room_close_Arcade", "shared").replace('.png', '.json'));
 					things.animation.addByNames("idle", ["new_room_close_Arcade 0.aseprite", "new_room_close_Arcade 1.aseprite", "new_room_close_Arcade 2.aseprite", "new_room_close_Arcade 3.aseprite", "new_room_close_Arcade 4.aseprite", "new_room_close_Arcade 5.aseprite", "new_room_close_Arcade 6.aseprite", "new_room_close_Arcade 7.aseprite", "new_room_close_Arcade 8.aseprite", "new_room_close_Arcade 9.aseprite", "new_room_close_Arcade 10.aseprite", "new_room_close_Arcade 11.aseprite", "new_room_close_Arcade 12.aseprite", "new_room_close_Arcade 13.aseprite", "new_room_close_Arcade 14.aseprite", "new_room_close_Arcade 15.aseprite", "new_room_close_Arcade 16.aseprite", "new_room_close_Arcade 17.aseprite", "new_room_close_Arcade 18.aseprite", "new_room_close_Arcade 19.aseprite", "new_room_close_Arcade 20.aseprite", "new_room_close_Arcade 21.aseprite", "new_room_close_Arcade 22.aseprite", 'new_room_close_Arcade 23.aseprite', "new_room_close_Arcade 24.aseprite", "new_room_close_Arcade 25.aseprite", "new_room_close_Arcade 26.aseprite", "new_room_close_Arcade 27.aseprite"], 24);
 					things.animation.play("idle");
 					things.scale.set(6, 6);

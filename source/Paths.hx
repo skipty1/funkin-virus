@@ -1,5 +1,8 @@
 package;
 
+import flixel.math.FlxPoint;
+import flixel.math.FlxRect;
+import haxe.Json;
 import openfl.utils.Assets;
 import flixel.graphics.FlxGraphic;
 import flixel.system.FlxAssets.FlxGraphicAsset;
@@ -171,5 +174,41 @@ class Paths
 			else
 				return FlxAtlasFrames.fromSpriteSheetPacker(image('characters/$key'), file('images/characters/$key.txt', library));
 		return FlxAtlasFrames.fromSpriteSheetPacker(image(key, library), file('images/$key.txt', library));
+	}
+
+	public static function I8json(Source:FlxGraphicAsset, Description:String):FlxAtlasFrames {
+		var graphic:FlxGraphic = FlxG.bitmap.add(Source);
+		if (graphic == null)
+			return null;
+
+		// No need to parse data again
+		var frames:FlxAtlasFrames = FlxAtlasFrames.findFrame(graphic);
+		if (frames != null)
+			return frames;
+
+		if (graphic == null || Description == null)
+			return null;
+
+		frames = new FlxAtlasFrames(graphic);
+
+		if (Assets.exists(Description))
+			Description = Assets.getText(Description);
+
+		var json = Json.parse(Description);
+		var framelist = Reflect.fields(json.frames);
+
+		for (framename in framelist)
+		{
+			var frame = Reflect.field(json.frames, framename);
+			// trace(frame);
+			var rect = FlxRect.get(frame.frame.x, frame.frame.y, frame.frame.w, frame.frame.h);
+			// var duration:Int = frame.duration; // 100 = 10fps???
+
+			frames.addAtlasFrame(rect, FlxPoint.get(rect.width, rect.height), FlxPoint.get(), framename);
+		}
+
+		trace('${Description} \n Source');
+
+		return frames;
 	}
 }
