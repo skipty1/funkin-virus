@@ -71,7 +71,7 @@ import openfl.filters.ShaderFilter;
 #if windows
 import Discord.DiscordClient;
 #end
-#if windows
+#if sys
 import Sys;
 import sys.FileSystem;
 #end
@@ -2468,6 +2468,32 @@ class PlayState extends MusicBeatState
 			if (things.animation.finished)
 				things.animation.play("idle");
 		}
+		
+		//check system for Mobilecontrols 
+		#if android
+		if (mcontrols != null) {
+			switch (mcontrols.mode) {
+				case VIRTUALPAD_CUSTOM | VIRTUALPAD_LEFT | VIRTUALPAD_RIGHT:
+					if (mcontrols._virtualPad.buttonLeft.justReleased)
+						releaseMobile(0);
+					if (mcontrols._virtualPad.buttonDown.justReleased)
+						releaseMobile(1);
+					if (mcontrols._virtualPad.buttonUp.justReleased)
+						releaseMobile(2);
+					if (mcontrols._virtualPad.buttonRight.justReleased)
+						releaseMobile(3);
+				case HITBOX:
+					if (mcontrols._hitbox.buttonLeft.justReleased)
+						releaseMobile(0);
+					if (mcontrols._hitbox.buttonDown.justReleased)
+						releaseMobile(1);
+					if (mcontrols._hitbox.buttonUp.justReleased)
+						releaseMobile(2);
+					if (mcontrols._hitbox.buttonRight.justReleased)
+						releaseMobile(3);
+			}
+		}
+		#end
 
 		if (PlayState.SONG.song.toLowerCase() == 'disco' && PlayState.misses == 0 && MusicBeatState.songEnded && !FlxG.save.data.BluSpy && !MusicBeatState.dontSpam)
 			medalPop('Blue Spy');
@@ -2523,9 +2549,9 @@ class PlayState extends MusicBeatState
 			DiscordClient.changePresence("Chart Editor", null, null, true);
 			#end
 			FlxG.switchState(new ChartingState());
+			#if desktop
 			FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 			FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, releaseInput);
-			#if windows
 			if (luaModchart != null)
 			{
 				luaModchart.die();
@@ -3388,9 +3414,10 @@ class PlayState extends MusicBeatState
 			if (MusicBeatState.endedSongs == 5)
 				MusicBeatState.storyCompleted = true;
 		}*/
-
+		#if desktop
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, releaseInput);
+		#end
 		if (useVideo)
 		{
 			GlobalVideo.get().stop();
@@ -3539,7 +3566,9 @@ class PlayState extends MusicBeatState
 
 					if (SONG.validScore)
 					{
+						#if newgrounds
 						NGio.unlockMedal(60961);
+						#end
 						Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
 					}
 
@@ -4158,7 +4187,7 @@ class PlayState extends MusicBeatState
 
 	public function backgroundVideo(source:String) // for background videos
 	{
-		#if cpp
+		#if desktop
 		useVideo = true;
 
 		FlxG.stage.window.onFocusOut.add(focusOut);
