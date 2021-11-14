@@ -1,3 +1,4 @@
+#if desktop
 package dr;
 
 import flixel.util.FlxSignal;
@@ -188,3 +189,4 @@ class Trigger extends FlxObject {
 		
 	}
 }
+#end
