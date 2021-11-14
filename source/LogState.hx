@@ -116,7 +116,9 @@ class LogState extends MusicBeatState{
 		name.lines = 1;
 		name.caretColor = 0xFFFFFFFF;
 		add(name);
+		#if android
 		FlxG.stage.window.textInputEnabled = true;
+		#end
 
 		doTheFlick();
 
@@ -128,8 +130,9 @@ class LogState extends MusicBeatState{
 		name.hasFocus = true;
 		
 		if (FlxG.keys.justPressed.ENTER #if android || FlxG.android.justPressed.BACK #end){
-		flicktimer.cancel();
-		chooseName.visible = true;
+			flicktimer.cancel();
+			chooseName.visible = true;
+			FlxG.stage.window.textInputEnabled = false;
 			switch(name.text.toLowerCase()){
 				case "8bitryan" | "8-bitryan":
 					chooseName.text = "Welcome, Ryan.";
