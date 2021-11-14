@@ -2491,6 +2491,7 @@ class PlayState extends MusicBeatState
 						releaseMobile(2);
 					if (mcontrols._hitbox.buttonRight.justReleased)
 						releaseMobile(3);
+				default:
 			}
 		}
 		#end
