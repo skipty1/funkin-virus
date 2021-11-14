@@ -1,3 +1,4 @@
+#if desktop
 package dr;
 
 import flixel.math.FlxMath;
@@ -482,3 +483,4 @@ class KrisStat extends FlxSpriteGroup {
 		}
 	}
 }
+#end
