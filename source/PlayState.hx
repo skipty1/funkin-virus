@@ -2472,7 +2472,7 @@ class PlayState extends MusicBeatState
 		//check system for Mobilecontrols 
 		#if android
 		if (mcontrols != null) {
-			switch (mcontrols.mode) {
+			/*switch (mcontrols.mode) {
 				case VIRTUALPAD_CUSTOM | VIRTUALPAD_LEFT | VIRTUALPAD_RIGHT:
 					if (mcontrols._virtualPad.buttonLeft.justReleased)
 						releaseMobile(0);
@@ -2492,7 +2492,24 @@ class PlayState extends MusicBeatState
 					if (mcontrols._hitbox.buttonRight.justReleased)
 						releaseMobile(3);
 				default:
-			}
+			}*/
+			if (controls.LEFT)
+				handleMobile(0);
+			if (controls.DOWN)
+				handleMobile(1);
+			if (controls.UP)
+				handleMobile(2);
+			if (controls.RIGHT)
+				handleMobile(3);
+			
+			if (controls.LEFT_R)
+				releaseMobile(0);
+			if (controls.DOWN_R)
+				releaseMobile(1);
+			if (controls.UP_R)
+				releaseMobile(2);
+			if (controls.RIGHT_R)
+				releaseMobile(3);
 		}
 		#end
 

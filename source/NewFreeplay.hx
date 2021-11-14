@@ -146,6 +146,7 @@ class NewFreeplay extends MusicBeatState
 		/*var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 105, 0xFF000000);
 		scoreBG.alpha = 0.6;
 		add(scoreBG);*/
+		addVirtualPad(FULL, A_B);
 
 		new FlxTimer().start(0.1, function(tmr:FlxTimer){
 			FlxTween.tween(daBf, {y: 200}, 0.6);

@@ -483,6 +483,7 @@ class MainMenuState extends MusicBeatState
 			difficHar.antialiasing = false;
 			difficNor.antialiasing = false;
 			difficEz.antialiasing = false;
+			addVirtualPad(UP_DOWN, A_B);
 		}
 		if (die){
 			remove(black);
@@ -492,6 +493,7 @@ class MainMenuState extends MusicBeatState
 			onDiffic = false;
 			selectedSomethin = false;
 			FlxG.mouse.visible = true;
+			removeVirtualPad();
 		}
 		if (huh != -99){
 			if (huh == 0)
