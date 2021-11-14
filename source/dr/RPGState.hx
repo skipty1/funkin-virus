@@ -1,3 +1,4 @@
+#if desktop
 package dr;
 
 #if windows
@@ -203,3 +204,4 @@ class RPGState extends FlxUIState
 	}
 }
 //im not a good flxtext dude. :(
+#end
