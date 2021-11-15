@@ -98,7 +98,7 @@ class GamejoltState extends MusicBeatState{
 		super.update(elapsed);
 		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.V)
 			name.text = name.text + Clipboard.text;
-		if (FlxG.keys.justPressed.ENTER && name.text != '' && !FlxGameJolt._initialized){
+		if (#if desktop FlxG.keys.justPressed.ENTER && #end #if android FlxG.android.justPressed.BACK && #end name.text != '' && !FlxGameJolt._initialized){
 			switch (mode){
 				case "user":
 					trace(name.text);
