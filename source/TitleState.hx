@@ -340,10 +340,10 @@ class TitleState extends MusicBeatState
 			case 4:
 				deleteCoolText();
 			case 5:
-				createCoolText(['In association with', 'Newgrounds and Supercell']);
+				createCoolText(['In association with', '\nNewgrounds and Supercell']);
 			case 7:
 				deleteCoolText();
-				addMoreText('For Brawlstars!', -120);
+				addMoreText('For Brawlstars', -120);
 				ngSpr.visible = true;
 				scSpr.visible = true;
 			case 8:
