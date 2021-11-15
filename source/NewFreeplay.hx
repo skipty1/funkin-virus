@@ -251,8 +251,8 @@ class NewFreeplay extends MusicBeatState
 	function play(bool:Bool){
 		if (bool){
 			FlxG.sound.play(Paths.sound('confirmMenu'));
-			FlxFlicker.flicker(daBfFlicker, 2, 0.5);
-			FlxFlicker.flicker(daFlicker, 2, 0.5, true, true, function(flick:FlxFlicker){
+			FlxFlicker.flicker(daBfFlicker, 2, 0.2);
+			FlxFlicker.flicker(daFlicker, 2, 0.2, true, true, function(flick:FlxFlicker){
 				PlayState.storyPlaylist = ["Disco"];
 				PlayState.isStoryMode = false;
 				PlayState.storyDifficulty = curDiffInt;
