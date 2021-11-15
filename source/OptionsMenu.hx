@@ -74,7 +74,7 @@ class OptionsMenu extends MusicBeatState
 				case "credits":
 					//FlxG.switchState(new options.AboutState());
 				case "exit":
-					FlxG.sound.playMusic('freakyMenu');
+					FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 					FlxG.switchState(new MainMenuState());
 				case "misc":
 					FlxG.switchState(new OldOptionsMenu());
