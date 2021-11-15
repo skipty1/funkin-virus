@@ -176,13 +176,13 @@ class NewFreeplay extends MusicBeatState
 		if (controls.RIGHT_P)
 			changeDiff(1);*/
 		if (controls.UP_P && !isDiff)
-			changeSong(-1);
-		if (controls.DOWN_P && !isDiff)
 			changeSong(1);
+		if (controls.DOWN_P && !isDiff)
+			changeSong(-1);
 		if (controls.UP_P && isDiff)
-			changeDiff(-1);
-		if (controls.DOWN_P && isDiff)
 			changeDiff(1);
+		if (controls.DOWN_P && isDiff)
+			changeDiff(-1);
 		if (controls.BACK)
 			goBack(isDiff);
 		if (controls.ACCEPT)
