@@ -129,10 +129,8 @@ class LogState extends MusicBeatState{
 		
 		name.hasFocus = true;
 		
-		if (FlxG.keys.justPressed.ENTER #if android || FlxG.android.justPressed.BACK #end){
-			flicktimer.cancel();
-			chooseName.visible = true;
-			FlxG.stage.window.textInputEnabled = false;
+		//if (FlxG.keys.justPressed.ENTER #if android || FlxG.android.justPressed.BACK #end){
+
 			switch(name.text.toLowerCase()){
 				case "8bitryan" | "8-bitryan":
 					chooseName.text = "Welcome, Ryan.";
@@ -196,11 +194,14 @@ class LogState extends MusicBeatState{
 					moveStates();
 				default:
 					moveStates(true);
-			}
+			//}
 		}
 	}
 	function moveStates(?lmaoNo:Bool = false){
 		if (!lmaoNo){
+			flicktimer.cancel();
+			chooseName.visible = true;
+			FlxG.stage.window.textInputEnabled = false;
 			new FlxTimer().start(1.5, function(tmr:FlxTimer){
 				FlxG.switchState(new TitleState());
 			});
