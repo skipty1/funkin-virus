@@ -5024,14 +5024,14 @@ class PlayState extends MusicBeatState
 		else
 			warn.y = FlxG.height - 500;
 		add(warn);
-		var curShit = curStep + 30;
+		var curShit = curStep + 20;
 		var assBull = false;
 		new FlxTimer().start(0.01, function(tmr:FlxTimer){
 			if (curShit == curStep){
 				assBull = true;
 				warn.animation.play("end", true);
 				new FlxTimer().start(0.6, function(tmddr:FlxTimer){
-					remove(warn);
+					warn.destroy();
 				});
 				
 			}
