@@ -84,7 +84,7 @@ class OptionsMenu extends MusicBeatState
 		}
 
 		if (controls.BACK #if (android || ios) || FlxG.android.justReleased.BACK #end) {
-			FlxG.sound.playMusic('freakyMenu');
+			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 			FlxG.switchState(new MainMenuState());
 		}
 
