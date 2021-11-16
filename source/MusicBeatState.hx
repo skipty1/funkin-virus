@@ -58,11 +58,12 @@ class MusicBeatState extends FlxUIState
 	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
 		_virtualpad = new FlxVirtualPad(DPad, Action);
 		_virtualpad.alpha = 0.75;
-		add(_virtualpad);
 		padCam = new FlxCamera();
 		padCam.bgColor.alpha = 0;
 		FlxG.cameras.add(padCam);
 		_virtualpad.cameras = [padCam];
+		add(_virtualpad);
+		
 		
 		controls.setVirtualPad(_virtualpad, DPad, Action);
 		trackedinputs = controls.trackedinputs;
