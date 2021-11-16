@@ -239,7 +239,7 @@ class NewFreeplay extends MusicBeatState
 				curDiffString = "-easy";
 				difficEz.animation.play("tapped", true);
 				difficNor.animation.play("unselected", true);
-				difficHar.animation.play("unselected", truw);
+				difficHar.animation.play("unselected", true);
 			case 1:
 				curDiffString = "";
 				isBlank = true;
