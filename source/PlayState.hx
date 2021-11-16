@@ -1288,8 +1288,12 @@ class PlayState extends MusicBeatState
 			}
 			trackedinputs = controls.trackedinputs;
 			controls.trackedinputs = [];
+			
+			var camcontrols = new FlxCamera();
+			camcontrols.bgColor.alpha = 0;
+			FlxG.cameras.add(camcontrols);
 
-			mcontrols.cameras = [camHUD];
+			mcontrols.cameras = [camcontrols];
 
 			mcontrols.alpha = 0;
 
