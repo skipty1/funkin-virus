@@ -417,11 +417,11 @@ class MainMenuState extends MusicBeatState
 				openDifficSelect(-99, true);
 			}
 			if (difficEz.animation.curAnim.name == "tapped" && difficEz.animation.curAnim.finished)
-				difficEz.animation.play("selected");
+				difficEz.animation.play("selected", true);
 			if (difficNor.animation.curAnim.name == "tapped" && difficNor.animation.finished)
-				difficNor.animation.play("selected");
+				difficNor.animation.play("selected", true);
 			if (difficHar.animation.curAnim.name == "tapped" && difficHar.animation.finished)
-				difficHar.animation.play("selected");
+				difficHar.animation.play("selected", true);
 		}
 
 		if (FlxG.save.data.lessUpdate)
