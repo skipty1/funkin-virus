@@ -4585,14 +4585,14 @@ class PlayState extends MusicBeatState
 					case "disco":
 						switch (curStep){
 							case 350:
-								warnAss();
+								warnAss(true);
 							case 380:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(2);
 								else
 									changeScroll(1);
 							case 481:
-								warnAss();
+								warnAss(false);
 							case 511:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(1);
@@ -4625,7 +4625,7 @@ class PlayState extends MusicBeatState
 								bg.visible = true;
 								things.visible = true;
 							case 642:
-								warnAss();
+								warnAss(true);
 							case 672:
 								defaultCamZoom -= 0.4;
 								bg.visible = true;
@@ -4641,56 +4641,56 @@ class PlayState extends MusicBeatState
 							case 800:
 								SONG.forceDad = false;
 							case 769:
-								warnAss();
+								warnAss(false);
 							case 799:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(1);
 								else
 									changeScroll(2);
 							case 802:
-								warnAss();
+								warnAss(true);
 							case 832:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(2);
 								else
 									changeScroll(1);
 							case 833:
-								warnAss();
+								warnAss(false);
 							case 863:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(1);
 								else
 									changeScroll(2);
 							case 848:
-								warnAss();
+								warnAss(true);
 							case 878:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(2);
 								else
 									changeScroll(1);
 							case 865:
-								warnAss();
+								warnAss(false);
 							case 895:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(1);
 								else
 									changeScroll(2);
 							case 882:
-								warnAss();
+								warnAss(true);
 							case 912:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(2);
 								else
 									changeScroll(1);
 							case 890 | 892 | 894 | 896:
-								warnAss();
+								warnAss(false);
 							case 926:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(1);
 								else
 									changeScroll(2);
 							case 891 | 893 | 895:
-								warnAss();
+								warnAss(true);
 							case 920:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(2);
