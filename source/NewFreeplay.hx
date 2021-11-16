@@ -147,15 +147,15 @@ class NewFreeplay extends MusicBeatState
 		difficEz.alpha = 0;
 		
 		
-		var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 105, 0xFF000000);
+		/*var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 105, 0xFF000000);
 		scoreBG.alpha = 0.6;
-		add(scoreBG);
+		add(scoreBG);*/
 		
-		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
+		/*scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		// scoreText.autoSize = false;
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 		// scoreText.alignment = RIGHT;
-		add(scoreText);
+		add(scoreText);*/
 		
 		addVirtualPad(FULL, A_B);
 		daBg.alpha = 0;
@@ -176,12 +176,12 @@ class NewFreeplay extends MusicBeatState
 		else
 			super.update(elapsed);
 		
-		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, 0.4));
+		/*lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, 0.4));
 
 		if (Math.abs(lerpScore - intendedScore) <= 10)
 			lerpScore = intendedScore;
 
-		scoreText.text = "PERSONAL BEST:" + lerpScore;
+		scoreText.text = "PERSONAL BEST:" + lerpScore;*/
 		
 		if (FlxG.sound.music.volume < 0.7)
 		{
@@ -226,12 +226,6 @@ class NewFreeplay extends MusicBeatState
 			curDiffInt = 0;
 		if (curDiffInt == -1)
 			curDiffInt = 2;
-		try {
-		intendedScore = Highscore.getScore(curSong, curDiffInt);
-		}
-		catch(ex) {
-			trace("ass " + ex.message);
-		}
 		
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 		switch (curDiffInt){
