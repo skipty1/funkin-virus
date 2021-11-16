@@ -4611,7 +4611,7 @@ class PlayState extends MusicBeatState
 								fuckingAnimationPlaying = true;
 							case 639:
 								dad.playAnim("tremble",true);
-								defaultCamZoom += 0.3;
+								defaultCamZoom += 0.4;
 							case 640 | 642 | 648 | 654 | 656 | 667 | 669 | 671:
 								bg.visible = false;
 								things.visible = false;
@@ -4627,7 +4627,7 @@ class PlayState extends MusicBeatState
 							case 642:
 								warnAss();
 							case 672:
-								defaultCamZoom -= 0.3;
+								defaultCamZoom -= 0.4;
 								bg.visible = true;
 								things.visible = true;
 								fuckingAnimationPlaying = false;
@@ -4700,6 +4700,7 @@ class PlayState extends MusicBeatState
 								dad.playAnim("tremble",true);
 								fuckingAnimationPlaying = true;
 							case 929:
+								defaultCamZoom += 0.5;
 								dad.playAnim("fall",true);
 								FlxTween.tween(boyfriend, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
 								FlxTween.tween(gf, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
