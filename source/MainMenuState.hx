@@ -416,7 +416,7 @@ class MainMenuState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				openDifficSelect(-99, true);
 			}
-			if (difficEz.animation.curAnim.name == "tapped" && difficEz.animation.curAnim.finished)
+			if (difficEz.animation.curAnim.name == "tapped" && difficEz.animation..finished)
 				difficEz.animation.play("selected", true);
 			if (difficNor.animation.curAnim.name == "tapped" && difficNor.animation.finished)
 				difficNor.animation.play("selected", true);
