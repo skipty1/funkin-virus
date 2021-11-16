@@ -191,8 +191,10 @@ class NewFreeplay extends MusicBeatState
 	function changeDiff(?crap:Int = 0){
 		var isBlank:Bool = false;
 		curDiffInt += crap;
-		if (curDiffInt == 3 || curDiffInt == -1)
+		if (curDiffInt == 3)
 			curDiffInt = 0;
+		if (curDiffInt == -1)
+			curDiffInt = 2;
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 		switch (curDiffInt){
 			case 0:
