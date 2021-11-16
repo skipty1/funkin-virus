@@ -490,7 +490,7 @@ class MainMenuState extends MusicBeatState
 		
 			padBcuzFunctionCrashes = new FlxVirtualPad(UP_DOWN, A_B);
 			padBcuzFunctionCrashes.alpha = 0.65;
-			add(padBcuzFunctionCrashes)
+			add(padBcuzFunctionCrashes);
 		}
 		if (die){
 			remove(black);
