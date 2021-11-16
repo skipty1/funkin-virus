@@ -509,7 +509,7 @@ class MainMenuState extends MusicBeatState
 			case 0:
 				difficEz.animation.play("tapped", true);
 				difficNor.animation.play("unselected", true);
-				difficHar.animation.play("unselected");
+				difficHar.animation.play("unselected", true);
 			case 1:
 				difficNor.animation.play("tapped", true);
 				difficEz.animation.play("unselected", true);
