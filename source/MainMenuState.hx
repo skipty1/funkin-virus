@@ -418,9 +418,9 @@ class MainMenuState extends MusicBeatState
 			}
 			if (difficEz.animation.curAnim.name == "tapped" && difficEz.animation.curAnim.finished)
 				difficEz.animation.play("selected");
-			if (difficNor.animation.curAnim.name == "tapped" && difficNor.animation.curAnim.finished)
+			if (difficNor.animation.curAnim.name == "tapped" && difficNor.animation.finished)
 				difficNor.animation.play("selected");
-			if (difficHar.animation.curAnim.name == "tapped" && difficHar.animation.curAnim.finished)
+			if (difficHar.animation.curAnim.name == "tapped" && difficHar.animation.finished)
 				difficHar.animation.play("selected");
 		}
 
@@ -508,16 +508,16 @@ class MainMenuState extends MusicBeatState
 		switch (curDiff){
 			case 0:
 				difficEz.animation.play("tapped", true);
-				difficNor.animation.play("unselected");
+				difficNor.animation.play("unselected", true);
 				difficHar.animation.play("unselected");
 			case 1:
 				difficNor.animation.play("tapped", true);
-				difficEz.animation.play("unselected");
-				difficHar.animation.play("unselected");
+				difficEz.animation.play("unselected", true);
+				difficHar.animation.play("unselected", true);
 			case 2:
 				difficHar.animation.play("tapped", true);
-				difficNor.animation.play("unselected");
-				difficEz.animation.play("unselected");
+				difficNor.animation.play("unselected", true);
+				difficEz.animation.play("unselected", true);
 		}
 		if (play){
 			PlayState.storyPlaylist = ["Disco"];
