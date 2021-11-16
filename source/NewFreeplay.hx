@@ -44,6 +44,9 @@ class NewFreeplay extends MusicBeatState
 	var difficEz:FlxSprite;
 	var difficHar:FlxSprite;
 	var difficNor:FlxSprite;
+	var scoreText:FlxText;
+	var lerpScore:Int = 0;
+	var intendedScore:Int = 0;	
 	
 	override function create(){
 		#if windows
@@ -143,13 +146,21 @@ class NewFreeplay extends MusicBeatState
 		difficNor.alpha = 0;
 		difficEz.alpha = 0;
 		
-		/*var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 105, 0xFF000000);
+		
+		var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 105, 0xFF000000);
 		scoreBG.alpha = 0.6;
-		add(scoreBG);*/
+		add(scoreBG);
+		
+		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
+		// scoreText.autoSize = false;
+		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
+		// scoreText.alignment = RIGHT;
+		add(scoreText);
+		
 		addVirtualPad(FULL, A_B);
 
 		new FlxTimer().start(0.1, function(tmr:FlxTimer){
-			FlxTween.tween(daBf, {y: 200}, 0.6);
+			FlxTween.tween(daBf, {y: 200}, 0.6, { ease: FlxEase.quadOut });
 		});
 		changeSong();
 		
@@ -160,6 +171,13 @@ class NewFreeplay extends MusicBeatState
 			super.update(elapsed/2);
 		else
 			super.update(elapsed);
+		
+		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, 0.4));
+
+		if (Math.abs(lerpScore - intendedScore) <= 10)
+			lerpScore = intendedScore;
+
+		scoreText.text = "PERSONAL BEST:" + lerpScore;
 		
 		if (FlxG.sound.music.volume < 0.7)
 		{
@@ -204,6 +222,13 @@ class NewFreeplay extends MusicBeatState
 			curDiffInt = 0;
 		if (curDiffInt == -1)
 			curDiffInt = 2;
+		try {
+		intendedScore = Highscore.getScore(curSong, curDiffInt);
+		}
+		catch(ex) {
+			trace("ass " + ex.message);
+		}
+		
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 		switch (curDiffInt){
 			case 0:
@@ -281,13 +306,13 @@ class NewFreeplay extends MusicBeatState
 		}else{
 			isDiff = true;
 			FlxG.sound.play(Paths.sound('confirmMenu'));
-			FlxFlicker.flicker(daBfFlicker, 2, 0.5);
+			FlxFlicker.flicker(daBfFlicker, 2, 0.2);
 			FlxFlicker.flicker(daFlicker, 2, 0.5, true, true, function(flick:FlxFlicker){
-				FlxTween.tween(daBf, {alpha: 0}, 0.6);
+				FlxTween.tween(daBf, {alpha: 0}, 0.6, { ease: FlxEase.quadOut });
 				daBfFlicker.visible = true;
-				FlxTween.tween(difficEz, {alpha: 1}, 0.6);
-				FlxTween.tween(difficNor, {alpha: 1}, 0.6);
-				FlxTween.tween(difficHar, {alpha: 1}, 0.6);
+				FlxTween.tween(difficEz, {alpha: 1}, 0.6, { ease: FlxEase.quadOut });
+				FlxTween.tween(difficNor, {alpha: 1}, 0.6, { ease: FlxEase.quadOut });
+				FlxTween.tween(difficHar, {alpha: 1}, 0.6, { ease: FlxEase.quadOut });
 				changeDiff();
 			});
 		}
