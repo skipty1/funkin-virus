@@ -27,6 +27,7 @@ class MusicBeatState extends FlxUIState
 	private var controls(get, never):Controls;
 
 	public var cameraStuff:FlxCamera;
+	var padCam:FlxCamera;
 	public var fpressed:Int = 0;
 	public static var dontSpam:Bool = false;
 	public static var endedSongs:Int = 0;
@@ -58,6 +59,11 @@ class MusicBeatState extends FlxUIState
 		_virtualpad = new FlxVirtualPad(DPad, Action);
 		_virtualpad.alpha = 0.75;
 		add(_virtualpad);
+		padCam = new FlxCamera();
+		padCam.bgColor.alpha = 0;
+		FlxG.cameras.add(padCam);
+		_virtualpad.cameras = [padCam];
+		
 		controls.setVirtualPad(_virtualpad, DPad, Action);
 		trackedinputs = controls.trackedinputs;
 		controls.trackedinputs = [];
