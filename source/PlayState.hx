@@ -804,7 +804,7 @@ class PlayState extends MusicBeatState
 					things.scale.set(6, 6);
 					things.scrollFactor.set(0.9,0.9);
 					
-					defaultCamZoom = 0.5;
+					defaultCamZoom = 0.6;
 				}
 				case 'guns':
 				{
