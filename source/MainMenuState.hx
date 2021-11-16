@@ -28,12 +28,14 @@ import sys.thread.Thread;
 #if windows
 import Discord.DiscordClient;
 #end
+import ui.FlxVirtualPad;
 
 using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
 	var curSelected:Int = 0;
+	public var padBcuzFunctionCrashes:FlxVirtualPad;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
@@ -483,7 +485,12 @@ class MainMenuState extends MusicBeatState
 			difficHar.antialiasing = false;
 			difficNor.antialiasing = false;
 			difficEz.antialiasing = false;
-			addVirtualPad(UP_DOWN, A_B);
+			if (padBcuzFunctionCrashes != null)
+				remove(padBcuzFunctionCrashes);
+		
+			padBcuzFunctionCrashes = new FlxVirtualPad(UP_DOWN, A_B);
+			padBcuzFunctionCrashes.alpha = 0.65;
+			add(padBcuzFunctionCrashes)
 		}
 		if (die){
 			remove(black);
@@ -493,7 +500,7 @@ class MainMenuState extends MusicBeatState
 			onDiffic = false;
 			selectedSomethin = false;
 			FlxG.mouse.visible = true;
-			removeVirtualPad();
+			remove(padBcuzFunctionCrashes);
 		}
 		if (huh != -99){
 			if (huh == 0)
