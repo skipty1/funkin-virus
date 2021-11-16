@@ -405,16 +405,16 @@ class MainMenuState extends MusicBeatState
 			}
 		}
 		if (onDiffic){
-			if (controls.UP_P)
+			if (controls.UP_P #if android || padBcuzFunctionCrashes.buttonUp.justPressed #end)
 				openDifficSelect(1);
-			if (controls.DOWN_P)
+			if (controls.DOWN_P #if android || padBcuzFunctionCrashes.buttonDown.justPressed #end)
 				openDifficSelect(-1);
 
-			if (controls.ACCEPT){
+			if (controls.ACCEPT #if android || padBcuzFunctionCrashes.buttonA.justPressed #end){
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				openDifficSelect(-99, false, true);
 			}
-			if (controls.BACK){
+			if (controls.BACK #if android || padBcuzFunctionCrashes.buttonB.justPressed #end){
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				openDifficSelect(-99, true);
 			}
