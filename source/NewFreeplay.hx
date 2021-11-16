@@ -160,7 +160,7 @@ class NewFreeplay extends MusicBeatState
 		addVirtualPad(FULL, A_B);
 
 		new FlxTimer().start(0.1, function(tmr:FlxTimer){
-			FlxTween.tween(daBf, {y: 200}, 0.6, { ease: FlxEase.quadOut });
+			FlxTween.tween(daBf, {y: 200}, 1.5, { ease: FlxEase.quadOut });
 		});
 		changeSong();
 		
