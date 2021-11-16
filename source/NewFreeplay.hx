@@ -187,6 +187,15 @@ class NewFreeplay extends MusicBeatState
 			goBack(isDiff);
 		if (controls.ACCEPT)
 			play(isDiff);
+		
+		if (isDiff) {
+			if (difficEz.animation.curAnim.name == "tapped" && difficEz.animation.finished)
+				difficEz.animation.play("selected", true);
+			if (difficNor.animation.curAnim.name == "tapped" && difficNor.animation.finished)
+				difficNor.animation.play("selected", true);
+			if (difficHar.animation.curAnim.name == "tapped" && difficHar.animation.finished)
+				difficHar.animation.play("selected", true);
+		}
 	}
 	function changeDiff(?crap:Int = 0){
 		var isBlank:Bool = false;
@@ -199,20 +208,20 @@ class NewFreeplay extends MusicBeatState
 		switch (curDiffInt){
 			case 0:
 				curDiffString = "-easy";
-				difficEz.animation.play("selected");
-				difficNor.animation.play("unselected");
-				difficHar.animation.play("unselected");
+				difficEz.animation.play("tapped", true);
+				difficNor.animation.play("unselected", true);
+				difficHar.animation.play("unselected", truw);
 			case 1:
 				curDiffString = "";
 				isBlank = true;
-				difficNor.animation.play("selected");
-				difficEz.animation.play("unselected");
-				difficHar.animation.play("unselected");
+				difficNor.animation.play("tapped", true);
+				difficEz.animation.play("unselected", true);
+				difficHar.animation.play("unselected", true);
 			case 2:
 				curDiffString = "-hard";
-				difficHar.animation.play("selected");
-				difficNor.animation.play("unselected");
-				difficEz.animation.play("unselected");
+				difficHar.animation.play("tapped", true);
+				difficNor.animation.play("unselected", true);
+				difficEz.animation.play("unselected", true);
 		}
 		/*var help = (isBlank ? "normal" : curDiffString.substr(1).trim());
 		diffic.animation.play(help);
