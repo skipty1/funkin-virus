@@ -404,7 +404,7 @@ class MainMenuState extends MusicBeatState
 				FlxG.switchState(new TitleState());
 			}
 		}
-		if (onDiffic){
+		if (onDiffic #if android && padBcuzFunctionCrashes != null #end){
 			if (controls.UP_P #if android || padBcuzFunctionCrashes.buttonUp.justPressed #end)
 				openDifficSelect(1);
 			if (controls.DOWN_P #if android || padBcuzFunctionCrashes.buttonDown.justPressed #end)
