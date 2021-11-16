@@ -158,9 +158,13 @@ class NewFreeplay extends MusicBeatState
 		add(scoreText);
 		
 		addVirtualPad(FULL, A_B);
+		daBg.alpha = 0;
+		ThefuckingSongSpr.alpha = 0;
 
 		new FlxTimer().start(0.1, function(tmr:FlxTimer){
-			FlxTween.tween(daBf, {y: 200}, 1.5, { ease: FlxEase.quadOut });
+			FlxTween.tween(daBf, {y: 200}, 1.5, { ease: FlxEase.quadIn });
+			FlxTween.tween(daBg, {alpha: 1}, 1.5, { ease: FlxEase.quadIn });
+			FlxTween.tween(ThefuckingSongSpr, {alpha: 1}, 1.5, { ease: FlxEase.quadIn });
 		});
 		changeSong();
 		
