@@ -156,8 +156,9 @@ class NewFreeplay extends MusicBeatState
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 		// scoreText.alignment = RIGHT;
 		add(scoreText);*/
-		
+		#if android
 		addVirtualPad(FULL, A_B);
+		#end
 		daBg.alpha = 0;
 		ThefuckingSongSpr.alpha = 0;
 
