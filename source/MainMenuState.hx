@@ -201,10 +201,10 @@ class MainMenuState extends MusicBeatState
 		Freeplay.scale.set(2,2);
 		Freeplay.updateHitbox();
 		add(Freeplay);
-		if (FlxG.save.data.discoBeated)
+		/*if (FlxG.save.data.discoBeated)
 			Freeplay.color = FlxColor.fromHSL(Freeplay.color.hue, Freeplay.color.saturation, 1, 1);
 		else
-			Freeplay.color = FlxColor.fromHSL(Freeplay.color.hue, Freeplay.color.saturation, 0.3, 1);
+			Freeplay.color = FlxColor.fromHSL(Freeplay.color.hue, Freeplay.color.saturation, 0.3, 1);*/
 
 		Gold = new FlxSprite(440, 204);
 		Gold.frames = Paths.getSparrowAtlas('8bit/MUNE','shared');
