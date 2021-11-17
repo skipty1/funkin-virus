@@ -201,7 +201,9 @@ class LogState extends MusicBeatState{
 		if (!lmaoNo){
 			flicktimer.cancel();
 			chooseName.visible = true;
+			#if android
 			FlxG.stage.window.textInputEnabled = false;
+			#end
 			new FlxTimer().start(1.5, function(tmr:FlxTimer){
 				FlxG.switchState(new TitleState());
 			});
