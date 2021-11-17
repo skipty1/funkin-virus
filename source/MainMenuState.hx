@@ -485,12 +485,14 @@ class MainMenuState extends MusicBeatState
 			difficHar.antialiasing = false;
 			difficNor.antialiasing = false;
 			difficEz.antialiasing = false;
+			#if android
 			if (padBcuzFunctionCrashes != null)
 				remove(padBcuzFunctionCrashes);
 		
 			padBcuzFunctionCrashes = new FlxVirtualPad(UP_DOWN, A_B);
 			padBcuzFunctionCrashes.alpha = 0.65;
 			add(padBcuzFunctionCrashes);
+			#end
 		}
 		if (die){
 			remove(black);
@@ -500,7 +502,9 @@ class MainMenuState extends MusicBeatState
 			onDiffic = false;
 			selectedSomethin = false;
 			FlxG.mouse.visible = true;
+			#if android
 			remove(padBcuzFunctionCrashes);
+			#end
 		}
 		if (huh != -99){
 			if (huh == 0)
