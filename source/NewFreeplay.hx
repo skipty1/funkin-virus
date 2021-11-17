@@ -89,7 +89,7 @@ class NewFreeplay extends MusicBeatState
 		add(daFlicker);
 		daFlicker.visible = false;
 	
-		daBf = new FlxSprite(0,3000).loadGraphic(Paths.image("8bit/bf","shared"));
+		daBf = new FlxSprite(0,800).loadGraphic(Paths.image("8bit/bf","shared"));
 		daBf.scale.set(2,2);
 		daBf.antialiasing = false;
 		daBf.screenCenter(X);
