@@ -74,7 +74,7 @@ class OptionsMenu extends MusicBeatState
 				case "credits":
 					//FlxG.switchState(new options.AboutState());
 				case "exit":
-					FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+					FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.7);
 					FlxG.switchState(new MainMenuState());
 				case "misc":
 					FlxG.switchState(new OldOptionsMenu());
@@ -84,7 +84,7 @@ class OptionsMenu extends MusicBeatState
 		}
 
 		if (controls.BACK #if (android || ios) || FlxG.android.justReleased.BACK #end) {
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.7);
 			FlxG.switchState(new MainMenuState());
 		}
 
