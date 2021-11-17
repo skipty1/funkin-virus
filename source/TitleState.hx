@@ -340,7 +340,7 @@ class TitleState extends MusicBeatState
 			case 4:
 				deleteCoolText();
 			case 5:
-				createCoolText(['In association with', '\nNewgrounds and Supercell']);
+				createCoolText(['In association with', '\nNewgrounds\nand \nSupercell']);
 			case 7:
 				deleteCoolText();
 				addMoreText('For Brawlstars', -120);
