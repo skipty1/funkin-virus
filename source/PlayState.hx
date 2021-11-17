@@ -4704,7 +4704,7 @@ class PlayState extends MusicBeatState
 								dad.playAnim("tremble",true);
 								fuckingAnimationPlaying = true;
 							case 929:
-								defaultCamZoom += 0.5;
+								defaultCamZoom += 0.2;
 								dad.playAnim("fall",true);
 								FlxTween.tween(boyfriend, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
 								FlxTween.tween(gf, {alpha: 0}, 3.2, { ease: FlxEase.quadOut });
