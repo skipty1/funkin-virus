@@ -89,6 +89,11 @@ class GamejoltState extends MusicBeatState{
 			name.visible = false;
 			chooseName.text = "Logged in: " + FlxG.save.data.user + "\nToken: " + FlxG.save.data.usertoken;
 		}
+		#if android
+		addVirtualPad(NONE, A_B);
+
+		FlxG.stage.window.textInputEnabled = true;
+		#end
 
 		super.create();
 	}
@@ -98,7 +103,7 @@ class GamejoltState extends MusicBeatState{
 		super.update(elapsed);
 		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.V)
 			name.text = name.text + Clipboard.text;
-		if (#if desktop FlxG.keys.justPressed.ENTER && #end #if android FlxG.android.justPressed.BACK && #end name.text != '' && !FlxGameJolt._initialized){
+		if (#if desktop FlxG.keys.justPressed.ENTER && #end #if android controls.ACCEPT && #end name.text != '' && !FlxGameJolt._initialized){
 			switch (mode){
 				case "user":
 					trace(name.text);
@@ -106,6 +111,7 @@ class GamejoltState extends MusicBeatState{
 					FlxG.save.data.user = username;
 					name.text = "";
 					changeText("Great! Now insert your user token.\n");
+					FlxG.stage.window.textInputEnabled = true;
 					mode = "token";
 				case "token":
 					trace(name.text);
