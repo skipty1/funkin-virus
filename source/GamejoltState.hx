@@ -144,7 +144,7 @@ class GamejoltState extends MusicBeatState{
 					});
 			}
 		}
-		if (FlxG.keys.justPressed.ESCAPE || controls.BACK){
+		if (#if !android FlxG.keys.justPressed.ESCAPE || controls.BACK #else FlxG.android.justPressed.BACK #end){
 			FlxG.switchState(new MainMenuState());
 		}
 	}
