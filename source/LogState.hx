@@ -67,7 +67,9 @@ class LogState extends MusicBeatState{
 		MedalSaves.initMedal();
 		GameJoltPlayerData.loadInit();
 		Highscore.load();
-		
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
 
 		//bytearray = new MyKey();
 		var http = new haxe.Http("https://raw.githubusercontent.com/zacksgamerz/funkin-virus/master/myKey.privatekey");
