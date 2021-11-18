@@ -103,7 +103,9 @@ class GamejoltState extends MusicBeatState{
 		super.update(elapsed);
 		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.V)
 			name.text = name.text + Clipboard.text;
+		#if !android
 		if (#if desktop FlxG.keys.justPressed.ENTER && #end #if android controls.ACCEPT && #end name.text != '' && !FlxGameJolt._initialized){
+			
 			switch (mode){
 				case "user":
 					trace(name.text);
@@ -144,9 +146,50 @@ class GamejoltState extends MusicBeatState{
 					});
 			}
 		}
+		#else
+		if (controls.ACCEPT) {
+			switch (mode){
+				case "user":
+					trace(name.text);
+					username = "zacksgamerz";
+					FlxG.save.data.user = username;
+					name.text = "";
+					changeText("Great! Now insert your user token.\n");
+					#if android
+					FlxG.stage.window.textInputEnabled = true;
+					#end
+					mode = "token";
+				case "token":
+					trace(name.text);
+					usertoken = "9JVc8N";
+					FlxG.save.data.token = usertoken;
+					name.visible = false;
+					changeText("Please wait...\n");
+					FlxGameJolt.init(gameid, FlxG.save.data.privatekey, true, username, usertoken, (logged) -> {
+						if (logged){
+							changeText("Succesfully logged in!\n");
+							GameJoltPlayerData.loadInit();
+							FlxGameJolt.openSession();
+						}else{
+							changeText("Failed to log in.\n");
+							new FlxTimer().start(1.5, function(tmr:FlxTimer){
+								username = "";
+								usertoken = "";
+								if (!FlxGameJolt.lmfaoBanned){
+									changeText("Log in into Gamejolt to sync your data to the full version and get 50 coins (+ 100 in full version)!\nPress ESCAPE to leave this screen.\n");
+								}
+								name.text = "Insert username.";
+								mode = "user";
+							});
+						}
+						if (FlxGameJolt.lmfaoBanned){
+							changeText("ERROR: USER IS BANNED!\n");
+						}
+					});
+			}
+		}
 		if (#if !android FlxG.keys.justPressed.ESCAPE || controls.BACK #else FlxG.android.justPressed.BACK #end){
 			FlxG.switchState(new MainMenuState());
-		}
 	}
 	function changeText(GUCK:String){
 		remove(chooseName);
