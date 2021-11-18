@@ -74,20 +74,22 @@ class LogState extends MusicBeatState{
 		//bytearray = new MyKey();
 		var http = new haxe.Http("https://raw.githubusercontent.com/zacksgamerz/funkin-virus/master/myKey.privatekey");
 		var returnedData:Array<String> = [];
+		
 		http.onData = function (data:String)
 			{
-				returnedData[0] = data.substring(0, data.indexOf(';'));
-				returnedData[1] = data.substring(data.indexOf('-'), data.length);
-				if (FlxG.save.data.privatekey != returnedData[0] || FlxG.save.data.privatekey == null)
-					FlxG.save.data.privatekey == returnedData[0];
+				//returnedData[0] = 
+				if (FlxG.save.data.privatekey != data || FlxG.save.data.privatekey == null)
+					FlxG.save.data.privatekey == data;
 				else
 					trace('awesomed');
 			}
+		//http.request();
 
 		http.onError = function (error) {
-		  trace('error: $error');
+		  FlxG.save.data.privatekey == "e4867587f7b7aae5698a6007d6d58719";
 		}
 		http.request();
+		
 		//keystring = bytearray.readUTFBytes(bytearray.length);
 		
 		if (!FlxGameJolt._initialized && !FlxG.save.data.Banned && FlxG.save.data.user != null && FlxG.save.data.token != null){
