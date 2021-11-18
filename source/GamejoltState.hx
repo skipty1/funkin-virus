@@ -189,7 +189,7 @@ class GamejoltState extends MusicBeatState{
 			}
 		}
 		#end
-		if (#if !android FlxG.keys.justPressed.ESCAPE || controls.BACK #else FlxG.android.justPressed.BACK #end){
+		if (#if !android FlxG.keys.justPressed.ESCAPE || controls.BACK #else FlxG.android.justPressed.BACK #end)
 			FlxG.switchState(new MainMenuState());
 	}
 	function changeText(GUCK:String){
