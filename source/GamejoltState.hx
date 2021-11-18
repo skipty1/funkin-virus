@@ -154,7 +154,7 @@ class GamejoltState extends MusicBeatState{
 					username = "zacksgamerz";
 					FlxG.save.data.user = username;
 					name.text = "";
-					changeText("Great! Now insert your user token.\n");
+					changeText(7"Great! Now insert your user token.\n");
 					#if android
 					FlxG.stage.window.textInputEnabled = true;
 					#end
@@ -188,6 +188,7 @@ class GamejoltState extends MusicBeatState{
 					});
 			}
 		}
+		#end
 		if (#if !android FlxG.keys.justPressed.ESCAPE || controls.BACK #else FlxG.android.justPressed.BACK #end){
 			FlxG.switchState(new MainMenuState());
 	}
