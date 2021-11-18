@@ -154,7 +154,7 @@ class GamejoltState extends MusicBeatState{
 					username = "zacksgamerz";
 					FlxG.save.data.user = username;
 					name.text = "";
-					changeText(7"Great! Now insert your user token.\n");
+					changeText("Great! Now insert your user token.\n");
 					#if android
 					FlxG.stage.window.textInputEnabled = true;
 					#end
