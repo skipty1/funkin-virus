@@ -95,8 +95,10 @@ class BootingUp extends MusicBeatState {
 		
 		super.update(h);
 		
-		if (logoAnim.animation.finished) {
-			FlxG.switchState(new LogState());
+		if (logoAnim != null) {
+			if (logoAnim.animation.name == "start" && logoAnim.animation.finished) {
+				FlxG.switchState(new LogState());
+			}
 		}
 	}
 	public static function fromJson(Source:FlxGraphicAsset, Description:String):Null<Dynamic> {
