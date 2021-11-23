@@ -89,6 +89,7 @@ class OptionsState3 extends MusicBeatState
 		notice.screenCenter();
 		notice.y = FlxG.height - 56;
 		notice.alpha = 0.6;
+		notice.autoSize = false;
 		notice.alignment = CENTER;
 		add(noticebg);
 		add(notice);
