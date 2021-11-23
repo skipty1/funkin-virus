@@ -214,7 +214,7 @@ class ResultsScreen extends FlxSubState
 				FlxG.switchState(new MainMenuState());
 			}
 			else
-				FlxG.switchState(new FreeplayState());
+				FlxG.switchState(new NewFreeplay());
 		}
 
 		if (FlxG.keys.justPressed.F1 && !PlayState.loadRep)
