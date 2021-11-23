@@ -85,9 +85,6 @@ class BootingUp extends MusicBeatState {
 		logoAnim.screenCenter();
 		logoAnim.animation.play("start", false);
 		
-		FlxTransitionableState.defaultTransIn = new TransitionData(TILES, FlxColor.BLACK, 0.5);
-		FlxTransitionableState.defaultTransOut = new TransitionData(TILES, FlxColor.BLACK, 2);
-		
 		super.create();
 	}
 	
