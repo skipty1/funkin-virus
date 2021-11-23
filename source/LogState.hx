@@ -41,36 +41,6 @@ class LogState extends MusicBeatState{
 	var flicktimer:FlxTimer;
 
 	override public function create(){
-		#if sys
-		#if desktop
-		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
-		#else 
-		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays")) // Main.path + 
-		#end
-			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
-		#end
-		#if windows
-		if (FlxG.save.data.discordPresence)
-			DiscordClient.changePresence("08", null);
-		#end
-
-		@:privateAccess
-		{
-			trace("Loaded " + openfl.Assets.getLibrary("default").assetsLoaded + " assets (DEFAULT)");
-		}
-		
-		FlxG.save.bind('funkin', 'virus99');
-
-		PlayerSettings.init();
-
-		KadeEngineData.initSave();
-		MedalSaves.initMedal();
-		GameJoltPlayerData.loadInit();
-		Highscore.load();
-		#if android
-		FlxG.android.preventDefaultKeys = [BACK];
-		#end
-
 		//bytearray = new MyKey();
 		var http = new haxe.Http("https://raw.githubusercontent.com/zacksgamerz/funkin-virus/master/myKey.privatekey");
 		var returnedData:Array<String> = [];
