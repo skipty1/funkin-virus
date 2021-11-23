@@ -187,7 +187,7 @@ class OptionsState4 extends MusicBeatState
 			changeSelection(1);
 
 		if (controls.RIGHT_P){
-			FlxG.switchState(new OptionsState());
+			FlxG.switchState(new OptionsState5());
 		}
 		if (controls.LEFT_P)
 			FlxG.switchState(new OptionsState3());
