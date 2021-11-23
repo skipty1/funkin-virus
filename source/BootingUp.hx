@@ -55,10 +55,6 @@ class BootingUp extends MusicBeatState {
 		#end
 			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
 		#end
-		#if windows
-		if (FlxG.save.data.discordPresence)
-			DiscordClient.changePresence("08", null);
-		#end
 
 		@:privateAccess
 		{
@@ -66,6 +62,11 @@ class BootingUp extends MusicBeatState {
 		}
 		
 		FlxG.save.bind('funkin', 'virus99');
+		
+		#if windows
+		if (FlxG.save.data.discordPresence)
+			DiscordClient.changePresence("08", null);
+		#end
 
 		PlayerSettings.init();
 
