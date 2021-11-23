@@ -466,6 +466,8 @@ class AudioLR extends Option
 			FlxG.save.data.audioPan == -1;
 		
 		FlxG.sound.music.pan = FlxG.save.data.audioPan;
+		
+		return true;
 	}
 
 	override function getValue():String {
@@ -479,6 +481,8 @@ class AudioLR extends Option
 			FlxG.save.data.audioPan == 1;
 		
 		FlxG.sound.music.pan = FlxG.save.data.audioPan;
+		
+		return true;
 	}
 }
 class FPSOption extends Option
