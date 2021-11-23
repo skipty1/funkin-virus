@@ -92,13 +92,12 @@ class OptionsState4 extends MusicBeatState
 		var noticebg = new FlxSprite(0, FlxG.height - 56).makeGraphic(FlxG.width, 60, FlxColor.BLACK);
 		noticebg.alpha = 0.25;
 
-
 		notice = new FlxText(0, 0, 0, "", 24);
 
-		//notice.x = (FlxG.width / 2) - (notice.width / 2);
 		notice.screenCenter();
 		notice.y = FlxG.height - 56;
 		notice.alpha = 0.6;
+		notice.autoSize = false;
 		notice.alignment = CENTER;
 		add(noticebg);
 		add(notice);
