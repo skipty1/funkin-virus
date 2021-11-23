@@ -34,7 +34,8 @@ class OldOptionsMenu extends MusicBeatState
 			new FPSCapOption("Change your FPS Cap."),
 			new ScrollSpeedOption("Change your scroll speed. (1 = Chart dependent)"),
 			new AccuracyDOption("Change how accuracy is calculated. (Accurate = Simple, Complex = Milisecond Based)"),
-			new CustomizeGameplay("Drag and drop gameplay modules to your prefered positions!")
+			new CustomizeGameplay("Drag and drop gameplay modules to your prefered positions!"),
+			new AudioLR("Change audio panning from -1 (All left) to 1 (All Right). Useful for headphones. Panning: " + FlxG.save.data.audioPan);
 		]),
 		new OptionCategory("Saves and Data", [
 			new ResetScoreOption("Reset your score on all songs and weeks. This is irreversible!"),
