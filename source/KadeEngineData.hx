@@ -8,7 +8,6 @@ class KadeEngineData
     {
     	if (FlxG.save.data.audioPan == null)
     		FlxG.save.data.audioPan = 0.0;
-    	
     	if (FlxG.save.data.totalSongScores == null)
     		FlxG.save.data.totalSongScores = 0;
     	if (FlxG.save.data.discoScore == null)
