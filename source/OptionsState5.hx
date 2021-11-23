@@ -8,7 +8,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import BitData;
 
-class OptionsState extends MusicBeatState
+class OptionsState5 extends MusicBeatState
 {
 	private var grptext:FlxTypedGroup<Alphabet>;
 
