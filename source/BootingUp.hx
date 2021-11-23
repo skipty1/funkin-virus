@@ -1,5 +1,8 @@
 package;
 
+import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.addons.transition.TransitionData;
 import flixel.math.FlxRect;
 import flixel.math.FlxPoint;
 import flixel.graphics.frames.FlxAtlasFrames;
