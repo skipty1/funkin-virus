@@ -438,7 +438,49 @@ class Judgement extends Option
 		return true;
 	}
 }
+class AudioLR extends Option
+{
+	
 
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+		acceptValues = true;
+	}
+	
+	public override function press():Bool
+	{
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Audio Panning";
+	}
+
+	override function left():Bool {
+		//@privateaccess
+		FlxG.save.data.audioPan -= 0.1;
+		if (FlxG.save.data.audioPan < -1)
+			FlxG.save.data.audioPan == -1;
+		
+		FlxG.sound.music.pan = FlxG.save.data.audioPan;
+	}
+
+	override function getValue():String {
+		return "Change audio panning from -1 (All left) to 1 (All Right). Useful for headphones. Panning: " + FlxG.save.data.audioPan;
+	}
+
+	override function right():Bool {
+		//@privateaccess
+		FlxG.save.data.audioPan += 0.1;
+		if (FlxG.save.data.audioPan > 1)
+			FlxG.save.data.audioPan == 1;
+		
+		FlxG.sound.music.pan = FlxG.save.data.audioPan;
+	}
+}
 class FPSOption extends Option
 {
 	public function new(desc:String)
