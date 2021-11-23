@@ -400,6 +400,7 @@ class MusicBeatState extends FlxUIState
 
 		//if (FlxGameJolt._initialized && FlxGameJolt.openedSession)
 			//FlxGameJolt.pingSession(true);
+		FlxG.sound.music.pan = FlxG.save.data.audioPan;
 	}
 
 	private function updateBeat():Void
