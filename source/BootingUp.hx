@@ -86,6 +86,8 @@ class BootingUp extends MusicBeatState {
 		logoAnim.screenCenter();
 		logoAnim.animation.play("start", false);
 		
+		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+		
 		super.create();
 	}
 	
