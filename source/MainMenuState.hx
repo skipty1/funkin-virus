@@ -87,7 +87,7 @@ class MainMenuState extends MusicBeatState
 	override function create()
 	{
 		if (comingBack){
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.7);
 			comingBack = false;
 		}
 		FlxG.mouse.visible = true;
