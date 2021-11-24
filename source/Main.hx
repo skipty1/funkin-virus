@@ -102,6 +102,13 @@ class Main extends Sprite
 			DiscordClient.shutdown();
 			#end
 			FlxGameJolt.closeSession();
+			#if (DEBUG || debug)
+			var unique_id:String = SessionData.generateID("funkinVirus_"); 
+		    //generates unique id: "fooApp_YYYY-MM-DD_HH'MM'SS_CRASH"
+		    var crashDumper = new CrashDumper(unique_id); 
+		    //starts the crashDumper
+		    #end
+
 		 });
 		 
 		//#end
