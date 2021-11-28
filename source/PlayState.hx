@@ -4679,22 +4679,13 @@ class PlayState extends MusicBeatState
 									changeScroll(1);
 								else
 									changeScroll(2);
-							case 882:
+							case 890:
 								warnAss(true);
-							case 912:
-								if (!FlxG.save.data.downscroll)
-									changeScroll(2);
-								else
-									changeScroll(1);
-							case 890 | 892 | 894 | 896:
-								//warnAss(false);
 							case 926:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(1);
 								else
 									changeScroll(2);
-							case 891 | 893 | 895:
-								//warnAss(true);
 							case 920:
 								if (!FlxG.save.data.downscroll)
 									changeScroll(2);
