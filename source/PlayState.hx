@@ -5019,6 +5019,7 @@ class PlayState extends MusicBeatState
 			warn.y = FlxG.height - 200;
 		else
 			warn.y = FlxG.height - 500;
+		warn.cameras = [camHUD];
 		add(warn);
 		var curShit = curStep + 20;
 		var assBull = false;
