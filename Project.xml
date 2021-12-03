@@ -172,7 +172,7 @@
 	<!--Enable this for Nape release builds for a serious peformance improvement-->
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 	
-	<haxelib name="crashdumper" if="debug"/>
+	<haxelib name="crashdumper" if="debug"/> <!--crashdumper https://github.com/Jonnycatmeow/crashdumper.git--!>
 	<haxedef name="HXCPP_STACK_LINE" />
 	<!--if you want line numbers-->
 	<haxedef name="HXCPP_STACK_TRACE"/>
