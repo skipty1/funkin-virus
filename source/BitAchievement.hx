@@ -17,7 +17,7 @@ using StringTools;
 
 //fhisjdx
 
-class Achievements extends FlxSpriteGroup{
+class BitAchievements extends FlxSpriteGroup{
 	//vars here
 	var icon:FlxSprite;
 
