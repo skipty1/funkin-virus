@@ -22,6 +22,24 @@ class BitAchievements extends FlxSpriteGroup{
 	var icon:FlxSprite;
 
 	var bg:FlxSprite;
+	
+	public static var medalInfo:Array<Dynamic> = [//name, desc, tag, hidden
+		["Save Complete", "Log in to GameJolt in-game.", "gjsave", true],
+		["Good Game Well Played", "Complete a song.", "ggwp", false],
+		["TouHou Bit", "Finish a song with over 100 misses.", "usucklmao", false],
+		["Do you need a backup, dumbass?", "Fail 5 times in easy difficulty", "usucklol", false],
+		["Sussy", "Press F 69 times in main menu.", "amogus", true],
+		["Blu Spy", "FC D1SC0", "bluespyinthebase", false],
+		["Spike", "Find the hidden spike.", "spike", true],
+		["Bussy", "Press F 420 times in main menu.", "saiyanamogus", true],
+		["Game Not Over", "Complete Story Mode", "storynotover", false],
+		["Pro Player", "Enter a cheat code passed down from generation to generation in main menu", "soniccheatcode", true],
+		["A New World?", "Enter a code that accesses a new world.. maybe.", "dinnerbone", false],
+		["Single-Life", "Complete story mode without dying once.", "sweatyplayer", false],
+		["The Perfect Player", "Complete everything in the game", "sweatymfplayer", false]
+	];
+	
+	public static var achievementsMap:Map<String, Bool> = new Map<String, Bool>();
 
 	//functions here
 	private function new(?ASS:String){
@@ -112,9 +130,9 @@ class BitAchievements extends FlxSpriteGroup{
 
 	//static var queue:Array<Achievements>;
 
-	public static function popup(name:String, duration:Float = 0.5):Achievements
+	public static function popup(name:String, duration:Float = 0.5):BitAchievement
 	{
-		var a:Achievements = new Achievements(name);
+		var a:BitAchievement = new BitAchievement(name);
 
 		/*
 		var camcontrol = new FlxCamera();
@@ -135,41 +153,40 @@ class BitAchievements extends FlxSpriteGroup{
 
 		return a;
 	}
-}
+	
+	public static function unlockAchievement(name:String):Void {
+		FlxG.log.add('Completed achievement "' + name +'"');
+		achievementsMap.set(name, true);
+		popup(name);
+		FlxG.sound.play(Paths.sound('unlock' + FlxG.random.int(1,2),'shared'), 0.7);
+	}
 
-class MedalSaves{
-	//public var Savecrap:Array<Bool> = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];//20 bools.
-	//nvm idfk.
-	public static function initMedal()
-	{
-		if (FlxG.save.data.loaded == null){
-			FlxG.save.data.GGWP = false;
-			FlxG.save.data.Gamer = false;
-			FlxG.save.data.BluSpy = false;
-			FlxG.save.data.TOUHOU = false;
-			FlxG.save.data.ProPlayer = false;
-			FlxG.save.data.ECHO = false;
-			FlxG.save.data.GoodEnding = false;
-			FlxG.save.data.BadEnding = false;
-			FlxG.save.data.Firewall = false;
-			FlxG.save.data.DUNABD = false;
-			FlxG.save.data.CDBZ = false;
-			FlxG.save.data.Spike = false;
-			FlxG.save.data.Coin = false;
-			FlxG.save.data.TWTMF = false;
-			FlxG.save.data.NewWorld = false;
-			FlxG.save.data.WildWest = false;
-			FlxG.save.data.Sus = false;
-			FlxG.save.data.BigSus = false;
-			FlxG.save.data.Perfect = false;
-			FlxG.save.data.loaded = true;
+	public static function isAchievementUnlocked(name:String) {
+		if(achievementsMap.exists(name) && achievementsMap.get(name)) {
+			return true;
 		}
-		if (FlxG.save.data.NewWorld)
-			FlxG.save.data.NewWorld = false;
+		return false;
 	}
 }
 
-class AttachedAchievement extends FlxSprite {
+class MedalSaves{
+	public static function loadAchievements():Void {
+		if(FlxG.save.data != null) {
+			if(FlxG.save.data.achievementsMap != null) {
+				BitAchievement.achievementsMap = FlxG.save.data.achievementsMap;
+			}
+			if(FlxG.save.data.achievementsUnlocked != null) {
+				FlxG.log.add("Trying to load stuff");
+				var savedStuff:Array<String> = FlxG.save.data.achievementsUnlocked;
+				for (i in 0...savedStuff.length) {
+					BitAchievement.achievementsMap.set(savedStuff[i], true);
+				}
+			}
+		}
+	}
+}
+
+class BitAttachedAchievement extends FlxSprite {
 	public var sprTracker:FlxSprite;
 	private var tag:String;
 	public function new(x:Float = 0, y:Float = 0, name:String) {
@@ -197,9 +214,12 @@ class AttachedAchievement extends FlxSprite {
 		updateHitbox();
 	}
 	
-	public function getAchievementIndex(string:String) {
+	public function getAchievementIndex(string:String):String {
 		switch (string) {
-			
+			case "ggwp":
+				return "GGWP";
+			default:
+				return "sus";
 		}
 	}
 
