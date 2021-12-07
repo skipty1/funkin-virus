@@ -1,3 +1,0 @@
-Intoxicate:virus:1
-Disco:bit:1
-Guns:retro:1
