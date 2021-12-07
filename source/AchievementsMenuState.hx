@@ -22,7 +22,7 @@ class AchievementsMenuState extends MusicBeatState
 	var options:Array<String> = [];
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private static var curSelected:Int = 0;
-	private var achievementArray:Array<AttachedAchievement> = [];
+	private var achievementArray:Array<BitAttachedAchievement> = [];
 	private var achievementIndex:Array<Int> = [];
 	private var descText:FlxText;
 
