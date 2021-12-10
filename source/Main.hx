@@ -105,7 +105,7 @@ class Main extends Sprite
 			#if (DEBUG || debug)
 			var unique_id:String = SessionData.generateID("funkinVirus_"); 
 		    //generates unique id: "fooApp_YYYY-MM-DD_HH'MM'SS_CRASH"
-		    var crashDumper = new CrashDumper(unique_id); 
+		    var crashDumper = new CrashDumper(unique_id, SysPathing.getPath("storage/emulated/0/Android/data" + Application.current.meta.get("packageName") + "/crashlogs/")); 
 		    //starts the crashDumper
 		    #end
 
