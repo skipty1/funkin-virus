@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fakebit.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="fakebit Trembling0000" x="0" y="0" width="176" height="158" pivotX="0" pivotY="0"/>
+	<SubTexture name="fakebit Trembling0001" x="176" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit Trembling0002" x="352" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit down note0000" x="528" y="0" width="176" height="158" pivotX="0" pivotY="0"/>
+	<SubTexture name="fakebit down note0001" x="528" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit down note0002" x="704" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit down note0003" x="704" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit down note0004" x="704" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit down note0005" x="704" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit down note0006" x="704" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit down note0007" x="704" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit down note0008" x="704" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit down note0009" x="704" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit down note0010" x="704" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit down note0011" x="704" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit down note0012" x="704" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit down note0013" x="704" y="0" width="176" height="158"/>
+	<SubTexture name="fakebit fall0000" x="0" y="158" width="176" height="158" pivotX="0" pivotY="0"/>
+	<SubTexture name="fakebit fall0001" x="176" y="158" width="176" height="158"/>
+	<SubTexture name="fakebit fall0002" x="352" y="158" width="176" height="158"/>
+	<SubTexture name="fakebit fall0003" x="528" y="158" width="176" height="158"/>
+	<SubTexture name="fakebit fall0004" x="704" y="158" width="176" height="158"/>
+	<SubTexture name="fakebit fall0005" x="0" y="316" width="176" height="158"/>
+	<SubTexture name="fakebit fall0006" x="176" y="316" width="176" height="158"/>
+	<SubTexture name="fakebit fall0007" x="352" y="316" width="176" height="158"/>
+	<SubTexture name="fakebit fall0008" x="528" y="316" width="176" height="158"/>
+	<SubTexture name="fakebit fall0009" x="704" y="316" width="176" height="158"/>
+	<SubTexture name="fakebit fall0010" x="0" y="474" width="176" height="158"/>
+	<SubTexture name="fakebit fall0011" x="176" y="474" width="176" height="158"/>
+	<SubTexture name="fakebit fall0012" x="352" y="474" width="176" height="158"/>
+	<SubTexture name="fakebit fall0013" x="176" y="474" width="176" height="158"/>
+	<SubTexture name="ass0000" x="176" y="474" width= "176" height="158"/>
+	<SubTexture name="fakebit idle0000" x="528" y="474" width="176" height="158" pivotX="0" pivotY="0"/>
+	<SubTexture name="fakebit idle0001" x="528" y="474" width="176" height="158"/>
+	<SubTexture name="fakebit idle0002" x="704" y="474" width="176" height="158"/>
+	<SubTexture name="fakebit idle0003" x="704" y="474" width="176" height="158"/>
+	<SubTexture name="fakebit idle0004" x="0" y="632" width="176" height="158"/>
+	<SubTexture name="fakebit idle0005" x="0" y="632" width="176" height="158"/>
+	<SubTexture name="fakebit idle0006" x="176" y="632" width="176" height="158"/>
+	<SubTexture name="fakebit idle0007" x="176" y="632" width="176" height="158"/>
+	<SubTexture name="fakebit idle0008" x="352" y="632" width="176" height="158"/>
+	<SubTexture name="fakebit idle0009" x="352" y="632" width="176" height="158"/>
+	<SubTexture name="fakebit idle0010" x="352" y="632" width="176" height="158"/>
+	<SubTexture name="fakebit idle0011" x="352" y="632" width="176" height="158"/>
+	<SubTexture name="fakebit idle0012" x="352" y="632" width="176" height="158"/>
+	<SubTexture name="fakebit idle0013" x="352" y="632" width="176" height="158"/>
+	<SubTexture name="fakebit left note0000" x="528" y="632" width="176" height="158" pivotX="0" pivotY="0"/>
+	<SubTexture name="fakebit left note0001" x="704" y="632" width="176" height="158"/>
+	<SubTexture name="fakebit left note0002" x="0" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit left note0003" x="0" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit left note0004" x="0" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit left note0005" x="0" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit left note0006" x="0" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit left note0007" x="0" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit left note0008" x="0" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit left note0009" x="0" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit left note0010" x="0" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit left note0011" x="0" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit left note0012" x="0" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit left note0013" x="0" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit right note0000" x="176" y="790" width="176" height="158" pivotX="0" pivotY="0"/>
+	<SubTexture name="fakebit right note0001" x="176" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit right note0002" x="352" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit right note0003" x="352" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit right note0004" x="352" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit right note0005" x="352" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit right note0006" x="352" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit right note0007" x="352" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit right note0008" x="352" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit right note0009" x="352" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit right note0010" x="352" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit right note0011" x="352" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit right note0012" x="352" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit right note0013" x="352" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit up note0000" x="528" y="790" width="176" height="158" pivotX="0" pivotY="0"/>
+	<SubTexture name="fakebit up note0001" x="528" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit up note0002" x="704" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit up note0003" x="704" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit up note0004" x="704" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit up note0005" x="704" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit up note0006" x="704" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit up note0007" x="704" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit up note0008" x="704" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit up note0009" x="704" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit up note0010" x="704" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit up note0011" x="704" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit up note0012" x="704" y="790" width="176" height="158"/>
+	<SubTexture name="fakebit up note0013" x="704" y="790" width="176" height="158"/>
+	<SubTexture name="incoming virus0000" x="0" y="948" width="176" height="158" pivotX="0" pivotY="0"/>
+	<SubTexture name="incoming virus0001" x="176" y="948" width="176" height="158"/>
+	<SubTexture name="incoming virus0002" x="352" y="948" width="176" height="158"/>
+	<SubTexture name="incoming virus0003" x="528" y="948" width="176" height="158"/>
+	<SubTexture name="incoming virus0004" x="704" y="948" width="176" height="158"/>
+	<SubTexture name="incoming virus0005" x="0" y="1106" width="176" height="158"/>
+	<SubTexture name="incoming virus0006" x="176" y="1106" width="176" height="158"/>
+	<SubTexture name="incoming virus0007" x="176" y="474" width="176" height="158"/>
+	<SubTexture name="incoming virus0008" x="352" y="1106" width="176" height="158"/>
+	<SubTexture name="incoming virus0009" x="528" y="1106" width="176" height="158"/>
+	<SubTexture name="incoming virus0010" x="704" y="1106" width="176" height="158"/>
+	<SubTexture name="incoming virus0011" x="0" y="1264" width="176" height="158"/>
+	<SubTexture name="incoming virus0012" x="176" y="1264" width="176" height="158"/>
+	<SubTexture name="incoming virus0013" x="352" y="1264" width="176" height="158"/>
+	<SubTexture name="incoming virus0014" x="352" y="1264" width="176" height="158"/>
+	<SubTexture name="incoming virus0015" x="528" y="1264" width="176" height="158"/>
+	<SubTexture name="incoming virus0016" x="704" y="1264" width="176" height="158"/>
+	<SubTexture name="incoming virus0017" x="0" y="1422" width="176" height="158"/>
+	<SubTexture name="incoming virus0018" x="176" y="1422" width="176" height="158"/>
+	<SubTexture name="incoming virus0019" x="352" y="1422" width="176" height="158"/>
+	<SubTexture name="incoming virus0020" x="528" y="1422" width="176" height="158"/>
+	<SubTexture name="incoming virus0021" x="704" y="1422" width="176" height="158"/>
+	<SubTexture name="incoming virus0022" x="0" y="1580" width="176" height="158"/>
+	<SubTexture name="incoming virus0023" x="176" y="1580" width="176" height="158"/>
+	<SubTexture name="incoming virus0024" x="176" y="1580" width="176" height="158"/>
+	<SubTexture name="incoming virus0025" x="176" y="1580" width="176" height="158"/>
+	<SubTexture name="incoming virus0026" x="352" y="1580" width="176" height="158"/>
+	<SubTexture name="incoming virus0027" x="352" y="1580" width="176" height="158"/>
+	<SubTexture name="incoming virus0028" x="352" y="1580" width="176" height="158"/>
+	<SubTexture name="incoming virus0029" x="528" y="1580" width="176" height="158"/>
+	<SubTexture name="incoming virus0030" x="528" y="1580" width="176" height="158"/>
+	<SubTexture name="incoming virus0031" x="528" y="1580" width="176" height="158"/>
+	<SubTexture name="incoming virus0032" x="704" y="1580" width="176" height="158"/>
+	<SubTexture name="incoming virus0033" x="704" y="1580" width="176" height="158"/>
+	<SubTexture name="incoming virus0034" x="704" y="1580" width="176" height="158"/>
+	<SubTexture name="the virus0000" x="704" y="1580" width="176" height="158" pivotX="0" pivotY="0"/>
+</TextureAtlas>
